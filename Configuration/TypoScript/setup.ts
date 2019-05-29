@@ -18,6 +18,9 @@ plugin.tx_rkwfeecalculator_calculator {
   mvc {
     #callDefaultActionIfActionCantBeResolved = 1
   }
+  settings {
+    name = {$plugin.tx_rkwfeecalculator.settings.name}
+  }
 }
 
 plugin.tx_rkwfeecalculator._CSS_DEFAULT_STYLE (
