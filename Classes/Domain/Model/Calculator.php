@@ -47,6 +47,13 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $selectedProgram = null;
 
     /**
+     * rkwFeeSubvention
+     *
+     * @var int
+     */
+    protected $rkwFeeSubvention;
+
+    /**
      * consultantFeeSubvention
      *
      * @var int
@@ -202,6 +209,27 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->consultantFeeSubvention;
     }
 
+    /**
+     * Sets the rkwFeeSubvention
+     *
+     * @param $rkwFeeSubvention
+     * @return void;
+     */
+    public function setRkwFeeSubvention($rkwFeeSubvention)
+    {
+        $this->rkwFeeSubvention = $rkwFeeSubvention;
+    }
+
+    /**
+     * Returns the rkwFeeSubvention
+     *
+     * @return int rkwFeeSubvention
+     */
+    public function getRkwFeeSubvention()
+    {
+        return $this->rkwFeeSubvention;
+    }
+
     public function calculate()
     {
 
@@ -210,6 +238,8 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         } else {
             $this->setConsultantFeeSubvention($this->days * $this->consultantFeePerDay);
         }
+
+        $this->setRkwFeeSubvention($this->days * $this->selectedProgram->getRkwFeePerDay());
 
     }
 }

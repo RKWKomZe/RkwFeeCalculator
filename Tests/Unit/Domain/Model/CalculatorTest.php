@@ -168,4 +168,26 @@ class CalculatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function givenSelectedProgramItCalculatesSubventionOfRkwFeeCorrectly()
+    {
+        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setRkwFeePerDay(100);
+
+        $this->subject->setSelectedProgram($selectedProgramFixture);
+
+        $this->subject->setDays(10);
+        $this->subject->setConsultantFeePerDay(1000);
+
+        $this->subject->calculate();
+
+        self::assertAttributeEquals(
+            1000,
+            'rkwFeeSubvention',
+            $this->subject
+        );
+    }
+    
 }
