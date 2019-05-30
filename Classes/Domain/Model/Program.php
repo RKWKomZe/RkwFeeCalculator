@@ -96,6 +96,13 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $institution = null;
 
     /**
+     * formula
+     *
+     * @var string
+     */
+    protected $formula = '';
+
+    /**
      * Returns the name
      *
      * @return string $name
@@ -303,5 +310,26 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setInstitution(\Rkw\RkwFeecalculator\Domain\Model\Institution $institution)
     {
         $this->institution = $institution;
+    }
+
+    /**
+     * Returns the formula
+     *
+     * @return string $formula
+     */
+    public function getFormula()
+    {
+        return $this->formula;
+    }
+
+    /**
+     * Sets the formula
+     *
+     * @param string $formula
+     * @return void
+     */
+    public function setFormula($formula)
+    {
+        $this->formula = $formula;
     }
 }

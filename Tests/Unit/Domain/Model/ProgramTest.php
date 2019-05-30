@@ -54,6 +54,33 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
+    public function getFormulaReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getFormula()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setFormulaForStringSetsFormula()
+    {
+        $this->subject->setFormula('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'formula',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
     public function getResponsibleInstitutionReturnsInitialValueForInt()
     {
     }

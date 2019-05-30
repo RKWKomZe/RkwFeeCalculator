@@ -130,6 +130,16 @@
                             "maxItems": "1",
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "formula",
+                            "propertyType": "String",
+                            "uid": "26686161328"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
                             "propertyIsRequired": true,
                             "propertyName": "responsibleInstitution",
                             "propertyType": "Select",
@@ -217,7 +227,7 @@
                             "relationName": "institution",
                             "relationType": "zeroToOne",
                             "relationWire": "[wired]",
-                            "renderType": "selectMultipleSideBySide",
+                            "renderType": "selectSingle",
                             "uid": "1014054780745"
                         }
                     ]
@@ -292,8 +302,8 @@
         },
         "extensionKey": "rkw_feecalculator",
         "name": "RKW FeeCalculator",
-        "originalExtensionKey": "",
-        "originalVendorName": "",
+        "originalExtensionKey": "rkw_feecalculator",
+        "originalVendorName": "Rkw",
         "persons": [
             {
                 "company": "",
@@ -342,7 +352,7 @@
         }
     ],
     "log": {
-        "last_modified": "2019-05-29 05:24",
+        "last_modified": "2019-05-30 10:05",
         "extension_builder_version": "7.6.18",
         "be_user": " (1)"
     }

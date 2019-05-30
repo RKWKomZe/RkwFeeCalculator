@@ -51,6 +51,7 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_program (
 	calculator int(11) unsigned DEFAULT '0' NOT NULL,
 
 	name varchar(255) DEFAULT '' NOT NULL,
+	formula varchar(255) DEFAULT '' NOT NULL,
 	responsible_institution int(11) DEFAULT '0' NOT NULL,
 	company_age varchar(255) DEFAULT '' NOT NULL,
 	possible_days_min int(11) DEFAULT '0' NOT NULL,
