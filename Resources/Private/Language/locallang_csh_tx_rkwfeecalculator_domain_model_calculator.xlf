@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-30T22:04:59Z" product-name="rkw_feecalculator">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-30T22:40:01Z" product-name="rkw_feecalculator">
 		<header/>
 		<body>
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator">
@@ -9,17 +9,17 @@
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator.description">
 				<source></source>
 			</trans-unit>
-			<trans-unit id="selected_program.description">
-				<source>selectedProgram</source>
-			</trans-unit>
 			<trans-unit id="days.description">
 				<source>days</source>
 			</trans-unit>
-			<trans-unit id="fee_per_day.description">
-				<source>feePerDay</source>
+			<trans-unit id="consultant_fee_per_day.description">
+				<source>consultantFeePerDay</source>
 			</trans-unit>
-			<trans-unit id="programs.description">
-				<source>programs</source>
+			<trans-unit id="assigned_programs.description">
+				<source>assignedPrograms</source>
+			</trans-unit>
+			<trans-unit id="selected_program.description">
+				<source>selectedProgram</source>
 			</trans-unit>
 		</body>
 	</file>

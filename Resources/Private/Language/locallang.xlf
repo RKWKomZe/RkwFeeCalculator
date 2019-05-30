@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-30T22:04:59Z" product-name="rkw_feecalculator">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-30T22:40:01Z" product-name="rkw_feecalculator">
 		<header/>
 		<body>
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator">
@@ -12,26 +12,23 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
 				<source>Calculator</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.selected_program">
-				<source>Selected Program</source>
-			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.days">
 				<source>Days</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.fee_per_day">
-				<source>Fee Per Day</source>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day">
+				<source>Consultant Fee Per Day</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.programs">
-				<source>Programs</source>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.assigned_programs">
+				<source>Assigned Programs</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.selected_program">
+				<source>Selected Program</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program">
 				<source>Program</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.name">
 				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.formula">
-				<source>Formula</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.responsible_institution">
 				<source>Responsible Institution</source>
@@ -53,6 +50,9 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day">
 				<source>Rkw Fee Per Day</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
+				<source>Consultant Fee Per Day Limit</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.miscellaneous">
 				<source>Miscellaneous</source>

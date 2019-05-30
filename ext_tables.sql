@@ -6,10 +6,10 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_calculator (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	selected_program int(11) DEFAULT '0' NOT NULL,
 	days int(11) DEFAULT '0' NOT NULL,
-	fee_per_day int(11) DEFAULT '0' NOT NULL,
-	programs int(11) unsigned DEFAULT '0' NOT NULL,
+	consultant_fee_per_day int(11) DEFAULT '0' NOT NULL,
+	assigned_programs int(11) unsigned DEFAULT '0' NOT NULL,
+	selected_program int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -51,7 +51,6 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_program (
 	calculator int(11) unsigned DEFAULT '0' NOT NULL,
 
 	name varchar(255) DEFAULT '' NOT NULL,
-	formula varchar(255) DEFAULT '' NOT NULL,
 	responsible_institution int(11) DEFAULT '0' NOT NULL,
 	company_age varchar(255) DEFAULT '' NOT NULL,
 	possible_days_min int(11) DEFAULT '0' NOT NULL,
@@ -59,6 +58,7 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_program (
 	conditions text NOT NULL,
 	content text NOT NULL,
 	rkw_fee_per_day int(11) DEFAULT '0' NOT NULL,
+	consultant_fee_per_day_limit int(11) DEFAULT '0' NOT NULL,
 	miscellaneous text NOT NULL,
 	institution int(11) unsigned DEFAULT '0',
 

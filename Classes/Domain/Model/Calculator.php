@@ -18,13 +18,6 @@ namespace Rkw\RkwFeecalculator\Domain\Model;
 class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * selectedProgram
-     *
-     * @var int
-     */
-    protected $selectedProgram = 0;
-
-    /**
      * days
      *
      * @var int
@@ -32,19 +25,33 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $days = 0;
 
     /**
-     * feePerDay
+     * consultantFeePerDay
      *
      * @var int
      */
-    protected $feePerDay = 0;
+    protected $consultantFeePerDay = 0;
 
     /**
-     * programs
+     * assignedPrograms
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Rkw\RkwFeecalculator\Domain\Model\Program>
      * @cascade remove
      */
-    protected $programs = null;
+    protected $assignedPrograms = null;
+
+    /**
+     * selectedProgram
+     *
+     * @var \Rkw\RkwFeecalculator\Domain\Model\Program
+     */
+    protected $selectedProgram = null;
+
+    /**
+     * consultantFeeSubvention
+     *
+     * @var int
+     */
+    protected $consultantFeeSubvention;
 
     /**
      * __construct
@@ -65,28 +72,7 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->programs = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-    }
-
-    /**
-     * Returns the selectedProgram
-     *
-     * @return int $selectedProgram
-     */
-    public function getSelectedProgram()
-    {
-        return $this->selectedProgram;
-    }
-
-    /**
-     * Sets the selectedProgram
-     *
-     * @param int $selectedProgram
-     * @return void
-     */
-    public function setSelectedProgram($selectedProgram)
-    {
-        $this->selectedProgram = $selectedProgram;
+        $this->assignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -111,66 +97,119 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the feePerDay
+     * Returns the selectedProgram
      *
-     * @return int $feePerDay
+     * @return \Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram
      */
-    public function getFeePerDay()
+    public function getSelectedProgram()
     {
-        return $this->feePerDay;
+        return $this->selectedProgram;
     }
 
     /**
-     * Sets the feePerDay
+     * Sets the selectedProgram
      *
-     * @param int $feePerDay
+     * @param \Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram
      * @return void
      */
-    public function setFeePerDay($feePerDay)
+    public function setSelectedProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram)
     {
-        $this->feePerDay = $feePerDay;
+        $this->selectedProgram = $selectedProgram;
     }
 
     /**
      * Adds a Program
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Program $program
+     * @param \Rkw\RkwFeecalculator\Domain\Model\Program $assignedProgram
      * @return void
      */
-    public function addProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $program)
+    public function addAssignedProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $assignedProgram)
     {
-        $this->programs->attach($program);
+        $this->assignedPrograms->attach($assignedProgram);
     }
 
     /**
      * Removes a Program
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Program $programToRemove The Program to be removed
+     * @param \Rkw\RkwFeecalculator\Domain\Model\Program $assignedProgramToRemove The Program to be removed
      * @return void
      */
-    public function removeProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $programToRemove)
+    public function removeAssignedProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $assignedProgramToRemove)
     {
-        $this->programs->detach($programToRemove);
+        $this->assignedPrograms->detach($assignedProgramToRemove);
     }
 
     /**
-     * Returns the programs
+     * Returns the assignedPrograms
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Rkw\RkwFeecalculator\Domain\Model\Program> $programs
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Rkw\RkwFeecalculator\Domain\Model\Program> assignedPrograms
      */
-    public function getPrograms()
+    public function getAssignedPrograms()
     {
-        return $this->programs;
+        return $this->assignedPrograms;
     }
 
     /**
-     * Sets the programs
+     * Sets the assignedPrograms
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Rkw\RkwFeecalculator\Domain\Model\Program> $programs
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Rkw\RkwFeecalculator\Domain\Model\Program> $assignedPrograms
      * @return void
      */
-    public function setPrograms(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $programs)
+    public function setAssignedPrograms(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $assignedPrograms)
     {
-        $this->programs = $programs;
+        $this->assignedPrograms = $assignedPrograms;
+    }
+
+    /**
+     * Returns the consultantFeePerDay
+     *
+     * @return int consultantFeePerDay
+     */
+    public function getConsultantFeePerDay()
+    {
+        return $this->consultantFeePerDay;
+    }
+
+    /**
+     * Sets the consultantFeePerDay
+     *
+     * @param int $consultantFeePerDay
+     * @return void
+     */
+    public function setConsultantFeePerDay($consultantFeePerDay)
+    {
+        $this->consultantFeePerDay = $consultantFeePerDay;
+    }
+
+    /**
+     * Sets the consultantFeeSubvention
+     *
+     * @param $consultantFeeSubvention
+     * @return void;
+     */
+    public function setConsultantFeeSubvention($consultantFeeSubvention)
+    {
+        $this->consultantFeeSubvention = $consultantFeeSubvention;
+    }
+
+    /**
+     * Returns the consultantFeeSubvention
+     *
+     * @return int consultantFeeSubvention
+     */
+    public function getConsultantFeeSubvention()
+    {
+        return $this->consultantFeeSubvention;
+    }
+
+    public function calculate()
+    {
+
+        if ($this->consultantFeePerDay > $this->selectedProgram->getConsultantFeePerDayLimit()) {
+            $this->setConsultantFeeSubvention($this->days * $this->selectedProgram->getConsultantFeePerDayLimit());
+        } else {
+            $this->setConsultantFeeSubvention($this->days * $this->consultantFeePerDay);
+        }
+
     }
 }

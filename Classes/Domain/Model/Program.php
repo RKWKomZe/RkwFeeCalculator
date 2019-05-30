@@ -82,6 +82,13 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $rkwFeePerDay = 0;
 
     /**
+     * consultantFeePerDayLimit
+     *
+     * @var int
+     */
+    protected $consultantFeePerDayLimit = 0;
+
+    /**
      * miscellaneous
      *
      * @var string
@@ -94,13 +101,6 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \Rkw\RkwFeecalculator\Domain\Model\Institution
      */
     protected $institution = null;
-
-    /**
-     * formula
-     *
-     * @var string
-     */
-    protected $formula = '';
 
     /**
      * Returns the name
@@ -313,23 +313,23 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the formula
+     * Returns the consultantFeePerDayLimit
      *
-     * @return string $formula
+     * @return int $consultantFeePerDayLimit
      */
-    public function getFormula()
+    public function getConsultantFeePerDayLimit()
     {
-        return $this->formula;
+        return $this->consultantFeePerDayLimit;
     }
 
     /**
-     * Sets the formula
+     * Sets the consultantFeePerDayLimit
      *
-     * @param string $formula
+     * @param int $consultantFeePerDayLimit
      * @return void
      */
-    public function setFormula($formula)
+    public function setConsultantFeePerDayLimit($consultantFeePerDayLimit)
     {
-        $this->formula = $formula;
+        $this->consultantFeePerDayLimit = $consultantFeePerDayLimit;
     }
 }

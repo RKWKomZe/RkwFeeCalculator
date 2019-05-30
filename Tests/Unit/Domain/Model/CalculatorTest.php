@@ -27,20 +27,6 @@ class CalculatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getSelectedProgramReturnsInitialValueForInt()
-    {
-    }
-
-    /**
-     * @test
-     */
-    public function setSelectedProgramForIntSetsSelectedProgram()
-    {
-    }
-
-    /**
-     * @test
-     */
     public function getDaysReturnsInitialValueForInt()
     {
     }
@@ -55,26 +41,26 @@ class CalculatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getFeePerDayReturnsInitialValueForInt()
+    public function getConsultantFeePerDayReturnsInitialValueForInt()
     {
     }
 
     /**
      * @test
      */
-    public function setFeePerDayForIntSetsFeePerDay()
+    public function setConsultantFeePerDayForIntSetsConsultantFeePerDay()
     {
     }
 
     /**
      * @test
      */
-    public function getProgramsReturnsInitialValueForProgram()
+    public function getAssignedProgramsReturnsInitialValueForProgram()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
-            $this->subject->getPrograms()
+            $this->subject->getAssignedPrograms()
         );
 
     }
@@ -82,16 +68,16 @@ class CalculatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function setProgramsForObjectStorageContainingProgramSetsPrograms()
+    public function setAssignedProgramsForObjectStorageContainingProgramSetsAssignedPrograms()
     {
-        $program = new \Rkw\RkwFeecalculator\Domain\Model\Program();
-        $objectStorageHoldingExactlyOnePrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOnePrograms->attach($program);
-        $this->subject->setPrograms($objectStorageHoldingExactlyOnePrograms);
+        $assignedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $objectStorageHoldingExactlyOneAssignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneAssignedPrograms->attach($assignedProgram);
+        $this->subject->setAssignedPrograms($objectStorageHoldingExactlyOneAssignedPrograms);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOnePrograms,
-            'programs',
+            $objectStorageHoldingExactlyOneAssignedPrograms,
+            'assignedPrograms',
             $this->subject
         );
 
@@ -100,35 +86,86 @@ class CalculatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function addProgramToObjectStorageHoldingPrograms()
+    public function addAssignedProgramToObjectStorageHoldingAssignedPrograms()
     {
-        $program = new \Rkw\RkwFeecalculator\Domain\Model\Program();
-        $programsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $assignedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignedProgramsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $programsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($program));
-        $this->inject($this->subject, 'programs', $programsObjectStorageMock);
+        $assignedProgramsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($assignedProgram));
+        $this->inject($this->subject, 'assignedPrograms', $assignedProgramsObjectStorageMock);
 
-        $this->subject->addProgram($program);
+        $this->subject->addAssignedProgram($assignedProgram);
     }
 
     /**
      * @test
      */
-    public function removeProgramFromObjectStorageHoldingPrograms()
+    public function removeAssignedProgramFromObjectStorageHoldingAssignedPrograms()
     {
-        $program = new \Rkw\RkwFeecalculator\Domain\Model\Program();
-        $programsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $assignedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignedProgramsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
 
-        $programsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($program));
-        $this->inject($this->subject, 'programs', $programsObjectStorageMock);
+        $assignedProgramsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($assignedProgram));
+        $this->inject($this->subject, 'assignedPrograms', $assignedProgramsObjectStorageMock);
 
-        $this->subject->removeProgram($program);
+        $this->subject->removeAssignedProgram($assignedProgram);
 
     }
+
+    /**
+     * @test
+     */
+    public function getSelectedProgramReturnsInitialValueForProgram()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getSelectedProgram()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setSelectedProgramForProgramSetsSelectedProgram()
+    {
+        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $this->subject->setSelectedProgram($selectedProgramFixture);
+
+        self::assertAttributeEquals(
+            $selectedProgramFixture,
+            'selectedProgram',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function givenSelectedProgramItCalculatesSubventionOfConsultantFeeCorrectly()
+    {
+        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setConsultantFeePerDayLimit(800);
+
+        $this->subject->setSelectedProgram($selectedProgramFixture);
+
+        $this->subject->setDays(10);
+        $this->subject->setConsultantFeePerDay(1000);
+
+        $this->subject->calculate();
+
+        self::assertAttributeEquals(
+            8000,
+            'consultantFeeSubvention',
+            $this->subject
+        );
+    }
+
 }

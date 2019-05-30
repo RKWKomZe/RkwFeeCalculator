@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-30T22:04:59Z" product-name="rkw_feecalculator">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-30T22:40:01Z" product-name="rkw_feecalculator">
 		<header/>
 		<body>
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator">
@@ -11,9 +11,6 @@
 			</trans-unit>
 			<trans-unit id="name.description">
 				<source>name</source>
-			</trans-unit>
-			<trans-unit id="formula.description">
-				<source>formula</source>
 			</trans-unit>
 			<trans-unit id="responsible_institution.description">
 				<source>responsibleInstitution</source>
@@ -35,6 +32,9 @@
 			</trans-unit>
 			<trans-unit id="rkw_fee_per_day.description">
 				<source>rkwFeePerDay</source>
+			</trans-unit>
+			<trans-unit id="consultant_fee_per_day_limit.description">
+				<source>consultantFeePerDayLimit</source>
 			</trans-unit>
 			<trans-unit id="miscellaneous.description">
 				<source>miscellaneous</source>

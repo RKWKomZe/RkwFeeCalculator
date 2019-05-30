@@ -2,7 +2,7 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator',
-        'label' => 'selected_program',
+        'label' => 'days',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'selected_program,days,fee_per_day,programs',
+        'searchFields' => 'days,consultant_fee_per_day,assigned_programs,selected_program',
         'iconfile' => 'EXT:rkw_feecalculator/Resources/Public/Icons/tx_rkwfeecalculator_domain_model_calculator.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, selected_program, days, fee_per_day, programs',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, days, consultant_fee_per_day, assigned_programs, selected_program',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, selected_program, days, fee_per_day, programs, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, days, consultant_fee_per_day, assigned_programs, selected_program, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -107,21 +107,7 @@ return [
                 ]
             ],
         ],
-        'selected_program' => [
-	        'exclude' => true,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.selected_program',
-	        'config' => [
-			    'type' => 'select',
-			    'renderType' => 'selectSingle',
-			    'items' => [
-			        ['-- Label --', 0],
-			    ],
-			    'size' => 1,
-			    'maxitems' => 1,
-			    'eval' => ''
-			],
-	    ],
-	    'days' => [
+        'days' => [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.days',
 	        'config' => [
@@ -130,18 +116,18 @@ return [
 			    'eval' => 'int'
 			]
 	    ],
-	    'fee_per_day' => [
+	    'consultant_fee_per_day' => [
 	        'exclude' => true,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.fee_per_day',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 4,
 			    'eval' => 'int'
 			]
 	    ],
-	    'programs' => [
+	    'assigned_programs' => [
 	        'exclude' => true,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.programs',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.assigned_programs',
 	        'config' => [
 			    'type' => 'inline',
 			    'foreign_table' => 'tx_rkwfeecalculator_domain_model_program',
@@ -154,6 +140,23 @@ return [
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,
 			        'useSortable' => 1,
+			        'showAllLocalizationLink' => 1
+			    ],
+			],
+	    ],
+	    'selected_program' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.selected_program',
+	        'config' => [
+			    'type' => 'inline',
+			    'foreign_table' => 'tx_rkwfeecalculator_domain_model_program',
+			    'minitems' => 0,
+			    'maxitems' => 1,
+			    'appearance' => [
+			        'collapseAll' => 0,
+			        'levelLinksPosition' => 'top',
+			        'showSynchronizationLink' => 1,
+			        'showPossibleLocalizationRecords' => 1,
 			        'showAllLocalizationLink' => 1
 			    ],
 			],

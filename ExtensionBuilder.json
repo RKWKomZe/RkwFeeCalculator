@@ -39,16 +39,6 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
-                            "propertyName": "selectedProgram",
-                            "propertyType": "Select",
-                            "uid": "1394042360799"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
                             "propertyName": "days",
                             "propertyType": "Integer",
                             "uid": "1396286683050"
@@ -59,7 +49,7 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
-                            "propertyName": "feePerDay",
+                            "propertyName": "consultantFeePerDay",
                             "propertyType": "Integer",
                             "uid": "448500086758"
                         }
@@ -72,11 +62,22 @@
                             "lazyLoading": false,
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
-                            "relationName": "programs",
+                            "relationName": "assignedPrograms",
                             "relationType": "zeroToMany",
                             "relationWire": "[wired]",
                             "renderType": "selectSingle",
                             "uid": "1088595500909"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "selectedProgram",
+                            "relationType": "zeroToOne",
+                            "relationWire": "[wired]",
+                            "renderType": "selectSingle",
+                            "uid": "1057368355290"
                         }
                     ]
                 }
@@ -124,16 +125,6 @@
                             "propertyName": "name",
                             "propertyType": "String",
                             "uid": "1183521110870"
-                        },
-                        {
-                            "allowedFileTypes": "",
-                            "maxItems": "1",
-                            "propertyDescription": "",
-                            "propertyIsExcludeField": true,
-                            "propertyIsRequired": false,
-                            "propertyName": "formula",
-                            "propertyType": "String",
-                            "uid": "26686161328"
                         },
                         {
                             "allowedFileTypes": "",
@@ -204,6 +195,16 @@
                             "propertyName": "rkwFeePerDay",
                             "propertyType": "Integer",
                             "uid": "31174959175"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "consultantFeePerDayLimit",
+                            "propertyType": "Integer",
+                            "uid": "1246555663238"
                         },
                         {
                             "allowedFileTypes": "",
@@ -349,10 +350,22 @@
                 "terminal": "SOURCES",
                 "uid": "764842286021"
             }
+        },
+        {
+            "src": {
+                "moduleId": 0,
+                "terminal": "relationWire_1",
+                "uid": "1057368355290"
+            },
+            "tgt": {
+                "moduleId": 1,
+                "terminal": "SOURCES",
+                "uid": "298848414695"
+            }
         }
     ],
     "log": {
-        "last_modified": "2019-05-30 10:05",
+        "last_modified": "2019-05-30 10:40",
         "extension_builder_version": "7.6.18",
         "be_user": " (1)"
     }
