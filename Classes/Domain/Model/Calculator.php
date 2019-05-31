@@ -117,6 +117,20 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $funding;
 
     /**
+     * ownFundingNet
+     *
+     * @var int
+     */
+    protected $ownFundingNet;
+
+    /**
+     * ownFundingGross
+     *
+     * @var int
+     */
+    protected $ownFundingGross;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -455,6 +469,48 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Sets the ownFundingNet
+     *
+     * @param $ownFundingNet
+     * @return void;
+     */
+    public function setOwnFundingNet($ownFundingNet)
+    {
+        $this->ownFundingNet = $ownFundingNet;
+    }
+
+    /**
+     * Returns the ownFundingNet
+     *
+     * @return int ownFundingNet
+     */
+    public function getOwnFundingNet()
+    {
+        return $this->ownFundingNet;
+    }
+
+    /**
+     * Sets the ownFundingGross
+     *
+     * @param $ownFundingGross
+     * @return void;
+     */
+    public function setOwnFundingGross($ownFundingGross)
+    {
+        $this->ownFundingGross = $ownFundingGross;
+    }
+
+    /**
+     * Returns the ownFundingGross
+     *
+     * @return int ownFundingGross
+     */
+    public function getOwnFundingGross()
+    {
+        return $this->ownFundingGross;
+    }
+
+    /**
      *
      */
     public function calculate()
@@ -477,6 +533,8 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->subventionTotal = $this->subventionSubtotal;
 
         $this->funding = $this->subventionTotal * $this->getSelectedProgram()->getFundingFactor();
+        $this->ownFundingNet = $this->subtotal - $this->funding;
+        $this->ownFundingGross = $this->ownFundingNet + $this->tax;
 
     }
 }

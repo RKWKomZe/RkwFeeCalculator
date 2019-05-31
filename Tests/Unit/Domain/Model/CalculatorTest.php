@@ -406,6 +406,56 @@ class CalculatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     }
 
     /**
+     * @test
+     */
+    public function givenSelectedProgramItCalculatesOwnFundingNetCorrectly()
+    {
+        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setRkwFeePerDay(100);
+        $selectedProgramFixture->setConsultantFeePerDayLimit(800);
+        $selectedProgramFixture->setFundingFactor(0.5);
+
+        $this->subject->setSelectedProgram($selectedProgramFixture);
+
+        $this->subject->setDays(10);
+        $this->subject->setConsultantFeePerDay(1000);
+
+        $this->subject->calculate();
+
+        self::assertAttributeEquals(
+            6500,
+            'ownFundingNet',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function givenSelectedProgramItCalculatesOwnFundingGrossCorrectly()
+    {
+        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setRkwFeePerDay(100);
+        $selectedProgramFixture->setConsultantFeePerDayLimit(800);
+        $selectedProgramFixture->setFundingFactor(0.5);
+
+        $this->subject->setSelectedProgram($selectedProgramFixture);
+
+        $this->subject->setDays(10);
+        $this->subject->setConsultantFeePerDay(1000);
+
+        $this->subject->calculate();
+
+        self::assertAttributeEquals(
+            8590,
+            'ownFundingGross',
+            $this->subject
+        );
+
+    }
+
+    /**
      * @todo
      */
     public function givenSelectedProgramHasPossibleDaysMinOnlyEqualOrMoreDaysCanBeSelected()
