@@ -202,6 +202,25 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     {
     }
 
+
+    /**
+     * @test
+     */
+    public function getFundingFactorReturnsInitialValueForFloat()
+    {
+        self::assertSame(
+            1.0,
+            $this->subject->getFundingFactor()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setFundingFactor()
+    {
+    }
+
     /**
      * @test
      */

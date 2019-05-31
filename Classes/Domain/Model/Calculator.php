@@ -110,6 +110,13 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $subventionTotal;
 
     /**
+     * funding
+     *
+     * @var int
+     */
+    protected $funding;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -427,6 +434,27 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Sets the funding
+     *
+     * @param $funding
+     * @return void;
+     */
+    public function setFunding($funding)
+    {
+        $this->funding = $funding;
+    }
+
+    /**
+     * Returns the funding
+     *
+     * @return int funding
+     */
+    public function getFunding()
+    {
+        return $this->funding;
+    }
+
+    /**
      *
      */
     public function calculate()
@@ -447,6 +475,8 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->rkwFeeSubvention = $this->rkwFee;
         $this->subventionSubtotal = $this->consultantFeeSubvention + $this->rkwFeeSubvention;
         $this->subventionTotal = $this->subventionSubtotal;
+
+        $this->funding = $this->subventionTotal * $this->getSelectedProgram()->getFundingFactor();
 
     }
 }

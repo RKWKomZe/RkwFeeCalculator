@@ -89,6 +89,13 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $consultantFeePerDayLimit = 0;
 
     /**
+     * fundingFactor
+     *
+     * @var float
+     */
+    protected $fundingFactor = 1.0;
+
+    /**
      * miscellaneous
      *
      * @var string
@@ -268,6 +275,27 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setRkwFeePerDay($rkwFeePerDay)
     {
         $this->rkwFeePerDay = $rkwFeePerDay;
+    }
+
+    /**
+     * Returns the fundingFactor
+     *
+     * @return float $fundingFactor
+     */
+    public function getFundingFactor()
+    {
+        return $this->fundingFactor;
+    }
+
+    /**
+     * Sets the fundingFactor
+     *
+     * @param float $fundingFactor
+     * @return void
+     */
+    public function setFundingFactor($fundingFactor)
+    {
+        $this->fundingFactor = $fundingFactor;
     }
 
     /**

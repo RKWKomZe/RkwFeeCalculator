@@ -381,6 +381,31 @@ class CalculatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     }
 
     /**
+     * @test
+     */
+    public function givenSelectedProgramItCalculatesFundingCorrectly()
+    {
+        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setRkwFeePerDay(100);
+        $selectedProgramFixture->setConsultantFeePerDayLimit(800);
+        $selectedProgramFixture->setFundingFactor(0.5);
+
+        $this->subject->setSelectedProgram($selectedProgramFixture);
+
+        $this->subject->setDays(10);
+        $this->subject->setConsultantFeePerDay(1000);
+
+        $this->subject->calculate();
+
+        self::assertAttributeEquals(
+            4500,
+            'funding',
+            $this->subject
+        );
+
+    }
+
+    /**
      * @todo
      */
     public function givenSelectedProgramHasPossibleDaysMinOnlyEqualOrMoreDaysCanBeSelected()
