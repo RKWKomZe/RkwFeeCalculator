@@ -17,6 +17,14 @@ namespace Rkw\RkwFeecalculator\Domain\Model;
  */
 class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
+    /**
+     * name
+     *
+     * @var int
+     */
+    protected $name = '';
+
     /**
      * days
      *
@@ -150,6 +158,27 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected function initStorageObjects()
     {
         $this->assignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+     * Returns the name
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets the name
+     *
+     * @param string $name
+     * @return void
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 
     /**

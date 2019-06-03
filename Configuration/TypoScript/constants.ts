@@ -12,4 +12,7 @@ plugin.tx_rkwfeecalculator_calculator {
     # cat=plugin.tx_rkwfeecalculator_calculator//a; type=string; label=Default storage PID
     storagePid =
   }
+  settings {
+    name = Name
+  }
 }

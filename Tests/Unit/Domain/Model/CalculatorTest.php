@@ -118,6 +118,31 @@ class CalculatorTest extends UnitTestCase
     /**
      * @test
      */
+    public function getNameReturnsInitialValueForName()
+    {
+        self::assertEquals(
+            '',
+            $this->subject->getName()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setNameForStringSetsName()
+    {
+        $this->subject->setName('name');
+
+        self::assertEquals(
+            'name',
+            $this->subject->getName()
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getSelectedProgramReturnsInitialValueForProgram()
     {
         self::assertEquals(
@@ -147,5 +172,5 @@ class CalculatorTest extends UnitTestCase
     {
         parent::tearDown();
     }
-    
+
 }

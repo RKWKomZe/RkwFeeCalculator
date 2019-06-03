@@ -12,6 +12,9 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
 				<source>Calculator</source>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.name">
+				<source>Name</source>
+			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.days">
 				<source>Days</source>
 			</trans-unit>

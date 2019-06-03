@@ -6,6 +6,8 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_calculator (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
+	name varchar(255) DEFAULT '' NOT NULL,
+
 	days int(11) DEFAULT '0' NOT NULL,
 	consultant_fee_per_day int(11) DEFAULT '0' NOT NULL,
 	assigned_programs int(11) unsigned DEFAULT '0' NOT NULL,

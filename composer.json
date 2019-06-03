@@ -1,7 +1,7 @@
 {
     "name": "rkw/rkw-feecalculator",
     "type": "typo3-cms-extension",
-    "description": "Extension for calculating fees",
+    "description": "Extension for calculating consulting fees",
     "homepage": "https://www.rkw-kompetenzzentrum.de",
     "license": ["GPL-2.0+"],
     "keywords": ["TYPO3 CMS", "RKW", "Calculator", "Forms"],

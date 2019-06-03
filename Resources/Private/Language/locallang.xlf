@@ -15,6 +15,9 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.days">
 				<source>Days</source>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.name">
+				<source>Name</source>
+			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day">
 				<source>Consultant Fee Per Day</source>
 			</trans-unit>
