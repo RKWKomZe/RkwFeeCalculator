@@ -1,0 +1,65 @@
+{namespace core = TYPO3\CMS\Core\ViewHelpers}
+<f:be.container
+    includeCssFiles="{
+        1: '{f:uri.resource(path:\'Css/backend.css\')}'
+    }"
+
+    includeRequireJsModules="{
+        0: 'TYPO3/CMS/Styleguide/FindIcons',
+        1: 'TYPO3/CMS/Backend/ContextHelp',
+        2: 'TYPO3/CMS/Backend/DocumentHeader',
+        3: 'TYPO3/CMS/Backend/SplitButtons',
+        4: 'TYPO3/CMS/Lang/Lang'
+    }"
+
+    loadExtJsTheme="0"
+    loadJQuery="1"
+>
+    <div class="module">
+        <div class="module-docheader">
+            <div class="module-docheader-bar module-docheader-bar-navigation">
+                <div class="module-docheader-bar-column-left">
+
+                </div>
+                <div class="module-docheader-bar-column-right">
+
+                </div>
+            </div>
+            <div class="module-docheader-bar module-docheader-bar-buttons">
+                <div class="module-docheader-bar-column-left">
+                    <div class="btn-toolbar" role="toolbar">
+
+                    </div>
+                </div>
+                <div class="module-docheader-bar-column-right">
+                    <div class="btn-toolbar" role="toolbar" aria-label="">
+                        <div class="btn-group" role="group" aria-label="">
+                            <a href="#" class="btn btn-default btn-sm" onclick="document.location.reload();">
+                                <core:icon identifier="actions-system-refresh" />
+                            </a>
+                            <simpleblog:be.buttons.shortcut />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="module-body">
+            <f:flashMessages as="flashMessages">
+                <f:for each="{flashMessages}" as="flashMessage">
+                    <div class="typo3-messages">
+                        <div class="alert alert-{flashMessage.class}">
+                            <div class="media">
+                                <div class="media-body">
+                                    <div class="alert-message">
+                                        <f:format.raw>{flashMessage.message}</f:format.raw>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </f:for>
+            </f:flashMessages>
+            <f:render section="content" />
+        </div>
+    </div>
+</f:be.container>

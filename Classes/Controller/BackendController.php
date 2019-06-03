@@ -22,6 +22,16 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     protected $calculatorRepository = null;
 
     /**
+     * action index
+     *
+     * @return void
+     */
+    public function indexAction()
+    {
+//        $this->view->assign('calculator', $calculator);
+    }
+
+    /**
      * action show
      *
      * @return void

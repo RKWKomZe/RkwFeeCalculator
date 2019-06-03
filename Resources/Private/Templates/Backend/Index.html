@@ -1,0 +1,48 @@
+<f:layout name="Backend/Module/Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="iconButtons">
+
+</f:section>
+
+<f:section name="headline">
+    FeeCalculator Module
+</f:section>
+
+
+<f:section name="content">
+
+    <p class="lead">This is the extension</p>
+    <ol>
+        <li>
+            <f:link.action action="list">List calculators</f:link.action>
+        </li>
+        <li>
+            <f:link.action action="create">Create calculator</f:link.action>
+        </li>
+    </ol>
+    <p>Description</p>
+
+    <f:form action="create" name="data">
+
+        <label>
+            <span><f:translate key="tx_rkwevents_fluid.templates_backend_show.label_typeId" /></span>
+            <f:form.select property="typeId" options="{documentTypes}" optionValueField="uid" optionLabelField="name" prependOptionValue="" prependOptionLabel="---" />
+        </label>
+
+        <f:form.button type="submit">
+            <f:translate key="tx_rkwevents_fluid.templates_backend_show.label_submit" />
+        </f:form.button>
+    </f:form>
+
+</f:section>
