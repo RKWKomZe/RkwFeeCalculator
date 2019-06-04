@@ -13,9 +13,9 @@ namespace Rkw\RkwFeecalculator\Controller;
  ***/
 
 /**
- * CalculatorController
+ * FeeCalculatorController
  */
-class CalculatorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class FeeCalculatorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
      * calculatorRepository

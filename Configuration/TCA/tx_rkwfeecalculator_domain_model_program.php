@@ -223,6 +223,16 @@ return [
 			    ],
 			],
 	    ],
+        'funding_factor' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.funding_factor',
+            'config'  => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'double2',
+                'default' => '1.0',
+            ],
+        ],
         'calculator' => [
             'config' => [
                 'type' => 'passthrough',

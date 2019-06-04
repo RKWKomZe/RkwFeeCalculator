@@ -91,9 +91,9 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * fundingFactor
      *
-     * @var float
+     * @var double
      */
-    protected $fundingFactor = 1.0;
+    protected $fundingFactor = 1.00;
 
     /**
      * miscellaneous
