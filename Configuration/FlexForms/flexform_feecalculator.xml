@@ -8,32 +8,22 @@
                 <type>array</type>
                 <el>
                     <settings.calculator>
-                        <label>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.name</label>
-                        <config>
-                            <type>select</type>
-                            <items>
-                                <numIndex index="0" type="array">
-                                    <numIndex index="0">Auswahl</numIndex>
-                                    <numIndex index="1"></numIndex>
-                                </numIndex>
-                            </items>
-                            <foreign_table>tx_rkwfeecalculator_domain_model_calculator</foreign_table>
-                            <foreign_table_where>
-                                AND tx_rkwfeecalculator_domain_model_calculator.deleted = 0 AND tx_rkwfeecalculator_domain_model_calculator.hidden = 0
-                            </foreign_table_where>
-                            <min>1</min>
-                            <max>1</max>
-                            <size>1</size>
-                        </config>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.name
+                            </label>
+                            <config>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>1</minitems>
+                                <type>select</type>
+                                <foreign_table>tx_rkwfeecalculator_domain_model_calculator</foreign_table>
+                                <foreign_table_where>
+                                    AND tx_rkwfeecalculator_domain_model_calculator.deleted = 0 AND tx_rkwfeecalculator_domain_model_calculator.hidden = 0
+                                </foreign_table_where>
+                            </config>
+                        </TCEforms>
                     </settings.calculator>
-                    <settings.name>
-                        <label>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.name</label>
-                        <config>
-                            <type>input</type>
-                            <size>20</size>
-                            <eval>trim</eval>
-                        </config>
-                    </settings.name>
                     <!--
                     <settings.assignedPrograms>
                         <TCEforms>

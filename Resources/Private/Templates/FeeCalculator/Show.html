@@ -32,7 +32,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
   </f:flashMessages>
 
   <f:form action="store" name="calculator" object="{calculator}" class="form-fields">
-    <div class="v320-1-of-2">
+    <div class="v320">
 
       <h2>RKW Thüringen Honorarkalkulation für akkreditierte Berater</h2>
       <div class="v320-1">
@@ -98,28 +98,19 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <td>{calculator.subventionSubtotal} Euro</td>
           </tr>
           <tr>
-            <td>MwSt. 19.00 %</td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td colspan="4">MwSt. 19.00 %</td>
             <td></td>
             <td>{calculator.tax} Euro</td>
             <td>- Euro</td>
           </tr>
           <tr>
-            <td>Gesamthonorar (Zahlbetrag)</td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td colspan="4">Gesamthonorar (Zahlbetrag)</td>
             <td></td>
             <td>{calculator.total} Euro</td>
             <td>{calculator.subventionTotal} Euro</td>
           </tr>
           <tr>
-            <td>zu beantr. Fördermittel</td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td colspan="4">zu beantr. Fördermittel</td>
             <td></td>
             <td>{calculator.funding} Euro</td>
             <td></td>
@@ -138,6 +129,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
           </tr>
         </tbody>
       </table>
+
       <div>Übersicht Förderkonditionen und Inhalte</div>
       <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.name" /></h3>
       <p>{calculator.selectedProgram.name}</p>
