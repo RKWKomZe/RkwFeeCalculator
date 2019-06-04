@@ -22,6 +22,14 @@ class BackendProgramController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     protected $programRepository = null;
 
     /**
+     * institutionRepository
+     *
+     * @var \Rkw\RkwFeecalculator\Domain\Repository\InstitutionRepository
+     * @inject
+     */
+    protected $institutionRepository = null;
+
+    /**
      * action index
      */
     public function indexAction()
@@ -40,8 +48,8 @@ class BackendProgramController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     {
         $this->view->assignMultiple(
             array(
-                'calculator'       => $program,
-                'assignablePrograms' => $this->programRepository->findAll()
+                'program'       => $program,
+                'assignableInstitutions' => $this->institutionRepository->findAll()
             )
         );
     }
@@ -78,6 +86,7 @@ class BackendProgramController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->view->assignMultiple(
             array(
                 'program'       => $program,
+                'assignableInstitutions' => $this->institutionRepository->findAll()
             )
         );
     }

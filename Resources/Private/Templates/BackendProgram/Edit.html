@@ -26,10 +26,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <f:form action="update" object="{program}" name="program" additionalAttributes="{role:'form'}">
 
-        <div class="form-group">
-            <label>Name</label>
-            <f:form.textfield property="name" value="{program.name}" class="form-control"/>
-        </div>
+        <f:render partial="BackendProgram/FormFields" arguments="{_all}" />
 
         <f:form.button type="submit">
             Submit

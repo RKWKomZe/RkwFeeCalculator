@@ -25,25 +25,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
     <f:form action="store" object="{program}" name="program" additionalAttributes="{role:'form'}">
 
-        <div class="form-group">
-            <label>Name</label>
-            <f:form.textfield property="name" value="{program.name}" class="form-control"/>
-        </div>
-
-        <div class="form-group">
-            <label>Company Age</label>
-            <f:form.textfield property="companyAge" value="{program.companyAge}" class="form-control"/>
-        </div>
-
-        <div class="form-group">
-            <label>Conditions</label>
-            <f:form.textarea property="conditions" value="{program.conditions}" class="form-control"/>
-        </div>
-
-        <div class="form-group">
-            <label>Content</label>
-            <f:form.textarea property="content" value="{program.content}" class="form-control"/>
-        </div>
+        <f:render partial="BackendProgram/FormFields" arguments="{_all}" />
 
         <f:form.button type="submit">
             Submit
