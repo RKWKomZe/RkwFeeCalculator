@@ -16,19 +16,18 @@ Otherwise your changes will be overwritten the next time you save the extension 
 </f:section>
 
 <f:section name="headline">
-    <h1>RKW FeeCalculator</h1>
+    <h1>Edit "{institution.name}"</h1>
 </f:section>
+
 
 <f:section name="content">
 
     <p class="lead">Description</p>
 
-    <h2>Overview</h2>
+    <f:form action="update" object="{institution}" name="institution" additionalAttributes="{role:'form'}">
 
-    <ul>
-        <li><f:link.action controller="BackendCalculator" action="index">Calculators</f:link.action></li>
-        <li><f:link.action controller="BackendProgram" action="index">Programs</f:link.action></li>
-        <li><f:link.action controller="BackendInstitution" action="index">Institutions</f:link.action></li>
-    </ul>
+        <f:render partial="BackendInstitution/FormFields" arguments="{_all}" />
+
+    </f:form>
 
 </f:section>

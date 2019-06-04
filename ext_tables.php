@@ -69,6 +69,7 @@ call_user_func(
                     'Backend' => 'index',
                     'BackendCalculator' => 'index,create,store,show,edit,update,delete',
                     'BackendProgram' => 'index,create,store,show,edit,update,delete',
+                    'BackendInstitution' => 'index,create,store,show,edit,update,delete',
                 ),
                 array(
                     'access' => 'user,group',
