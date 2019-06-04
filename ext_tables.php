@@ -66,7 +66,9 @@ call_user_func(
                 'FeeCalculatorAdmin',	// Submodule key
                 '',						// Position
                 array(
+                    'Backend' => 'index',
                     'BackendCalculator' => 'index,create,store,show,edit,update,delete',
+                    'BackendProgram' => 'index,create,store,show,edit,update,delete',
                 ),
                 array(
                     'access' => 'user,group',
