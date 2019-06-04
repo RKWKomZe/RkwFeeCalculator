@@ -7,6 +7,25 @@
                 </TCEforms>
                 <type>array</type>
                 <el>
+                    <settings.calculator>
+                        <label>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.name</label>
+                        <config>
+                            <type>select</type>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">Auswahl</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                            </items>
+                            <foreign_table>tx_rkwfeecalculator_domain_model_calculator</foreign_table>
+                            <foreign_table_where>
+                                AND tx_rkwfeecalculator_domain_model_calculator.deleted = 0 AND tx_rkwfeecalculator_domain_model_calculator.hidden = 0
+                            </foreign_table_where>
+                            <min>1</min>
+                            <max>1</max>
+                            <size>1</size>
+                        </config>
+                    </settings.calculator>
                     <settings.name>
                         <label>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.name</label>
                         <config>
@@ -15,6 +34,7 @@
                             <eval>trim</eval>
                         </config>
                     </settings.name>
+                    <!--
                     <settings.assignedPrograms>
                         <TCEforms>
                             <label>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.assigned_programs</label>
@@ -30,22 +50,7 @@
                             </config>
                         </TCEforms>
                     </settings.assignedPrograms>
-                    <settings.days>
-                        <label>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.days</label>
-                        <config>
-                            <type>input</type>
-                            <size>20</size>
-                            <eval>trim</eval>
-                        </config>
-                    </settings.days>
-                    <settings.consultant_fee_per_day>
-                        <label>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day</label>
-                        <config>
-                            <type>input</type>
-                            <size>20</size>
-                            <eval>trim</eval>
-                        </config>
-                    </settings.consultant_fee_per_day>
+                    -->
                 </el>
             </ROOT>
         </general>

@@ -13,11 +13,180 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>Single View for Calculator</h1>
+  <h1>Single View for Calculator</h1>
 
-<f:flashMessages />
-<f:render partial="Calculator/Properties" arguments="{calculator:calculator}" />
-<f:link.action action="list">Back to list</f:link.action><br />
-<f:link.action action="new">New Calculator</f:link.action>
+  <f:flashMessages as="flashMessages">
+    <f:for each="{flashMessages}" as="flashMessage">
+      <div class="typo3-messages">
+        <div class="alert alert-{flashMessage.class}">
+          <div class="media">
+            <div class="media-body">
+              <div class="alert-message">
+                <f:format.raw>{flashMessage.message}</f:format.raw>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </f:for>
+  </f:flashMessages>
+
+  <f:form action="store" name="calculator" object="{calculator}" class="form-fields">
+    <div class="v320-1-of-2">
+
+      <h2>RKW Thüringen Honorarkalkulation für akkreditierte Berater</h2>
+      <div class="v320-1">
+        <label class="form-label" for="selectedProgram">
+          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.selected_program" />
+        </label>
+        <f:form.textfield property="selectedProgram" id="selectedProgram" additionalAttributes="{autocomplete:'selectedProgram'}" />
+<!--        <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" />-->
+      </div>
+
+      <div>Honorarberechnung</div>
+
+      <div class="v320-1">
+        <label class="form-label" for="days">
+          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.days" />
+        </label>
+        <f:form.textfield property="days" id="days" additionalAttributes="{autocomplete:'days'}" />
+      </div>
+
+      <div class="v320-1">
+        <label class="form-label" for="consultantFeePerDay">
+          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.consultantFeePerDay" />
+        </label>
+        <f:form.textfield property="consultantFeePerDay" id="consultantFeePerDay" additionalAttributes="{autocomplete:'consultantFeePerDay'}" />
+      </div>
+
+      <table>
+        <thead>
+          <th></th>
+          <th>Anzahl TW</th>
+          <th></th>
+          <th>Honorarsatz in Euro</th>
+          <th></th>
+          <th>Betrag in Euro</th>
+          <th>zuschussfähig in Euro</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Beraterhonorar</td>
+            <td>{calculator.days}</td>
+            <td>x</td>
+            <td>{calculator.consultantFeePerDay} Euro</td>
+            <td>=</td>
+            <td>{calculator.consultantFee} Euro</td>
+            <td>{calculator.consultantFeeSubvention} Euro</td>
+          </tr>
+          <tr>
+            <td>RKW Honorar</td>
+            <td>{calculator.days}</td>
+            <td>x</td>
+            <td>{calculator.rkwFeePerDay} Euro</td>
+            <td>=</td>
+            <td>{calculator.rkwFee} Euro</td>
+            <td>{calculator.rkwFeeSubvention} Euro</td>
+          </tr>
+          <tr>
+            <td>Zwischensumme</td>
+            <td>{calculator.days}</td>
+            <td>x</td>
+            <td>{calculator.feePerDay} Euro</td>
+            <td>=</td>
+            <td>{calculator.subtotal} Euro</td>
+            <td>{calculator.subventionSubtotal} Euro</td>
+          </tr>
+          <tr>
+            <td>MwSt. 19.00 %</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{calculator.tax} Euro</td>
+            <td>- Euro</td>
+          </tr>
+          <tr>
+            <td>Gesamthonorar (Zahlbetrag)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{calculator.total} Euro</td>
+            <td>{calculator.subventionTotal} Euro</td>
+          </tr>
+          <tr>
+            <td>zu beantr. Fördermittel</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{calculator.funding} Euro</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="4">Eigenmittel des Antragstellers netto</td>
+            <td></td>
+            <td>{calculator.ownFundingNet} Euro</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="4">Eigenmittel des Antragstellers brutto</td>
+            <td></td>
+            <td>{calculator.ownFundingGross} Euro</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>Übersicht Förderkonditionen und Inhalte</div>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.name" /></h3>
+      <p>{calculator.selectedProgram.name}</p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.institution" /></h3>
+      <p>{calculator.selectedProgram.institution.name}</p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.companyAge" /></h3>
+      <p>{calculator.selectedProgram.companyAge}</p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possibleDaysMin" /></h3>
+      <p>{calculator.selectedProgram.possibleDaysMin}</p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possibleDaysMax" /></h3>
+      <p>{calculator.selectedProgram.possibleDaysMax}</p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possibleDaysMax" /></h3>
+      <p>{calculator.selectedProgram.possibleDaysMax}</p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.conditions" /></h3>
+      <p>{calculator.selectedProgram.conditions}</p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.content" /></h3>
+      <p>{calculator.selectedProgram.content}</p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.rkwFeePerDay" /></h3>
+      <p>{calculator.selectedProgram.rkwFeePerDay}</p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.miscellaneous" /></h3>
+      <p>{calculator.selectedProgram.miscellaneous}</p>
+
+      <!--
+      <div class="v320-1">
+        <label class="form-label" for="lastName">
+          <f:translate key="tx_rkwregistration_domain_model_frontenduser.last_name" />
+          <f:if condition="<rkwRegistration:isMandatoryField frontendUser='{frontendUser}' fieldName='lastName' /> == 0">
+            <span class="optional">&nbsp;<f:translate key="partials_registration_registerFormFields.labelOptional" /></span>
+          </f:if>
+        </label>
+        <f:form.textfield property="lastName" id="lastName" additionalAttributes="{autocomplete:'lname'}"/>
+      </div>
+
+      <div class="v320-1">
+        <label class="form-label" for="email">
+          <f:translate key="tx_rkwregistration_domain_model_frontenduser.email" />
+          <f:if condition="<rkwRegistration:isMandatoryField frontendUser='{frontendUser}' fieldName='email' /> == 0">
+            <span class="optional">&nbsp;<f:translate key="partials_registration_registerFormFields.labelOptional" /></span>
+          </f:if>
+        </label>
+        <f:form.textfield property="email" id="email" type="email" additionalAttributes="{autocomplete:'email'}"/>
+      </div>
+      -->
+
+      <button type="submit" class="button">
+        <span>Submit</span>
+      </button>
+    </div>
+  </f:form>
+
 </f:section>
 </html>

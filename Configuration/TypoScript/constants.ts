@@ -13,6 +13,6 @@ plugin.tx_rkwfeecalculator_calculator {
     storagePid =
   }
   settings {
-    name = Name
+    calculator = null
   }
 }

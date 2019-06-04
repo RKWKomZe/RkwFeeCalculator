@@ -8,11 +8,11 @@ call_user_func(
             'Rkw.RkwFeecalculator',
             'Calculator',
             [
-                'FeeCalculator' => 'show'
+                'FeeCalculator' => 'show,store'
             ],
             // non-cacheable actions
             [
-                'FeeCalculator' => 'show'
+                'FeeCalculator' => 'show,store'
             ]
         );
     },

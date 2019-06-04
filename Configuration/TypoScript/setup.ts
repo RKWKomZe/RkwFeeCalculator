@@ -19,6 +19,6 @@ plugin.tx_rkwfeecalculator_calculator {
     #callDefaultActionIfActionCantBeResolved = 1
   }
   settings {
-    name = {$plugin.tx_rkwfeecalculator_calculator.settings.name}
+    calculator = {$plugin.tx_rkwfeecalculator_calculator.settings.calculator}
   }
 }
