@@ -30,6 +30,11 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <f:form.textfield property="name" value="{calculator.name}" class="form-control"/>
         </div>
 
+        <div class="form-group">
+            <label>Assigned programs</label>
+            <f:form.select property="assignedPrograms" options="{assignablePrograms}" optionLabelField="name" multiple="true" prependOptionLabel="Please select one or more programs to be assigned to this calculator ..." prependOptionValue="" class="form-control"/>
+        </div>
+
         <f:form.button type="submit">
             Submit
             <f:translate key="tx_rkwevents_fluid.templates_backend_show.label_submit" />

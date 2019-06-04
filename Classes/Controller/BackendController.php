@@ -2,8 +2,6 @@
 
 namespace RKW\RkwFeecalculator\Controller;
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-
 /**
  * BackendController
  *
@@ -24,6 +22,14 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     protected $calculatorRepository = null;
 
     /**
+     * programRepository
+     *
+     * @var \Rkw\RkwFeecalculator\Domain\Repository\ProgramRepository
+     * @inject
+     */
+    protected $programRepository = null;
+
+    /**
      * action index
      */
     public function indexAction()
@@ -36,13 +42,14 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * action create
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculator|null $newCalculator
+     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculator|null $calculator
      */
-    public function createAction(\Rkw\RkwFeecalculator\Domain\Model\Calculator $newCalculator = null)
+    public function createAction(\Rkw\RkwFeecalculator\Domain\Model\Calculator $calculator = null)
     {
         $this->view->assignMultiple(
             array(
-                'calculator'       => $newCalculator
+                'calculator'       => $calculator,
+                'assignablePrograms' => $this->programRepository->findAll()
             )
         );
     }
@@ -78,7 +85,8 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
         $this->view->assignMultiple(
             array(
-                'calculator'       => $calculator
+                'calculator'       => $calculator,
+                'assignablePrograms' => $this->programRepository->findAll()
             )
         );
     }
