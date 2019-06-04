@@ -16,33 +16,74 @@ Otherwise your changes will be overwritten the next time you save the extension 
 </f:section>
 
 <f:section name="headline">
-    FeeCalculator Module
+    <h1>RKW FeeCalculator</h1>
 </f:section>
-
 
 <f:section name="content">
 
-    <p class="lead">This is the extension</p>
-    <ol>
-        <li>
-            <f:link.action action="list">List calculators</f:link.action>
-        </li>
-        <li>
-            <f:link.action action="create">Create calculator</f:link.action>
-        </li>
-    </ol>
-    <p>Description</p>
+    <p class="lead">Description</p>
 
-    <f:form action="create" name="data">
+    <h2>Calculators</h2>
 
-        <label>
-            <span><f:translate key="tx_rkwevents_fluid.templates_backend_show.label_typeId" /></span>
-            <f:form.select property="typeId" options="{documentTypes}" optionValueField="uid" optionLabelField="name" prependOptionValue="" prependOptionLabel="---" />
-        </label>
+    <p>
+        <f:link.action action="create" class="btn btn-default">Create new calculator</f:link.action>
+    </p>
 
-        <f:form.button type="submit">
-            <f:translate key="tx_rkwevents_fluid.templates_backend_show.label_submit" />
-        </f:form.button>
-    </f:form>
+    <table class="table table-striped table-hover rounded">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <f:for each="{calculators}" as="calculator">
+                <tr>
+                    <td>{calculator.name}</td>
+                    <td>
+                        <f:link.action action="edit" arguments="{calculator:calculator}" class="btn btn-default">EDIT</f:link.action>
+                        <f:link.action action="delete" arguments="{calculator:calculator}" class="btn btn-default">DELETE</f:link.action>
+                    </td>
+                </tr>
+            </f:for>
+        </tbody>
+    </table>
 
+    <!--
+
+    <h2>Programs</h2>
+
+    <p>
+        <f:link.action action="create" class="btn btn-default">Create new program</f:link.action>
+    </p>
+
+    <table>
+        <f:for each="{programs}" as="program">
+            <tr>
+                <td>{program.name}</td>
+                <td>
+                    <f:link.action action="edit" arguments="{program:program}">EDIT</f:link.action>
+                </td>
+            </tr>
+        </f:for>
+    </table>
+
+    <h2>Institutions</h2>
+
+    <p>
+        <f:link.action action="create" class="btn btn-default">Create new institution</f:link.action>
+    </p>
+
+    <table>
+        <f:for each="{institutions}" as="institution">
+            <tr>
+                <td>{institution.name}</td>
+                <td>
+                    <f:link.action action="edit" arguments="{institution:institution}">EDIT</f:link.action>
+                </td>
+            </tr>
+        </f:for>
+    </table>
+
+    -->
 </f:section>

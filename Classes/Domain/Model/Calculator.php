@@ -21,7 +21,7 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * name
      *
-     * @var int
+     * @var string
      */
     protected $name = '';
 
