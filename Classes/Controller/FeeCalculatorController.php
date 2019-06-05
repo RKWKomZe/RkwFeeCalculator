@@ -39,19 +39,31 @@ class FeeCalculatorController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
 
         $this->initializeAction();
 
-        if (! $calculator) {    //  @todo: Ist das korrekt?
+        if (! $calculator) {
             $calculator = $this->calculatorRepository->findByUid($this->settings['calculator']);
         }
 
-        $this->view->assign('calculator', $calculator);
+        $this->view->assignMultiple([
+            'calculator' => $calculator,
+            'assignedPrograms' => $calculator->getAssignedPrograms()->toArray()
+        ]);
+
     }
+
 
     /**
      * action store
      *
+     * @param Calculator|null $calculator
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      */
-    public function storeAction(\Rkw\RkwFeecalculator\Domain\Model\Calculator $calculator)
+    public function storeAction(\Rkw\RkwFeecalculator\Domain\Model\Calculator $calculator = null)
     {
+        if ($calculator === null) {
+            $this->redirect('show');
+        }
+
         $calculator->calculate();
 
         $this->forward('show', null, null, array('calculator' => $calculator));

@@ -13,8 +13,6 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-  <h1>Single View for Calculator</h1>
-
   <f:flashMessages as="flashMessages">
     <f:for each="{flashMessages}" as="flashMessage">
       <div class="typo3-messages">
@@ -34,13 +32,12 @@ Otherwise your changes will be overwritten the next time you save the extension 
   <f:form action="store" name="calculator" object="{calculator}" class="form-fields">
     <div class="v320">
 
-      <h2>RKW Thüringen Honorarkalkulation für akkreditierte Berater</h2>
+      <h2>{calculator.name}</h2>
       <div class="v320-1">
         <label class="form-label" for="selectedProgram">
           <f:translate key="tx_rkwfeecalculator_domain_model_calculator.selected_program" />
         </label>
-        <f:form.textfield property="selectedProgram" id="selectedProgram" additionalAttributes="{autocomplete:'selectedProgram'}" />
-<!--        <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" />-->
+        <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" />
       </div>
 
       <div>Honorarberechnung</div>
@@ -54,7 +51,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
       <div class="v320-1">
         <label class="form-label" for="consultantFeePerDay">
-          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.consultantFeePerDay" />
+          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day" />
         </label>
         <f:form.textfield property="consultantFeePerDay" id="consultantFeePerDay" additionalAttributes="{autocomplete:'consultantFeePerDay'}" />
       </div>
@@ -135,47 +132,23 @@ Otherwise your changes will be overwritten the next time you save the extension 
       <p>{calculator.selectedProgram.name}</p>
       <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.institution" /></h3>
       <p>{calculator.selectedProgram.institution.name}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.companyAge" /></h3>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.company_age" /></h3>
       <p>{calculator.selectedProgram.companyAge}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possibleDaysMin" /></h3>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possible_days_min" /></h3>
       <p>{calculator.selectedProgram.possibleDaysMin}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possibleDaysMax" /></h3>
-      <p>{calculator.selectedProgram.possibleDaysMax}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possibleDaysMax" /></h3>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possible_days_max" /></h3>
       <p>{calculator.selectedProgram.possibleDaysMax}</p>
       <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.conditions" /></h3>
       <p>{calculator.selectedProgram.conditions}</p>
       <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.content" /></h3>
       <p>{calculator.selectedProgram.content}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.rkwFeePerDay" /></h3>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day" /></h3>
       <p>{calculator.selectedProgram.rkwFeePerDay}</p>
       <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.miscellaneous" /></h3>
       <p>{calculator.selectedProgram.miscellaneous}</p>
 
-      <!--
-      <div class="v320-1">
-        <label class="form-label" for="lastName">
-          <f:translate key="tx_rkwregistration_domain_model_frontenduser.last_name" />
-          <f:if condition="<rkwRegistration:isMandatoryField frontendUser='{frontendUser}' fieldName='lastName' /> == 0">
-            <span class="optional">&nbsp;<f:translate key="partials_registration_registerFormFields.labelOptional" /></span>
-          </f:if>
-        </label>
-        <f:form.textfield property="lastName" id="lastName" additionalAttributes="{autocomplete:'lname'}"/>
-      </div>
-
-      <div class="v320-1">
-        <label class="form-label" for="email">
-          <f:translate key="tx_rkwregistration_domain_model_frontenduser.email" />
-          <f:if condition="<rkwRegistration:isMandatoryField frontendUser='{frontendUser}' fieldName='email' /> == 0">
-            <span class="optional">&nbsp;<f:translate key="partials_registration_registerFormFields.labelOptional" /></span>
-          </f:if>
-        </label>
-        <f:form.textfield property="email" id="email" type="email" additionalAttributes="{autocomplete:'email'}"/>
-      </div>
-      -->
-
       <button type="submit" class="button">
-        <span>Submit</span>
+        <span>Jetzt berechnen</span>
       </button>
     </div>
   </f:form>
