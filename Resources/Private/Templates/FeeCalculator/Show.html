@@ -35,23 +35,23 @@ Otherwise your changes will be overwritten the next time you save the extension 
       <h2>{calculator.name}</h2>
       <div class="v320-1">
         <label class="form-label" for="selectedProgram">
-          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.selected_program" />
+          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.selected_program" />
         </label>
         <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" />
       </div>
 
-      <div>Honorarberechnung</div>
+      <div><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.fee_calculation" />Honorarberechnung</div>
 
       <div class="v320-1">
         <label class="form-label" for="days">
-          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.days" />
+          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.days" />
         </label>
         <f:form.textfield property="days" id="days" additionalAttributes="{autocomplete:'days'}" />
       </div>
 
       <div class="v320-1">
         <label class="form-label" for="consultantFeePerDay">
-          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day" />
+          <f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.consultant_fee_per_day" />
         </label>
         <f:form.textfield property="consultantFeePerDay" id="consultantFeePerDay" additionalAttributes="{autocomplete:'consultantFeePerDay'}" />
       </div>
@@ -59,16 +59,16 @@ Otherwise your changes will be overwritten the next time you save the extension 
       <table>
         <thead>
           <th></th>
-          <th>Anzahl TW</th>
+          <th><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.number_of_days" /></th>
           <th></th>
-          <th>Honorarsatz in Euro</th>
+          <th><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.consultant_fee_per_day" /></th>
           <th></th>
-          <th>Betrag in Euro</th>
-          <th>zuschussfähig in Euro</th>
+          <th><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.amount" /></th>
+          <th><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.funding_amount" /></th>
         </thead>
         <tbody>
           <tr>
-            <td>Beraterhonorar</td>
+            <td><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.consultant_fee" /></td>
             <td>{calculator.days}</td>
             <td>x</td>
             <td>{calculator.consultantFeePerDay} Euro</td>
@@ -77,7 +77,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <td>{calculator.consultantFeeSubvention} Euro</td>
           </tr>
           <tr>
-            <td>RKW Honorar</td>
+            <td><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.rkw_fee" /></td>
             <td>{calculator.days}</td>
             <td>x</td>
             <td>{calculator.rkwFeePerDay} Euro</td>
@@ -86,7 +86,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <td>{calculator.rkwFeeSubvention} Euro</td>
           </tr>
           <tr>
-            <td>Zwischensumme</td>
+            <td><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.subtotal" /></td>
             <td>{calculator.days}</td>
             <td>x</td>
             <td>{calculator.feePerDay} Euro</td>
@@ -95,31 +95,31 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <td>{calculator.subventionSubtotal} Euro</td>
           </tr>
           <tr>
-            <td colspan="4">MwSt. 19.00 %</td>
+            <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.tax" /></td>
             <td></td>
             <td>{calculator.tax} Euro</td>
             <td>- Euro</td>
           </tr>
           <tr>
-            <td colspan="4">Gesamthonorar (Zahlbetrag)</td>
+            <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.total" /></td>
             <td></td>
             <td>{calculator.total} Euro</td>
             <td>{calculator.subventionTotal} Euro</td>
           </tr>
           <tr>
-            <td colspan="4">zu beantr. Fördermittel</td>
+            <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.funding" /></td>
             <td></td>
             <td>{calculator.funding} Euro</td>
             <td></td>
           </tr>
           <tr>
-            <td colspan="4">Eigenmittel des Antragstellers netto</td>
+            <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.own_funding_net" /></td>
             <td></td>
             <td>{calculator.ownFundingNet} Euro</td>
             <td></td>
           </tr>
           <tr>
-            <td colspan="4">Eigenmittel des Antragstellers brutto</td>
+            <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.own_funding_gross" /></td>
             <td></td>
             <td>{calculator.ownFundingGross} Euro</td>
             <td></td>
@@ -127,28 +127,26 @@ Otherwise your changes will be overwritten the next time you save the extension 
         </tbody>
       </table>
 
-      <div>Übersicht Förderkonditionen und Inhalte</div>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.name" /></h3>
+      <div><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.overview_condition_content" /></div>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.form.name" /></h3>
       <p>{calculator.selectedProgram.name}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.institution" /></h3>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.form.institution" /></h3>
       <p>{calculator.selectedProgram.institution.name}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.company_age" /></h3>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.form.company_age" /></h3>
       <p>{calculator.selectedProgram.companyAge}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possible_days_min" /></h3>
-      <p>{calculator.selectedProgram.possibleDaysMin}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.possible_days_max" /></h3>
-      <p>{calculator.selectedProgram.possibleDaysMax}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.conditions" /></h3>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days"/></h3>
+      <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days.value" arguments="{1:calculator.selectedProgram.possibleDaysMin, 2:calculator.selectedProgram.possibleDaysMax}"/></p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.form.conditions" /></h3>
       <p>{calculator.selectedProgram.conditions}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.content" /></h3>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.form.content" /></h3>
       <p>{calculator.selectedProgram.content}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day" /></h3>
-      <p>{calculator.selectedProgram.rkwFeePerDay}</p>
-      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.miscellaneous" /></h3>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.label" /></h3>
+      <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.value" arguments="{1:calculator.selectedProgram.rkwFeePerDay}" /></p>
+      <h3><f:translate key="tx_rkwfeecalculator_domain_model_program.form.miscellaneous" /></h3>
       <p>{calculator.selectedProgram.miscellaneous}</p>
 
       <button type="submit" class="button">
-        <span>Jetzt berechnen</span>
+        <span><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.submit" /></span>
       </button>
     </div>
   </f:form>

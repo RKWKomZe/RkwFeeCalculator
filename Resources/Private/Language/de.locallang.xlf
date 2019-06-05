@@ -5,150 +5,199 @@
 		<body>
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator">
 				<source>FeeCalculator - Calculator</source>
+				<target>Honorarkalkulator - Kalkulator</target>
 			</trans-unit>
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator.description">
 				<source></source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
 				<source>Calculator</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.days">
 				<source>Days</source>
+				<target></target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.name">
 				<source>Name</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day">
 				<source>Consultant Fee Per Day</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.assigned_programs">
 				<source>Assigned Programs</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.selected_program">
 				<source>Selected Program</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.selected_program">
 				<source>Selected Program</source>
+				<target>Auswahl Förderprogramm</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.fee_calculation">
 				<source>Fee calculation</source>
+				<target>Honorarberechnung</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.days">
 				<source>Days</source>
+				<target>Anzahl Tagwerke</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.consultant_fee_per_day">
 				<source>Consultant Fee Per Day</source>
+				<target>Honorar je Tagwerk (netto)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.number_of_days">
 				<source>Number of days</source>
+				<target>Anzahl Tagwerke</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.amount">
 				<source>Amount in Euro</source>
+				<target>Betrag in Euro</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.funding_amount">
 				<source>Fundable in Euro</source>
+				<target>zuschussfähig in Euro</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.consultant_fee">
 				<source>Consultant fee</source>
+				<target>Beraterhonorar</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.rkw_fee">
                 <source>RKW fee</source>
+                <target>RKW Honorar</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.subtotal">
                 <source>Subtotal</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.tax">
-                <source>Tax 19.00 %</source>
+                <target>Zwischensumme</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.total">
                 <source>Total</source>
+                <target>Gesamthonorar (Zahlbetrag)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.tax">
+                <source>Tax 19.00 %</source>
+                <target>MwSt. 19.00 %</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.funding">
                 <source>Funding</source>
+                <target>zu beantr. Fördermittel</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.own_funding_net">
                 <source>Own funding (net)</source>
+                <target>Eigenmittel des Antragstellers netto</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.own_funding_gross">
                 <source>Own funding (gross)</source>
+                <target>Eigenmittel des Antragstellers inkl. MwSt. 19,00 %</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.overview_condition_content">
                 <source>Overview conditions and content</source>
+                <target>Übersicht Förderkonditionen und Inhalte</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.submit">
                 <source>Submit</source>
+                <target>Jetzt berechnen</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program">
 				<source>Program</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.name">
 				<source>Name</source>
+				<target></target>
+			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.institution">
+				<source>Institution</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.responsible_institution">
 				<source>Responsible Institution</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.company_age">
 				<source>Company Age</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_min">
 				<source>Possible Days Min</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_max">
 				<source>Possible Days Max</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.conditions">
 				<source>Conditions</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.content">
 				<source>Content</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day">
 				<source>Rkw Fee Per Day</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
 				<source>Consultant Fee Per Day Limit</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.miscellaneous">
 				<source>Miscellaneous</source>
+				<target></target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.name">
                 <source>Name</source>
+                <target>Name des Förderprogramms</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.institution">
                 <source>Responsible institution</source>
+                <target>Zuständig für Zuwendungsbescheid</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.company_age">
                 <source>Age of the company</source>
+                <target>Unternehmensalter</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.possible_days">
                 <source>Possible days</source>
+                <target>Mögliche Anzahl Tagwerke</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.possible_days.value">
                 <source>%1$s to %2$s</source>
+                <target>%1$s TW bis %2$s TW</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.conditions">
                 <source>Conditions</source>
+                <target>Zuschuss</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.content">
                 <source>Content</source>
+                <target>Beratungsinhalte</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.label">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.label">
                 <source>RKW fee per day</source>
-            </trans-unit>
+                <target>RKW Honorar je Tagwerk</target>
+			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.value">
 				<source>%1$s Euro per day</source>
+				<target>%1$s Euro je Tagwerk</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.miscellaneous">
                 <source>Miscellaneous</source>
+                <target>Sonstige Bestimmungen</target>
             </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.institution">
-				<source>Institution</source>
-			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution">
 				<source>Institution</source>
+				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution.name">
 				<source>Name</source>
+				<target></target>
 			</trans-unit>
 		</body>
 	</file>
