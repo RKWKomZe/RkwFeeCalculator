@@ -13,14 +13,20 @@
                                 LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.name
                             </label>
                             <config>
-                                <size>1</size>
-                                <maxitems>1</maxitems>
-                                <minitems>1</minitems>
                                 <type>select</type>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">Bitte wählen</numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                </items>
                                 <foreign_table>tx_rkwfeecalculator_domain_model_calculator</foreign_table>
                                 <foreign_table_where>
                                     AND tx_rkwfeecalculator_domain_model_calculator.deleted = 0 AND tx_rkwfeecalculator_domain_model_calculator.hidden = 0
                                 </foreign_table_where>
+                                <size>1</size>
+                                <min>1</min>
+                                <max>1</max>
                             </config>
                         </TCEforms>
                     </settings.calculator>
