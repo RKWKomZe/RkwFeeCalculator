@@ -17,4 +17,4 @@ namespace Rkw\RkwFeecalculator\Domain\Repository;
  */
 class InstitutionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-    }
+}
