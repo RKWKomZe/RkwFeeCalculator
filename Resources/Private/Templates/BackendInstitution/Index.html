@@ -41,8 +41,12 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <tr>
                     <td>{institution.name}</td>
                     <td>
-                        <f:link.action action="edit" arguments="{institution:institution}" class="btn btn-default">EDIT</f:link.action>
-                        <f:link.action action="delete" arguments="{institution:institution}" class="btn btn-default">DELETE</f:link.action>
+                        <f:link.action action="edit" arguments="{institution:institution}" class="btn btn-default">
+                            <f:be.buttons.icon icon="actions-open" />
+                        </f:link.action>
+                        <f:link.action action="delete" arguments="{institution:institution}" class="btn btn-default">
+                            <f:be.buttons.icon icon="actions-edit-delete" />
+                        </f:link.action>
                     </td>
                 </tr>
             </f:for>
