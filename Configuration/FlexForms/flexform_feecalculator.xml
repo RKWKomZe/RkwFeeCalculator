@@ -10,7 +10,7 @@
                     <settings.calculator>
                         <TCEforms>
                             <label>
-                                LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.name
+                                LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_be.xlf:tx_rkwfeecalculator_domain_model_calculator.name
                             </label>
                             <config>
                                 <type>select</type>
