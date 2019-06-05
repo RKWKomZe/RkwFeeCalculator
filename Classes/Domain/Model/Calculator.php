@@ -97,6 +97,13 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $subtotal;
 
     /**
+     * subtotalPerDay
+     *
+     * @var int
+     */
+    protected $subtotalPerDay;
+
+    /**
      * tax
      *
      * @var int
@@ -414,6 +421,27 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Sets the subtotalPerDay
+     *
+     * @param $subtotalPerDay
+     * @return void;
+     */
+    public function setSubtotalPerDay($subtotalPerDay)
+    {
+        $this->subtotalPerDay = $subtotalPerDay;
+    }
+
+    /**
+     * Returns the subtotalPerDay
+     *
+     * @return int subtotalPerDay
+     */
+    public function getSubtotalPerDay()
+    {
+        return $this->subtotalPerDay;
+    }
+
+    /**
      * Sets the tax
      *
      * @param $tax
@@ -547,7 +575,8 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
         $this->rkwFee = $this->days * $this->selectedProgram->getRkwFeePerDay();
         $this->consultantFee = $this->days * $this->consultantFeePerDay;
-        $this->subtotal = $this->rkwFee + $this->consultantFee;
+        $this->subtotalPerDay = $this->selectedProgram->getRkwFeePerDay() + $this->consultantFeePerDay;
+        $this->subtotal = $this->days * $this->subtotalPerDay;
         $this->tax = $this->subtotal * 0.19;
         $this->total = $this->subtotal + $this->tax;
 

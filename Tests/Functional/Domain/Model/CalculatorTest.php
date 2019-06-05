@@ -162,6 +162,30 @@ class CalculatorTest extends FunctionalTestCase
     /**
      * @test
      */
+    public function givenSelectedProgramItCalculatesSubtotalPerDayCorrectly()
+    {
+        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setRkwFeePerDay(100);
+        $selectedProgramFixture->setConsultantFeePerDayLimit(800);
+
+        $this->subject->setSelectedProgram($selectedProgramFixture);
+
+        $this->subject->setDays(10);
+        $this->subject->setConsultantFeePerDay(1000);
+
+        $this->subject->calculate();
+
+        self::assertAttributeEquals(
+            1100,
+            'subtotalPerDay',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
     public function givenSelectedProgramItCalculatesTaxCorrectly()
     {
         $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
