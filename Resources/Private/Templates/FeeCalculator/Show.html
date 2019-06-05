@@ -40,7 +40,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" />
       </div>
 
-      <div><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.fee_calculation" />Honorarberechnung</div>
+      <div><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.fee_calculation" /></div>
 
       <div class="v320-1">
         <label class="form-label" for="days">
@@ -80,7 +80,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <td><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.rkw_fee" /></td>
             <td>{calculator.days}</td>
             <td>x</td>
-            <td>{calculator.rkwFeePerDay} Euro</td>
+            <td>{calculator.selectedProgram.rkwFeePerDay} Euro</td>
             <td>=</td>
             <td>{calculator.rkwFee} Euro</td>
             <td>{calculator.rkwFeeSubvention} Euro</td>
