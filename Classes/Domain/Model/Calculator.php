@@ -609,7 +609,7 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->total = $this->subtotal + $this->tax;
 
         if ($this->selectedProgram->getConsultantFeePerDayLimit() > 0 && $this->consultantFeePerDay > $this->selectedProgram->getConsultantFeePerDayLimit()) {
-            $this->consultantFeeSubvention = $this->days * $this->selectedProgram->getConsultantFeePerDayFallback();
+            $this->consultantFeeSubvention = $this->days * $this->selectedProgram->getConsultantFeePerDayLimit();
         } else {
             $this->consultantFeeSubvention = $this->consultantFee;
         }

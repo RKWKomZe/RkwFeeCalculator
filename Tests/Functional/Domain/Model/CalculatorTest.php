@@ -46,32 +46,6 @@ class CalculatorTest extends FunctionalTestCase
     /**
      * @test
      */
-    public function givenSelectedProgramWithConsultantFeePerDayFallbackDifferentFromConsultantFeePerDayLimitItCalculatesSubventionOfConsultantFeeCorrectly()
-    {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
-        $selectedProgramFixture->setConsultantFeePerDayLimit(714.28);
-        $selectedProgramFixture->setConsultantFeePerDayFallback(714.2857142857);
-
-        $this->subject->setSelectedProgram($selectedProgramFixture);
-
-        $this->subject->setDays(10);
-        $this->subject->setConsultantFeePerDay(1000);
-
-        $this->subject->calculate();
-
-        $expectedValue = $selectedProgramFixture->getConsultantFeePerDayFallback() * $this->subject->getDays();
-
-        self::assertAttributeEquals(
-            $expectedValue,
-            'consultantFeeSubvention',
-            $this->subject
-        );
-
-    }
-
-    /**
-     * @test
-     */
     public function givenSelectedProgramItCalculatesSubventionOfRkwFeeCorrectly()
     {
         $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
@@ -180,6 +154,32 @@ class CalculatorTest extends FunctionalTestCase
         self::assertAttributeEquals(
             11000,
             'subtotal',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function givenSelectedProgramWithDecimalConsultantFeePerDayLimitItCalculatesSubtotalCorrectly()
+    {
+        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setRkwFeePerDay(100);
+        $selectedProgramFixture->setConsultantFeePerDayLimit(714.2857142857);
+
+        $this->subject->setSelectedProgram($selectedProgramFixture);
+
+        $this->subject->setDays(10);
+        $this->subject->setConsultantFeePerDay(1000);
+
+        $this->subject->calculate();
+
+        $expect = $this->subject->getDays() * $selectedProgramFixture->getConsultantFeePerDayLimit();
+
+        self::assertAttributeEquals(
+            $expect,
+            'consultantFeeSubvention',
             $this->subject
         );
 

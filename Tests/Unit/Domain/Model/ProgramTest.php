@@ -251,34 +251,6 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getConsultantFeePerDayFallbackReturnsInitialValue()
-    {
-        self::assertSame(
-            0,
-            $this->subject->getConsultantFeePerDayFallback()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setConsultantFeePerDayFallbackForStringSetsConsultantFeePerDayFallback()
-    {
-        $fixture = 714.2857142857;
-        $this->subject->setConsultantFeePerDayFallback($fixture);
-
-        self::assertAttributeEquals(
-            $fixture,
-            'consultantFeePerDayFallback',
-            $this->subject
-        );
-
-    }
-
-    /**
-     * @test
-     */
     public function getInstitutionReturnsInitialValueForInstitution()
     {
         self::assertEquals(
