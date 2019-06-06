@@ -19,11 +19,6 @@ class InstitutionTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->subject = new \Rkw\RkwFeecalculator\Domain\Model\Institution();
     }
 
-    protected function tearDown()
-    {
-        parent::tearDown();
-    }
-
     /**
      * @test
      */
@@ -50,4 +45,10 @@ class InstitutionTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
 
     }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+    }
+
 }

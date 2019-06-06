@@ -54,20 +54,6 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getResponsibleInstitutionReturnsInitialValueForInt()
-    {
-    }
-
-    /**
-     * @test
-     */
-    public function setResponsibleInstitutionForIntSetsResponsibleInstitution()
-    {
-    }
-
-    /**
-     * @test
-     */
     public function getCompanyAgeReturnsInitialValueForString()
     {
         self::assertSame(
@@ -97,6 +83,10 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getPossibleDaysMinReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getPossibleDaysMin()
+        );
     }
 
     /**
@@ -104,6 +94,13 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setPossibleDaysMinForIntSetsPossibleDaysMin()
     {
+        $this->subject->setPossibleDaysMin(5);
+
+        self::assertAttributeEquals(
+            5,
+            'possibleDaysMin',
+            $this->subject
+        );
     }
 
     /**
@@ -111,6 +108,10 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getPossibleDaysMaxReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getPossibleDaysMax()
+        );
     }
 
     /**
@@ -118,6 +119,13 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setPossibleDaysMaxForIntSetsPossibleDaysMax()
     {
+        $this->subject->setPossibleDaysMax(10);
+
+        self::assertAttributeEquals(
+            10,
+            'possibleDaysMax',
+            $this->subject
+        );
     }
 
     /**
@@ -179,6 +187,10 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getRkwFeePerDayReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getRkwFeePerDay()
+        );
     }
 
     /**
@@ -186,6 +198,13 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setRkwFeePerDayForIntSetsRkwFeePerDay()
     {
+        $this->subject->setRkwFeePerDay(100);
+
+        self::assertAttributeEquals(
+            100,
+            'rkwFeePerDay',
+            $this->subject
+        );
     }
 
     /**
@@ -193,6 +212,10 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getConsultantFeePerDayLimitReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getConsultantFeePerDayLimit()
+        );
     }
 
     /**
@@ -200,6 +223,13 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setConsultantFeePerDayLimitForIntSetsConsultantFeePerDayLimit()
     {
+        $this->subject->setConsultantFeePerDayLimit(800);
+
+        self::assertAttributeEquals(
+            800,
+            'consultantFeePerDayLimit',
+            $this->subject
+        );
     }
 
 
@@ -219,6 +249,13 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setFundingFactor()
     {
+        $this->subject->setFundingFactor(0.8);
+
+        self::assertAttributeEquals(
+            0.8,
+            'fundingFactor',
+            $this->subject
+        );
     }
 
     /**

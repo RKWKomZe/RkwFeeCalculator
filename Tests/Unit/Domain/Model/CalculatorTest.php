@@ -26,6 +26,10 @@ class CalculatorTest extends UnitTestCase
      */
     public function getDaysReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getDays()
+        );
     }
 
     /**
@@ -33,6 +37,13 @@ class CalculatorTest extends UnitTestCase
      */
     public function setDaysForIntSetsDays()
     {
+        $this->subject->setDays(10);
+
+        self::assertAttributeEquals(
+            10,
+            'days',
+            $this->subject
+        );
     }
 
     /**
@@ -40,6 +51,10 @@ class CalculatorTest extends UnitTestCase
      */
     public function getConsultantFeePerDayReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getConsultantFeePerDay()
+        );
     }
 
     /**
@@ -47,6 +62,13 @@ class CalculatorTest extends UnitTestCase
      */
     public function setConsultantFeePerDayForIntSetsConsultantFeePerDay()
     {
+        $this->subject->setConsultantFeePerDay(1000);
+
+        self::assertAttributeEquals(
+            1000,
+            'consultantFeePerDay',
+            $this->subject
+        );
     }
 
     /**
