@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,days,consultant_fee_per_day,assigned_programs,selected_program',
+        'searchFields' => 'name,assigned_programs',
         'iconfile' => 'EXT:rkw_feecalculator/Resources/Public/Icons/tx_rkwfeecalculator_domain_model_calculator.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, days, consultant_fee_per_day, assigned_programs, selected_program',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, assigned_programs',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, days, consultant_fee_per_day, assigned_programs, selected_program, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, assigned_programs, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -116,24 +116,6 @@ return [
                 'eval' => 'trim,required'
             ],
         ],
-        'days' => [
-	        'exclude' => true,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.days',
-	        'config' => [
-			    'type' => 'input',
-			    'size' => 4,
-			    'eval' => 'int'
-			]
-	    ],
-	    'consultant_fee_per_day' => [
-	        'exclude' => true,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day',
-	        'config' => [
-			    'type' => 'input',
-			    'size' => 4,
-			    'eval' => 'int'
-			]
-	    ],
 	    'assigned_programs' => [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.assigned_programs',
@@ -149,23 +131,6 @@ return [
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,
 			        'useSortable' => 1,
-			        'showAllLocalizationLink' => 1
-			    ],
-			],
-	    ],
-	    'selected_program' => [
-	        'exclude' => true,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.selected_program',
-	        'config' => [
-			    'type' => 'inline',
-			    'foreign_table' => 'tx_rkwfeecalculator_domain_model_program',
-			    'minitems' => 0,
-			    'maxitems' => 1,
-			    'appearance' => [
-			        'collapseAll' => 0,
-			        'levelLinksPosition' => 'top',
-			        'showSynchronizationLink' => 1,
-			        'showPossibleLocalizationRecords' => 1,
 			        'showAllLocalizationLink' => 1
 			    ],
 			],

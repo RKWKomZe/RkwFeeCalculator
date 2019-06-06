@@ -8,10 +8,7 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_calculator (
 
 	name varchar(255) DEFAULT '' NOT NULL,
 
-	days int(11) DEFAULT '0' NOT NULL,
-	consultant_fee_per_day int(11) DEFAULT '0' NOT NULL,
 	assigned_programs int(11) unsigned DEFAULT '0' NOT NULL,
-	selected_program int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
