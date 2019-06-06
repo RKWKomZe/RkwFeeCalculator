@@ -35,9 +35,9 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * consultantFeePerDay
      *
-     * @var integer
+     * @var double
      */
-    protected $consultantFeePerDay = 0;
+    protected $consultantFeePerDay = 0.00;
 
     /**
      * assignedPrograms

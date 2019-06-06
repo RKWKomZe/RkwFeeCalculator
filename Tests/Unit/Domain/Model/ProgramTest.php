@@ -185,10 +185,10 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getRkwFeePerDayReturnsInitialValueForInt()
+    public function getRkwFeePerDayReturnsInitialValueForDouble()
     {
         self::assertSame(
-            0,
+            0.00,
             $this->subject->getRkwFeePerDay()
         );
     }
@@ -196,12 +196,12 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function setRkwFeePerDayForIntSetsRkwFeePerDay()
+    public function setRkwFeePerDayForDoubleSetsRkwFeePerDay()
     {
-        $this->subject->setRkwFeePerDay(100);
+        $this->subject->setRkwFeePerDay(100.87);
 
         self::assertAttributeEquals(
-            100,
+            100.87,
             'rkwFeePerDay',
             $this->subject
         );
@@ -210,10 +210,10 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getConsultantFeePerDayLimitReturnsInitialValueForInt()
+    public function getConsultantFeePerDayLimitReturnsInitialValueForDouble()
     {
         self::assertSame(
-            0,
+            0.00,
             $this->subject->getConsultantFeePerDayLimit()
         );
     }
@@ -221,7 +221,7 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function setConsultantFeePerDayLimitForIntSetsConsultantFeePerDayLimit()
+    public function setConsultantFeePerDayLimitForDoubleSetsConsultantFeePerDayLimit()
     {
         $this->subject->setConsultantFeePerDayLimit(800);
 

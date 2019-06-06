@@ -49,10 +49,10 @@ class CalculatorTest extends UnitTestCase
     /**
      * @test
      */
-    public function getConsultantFeePerDayReturnsInitialValueForInt()
+    public function getConsultantFeePerDayReturnsInitialValueForDouble()
     {
         self::assertSame(
-            0,
+            0.00,
             $this->subject->getConsultantFeePerDay()
         );
     }
@@ -60,12 +60,12 @@ class CalculatorTest extends UnitTestCase
     /**
      * @test
      */
-    public function setConsultantFeePerDayForIntSetsConsultantFeePerDay()
+    public function setConsultantFeePerDayForDoubleSetsConsultantFeePerDay()
     {
-        $this->subject->setConsultantFeePerDay(1000);
+        $this->subject->setConsultantFeePerDay(1000.78);
 
         self::assertAttributeEquals(
-            1000,
+            1000.78,
             'consultantFeePerDay',
             $this->subject
         );

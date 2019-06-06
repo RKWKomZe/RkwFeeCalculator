@@ -68,17 +68,17 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * rkwFeePerDay
      *
-     * @var int
+     * @var double
      * @validate NotEmpty
      */
-    protected $rkwFeePerDay = 0;
+    protected $rkwFeePerDay = 0.00;
 
     /**
      * consultantFeePerDayLimit
      *
      * @var double
      */
-    protected $consultantFeePerDayLimit = 0;
+    protected $consultantFeePerDayLimit = 0.00;
 
     /**
      * fundingFactor
