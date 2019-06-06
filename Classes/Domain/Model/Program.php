@@ -26,14 +26,6 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $name = '';
 
     /**
-     * responsibleInstitution
-     *
-     * @var int
-     * @validate NotEmpty
-     */
-    protected $responsibleInstitution = 0;
-
-    /**
      * companyAge
      *
      * @var string
@@ -128,27 +120,6 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setName($name)
     {
         $this->name = $name;
-    }
-
-    /**
-     * Returns the responsibleInstitution
-     *
-     * @return int $responsibleInstitution
-     */
-    public function getResponsibleInstitution()
-    {
-        return $this->responsibleInstitution;
-    }
-
-    /**
-     * Sets the responsibleInstitution
-     *
-     * @param int $responsibleInstitution
-     * @return void
-     */
-    public function setResponsibleInstitution($responsibleInstitution)
-    {
-        $this->responsibleInstitution = $responsibleInstitution;
     }
 
     /**
