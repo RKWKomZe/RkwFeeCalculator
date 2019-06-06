@@ -44,6 +44,11 @@
 </div>
 
 <div class="form-group">
+    <label>Consultant fee per day fallback</label>
+    <f:form.textfield property="consultantFeePerDayFallback" value="{program.consultantFeePerDayFallback}" class="form-control"/>
+</div>
+
+<div class="form-group">
     <label>Institution</label>
     <f:form.select property="institution" options="{assignableInstitutions}" optionLabelField="name" prependOptionLabel="Please select one institution to be assigned to this program ..." prependOptionValue="" class="form-control"/>
 </div>

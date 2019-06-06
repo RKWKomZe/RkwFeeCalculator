@@ -89,6 +89,13 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $consultantFeePerDayLimit = 0;
 
     /**
+     * consultantFeePerDayFallback
+     *
+     * @var double
+     */
+    protected $consultantFeePerDayFallback = 0;
+
+    /**
      * fundingFactor
      *
      * @var double
@@ -359,5 +366,29 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setConsultantFeePerDayLimit($consultantFeePerDayLimit)
     {
         $this->consultantFeePerDayLimit = $consultantFeePerDayLimit;
+    }
+
+    /**
+     * Returns the consultantFeePerDayFallback
+     *
+     * @return int $consultantFeePerDayFallback
+     */
+    public function getConsultantFeePerDayFallback()
+    {
+        if ($this->consultantFeePerDayFallback === 0) {
+            return $this->consultantFeePerDayLimit;
+        }
+        return $this->consultantFeePerDayFallback;
+    }
+
+    /**
+     * Sets the consultantFeePerDayFallback
+     *
+     * @param int $consultantFeePerDayFallback
+     * @return void
+     */
+    public function setConsultantFeePerDayFallback($consultantFeePerDayFallback)
+    {
+        $this->consultantFeePerDayFallback = $consultantFeePerDayFallback;
     }
 }
