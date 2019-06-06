@@ -355,6 +355,31 @@ class CalculatorTest extends FunctionalTestCase
     }
 
     /**
+     * @test
+     */
+    public function givenSelectedProgramItCalculatesFundingPercentageCorrectly()
+    {
+        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setRkwFeePerDay(100);
+        $selectedProgramFixture->setConsultantFeePerDayLimit(800);
+        $selectedProgramFixture->setFundingFactor(0.5);
+
+        $this->subject->setSelectedProgram($selectedProgramFixture);
+
+        $this->subject->setDays(10);
+        $this->subject->setConsultantFeePerDay(1000);
+
+        $this->subject->calculate();
+
+        self::assertAttributeEquals(
+            40.909090909090907,
+            'fundingPercentage',
+            $this->subject
+        );
+
+    }
+
+    /**
      * @todo
      */
     public function givenSelectedProgramHasPossibleDaysMinOnlyEqualOrMoreDaysCanBeSelected()

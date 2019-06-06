@@ -28,14 +28,14 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * days
      *
-     * @var int
+     * @var integer
      */
     protected $days = 0;
 
     /**
      * consultantFeePerDay
      *
-     * @var int
+     * @var integer
      */
     protected $consultantFeePerDay = 0;
 
@@ -144,6 +144,13 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $ownFundingGross;
+
+    /**
+     * fundingPercentage
+     *
+     * @var int
+     */
+    protected $fundingPercentage;
 
     /**
      * __construct
@@ -568,6 +575,27 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Sets the fundingPercentage
+     *
+     * @param $fundingPercentage
+     * @return void;
+     */
+    public function setFundingPercentage($fundingPercentage)
+    {
+        $this->fundingPercentage = $fundingPercentage;
+    }
+
+    /**
+     * Returns the fundingPercentage
+     *
+     * @return int fundingPercentage
+     */
+    public function getFundingPercentage()
+    {
+        return $this->fundingPercentage;
+    }
+
+    /**
      *
      */
     public function calculate()
@@ -593,6 +621,8 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->funding = $this->subventionTotal * $this->getSelectedProgram()->getFundingFactor();
         $this->ownFundingNet = $this->subtotal - $this->funding;
         $this->ownFundingGross = $this->ownFundingNet + $this->tax;
+        $this->fundingPercentage = ($this->funding / ($this->subtotal * 0.01));
 
     }
+
 }

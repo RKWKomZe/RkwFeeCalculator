@@ -110,7 +110,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.funding" /></td>
             <td></td>
             <td>{calculator.funding} Euro</td>
-            <td></td>
+            <td><f:format.number decimals="0" decimalSeparator=",">{calculator.fundingPercentage}</f:format.number> %</td>
           </tr>
           <tr>
             <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculator.form.own_funding_net" /></td>

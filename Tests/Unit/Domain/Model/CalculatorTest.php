@@ -168,6 +168,33 @@ class CalculatorTest extends UnitTestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function getFundingPercentageReturnsInitialValueForFundingPercentage()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getFundingPercentage()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setFundingPercentageSetsFundingPercentage()
+    {
+        $fixture = 57;
+
+        $this->subject->setFundingPercentage($fixture);
+
+        self::assertEquals(
+            $fixture,
+            $this->subject->getFundingPercentage()
+        );
+    }
+
     protected function tearDown()
     {
         parent::tearDown();
