@@ -117,20 +117,18 @@ return [
             ],
         ],
 	    'assigned_programs' => [
-	        'exclude' => true,
+	        'exclude' => 0,
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.assigned_programs',
 	        'config' => [
-			    'type' => 'inline',
+			    'type' => 'select',
 			    'foreign_table' => 'tx_rkwfeecalculator_domain_model_program',
-			    'foreign_field' => 'calculator',
-			    'foreign_sortby' => 'sorting',
+			    'foreign_table_where' => 'ORDER BY tx_rkwfeecalculator_domain_model_program.name ASC',
 			    'maxitems' => 9999,
 			    'appearance' => [
 			        'collapseAll' => 0,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,
-			        'useSortable' => 1,
 			        'showAllLocalizationLink' => 1
 			    ],
 			],

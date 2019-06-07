@@ -144,6 +144,9 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.institution">
 				<source>Institution</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
+				<source>Funding factor</source>
+			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution">
 				<source>Institution</source>
 			</trans-unit>

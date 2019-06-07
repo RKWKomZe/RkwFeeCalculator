@@ -149,7 +149,11 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.miscellaneous">
 				<source>Miscellaneous</source>
-				<target></target>
+				<target>Sonstiges</target>
+			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
+				<source>Funding factor</source>
+				<target>Zuschussfaktor</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.name">
                 <source>Name</source>

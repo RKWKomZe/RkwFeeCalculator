@@ -17,14 +17,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,company_age,possible_days_min,possible_days_max,conditions,content,rkw_fee_per_day,consultant_fee_per_day_limit,miscellaneous,institution',
+        'searchFields' => 'name,company_age,possible_days_min,possible_days_max,conditions,content,rkw_fee_per_day,consultant_fee_per_day_limit,miscellaneous,funding_factor,institution',
         'iconfile' => 'EXT:rkw_feecalculator/Resources/Public/Icons/tx_rkwfeecalculator_domain_model_program.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, company_age, possible_days_min, possible_days_max, conditions, content, rkw_fee_per_day, consultant_fee_per_day_limit, miscellaneous, institution',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, company_age, possible_days_min, possible_days_max, conditions, content, rkw_fee_per_day, consultant_fee_per_day_limit, miscellaneous, funding_factor, institution',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, company_age, possible_days_min, possible_days_max, conditions, content, rkw_fee_per_day, consultant_fee_per_day_limit, miscellaneous, institution, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, company_age, possible_days_min, possible_days_max, conditions, content, rkw_fee_per_day, consultant_fee_per_day_limit, miscellaneous, funding_factor, institution, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -170,7 +170,7 @@ return [
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 4,
-			    'eval' => 'int,required'
+			    'eval' => 'double2,required'
 			]
 	    ],
 	    'consultant_fee_per_day_limit' => [
@@ -193,16 +193,27 @@ return [
 			    'eval' => 'trim'
 			]
 	    ],
+        'funding_factor' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.funding_factor',
+            'config'  => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'double2,required',
+                'default' => '1.0',
+            ],
+        ],
 	    'institution' => [
-	        'exclude' => true,
+	        'exclude' => 0,
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.institution',
 	        'config' => [
-			    'type' => 'inline',
+			    'type' => 'select',
 			    'foreign_table' => 'tx_rkwfeecalculator_domain_model_institution',
+			    'foreign_table_where' => 'ORDER BY tx_rkwfeecalculator_domain_model_institution.name ASC',
 			    'minitems' => 0,
 			    'maxitems' => 1,
 			    'appearance' => [
-			        'collapseAll' => 0,
+			        'collapseAll' => 1,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,
@@ -210,16 +221,6 @@ return [
 			    ],
 			],
 	    ],
-        'funding_factor' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.funding_factor',
-            'config'  => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'double2',
-                'default' => '1.0',
-            ],
-        ],
         'calculator' => [
             'config' => [
                 'type' => 'passthrough',
