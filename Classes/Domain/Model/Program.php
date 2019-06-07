@@ -240,12 +240,12 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the rkwFeePerDay
      *
-     * @param int $rkwFeePerDay
+     * @param double $rkwFeePerDay
      * @return void
      */
     public function setRkwFeePerDay($rkwFeePerDay)
     {
-        $this->rkwFeePerDay = $rkwFeePerDay;
+        $this->rkwFeePerDay = str_replace(',', '.', $rkwFeePerDay);
     }
 
     /**
@@ -329,7 +329,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setConsultantFeePerDayLimit($consultantFeePerDayLimit)
     {
-        $this->consultantFeePerDayLimit = $consultantFeePerDayLimit;
+        $this->consultantFeePerDayLimit = str_replace(',', '.', $consultantFeePerDayLimit);
     }
 
 }

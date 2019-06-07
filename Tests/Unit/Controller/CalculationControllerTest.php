@@ -6,17 +6,17 @@ namespace Rkw\RkwFeecalculator\Tests\Unit\Controller;
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  */
-class CalculatorControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class CalculationControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\Controller\FeeCalculatorController
+     * @var \Rkw\RkwFeecalculator\Controller\CalculationController
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder(\Rkw\RkwFeecalculator\Controller\FeeCalculatorController::class)
+        $this->subject = $this->getMockBuilder(\Rkw\RkwFeecalculator\Controller\CalculationController::class)
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -41,14 +41,17 @@ class CalculatorControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 
         $calculator->setAssignedPrograms($objectStorage);
 
+        $calculation = new \Rkw\RkwFeecalculator\Domain\Model\Calculation();
+        $calculation->setCalculator($calculator);
+
         $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $view);
         $view->expects(self::once())->method('assignMultiple')->with([
-            'calculator' => $calculator,
-            'assignedPrograms' => $calculator->getAssignedPrograms()->toArray()
+            'calculation' => $calculation,
+            'assignedPrograms' => $calculation->getCalculator()->getAssignedPrograms()->toArray()
         ]);
 
-        $this->subject->showAction($calculator);
+        $this->subject->showAction($calculation);
     }
 
 

@@ -8,17 +8,17 @@ use Nimut\TestingFramework\TestCase\FunctionalTestCase;
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  */
-class CalculatorTest extends FunctionalTestCase
+class CalculationTest extends FunctionalTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculator
+     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculation
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
+        $this->subject = new \Rkw\RkwFeecalculator\Domain\Model\Calculation();
     }
 
     /**
@@ -442,6 +442,8 @@ class CalculatorTest extends FunctionalTestCase
     public function aSelectedProgramContainedInAssignedProgramsCanBeSelected()
     {
 
+        $calculator = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
+
         $assignedProgram1 = new \Rkw\RkwFeecalculator\Domain\Model\Program();
         $assignedProgram1->setName('Program 1');
         $assignedProgram2 = new \Rkw\RkwFeecalculator\Domain\Model\Program();
@@ -451,7 +453,9 @@ class CalculatorTest extends FunctionalTestCase
         $objectStorageHoldingAssignedPrograms->attach($assignedProgram1);
         $objectStorageHoldingAssignedPrograms->attach($assignedProgram2);
 
-        $this->subject->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
+        $calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
+        $this->subject->setCalculator($calculator);
+
 
         $selectedProgram = $assignedProgram1;
 
@@ -459,7 +463,7 @@ class CalculatorTest extends FunctionalTestCase
 
         $this->subject->setSelectedProgram($selectedProgram);
 
-        self::assertTrue($this->subject->getAssignedPrograms()->contains($this->subject->getSelectedProgram()));
+        self::assertTrue($this->subject->getCalculator()->getAssignedPrograms()->contains($this->subject->getSelectedProgram()));
         self::assertEquals($selectedProgram, $this->subject->getSelectedProgram());
 
     }

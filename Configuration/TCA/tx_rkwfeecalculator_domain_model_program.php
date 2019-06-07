@@ -179,8 +179,8 @@ return [
             'config'  => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'double2',
-                'default' => '1.00',
+                'eval' => 'required',
+                'default' => '1.0000000000',
             ],
 	    ],
 	    'miscellaneous' => [

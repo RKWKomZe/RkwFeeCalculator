@@ -27,55 +27,55 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.selected_program">
 				<source>Selected Program</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.selected_program">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.selected_program">
 				<source>Selected Program</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.fee_calculation">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.fee_calculation">
 				<source>Fee calculation</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.days">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.days">
 				<source>Days</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.consultant_fee_per_day">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day">
 				<source>Consultant Fee Per Day</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.number_of_days">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days">
 				<source>Number of days</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.amount">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.amount">
 				<source>Amount in Euro</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.funding_amount">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount">
 				<source>Fundable in Euro</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.consultant_fee">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee">
 				<source>Consultant fee</source>
 			</trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.rkw_fee">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.rkw_fee">
                 <source>RKW fee</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.subtotal">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.subtotal">
                 <source>Subtotal</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.tax">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.tax">
                 <source>Tax 19.00 %</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.total">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.total">
                 <source>Total</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.funding">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.funding">
                 <source>Funding</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.own_funding_net">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net">
                 <source>Own funding (net)</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.own_funding_gross">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_gross">
                 <source>Own funding (gross)</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.overview_condition_content">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.overview_condition_content">
                 <source>Overview conditions and content</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.form.submit">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.submit">
                 <source>Submit</source>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program">

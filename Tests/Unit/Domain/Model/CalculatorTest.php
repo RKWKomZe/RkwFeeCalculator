@@ -24,56 +24,6 @@ class CalculatorTest extends UnitTestCase
     /**
      * @test
      */
-    public function getDaysReturnsInitialValueForInt()
-    {
-        self::assertSame(
-            0,
-            $this->subject->getDays()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setDaysForIntSetsDays()
-    {
-        $this->subject->setDays(10);
-
-        self::assertAttributeEquals(
-            10,
-            'days',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getConsultantFeePerDayReturnsInitialValueForDouble()
-    {
-        self::assertSame(
-            0.00,
-            $this->subject->getConsultantFeePerDay()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setConsultantFeePerDayForDoubleSetsConsultantFeePerDay()
-    {
-        $this->subject->setConsultantFeePerDay(1000.78);
-
-        self::assertAttributeEquals(
-            1000.78,
-            'consultantFeePerDay',
-            $this->subject
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getAssignedProgramsReturnsInitialValueForProgram()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -159,61 +109,6 @@ class CalculatorTest extends UnitTestCase
         self::assertEquals(
             'name',
             $this->subject->getName()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getSelectedProgramReturnsInitialValueForProgram()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getSelectedProgram()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setSelectedProgramForProgramSetsSelectedProgram()
-    {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
-        $this->subject->setSelectedProgram($selectedProgramFixture);
-
-        self::assertAttributeEquals(
-            $selectedProgramFixture,
-            'selectedProgram',
-            $this->subject
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function getFundingPercentageReturnsInitialValueForFundingPercentage()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getFundingPercentage()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setFundingPercentageSetsFundingPercentage()
-    {
-        $fixture = 57;
-
-        $this->subject->setFundingPercentage($fixture);
-
-        self::assertEquals(
-            $fixture,
-            $this->subject->getFundingPercentage()
         );
     }
 
