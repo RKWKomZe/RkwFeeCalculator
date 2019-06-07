@@ -55,32 +55,6 @@ call_user_func(
             'tx_rkwfeecalculator_domain_model_program'
         );
 
-        if (TYPO3_MODE === 'BE') {
-
-            /**
-             * Registers a Backend Module
-             */
-            \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-                'RKW.' . $extKey,
-                'tools',	 // Make module a submodule of 'Web'
-                'FeeCalculatorAdmin',	// Submodule key
-                '',						// Position
-                array(
-                    'Backend' => 'index',
-                    'BackendCalculator' => 'index,create,store,show,edit,update,delete',
-                    'BackendProgram' => 'index,create,store,show,edit,update,delete',
-                    'BackendInstitution' => 'index,create,store,show,edit,update,delete',
-                ),
-                array(
-                    'access' => 'user,group',
-                    'icon'   => 'EXT:' . $extKey . '/ext_icon.gif',
-                    'labels' => 'LLL:EXT:' . $extKey . '/Resources/Private/Language/locallang_be.xlf',
-                )
-            );
-
-        }
-
-
     },
     $_EXTKEY
 );
