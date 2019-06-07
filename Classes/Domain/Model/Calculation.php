@@ -508,34 +508,4 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->fundingPercentage;
     }
 
-    /**
-     *
-     */
-    public function calculate()
-    {
-
-        $this->rkwFee = $this->days * $this->selectedProgram->getRkwFeePerDay();
-        $this->consultantFee = $this->days * $this->consultantFeePerDay;
-        $this->subtotalPerDay = $this->selectedProgram->getRkwFeePerDay() + $this->consultantFeePerDay;
-        $this->subtotal = $this->days * $this->subtotalPerDay;
-        $this->tax = $this->subtotal * 0.19;
-        $this->total = $this->subtotal + $this->tax;
-
-        if ($this->selectedProgram->getConsultantFeePerDayLimit() > 0 && $this->consultantFeePerDay > $this->selectedProgram->getConsultantFeePerDayLimit()) {
-            $this->consultantFeeSubvention = $this->days * $this->selectedProgram->getConsultantFeePerDayLimit();
-        } else {
-            $this->consultantFeeSubvention = $this->consultantFee;
-        }
-
-        $this->rkwFeeSubvention = $this->rkwFee;
-        $this->subventionSubtotal = $this->consultantFeeSubvention + $this->rkwFeeSubvention;
-        $this->subventionTotal = $this->subventionSubtotal;
-
-        $this->funding = $this->subventionTotal * $this->getSelectedProgram()->getFundingFactor();
-        $this->ownFundingNet = $this->subtotal - $this->funding;
-        $this->ownFundingGross = $this->ownFundingNet + $this->tax;
-        $this->fundingPercentage = ($this->funding / ($this->subtotal * 0.01));
-
-    }
-
 }

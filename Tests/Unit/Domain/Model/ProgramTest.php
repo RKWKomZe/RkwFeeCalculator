@@ -312,4 +312,26 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
 
     }
+
+    /**
+     * @test
+     */
+    public function aCommaRkwFeePerDayValueIsSetAsADotValue()
+    {
+        $this->subject->setRkwFeePerDay('100,46');
+
+        self::assertAttributeEquals(
+            100.46,
+            'rkwFeePerDay',
+            $this->subject
+        );
+
+        $this->subject->setConsultantFeePerDayLimit('1000,46');
+
+        self::assertAttributeEquals(
+            1000.46,
+            'consultantFeePerDayLimit',
+            $this->subject
+        );
+    }
 }

@@ -63,8 +63,6 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
             $this->redirect('show');
         }
 
-        $calculation->calculate();
-
         $this->forward('show', null, null, array('calculation' => $calculation));
 
     }

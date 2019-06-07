@@ -1,6 +1,6 @@
 <?php
 
-namespace RKW\RkwGraphs\ViewHelpers;
+namespace Rkw\RkwFeecalculator\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -15,47 +15,70 @@ namespace RKW\RkwGraphs\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /**
- * Class JsArrayViewHelper
+ * Class CalculationViewHelper
  *
- * @author Steffen Kroggel <developer@steffenkroggel.de>
+ * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright Rkw Kompetenzzentrum
- * @package RKW_RkwGraphs
+ * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class JsArrayViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class CalculationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 {
 
     /**
-     * Parses strings to arrays
+     * Calculates the fees
      *
-     * @param string $data
-     * @param string $delimiter
-     * @param bool $checkFloat
-     * @return integer
+     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation
      */
-    public function render($data, $delimiter = '|', $checkFloat = false)
+    public function render(\Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
+    {
+        $result[] = $this->calculate($calculation);
+
+        $this->templateVariableContainer->add('calculationResult', $result);
+        $output = $this->renderChildren();
+        $this->templateVariableContainer->remove('calculationResult');
+
+        return $output;
+    }
+
+    /**
+     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation
+     */
+    public function calculate(\Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation)
     {
 
-        $parsedData = [];
-        $strings = GeneralUtility::trimExplode($delimiter, $data, true);
-        foreach ($strings as $string) {
-            if ($checkFloat) {
-                $parsedData[] = floatval(str_replace(',', '.', $string));
-            } else {
-                $parsedData[] = addslashes($string);
-            }
+        $result = [];
+
+        $days = $calculation->getDays();
+        $consultantFeePerDay = $calculation->getConsultantFeePerDay();
+        $selectedProgram = $calculation->getSelectedProgram();
+
+        $result['rkwFee'] = $days * $selectedProgram->getRkwFeePerDay();
+        $result['consultantFee'] = $days * $consultantFeePerDay;
+        $result['subtotalPerDay'] = $selectedProgram->getRkwFeePerDay() + $consultantFeePerDay;
+        $result['subtotal'] = $days * $result['subtotalPerDay'];
+        $result['tax'] = $result['subtotal'] * 0.19;
+        $result['total'] = $result['subtotal'] + $result['tax'];
+
+        if ($selectedProgram->getConsultantFeePerDayLimit() > 0 && $consultantFeePerDay > $selectedProgram->getConsultantFeePerDayLimit()) {
+            $result['consultantFeeSubvention'] = $days * $selectedProgram->getConsultantFeePerDayLimit();
+        } else {
+            $result['consultantFeeSubvention'] = $result['consultantFee'];
         }
 
-        if (count($parsedData) < 1) {
-            $parsedData = [];
-            //===
-        }
+        $result['rkwFeeSubvention'] = $result['rkwFee'];
+        $result['subventionSubtotal'] = $result['consultantFeeSubvention'] + $result['rkwFeeSubvention'];
+        $result['subventionTotal'] = $result['subventionSubtotal'];
 
-        return json_encode($parsedData, JSON_NUMERIC_CHECK);
-        //===
+        $result['funding'] = $result['subventionTotal'] * $selectedProgram->getFundingFactor();
+        $result['ownFundingNet'] = $result['subtotal'] - $result['funding'];
+        $result['ownFundingGross'] = $result['ownFundingNet'] + $result['tax'];
+        $result['fundingPercentage'] = ($result['funding'] / ($result['subtotal'] * 0.01));
+
+        return $result;
+
     }
+
 
 }
