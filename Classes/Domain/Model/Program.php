@@ -186,6 +186,25 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * Returns the possibleDays (min <-> max) as array
+     *
+     * @return array $possibleDays
+     */
+    public function getPossibleDays()
+    {
+
+        $possibleDays = [];
+
+        if ($this->possibleDaysMax > $this->possibleDaysMin) {
+            $possibleDays = range($this->possibleDaysMin, $this->possibleDaysMax);
+            $possibleDays = array_combine($possibleDays, $possibleDays);
+        }
+
+        return $possibleDays;
+
+    }
+
+    /**
      * Returns the conditions
      *
      * @return string $conditions

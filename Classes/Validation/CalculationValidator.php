@@ -30,13 +30,28 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
     /**
      * validation
      *
-     * @var mixed $objectSource
+     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculation $objectSource
      * @return boolean
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
     public function isValid($objectSource)
     {
         $isValid = true;
+
+        $possibleDaysMin = $objectSource->getSelectedProgram()->getPossibleDaysMin();
+        $possibleDaysMax = $objectSource->getSelectedProgram()->getPossibleDaysMax();
+
+        if ($possibleDaysMin > 0 && $possibleDaysMax > 0) {
+
+            if ($possibleDaysMin > $objectSource->getDays()) {
+                $isValid = false;
+            }
+
+            if ($possibleDaysMax < $objectSource->getDays()) {
+                $isValid = false;
+            }
+
+        }
 
 //        if (! $objectSource->getConsultantFeePerDay()) {
 //            $this->result->forProperty('consultantFeePerDay')->addError(

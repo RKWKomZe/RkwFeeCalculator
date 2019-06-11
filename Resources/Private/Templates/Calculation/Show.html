@@ -50,27 +50,34 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" prependOptionLabel="Bitte wählen ..." prependOptionValue="" additionalAttributes="{onChange : 'this.form.submit();'}"/>
       </div>
 
-      <h3>
-        <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.fee_calculation" />
-      </h3>
+        <h3>
+          <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.fee_calculation" />
+        </h3>
 
-      <div class="v320-1-of-2">
-        <div class="v320-1">
-          <label class="form-label" for="days">
-            <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.days" />
-          </label>
-          <f:form.textfield property="days" id="days" additionalAttributes="{autocomplete:'days'}" />
-        </div>
-      </div>
+          <div class="v320-1-of-2">
+            <div class="v320-1">
+              <label class="form-label" for="days">
+                <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.days" />
+              </label>
+              <f:if condition="{possibleDays}">
+                <f:then>
+                  <f:form.select id="days" property="days" options="{possibleDays}" prependOptionLabel="Bitte wählen ..." prependOptionValue=""/>
+                </f:then>
+                <f:else>
+                  <f:form.textfield id="days" property="days" additionalAttributes="{autocomplete:'possibleDays'}" />
+                </f:else>
+              </f:if>
+            </div>
+          </div>
 
-      <div class="v320-2-of-2">
-        <div class="v320-1">
-            <label class="form-label" for="consultantFeePerDay">
-            <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" />
-          </label>
-          <f:form.textfield property="consultantFeePerDay" id="consultantFeePerDay" additionalAttributes="{autocomplete:'consultantFeePerDay'}" />
+        <div class="v320-2-of-2">
+          <div class="v320-1">
+              <label class="form-label" for="consultantFeePerDay">
+              <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" />
+            </label>
+            <f:form.textfield property="consultantFeePerDay" id="consultantFeePerDay" additionalAttributes="{autocomplete:'consultantFeePerDay'}" />
+          </div>
         </div>
-      </div>
 
       <div class="v320-1">
         <button type="submit" class="button">

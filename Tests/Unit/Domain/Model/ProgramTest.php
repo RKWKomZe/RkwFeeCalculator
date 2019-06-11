@@ -19,11 +19,6 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->subject = new \Rkw\RkwFeecalculator\Domain\Model\Program();
     }
 
-    protected function tearDown()
-    {
-        parent::tearDown();
-    }
-
     /**
      * @test
      */
@@ -334,4 +329,45 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             $this->subject
         );
     }
+
+    /**
+     * @test
+     */
+    public function givenPossibleMinAndMaxDaysItReturnsCorrectPossibleDaysArray()
+    {
+        $this->subject->setPossibleDaysMin(5);
+        $this->subject->setPossibleDaysMax(10);
+
+        self::assertSame(
+            [
+                '5' => 5,
+                '6' => 6,
+                '7' => 7,
+                '8' => 8,
+                '9' => 9,
+                '10' => 10
+            ],
+            $this->subject->getPossibleDays()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function givenPossibleMinAndMaxDaysAreSetToZeroItReturnsEmptyPossibleDaysArray()
+    {
+        $this->subject->setPossibleDaysMin(0);
+        $this->subject->setPossibleDaysMax(0);
+
+        self::assertSame(
+            [],
+            $this->subject->getPossibleDays()
+        );
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+    }
+
 }

@@ -22,37 +22,6 @@ class CalculationTest extends FunctionalTestCase
     }
 
     /**
-     * @todo
-     */
-    public function givenSelectedProgramHasPossibleDaysMinOnlyEqualOrMoreDaysCanBeSelected()
-    {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
-        $selectedProgram->setPossibleDaysMin(5);
-
-        $this->subject->setDays(2);
-
-        $this->assertNotEquals(2, $this->subject->getDays());
-        $this->assertEquals(5, $this->subject->getDays());
-        $this->assertTrue($this->subject->getDays() >= 5);
-    }
-
-    /**
-     * @todo
-     */
-    public function givenSelectedProgramHasPossibleDaysMaxOnlyEqualOrLessDaysCanBeSelected()
-    {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
-        $selectedProgram->setPossibleDaysMax(20);
-
-        $this->subject->setDays(22);
-
-        $this->assertNotEquals(22, $this->subject->getDays());
-        $this->assertEquals(20, $this->subject->getDays());
-        $this->assertTrue($this->subject->getDays() <= 20);
-    }
-
-
-    /**
      * @test
      */
     public function aSelectedProgramContainedInAssignedProgramsCanBeSelected()
