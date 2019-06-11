@@ -126,6 +126,32 @@ class CalculationTest extends UnitTestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function givenCommaSeparatedConsultantFeePerDayGetterReturnsFloatValue()
+    {
+        $this->subject->setConsultantFeePerDay('100,78');
+
+        self::assertEquals(
+            100.78,
+            $this->subject->getConsultantFeePerDay()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function givenCommaSeparatedConsultantFeePerDayWithThousandsSeparatorGetterReturnsFloatValue()
+    {
+        $this->subject->setConsultantFeePerDay('1.000,78');
+
+        self::assertEquals(
+            1000.78,
+            $this->subject->getConsultantFeePerDay()
+        );
+    }
+
     protected function tearDown()
     {
         parent::tearDown();
