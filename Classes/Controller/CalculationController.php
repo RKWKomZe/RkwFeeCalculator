@@ -1,6 +1,7 @@
 <?php
 namespace Rkw\RkwFeecalculator\Controller;
 
+use Rkw\RkwFeecalculator\Domain\Model\Calculation;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /***
@@ -38,7 +39,8 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 
         $this->initializeAction();
 
-        if (! $calculation->getCalculator()) {
+        if (! $calculation) {
+            $calculation = new Calculation();
             $calculation->setCalculator($this->calculatorRepository->findByUid($this->settings['calculator']));
         }
 
