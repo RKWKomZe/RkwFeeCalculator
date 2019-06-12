@@ -50,6 +50,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" prependOptionLabel="Bitte wählen ..." prependOptionValue="" additionalAttributes="{onChange : 'this.form.submit();'}"/>
       </div>
 
+      <f:if condition="{calculation.selectedProgram}">
+
         <h3>
           <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.fee_calculation" />
         </h3>
@@ -79,13 +81,11 @@ Otherwise your changes will be overwritten the next time you save the extension 
           </div>
         </div>
 
-      <div class="v320-1">
-        <button type="submit" class="button">
-          <span><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.submit" /></span>
-        </button>
-      </div>
-
-      <f:if condition="{calculation.selectedProgram}">
+        <div class="v320-1">
+          <button type="submit" class="button">
+            <span><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.submit" /></span>
+          </button>
+        </div>
 
         <rkwCalculation:calculation calculation="{calculation}">
           <f:for each="{calculationResult}" as="resultItem">
@@ -176,13 +176,13 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.company_age" /></h4>
                 <p>{calculation.selectedProgram.companyAge}</p>
                 <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days"/></h4>
-                <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days.value" arguments="{1:calculator.selectedProgram.possibleDaysMin, 2:calculator.selectedProgram.possibleDaysMax}"/></p>
+                <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days.value" arguments="{1:calculation.selectedProgram.possibleDaysMin, 2:calculation.selectedProgram.possibleDaysMax}"/></p>
                 <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.conditions" /></h4>
                 <p>{calculation.selectedProgram.conditions}</p>
                 <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.content" /></h4>
                 <p>{calculation.selectedProgram.content}</p>
                 <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.label" /></h4>
-                <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.value" arguments="{1:calculator.selectedProgram.rkwFeePerDay}" /></p>
+                <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.value" arguments="{1:calculation.selectedProgram.rkwFeePerDay}" /></p>
                 <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.miscellaneous" /></h4>
                 <p>{calculation.selectedProgram.miscellaneous}</p>
 
