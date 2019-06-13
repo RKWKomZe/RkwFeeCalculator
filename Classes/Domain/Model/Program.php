@@ -21,7 +21,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name
      *
      * @var string
-     * @validate NotEmpty
+     * @validate StringLength(minimum=3, maximum=100)
      */
     protected $name = '';
 
@@ -37,7 +37,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * possibleDaysMin
      *
      * @var int
-     * @validate NotEmpty
+     * @validate Integer
      */
     protected $possibleDaysMin = 0;
 
@@ -45,7 +45,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * possibleDaysMax
      *
      * @var int
-     * @validate NotEmpty
+     * @validate Integer
      */
     protected $possibleDaysMax = 0;
 
@@ -69,7 +69,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * rkwFeePerDay
      *
      * @var double
-     * @validate NotEmpty
+     * @validate Float
      */
     protected $rkwFeePerDay = 0.00;
 
@@ -77,6 +77,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantFeePerDayLimit
      *
      * @var double
+     * @validate Float
      */
     protected $consultantFeePerDayLimit = 0.00;
 
@@ -84,6 +85,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * fundingFactor
      *
      * @var double
+     * @validate Float
      */
     protected $fundingFactor = 1.00;
 
@@ -98,6 +100,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * institution
      *
      * @var \Rkw\RkwFeecalculator\Domain\Model\Institution
+     * @validate NotEmpty
      */
     protected $institution = null;
 

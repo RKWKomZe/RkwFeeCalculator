@@ -203,6 +203,18 @@
 				<source>Name</source>
 				<target></target>
 			</trans-unit>
+			<trans-unit id="validator.notempty.empty">
+				<source>Please fill out the field '%s'.</source>
+				<target>Da fehlt noch was: Bitte füllen Sie das Feld '%s' aus.</target>
+			</trans-unit>
+			<trans-unit id="validator.selection.empty">
+				<source>Please fill out the field '%s'.</source>
+				<target>Da fehlt noch was: Bitte treffen Sie für '%s' eine Auswahl.</target>
+			</trans-unit>
+			<trans-unit id="validator.number.notvalid">
+				<source>The given subject was not a valid number.</source>
+				<target>Der angegebene Wert ist keine gültige Zahl.</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -15,7 +15,7 @@ namespace Rkw\RkwFeecalculator\Validation;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use RKW\RkwBasics\Helper\Common;
 
 /**
  * Class CalculationValidator
@@ -27,6 +27,14 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  */
 class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
 {
+
+    /**
+     * TypoScript Settings
+     *
+     * @var array
+     */
+    protected $settings = null;
+
     /**
      * validation
      *
@@ -36,6 +44,14 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
      */
     public function isValid($objectSource)
     {
+
+        // initialize typoscript settings
+        $this->getSettings();
+
+        // get mandatory fields
+        $mandatoryFields = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $this->settings['mandatoryFields']['calculation']);
+        $mandatoryFields = ['selectedProgram', 'days', 'consultantFeePerDay'];
+
         $isValid = true;
 
         $possibleDaysMin = $objectSource->getSelectedProgram()->getPossibleDaysMin();
@@ -53,69 +69,72 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 
         }
 
-//        if (! $objectSource->getConsultantFeePerDay()) {
-//            $this->result->forProperty('consultantFeePerDay')->addError(
-//                new \TYPO3\CMS\Extbase\Error\Error(
-//                    \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-//                        'registrationController.error.accept_privacy',
-//                        'rkw_registration'
-//                    ), 1526904113
-//                )
-//            );
-//            $isValid = false;
-//        }
+        //  properties
+        $requiredGetters = array_filter(get_class_methods($objectSource), function($method) use ($mandatoryFields) {
+            return strpos($method, 'get') !== false && in_array(lcfirst(substr($method, 3)), $mandatoryFields);
+        });
 
-        /*
+        foreach ($requiredGetters as $getter) {
 
-        // get required fields
-        $settingsDefault = Misc::getSettings();
+            $property = lcfirst(substr($getter, 3));
+            $field = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                'tx_rkwfeecalculator_domain_model_calculation.form.' . \TYPO3\CMS\Core\Utility\GeneralUtility::camelCaseToLowerCaseUnderscored($property),
+                'rkw_feecalculator'
+            );
 
-        $mandatoryFields = $settingsDefault['mandatoryFields'];
+            if (!trim($objectSource->$getter())) {
+                $this->result->forProperty($property)->addError(
+                    new \TYPO3\CMS\Extbase\Error\Error(
+                        \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'validator.notempty.empty',
+                            'rkw_feecalculator',
+                            [$field]
+                        ), 1449314603
+                    )
+                );
+                $isValid = false;
+            }
 
-        // transform mandatoryFields to array
-        $requiredFields = array();
-        foreach ($mandatoryFields as $key => $fields) {
-            if (!is_array($fields) && $fields) {
-
-                foreach (explode(',', $fields) as $field) {
-
-                    $requiredFields[$key][] = trim($field);
+            if ($getter === 'getConsultantFeePerDay') {
+                if (!is_numeric(trim($objectSource->$getter()))) {
+                    $this->result->forProperty(lcfirst(substr($getter, 3)))->addError(
+                        new \TYPO3\CMS\Extbase\Error\Error(
+                            \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                                'validator.number.notvalid',
+                                'rkw_feecalculator',
+                                [$field]
+                            ), 1449314603
+                        )
+                    );
+                    $isValid = false;
                 }
             }
         }
-
-        // properties
-        if ($methods = get_class_methods($objectSource)) {
-
-            foreach ($methods as $getter) {
-
-                if (strpos($getter, 'get') === 0) {
-
-                    // if required fields are set
-                    if ($requiredFields['consultant']) {
-
-                        if (in_array(lcfirst(substr($getter, 3)), $requiredFields['consultant'])) {
-
-                            if (!trim($objectSource->$getter())) {
-
-                                $this->result->forProperty(lcfirst(substr($getter, 3)))->addError(
-                                    new \TYPO3\CMS\Extbase\Error\Error(
-                                        \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                            'validator.not_filled',
-                                            'rkw_consultant'
-                                        ), 1449314603
-                                    )
-                                );
-                                $isValid = false;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        */
 
         return $isValid;
+        //===
+    }
+
+    /**
+     * Returns TYPO3 settings
+     *
+     * @return array
+     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
+     */
+    protected function getSettings()
+    {
+
+        $this->settings = null;
+
+        if (!$this->settings) {
+            $this->settings = Common::getTyposcriptConfiguration('RkwFeecalculator');
+        }
+
+        if (!$this->settings) {
+            return array();
+        }
+
+        return $this->settings;
         //===
     }
 

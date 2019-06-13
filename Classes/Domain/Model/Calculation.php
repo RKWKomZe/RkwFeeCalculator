@@ -22,6 +22,7 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * days
      *
      * @var integer
+     * @validate Integer
      */
     protected $days = 0;
 
@@ -29,6 +30,7 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantFeePerDay
      *
      * @var string
+     * @validate NotEmpty
      */
     protected $consultantFeePerDay = '0';
 
@@ -200,6 +202,10 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getConsultantFeePerDay()
     {
+        if (!is_numeric($this->consultantFeePerDay)) {
+            return $this->consultantFeePerDay;
+        }
+
         $val = str_replace(",",".", $this->consultantFeePerDay);
         $val = preg_replace('/\.(?=.*\.)/', '', $val);
         return floatval($val);

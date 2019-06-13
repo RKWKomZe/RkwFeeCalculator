@@ -153,6 +153,9 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="validator.not_numeric">
+				<source>Please enter numbers only.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

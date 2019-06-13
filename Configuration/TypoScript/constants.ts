@@ -13,6 +13,10 @@ plugin.tx_rkwfeecalculator_calculator {
     storagePid =
   }
   settings {
-    calculator = null
+    calculator = null,
+    mandatoryFields {
+      # cat=plugin.tx_rkwfeecalculator//f; type=string; label=mandatory fields for feecalculator
+      calculation = selectedProgram,days,consultantFeePerDay
+    }
   }
 }
