@@ -57,7 +57,10 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
         $possibleDaysMin = $objectSource->getSelectedProgram()->getPossibleDaysMin();
         $possibleDaysMax = $objectSource->getSelectedProgram()->getPossibleDaysMax();
 
-        if ($possibleDaysMin > 0 && $possibleDaysMax > 0) {
+        if (
+            $possibleDaysMin > 0
+            && $possibleDaysMax > 0
+        ){
 
             if ($possibleDaysMin > $objectSource->getDays()) {
                 $isValid = false;
@@ -70,7 +73,7 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
         }
 
         //  properties
-        $requiredGetters = array_filter(get_class_methods($objectSource), function($method) use ($mandatoryFields) {
+        $requiredGetters = array_filter(get_class_methods($objectSource), function ($method) use ($mandatoryFields) {
             return strpos($method, 'get') !== false && in_array(lcfirst(substr($method, 3)), $mandatoryFields);
         });
 
@@ -103,7 +106,7 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
                                 'validator.number.notvalid',
                                 'rkw_feecalculator',
                                 [$field]
-                            ), 1449314603
+                            ), 1449314604
                         )
                     );
                     $isValid = false;
