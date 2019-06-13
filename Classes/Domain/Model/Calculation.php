@@ -150,7 +150,7 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Sets the initialized
+     * Sets the initialized flag to trigger validation
      *
      * @param int $initialized
      * @return void
