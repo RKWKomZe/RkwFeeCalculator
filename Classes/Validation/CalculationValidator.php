@@ -54,6 +54,11 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 
         $isValid = true;
 
+        if (! $objectSource->getInitialized()) {
+            $objectSource->setInitialized(true);
+            $mandatoryFields = ['selectedProgram'];
+        }
+
         $possibleDaysMin = $objectSource->getSelectedProgram()->getPossibleDaysMin();
         $possibleDaysMax = $objectSource->getSelectedProgram()->getPossibleDaysMax();
 

@@ -19,6 +19,13 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
+     * initialized
+     *
+     * @var bool
+     */
+    protected $initialized = false;
+
+    /**
      * days
      *
      * @var integer
@@ -131,6 +138,27 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $fundingPercentage;
+
+    /**
+     * Returns the initialized
+     *
+     * @return int $initialized
+     */
+    public function getInitialized()
+    {
+        return $this->initialized;
+    }
+
+    /**
+     * Sets the initialized
+     *
+     * @param int $initialized
+     * @return void
+     */
+    public function setInitialized($initialized)
+    {
+        $this->initialized = $initialized;
+    }
 
     /**
      * Returns the days
