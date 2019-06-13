@@ -218,7 +218,7 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram
      * @return void
      */
-    public function setSelectedProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram)
+    public function setSelectedProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram = null)
     {
         $this->selectedProgram = $selectedProgram;
     }

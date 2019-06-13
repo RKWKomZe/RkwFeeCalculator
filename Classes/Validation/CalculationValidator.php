@@ -59,6 +59,7 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
             $mandatoryFields = ['selectedProgram'];
         }
 
+        /*
         $possibleDaysMin = $objectSource->getSelectedProgram()->getPossibleDaysMin();
         $possibleDaysMax = $objectSource->getSelectedProgram()->getPossibleDaysMax();
 
@@ -76,6 +77,7 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
             }
 
         }
+        */
 
         //  properties
         $requiredGetters = array_filter(get_class_methods($objectSource), function ($method) use ($mandatoryFields) {
