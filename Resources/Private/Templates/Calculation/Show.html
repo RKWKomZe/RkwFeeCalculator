@@ -48,7 +48,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <label class="form-label" for="selectedProgram">
           <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.selected_program" />
         </label>
-        <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" prependOptionLabel="Bitte wählen ..." prependOptionValue="" additionalAttributes="{onChange : 'this.form.submit();'}"/>
+        <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" prependOptionLabel="{f:translate(key: 'tx_rkwfeecalculator_domain_model_program.form.select')}" prependOptionValue="" additionalAttributes="{onChange : 'this.form.submit();'}"/>
       </div>
 
         <h3>
@@ -62,7 +62,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
               </label>
               <f:if condition="{possibleDays}">
                 <f:then>
-                  <f:form.select id="days" property="days" options="{possibleDays}" prependOptionLabel="Bitte wählen ..." prependOptionValue=""/>
+                  <f:form.select id="days" property="days" options="{possibleDays}" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_program.form.select')}" prependOptionValue=""/>
                 </f:then>
                 <f:else>
                   <f:form.textfield id="days" property="days" additionalAttributes="{autocomplete:'possibleDays'}" />

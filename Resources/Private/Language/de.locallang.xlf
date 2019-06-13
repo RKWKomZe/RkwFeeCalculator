@@ -155,6 +155,10 @@
 				<source>Funding factor</source>
 				<target>Zuschussfaktor</target>
 			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.select">
+				<source>-- Please select --</source>
+				<target>-- Bitte wählen --</target>
+			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.name">
                 <source>Name</source>
                 <target>Name des Förderprogramms</target>

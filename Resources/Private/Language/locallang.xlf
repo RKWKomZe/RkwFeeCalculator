@@ -111,6 +111,9 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.miscellaneous">
 				<source>Miscellaneous</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.select">
+				<source>-- Please select --</source>
+			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.name">
                 <source>Name</source>
             </trans-unit>
