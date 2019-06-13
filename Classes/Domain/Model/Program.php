@@ -198,7 +198,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
         $possibleDays = [];
 
-        if ($this->possibleDaysMax > $this->possibleDaysMin) {
+        if ($this->possibleDaysMin > 0 && $this->possibleDaysMax > 0) {
             $possibleDays = range($this->possibleDaysMin, $this->possibleDaysMax);
             $possibleDays = array_combine($possibleDays, $possibleDays);
         }
