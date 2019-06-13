@@ -85,6 +85,10 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
                 'rkw_feecalculator'
             );
 
+            if ($getter === 'getConsultantFeePerDay') {
+                $getter = 'getRawConsultantFeePerDay';
+            }
+
             if (!trim($objectSource->$getter())) {
                 $this->result->forProperty($property)->addError(
                     new \TYPO3\CMS\Extbase\Error\Error(
@@ -98,8 +102,8 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
                 $isValid = false;
             }
 
-            if ($getter === 'getConsultantFeePerDay') {
-                if (!is_numeric(trim($objectSource->$getter()))) {
+            if ($getter === 'getRawConsultantFeePerDay') {
+                if (! preg_match('/^(\d+(?:[\.\,]\d{2})?)$/', $objectSource->$getter())) {
                     $this->result->forProperty(lcfirst(substr($getter, 3)))->addError(
                         new \TYPO3\CMS\Extbase\Error\Error(
                             \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
@@ -112,6 +116,7 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
                     $isValid = false;
                 }
             }
+
         }
 
         return $isValid;

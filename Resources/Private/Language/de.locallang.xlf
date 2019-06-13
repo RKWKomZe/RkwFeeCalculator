@@ -213,7 +213,7 @@
 			</trans-unit>
 			<trans-unit id="validator.number.notvalid">
 				<source>The given subject was not a valid number.</source>
-				<target>Der angegebene Wert ist keine gültige Zahl.</target>
+				<target>Der angegebene Wert ist keine gültige Eingabe.</target>
 			</trans-unit>
 		</body>
 	</file>
