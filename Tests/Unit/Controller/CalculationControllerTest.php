@@ -36,8 +36,6 @@ class CalculationControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $calculator = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
 
         $assignableProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
-        $assignableProgram->setPossibleDaysMin(5);
-        $assignableProgram->setPossibleDaysMax(10);
 
         $objectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorage->attach($assignableProgram);
@@ -53,14 +51,6 @@ class CalculationControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $view->expects(self::once())->method('assignMultiple')->with([
             'calculation' => $calculation,
             'assignedPrograms' => $calculation->getCalculator()->getAssignedPrograms()->toArray(),
-            'possibleDays' => [
-                '5' => 5,
-                '6' => 6,
-                '7' => 7,
-                '8' => 8,
-                '9' => 9,
-                '10' => 10
-            ],
         ]);
 
         $this->subject->showAction($calculation);

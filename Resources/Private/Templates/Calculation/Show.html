@@ -60,12 +60,12 @@ Otherwise your changes will be overwritten the next time you save the extension 
               <label class="form-label" for="days">
                 <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.days" />
               </label>
-              <f:if condition="{possibleDays}">
+              <f:if condition="<rkwCalculation:possibleDays calculation='{calculation}'/>">
                 <f:then>
-                  <f:form.select id="days" property="days" options="{possibleDays}" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_program.form.select')}" prependOptionValue=""/>
+                  <f:form.select id="days" property="days" options="<rkwCalculation:possibleDays calculation='{calculation}'/>" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_program.form.select')}" prependOptionValue=""/>
                 </f:then>
                 <f:else>
-                  <f:form.textfield id="days" property="days" additionalAttributes="{autocomplete:'possibleDays'}" />
+                  <f:form.textfield id="days" property="days" additionalAttributes="{autocomplete:'days'}" />
                 </f:else>
               </f:if>
             </div>
