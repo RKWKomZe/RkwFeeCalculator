@@ -182,7 +182,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
                     <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.company_age" /></h4>
                     <p>{calculation.selectedProgram.companyAge}</p>
                     <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days"/></h4>
-                    <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days.value" arguments="{1:calculation.selectedProgram.possibleDaysMin, 2:calculation.selectedProgram.possibleDaysMax}"/></p>
+                    <p><rkwCalculation:possibleDaysTranslation calculation="{calculation}"></rkwCalculation:possibleDaysTranslation></p>
                     <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.conditions" /></h4>
                     <p>{calculation.selectedProgram.conditions}</p>
                     <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.content" /></h4>

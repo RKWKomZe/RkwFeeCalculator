@@ -175,6 +175,10 @@
                 <source>%1$s to %2$s</source>
                 <target>%1$s TW bis %2$s TW</target>
             </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.possible_days.value.unlimited">
+                <source>No limitation</source>
+                <target>keine Begrenzung</target>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.conditions">
                 <source>Conditions</source>
                 <target>Zuschuss</target>
