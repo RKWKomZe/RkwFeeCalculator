@@ -23,6 +23,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.assigned_programs">
 				<source>Assigned Programs</source>
+				<target>Auswählbare Programme</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.selected_program">
 				<source>Selected Program</source>
@@ -35,36 +36,47 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.responsible_institution">
 				<source>Responsible Institution</source>
+                <target>Zuständig für Zuwendungsbescheid</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.company_age">
 				<source>Company Age</source>
+				<target>Unternehmensalter</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_min">
 				<source>Possible Days Min</source>
+                <target>minimal mögliche Anzahl Tagwerke</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_max">
 				<source>Possible Days Max</source>
+                <target>maximal mögliche Anzahl Tagwerke</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.conditions">
 				<source>Conditions</source>
+                <target>Zuschuss</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.content">
 				<source>Content</source>
+                <target>Beratungsinhalte</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day">
 				<source>Rkw Fee Per Day</source>
+                <target>RKW Honorar je Tagwerk</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
 				<source>Consultant Fee Per Day Limit</source>
+				<target>maximaler Betrag für Beraterhonorar je Tagwerk</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.miscellaneous">
 				<source>Miscellaneous</source>
+				<target>Sonstiges</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
                 <source>Funding factor</source>
+                <target>Faktor für zu beantragende Fördermittel</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.institution">
 				<source>Institution</source>
+                <target>Zuständig für Zuwendungsbescheid</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution">
 				<source>Institution</source>
