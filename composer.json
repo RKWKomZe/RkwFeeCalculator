@@ -22,12 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "RKW\\RkwGraphs\\": "Classes/"
+            "RKW\\RkwFeeCalculator\\": "Classes/"
         }
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "rkw_feecalculator"
+            "extension-key": "rkw/rkw-feecalculator"
         }
     }
 }

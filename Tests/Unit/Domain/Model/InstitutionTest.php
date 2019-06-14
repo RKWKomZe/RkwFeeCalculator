@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Tests\Unit\Domain\Model;
+namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
 /**
  * Test case.
@@ -9,14 +9,14 @@ namespace Rkw\RkwFeecalculator\Tests\Unit\Domain\Model;
 class InstitutionTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Institution
+     * @var \RKW\RkwFeecalculator\Domain\Model\Institution
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rkw\RkwFeecalculator\Domain\Model\Institution();
+        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Institution();
     }
 
     /**

@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Tests\Unit\ViewHelpers;
+namespace RKW\RkwFeecalculator\Tests\Unit\ViewHelpers;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 
@@ -11,20 +11,20 @@ use Nimut\TestingFramework\TestCase\UnitTestCase;
 class PossibleDaysTest extends UnitTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\ViewHelpers\CalculationViewHelper
+     * @var \RKW\RkwFeecalculator\ViewHelpers\CalculationViewHelper
      */
     protected $subject = null;
 
     /**
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculation
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation
      */
     protected $calculation = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rkw\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper();
-        $this->calculation = new \Rkw\RkwFeecalculator\Domain\Model\Calculation();
+        $this->subject = new \RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper();
+        $this->calculation = new \RKW\RkwFeecalculator\Domain\Model\Calculation();
     }
 
     /**
@@ -33,9 +33,9 @@ class PossibleDaysTest extends UnitTestCase
     public function givenPossibleDaysMinAndMaxPossibleDaysAreCalculated()
     {
 
-        $calculator = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
+        $calculator = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
 
-        $assignableProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignableProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $assignableProgram->setPossibleDaysMin(5);
         $assignableProgram->setPossibleDaysMax(10);
 
@@ -71,9 +71,9 @@ class PossibleDaysTest extends UnitTestCase
     public function givenPossibleDaysMinAndMaxAreZeroPossibleDaysAreCalculated()
     {
 
-        $calculator = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
+        $calculator = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
 
-        $assignableProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignableProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $assignableProgram->setPossibleDaysMin(0);
         $assignableProgram->setPossibleDaysMax(0);
 
@@ -102,9 +102,9 @@ class PossibleDaysTest extends UnitTestCase
     public function givenPossibleDaysMinAndMaxAreNotZeroButSamePossibleDaysAreCalculated()
     {
 
-        $calculator = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
+        $calculator = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
 
-        $assignableProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignableProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $assignableProgram->setPossibleDaysMin(5);
         $assignableProgram->setPossibleDaysMax(5);
 

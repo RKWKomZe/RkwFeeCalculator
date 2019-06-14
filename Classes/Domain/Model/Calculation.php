@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Domain\Model;
+namespace RKW\RkwFeecalculator\Domain\Model;
 
 /***
  *
@@ -44,21 +44,21 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * calculator
      *
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculator
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculator
      */
     protected $calculator = null;
 
     /**
      * selectedProgram
      *
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Program
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program
      */
     protected $selectedProgram = null;
 
     /**
      * previousSelectedProgram
      *
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Program
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program
      */
     protected $previousSelectedProgram = null;
 
@@ -191,7 +191,7 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the calculator
      *
-     * @return \Rkw\RkwFeecalculator\Domain\Model\Calculator $calculator
+     * @return \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator
      */
     public function getCalculator()
     {
@@ -201,10 +201,10 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the calculator
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculator $calculator
+     * @param \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator
      * @return void
      */
-    public function setCalculator(\Rkw\RkwFeecalculator\Domain\Model\Calculator $calculator)
+    public function setCalculator(\RKW\RkwFeecalculator\Domain\Model\Calculator $calculator)
     {
         $this->calculator = $calculator;
     }
@@ -212,7 +212,7 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the selectedProgram
      *
-     * @return \Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram
+     * @return \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram
      */
     public function getSelectedProgram()
     {
@@ -222,10 +222,10 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the selectedProgram
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram
+     * @param \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram
      * @return void
      */
-    public function setSelectedProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram = null)
+    public function setSelectedProgram(\RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram = null)
     {
         $this->selectedProgram = $selectedProgram;
     }
@@ -233,7 +233,7 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the previousSelectedProgram
      *
-     * @return \Rkw\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram
+     * @return \RKW\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram
      */
     public function getPreviousSelectedProgram()
     {
@@ -243,10 +243,10 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the previousSelectedProgram
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram
+     * @param \RKW\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram
      * @return void
      */
-    public function setPreviousSelectedProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram = null)
+    public function setPreviousSelectedProgram(\RKW\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram = null)
     {
         $this->previousSelectedProgram = $previousSelectedProgram;
     }
