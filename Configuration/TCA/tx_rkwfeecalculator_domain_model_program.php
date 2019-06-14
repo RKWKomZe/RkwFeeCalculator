@@ -17,14 +17,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,company_age,possible_days_min,possible_days_max,conditions,content,rkw_fee_per_day,consultant_fee_per_day_limit,miscellaneous,funding_factor,institution',
+        'searchFields' => 'name,company_age,possible_days_min,possible_days_max,conditions,content,rkw_fee_per_day,consultant_fee_per_day_limit,consultant_subvention_limit, rkw_fee_per_day_as_limit,miscellaneous,funding_factor,institution',
         'iconfile' => 'EXT:rkw_feecalculator/Resources/Public/Icons/tx_rkwfeecalculator_domain_model_program.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, company_age, possible_days_min, possible_days_max, conditions, content, rkw_fee_per_day, consultant_fee_per_day_limit, miscellaneous, funding_factor, institution',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, company_age, possible_days_min, possible_days_max, conditions, content, rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, miscellaneous, funding_factor, institution',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, company_age, possible_days_min, possible_days_max, conditions, content, rkw_fee_per_day, consultant_fee_per_day_limit, miscellaneous, funding_factor, institution, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, company_age, possible_days_min, possible_days_max, conditions, content, rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, miscellaneous, funding_factor, institution, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -180,9 +180,27 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'required',
-                'default' => '1.0000000000',
+                'default' => '0.0000000000',
             ],
 	    ],
+        'consultant_subvention_limit' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.consultant_subvention_limit',
+            'config'  => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'required',
+                'default' => '0.0000000000',
+            ],
+        ],
+        'rkw_fee_per_day_as_limit' => array(
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day_as_limit',
+            'config' => array(
+                'type' => 'check',
+                'default' => 0
+            )
+        ),
 	    'miscellaneous' => [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.miscellaneous',

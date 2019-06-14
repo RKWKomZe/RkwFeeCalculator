@@ -394,6 +394,51 @@ class CalculationTest extends FunctionalTestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function givenSelectedProgramContainsConsultantSubventionLimitItCalculatesSubventionOfConsultantFeeCorrectly()
+    {
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setRkwFeePerDay(450);
+        $selectedProgramFixture->setConsultantSubventionLimit(3550);
+
+        $this->calculation->setSelectedProgram($selectedProgramFixture);
+
+        $this->calculation->setDays(8);
+        $this->calculation->setConsultantFeePerDay(1000);
+
+        $result = $this->subject->calculate($this->calculation);
+
+        self::assertSame(
+            '3550',
+            $result['consultantFeeSubvention']
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function givenSelectedProgramContainsRkwFeePerDayAsLimitItCalculatesSubventionOfRkwFeeCorrectly()
+    {
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture->setRkwFeePerDay(450);
+        $selectedProgramFixture->setConsultantSubventionLimit(3550);
+        $selectedProgramFixture->setRkwFeePerDayAsLimit(true);
+
+        $this->calculation->setSelectedProgram($selectedProgramFixture);
+
+        $this->calculation->setDays(8);
+        $this->calculation->setConsultantFeePerDay(1000);
+
+        $result = $this->subject->calculate($this->calculation);
+
+        self::assertEquals(
+            450,
+            $result['rkwFeeSubvention']
+        );
+    }
+
     protected function tearDown()
     {
         parent::tearDown();

@@ -82,6 +82,20 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $consultantFeePerDayLimit = 0.00;
 
     /**
+     * consultantSubventionLimit
+     *
+     * @var double
+     * @validate Float
+     */
+    protected $consultantSubventionLimit = 0.00;
+
+    /**
+     *
+     * @var boolean
+     */
+    protected $rkwFeePerDayAsLimit = false;
+
+    /**
      * fundingFactor
      *
      * @var double
@@ -352,6 +366,48 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setConsultantFeePerDayLimit($consultantFeePerDayLimit)
     {
         $this->consultantFeePerDayLimit = str_replace(',', '.', $consultantFeePerDayLimit);
+    }
+
+    /**
+     * Returns the consultantSubventionLimit
+     *
+     * @return int $consultantSubventionLimit
+     */
+    public function getConsultantSubventionLimit()
+    {
+        return $this->consultantSubventionLimit;
+    }
+
+    /**
+     * Sets the consultantSubventionLimit
+     *
+     * @param int $consultantSubventionLimit
+     * @return void
+     */
+    public function setConsultantSubventionLimit($consultantSubventionLimit)
+    {
+        $this->consultantSubventionLimit = str_replace(',', '.', $consultantSubventionLimit);
+    }
+
+    /**
+     * Returns the rkwFeePerDayAsLimit
+     *
+     * @return int $rkwFeePerDayAsLimit
+     */
+    public function getRkwFeePerDayAsLimit()
+    {
+        return $this->rkwFeePerDayAsLimit;
+    }
+
+    /**
+     * Sets the rkwFeePerDayAsLimit
+     *
+     * @param int $rkwFeePerDayAsLimit
+     * @return void
+     */
+    public function setRkwFeePerDayAsLimit($rkwFeePerDayAsLimit)
+    {
+        $this->rkwFeePerDayAsLimit = $rkwFeePerDayAsLimit;
     }
 
 }

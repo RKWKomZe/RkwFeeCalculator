@@ -227,6 +227,55 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function getConsultantSubventionLimitReturnsInitialValueForDouble()
+    {
+        self::assertSame(
+            0.00,
+            $this->subject->getConsultantSubventionLimit()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setConsultantSubventionLimitForDoubleSetsConsultantSubventionLimit()
+    {
+        $this->subject->setConsultantSubventionLimit(3550);
+
+        self::assertAttributeEquals(
+            3550,
+            'consultantSubventionLimit',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getRkwFeePerDayAsLimitReturnsInitialValueForBoolean()
+    {
+        self::assertSame(
+            false,
+            $this->subject->getRkwFeePerDayAsLimit()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setRkwFeePerDayAsLimitForBooleanSetsConsultantSubventionLimit()
+    {
+        $this->subject->setRkwFeePerDayAsLimit(true);
+
+        self::assertAttributeEquals(
+            true,
+            'rkwFeePerDayAsLimit',
+            $this->subject
+        );
+    }
 
     /**
      * @test
