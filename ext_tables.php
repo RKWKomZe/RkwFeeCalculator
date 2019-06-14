@@ -6,7 +6,7 @@ call_user_func(
     {
 
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-            'Rkw.RkwFeecalculator',
+            'RKW.RkwFeecalculator',
             'Calculator',
             'RKW FeeCalculator'
         );

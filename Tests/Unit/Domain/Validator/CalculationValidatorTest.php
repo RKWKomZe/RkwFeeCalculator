@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Tests\Unit\Domain\Model;
+namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 
@@ -19,20 +19,20 @@ class CalculationValidatorTest extends UnitTestCase
     ];
 
     /**
-     * @var \Rkw\RkwFeecalculator\Validation\CalculationValidator
+     * @var \RKW\RkwFeecalculator\Validation\CalculationValidator
      */
     protected $subject = null;
 
     /**
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculation
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation
      */
     protected $calculation = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rkw\RkwFeecalculator\Validation\CalculationValidator();
-        $this->calculation = new \Rkw\RkwFeecalculator\Domain\Model\Calculation();
+        $this->subject = new \RKW\RkwFeecalculator\Validation\CalculationValidator();
+        $this->calculation = new \RKW\RkwFeecalculator\Domain\Model\Calculation();
     }
 
     /**
@@ -40,7 +40,7 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMinLessDaysAreNotValid()
     {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -55,7 +55,7 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMinEqualDaysAreValid()
     {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -73,7 +73,7 @@ class CalculationValidatorTest extends UnitTestCase
     public function givenSelectedProgramHasPossibleDaysMinMoreDaysAreValid()
     {
 
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -90,7 +90,7 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMaxMoreDaysAreNotValid()
     {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -107,7 +107,7 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMaxEqualDaysAreValid()
     {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -124,7 +124,7 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMaxLessDaysAreValid()
     {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -141,7 +141,7 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysSetToZeroAnyDaysValueGreaterZeroIsValid()
     {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgram->setPossibleDaysMin(0);
         $selectedProgram->setPossibleDaysMax(0);
 
@@ -158,7 +158,7 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramDaysIsRequired()
     {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
 
         $this->calculation->setSelectedProgram($selectedProgram);
         $this->calculation->setConsultantFeePerDay(1000);
@@ -171,7 +171,7 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramConsultantFeePerDayIsRequired()
     {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
 
         $this->calculation->setSelectedProgram($selectedProgram);
         $this->calculation->setDays(10);
@@ -184,7 +184,7 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function submittingAMoneyValueWithLettersIsNotValid()
     {
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
 
         $this->calculation->setSelectedProgram($selectedProgram);
         $this->calculation->setDays(10);

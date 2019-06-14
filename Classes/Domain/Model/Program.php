@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Domain\Model;
+namespace RKW\RkwFeecalculator\Domain\Model;
 
 /***
  *
@@ -99,7 +99,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * institution
      *
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Institution
+     * @var \RKW\RkwFeecalculator\Domain\Model\Institution
      * @validate NotEmpty
      */
     protected $institution = null;
@@ -315,7 +315,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the institution
      *
-     * @return \Rkw\RkwFeecalculator\Domain\Model\Institution $institution
+     * @return \RKW\RkwFeecalculator\Domain\Model\Institution $institution
      */
     public function getInstitution()
     {
@@ -325,10 +325,10 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the institution
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Institution $institution
+     * @param \RKW\RkwFeecalculator\Domain\Model\Institution $institution
      * @return void
      */
-    public function setInstitution(\Rkw\RkwFeecalculator\Domain\Model\Institution $institution)
+    public function setInstitution(\RKW\RkwFeecalculator\Domain\Model\Institution $institution)
     {
         $this->institution = $institution;
     }

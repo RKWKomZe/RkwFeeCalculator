@@ -1,4 +1,4 @@
-{namespace rkwCalculation=Rkw\RkwFeecalculator\ViewHelpers}
+{namespace rkwCalculation=RKW\RkwFeecalculator\ViewHelpers}
 
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
@@ -18,21 +18,21 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
   <f:form.validationResults>
     <f:if condition="{validationResults.flattenedErrors}">
-      <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyPath">
-        <f:for each="{errors}" as="error">
-          <div class="typo3-messages">
-            <div class="alert alert-danger">
-              <div class="media">
+        <div class="typo3-messages">
+          <div class="alert alert-danger">
+            <div class="media">
+              <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyPath">
                 <div class="media-body">
-                  <div class="alert-message">
-                    <f:format.raw>{error}</f:format.raw>
-                  </div>
+                  <f:for each="{errors}" as="error">
+                    <div class="alert-message">
+                      <f:format.raw>{error}</f:format.raw>
+                    </div>
+                  </f:for>
                 </div>
-              </div>
-            </div>
+              </f:for>
+             </div>
           </div>
-        </f:for>
-      </f:for>
+        </div>
     </f:if>
   </f:form.validationResults>
 
@@ -97,7 +97,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
           <f:for each="{calculationResult}" as="resultItem">
 
             <div class="v320-1">
-              <table>
+              <table class="responsive">
                 <thead>
                   <th></th>
                   <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days" /></th>

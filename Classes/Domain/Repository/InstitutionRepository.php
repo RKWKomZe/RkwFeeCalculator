@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Domain\Repository;
+namespace RKW\RkwFeecalculator\Domain\Repository;
 
 /***
  *

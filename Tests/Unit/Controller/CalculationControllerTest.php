@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Tests\Unit\Controller;
+namespace RKW\RkwFeecalculator\Tests\Unit\Controller;
 
 /**
  * Test case.
@@ -9,14 +9,14 @@ namespace Rkw\RkwFeecalculator\Tests\Unit\Controller;
 class CalculationControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\Controller\CalculationController
+     * @var \RKW\RkwFeecalculator\Controller\CalculationController
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder(\Rkw\RkwFeecalculator\Controller\CalculationController::class)
+        $this->subject = $this->getMockBuilder(\RKW\RkwFeecalculator\Controller\CalculationController::class)
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -33,16 +33,16 @@ class CalculationControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function showActionAssignsTheGivenCalculatorToView()
     {
 
-        $calculator = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
+        $calculator = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
 
-        $assignableProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignableProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
 
         $objectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorage->attach($assignableProgram);
 
         $calculator->setAssignedPrograms($objectStorage);
 
-        $calculation = new \Rkw\RkwFeecalculator\Domain\Model\Calculation();
+        $calculation = new \RKW\RkwFeecalculator\Domain\Model\Calculation();
         $calculation->setCalculator($calculator);
         $calculation->setSelectedProgram($assignableProgram);
 

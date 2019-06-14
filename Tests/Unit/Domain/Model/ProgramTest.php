@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Tests\Unit\Domain\Model;
+namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
 /**
  * Test case.
@@ -9,14 +9,14 @@ namespace Rkw\RkwFeecalculator\Tests\Unit\Domain\Model;
 class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Program
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Program();
     }
 
     /**
@@ -297,7 +297,7 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setInstitutionForInstitutionSetsInstitution()
     {
-        $institutionFixture = new \Rkw\RkwFeecalculator\Domain\Model\Institution();
+        $institutionFixture = new \RKW\RkwFeecalculator\Domain\Model\Institution();
         $this->subject->setInstitution($institutionFixture);
 
         self::assertAttributeEquals(

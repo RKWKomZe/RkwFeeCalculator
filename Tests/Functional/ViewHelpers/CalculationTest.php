@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Tests\Functional\ViewHelpers;
+namespace RKW\RkwFeecalculator\Tests\Functional\ViewHelpers;
 
 use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 
@@ -11,20 +11,20 @@ use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 class CalculationTest extends FunctionalTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\ViewHelpers\CalculationViewHelper
+     * @var \RKW\RkwFeecalculator\ViewHelpers\CalculationViewHelper
      */
     protected $subject = null;
 
     /**
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculation
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation
      */
     protected $calculation = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rkw\RkwFeecalculator\ViewHelpers\CalculationViewHelper();
-        $this->calculation = new \Rkw\RkwFeecalculator\Domain\Model\Calculation();
+        $this->subject = new \RKW\RkwFeecalculator\ViewHelpers\CalculationViewHelper();
+        $this->calculation = new \RKW\RkwFeecalculator\Domain\Model\Calculation();
     }
 
     /**
@@ -32,7 +32,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesSubventionOfConsultantFeeCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
 
         $this->calculation->setSelectedProgram($selectedProgramFixture);
@@ -53,7 +53,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesSubventionOfRkwFeeCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
 
         $this->calculation->setSelectedProgram($selectedProgramFixture);
@@ -75,7 +75,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramHasConsultantFeePerDayLimitOfNullItCalculatesSubventionOfConsultantFeeWithoutAnyLimit()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
 
         $this->calculation->setSelectedProgram($selectedProgramFixture);
@@ -96,7 +96,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesRkwFeeCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
 
@@ -119,7 +119,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesConsultantFeeCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
 
@@ -142,7 +142,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesSubtotalCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
 
@@ -165,7 +165,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramWithDecimalConsultantFeePerDayLimitItCalculatesSubtotalCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(714.2857142857);
 
@@ -190,7 +190,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesSubtotalPerDayCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
 
@@ -213,7 +213,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesTaxCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
 
@@ -236,7 +236,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesTotalCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
 
@@ -259,7 +259,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesSubventionTotalCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
 
@@ -282,7 +282,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesSubtotalOfSubventionCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
 
@@ -305,7 +305,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesFundingCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
         $selectedProgramFixture->setFundingFactor(0.5);
@@ -329,7 +329,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesOwnFundingNetCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
         $selectedProgramFixture->setFundingFactor(0.5);
@@ -353,7 +353,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesOwnFundingGrossCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
         $selectedProgramFixture->setFundingFactor(0.5);
@@ -376,7 +376,7 @@ class CalculationTest extends FunctionalTestCase
      */
     public function givenSelectedProgramItCalculatesFundingPercentageCorrectly()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgramFixture->setRkwFeePerDay(100);
         $selectedProgramFixture->setConsultantFeePerDayLimit(800);
         $selectedProgramFixture->setFundingFactor(0.5);

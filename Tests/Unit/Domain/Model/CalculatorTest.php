@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Tests\Unit\Domain\Model;
+namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 
@@ -11,14 +11,14 @@ use Nimut\TestingFramework\TestCase\UnitTestCase;
 class CalculatorTest extends UnitTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculator
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculator
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
+        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
     }
 
     /**
@@ -39,7 +39,7 @@ class CalculatorTest extends UnitTestCase
      */
     public function setAssignedProgramsForObjectStorageContainingProgramSetsAssignedPrograms()
     {
-        $assignedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $objectStorageHoldingExactlyOneAssignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingExactlyOneAssignedPrograms->attach($assignedProgram);
         $this->subject->setAssignedPrograms($objectStorageHoldingExactlyOneAssignedPrograms);
@@ -57,7 +57,7 @@ class CalculatorTest extends UnitTestCase
      */
     public function addAssignedProgramToObjectStorageHoldingAssignedPrograms()
     {
-        $assignedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $assignedProgramsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
@@ -74,7 +74,7 @@ class CalculatorTest extends UnitTestCase
      */
     public function removeAssignedProgramFromObjectStorageHoldingAssignedPrograms()
     {
-        $assignedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $assignedProgramsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
