@@ -126,6 +126,42 @@ return [
                 ],
             ],
         ],
+        'selected_program' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculation.selected_program',
+            'config' => [
+                'type' => 'select',
+                'foreign_table' => 'tx_rkwfeecalculator_domain_model_program',
+                'foreign_table_where' => 'ORDER BY tx_rkwfeecalculator_domain_model_program.name ASC',
+                'minitems' => 0,
+                'maxitems' => 1,
+                'appearance' => [
+                    'collapseAll' => 1,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
+            ],
+        ],
+        'previous_selected_program' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculation.previous_selected_program',
+            'config' => [
+                'type' => 'select',
+                'foreign_table' => 'tx_rkwfeecalculator_domain_model_program',
+                'foreign_table_where' => 'ORDER BY tx_rkwfeecalculator_domain_model_program.name ASC',
+                'minitems' => 0,
+                'maxitems' => 1,
+                'appearance' => [
+                    'collapseAll' => 1,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1
+                ],
+            ],
+        ],
         'days' => [
             'exclude' => true,
             'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculation.days',

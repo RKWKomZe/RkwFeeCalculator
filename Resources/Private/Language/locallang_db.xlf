@@ -6,7 +6,25 @@
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator">
 				<source>FeeCalculator - Calculator</source>
 			</trans-unit>
-			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator.description">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
+                <source>Calculator</source>
+            </trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.calculator">
+			    <source>Calculator</source>
+			</trans-unit>
+			<trans-unit id="tx_rkw_feecalculator_domain_model_calculation.selected_program">
+				<source>Selected program</source>
+			</trans-unit>
+			<trans-unit id="tx_rkw_feecalculator_domain_model_calculation.previous_selected_program">
+				<source>Previously selected program</source>
+			</trans-unit>
+			<trans-unit id="tx_rkw_feecalculator_domain_model_calculation.days">
+				<source>Days</source>
+			</trans-unit>
+            <trans-unit id="tx_rkw_feecalculator_domain_model_calculation.consultant_fee_per_day">
+                <source>Consultant fee per day</source>
+            </trans-unit>
+            <trans-unit id="tx_rkw_feecalculator_domain_model_calculator.description">
 				<source></source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
@@ -15,26 +33,14 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.name">
 				<source>Name</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.days">
-				<source>Days</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day">
-				<source>Consultant Fee Per Day</source>
-			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.assigned_programs">
 				<source>Assigned Programs</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.selected_program">
-				<source>Selected Program</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program">
 				<source>Program</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.name">
 				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.responsible_institution">
-				<source>Responsible Institution</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.company_age">
 				<source>Company Age</source>
