@@ -15,8 +15,6 @@ namespace Rkw\RkwFeecalculator\Validation;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwBasics\Helper\Common;
-
 /**
  * Class CalculationValidator
  *
@@ -112,6 +110,10 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
                 }
             }
 
+        }
+
+        if ($mandatoryFields !== ['selectedProgram']) {
+            $objectSource->setShowResults($isValid);
         }
 
         return $isValid;

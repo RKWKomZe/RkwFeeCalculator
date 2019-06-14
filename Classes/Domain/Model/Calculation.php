@@ -19,6 +19,13 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
+     * showResults
+     *
+     * @var bool
+     */
+    protected $showResults = false;
+
+    /**
      * days
      *
      * @var integer
@@ -138,6 +145,27 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $fundingPercentage;
+
+    /**
+     * Returns the showResults
+     *
+     * @return int $showResults
+     */
+    public function getShowResults()
+    {
+        return $this->showResults;
+    }
+
+    /**
+     * Sets the showResults
+     *
+     * @param int $showResults
+     * @return void
+     */
+    public function setShowResults($showResults)
+    {
+        $this->showResults = $showResults;
+    }
 
     /**
      * Returns the days

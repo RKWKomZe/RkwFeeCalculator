@@ -85,127 +85,116 @@ Otherwise your changes will be overwritten the next time you save the extension 
       </f:if>
 
       <div class="v320-1">
-          <button type="submit" class="button">
-            <span><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.submit" /></span>
-          </button>
-        </div>
+        <button type="submit" class="button">
+          <span><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.submit" /></span>
+        </button>
+      </div>
 
-      <f:if condition="{calculation.selectedProgram === calculation.previousSelectedProgram}">
+      <f:if condition="{calculation.showResults}">
 
-      <f:form.validationResults>
-          <f:if condition="{validationResults.flattenedErrors}">
-          </f:if>
-          <f:else>
+        <rkwCalculation:calculation calculation="{calculation}">
 
-            <rkwCalculation:calculation calculation="{calculation}">
-              <f:for each="{calculationResult}" as="resultItem">
+          <f:for each="{calculationResult}" as="resultItem">
 
-                <f:if condition="{resultItem.total}">
+            <div class="v320-1">
+              <table>
+                <thead>
+                  <th></th>
+                  <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days" /></th>
+                  <th></th>
+                  <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" /></th>
+                  <th></th>
+                  <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.amount" /></th>
+                  <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount" /></th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee" /></td>
+                    <td>{calculation.days}</td>
+                    <td>x</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{calculation.consultantFeePerDay}</f:format.number> Euro</td>
+                    <td>=</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFee}</f:format.number> Euro</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFeeSubvention}</f:format.number> Euro</td>
+                  </tr>
+                  <tr>
+                    <td><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.rkw_fee" /></td>
+                    <td>{calculation.days}</td>
+                    <td>x</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{calculation.selectedProgram.rkwFeePerDay}</f:format.number> Euro</td>
+                    <td>=</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFee}</f:format.number> Euro</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeeSubvention}</f:format.number> Euro</td>
+                  </tr>
+                  <tr>
+                    <td><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.subtotal" /></td>
+                    <td>{calculation.days}</td>
+                    <td>x</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subtotalPerDay}</f:format.number> Euro</td>
+                    <td>=</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subtotal}</f:format.number> Euro</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionSubtotal}</f:format.number> Euro</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.tax" /></td>
+                    <td></td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.tax}</f:format.number> Euro</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.total" /></td>
+                    <td></td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.total}</f:format.number> Euro</td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionTotal}</f:format.number> Euro</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding" /></td>
+                    <td></td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.funding}</f:format.number> Euro</td>
+                    <td><f:format.number decimals="0" decimalSeparator=",">{resultItem.fundingPercentage}</f:format.number> %</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net" /></td>
+                    <td></td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingNet}</f:format.number> Euro</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_gross" /></td>
+                    <td></td>
+                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingGross}</f:format.number> Euro</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-                  <div class="v320-1">
-                    <table>
-                      <thead>
-                        <th></th>
-                        <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days" /></th>
-                        <th></th>
-                        <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" /></th>
-                        <th></th>
-                        <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.amount" /></th>
-                        <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount" /></th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee" /></td>
-                          <td>{calculation.days}</td>
-                          <td>x</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{calculation.consultantFeePerDay}</f:format.number> Euro</td>
-                          <td>=</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFee}</f:format.number> Euro</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFeeSubvention}</f:format.number> Euro</td>
-                        </tr>
-                        <tr>
-                          <td><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.rkw_fee" /></td>
-                          <td>{calculation.days}</td>
-                          <td>x</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{calculation.selectedProgram.rkwFeePerDay}</f:format.number> Euro</td>
-                          <td>=</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFee}</f:format.number> Euro</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeeSubvention}</f:format.number> Euro</td>
-                        </tr>
-                        <tr>
-                          <td><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.subtotal" /></td>
-                          <td>{calculation.days}</td>
-                          <td>x</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subtotalPerDay}</f:format.number> Euro</td>
-                          <td>=</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subtotal}</f:format.number> Euro</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionSubtotal}</f:format.number> Euro</td>
-                        </tr>
-                        <tr>
-                          <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.tax" /></td>
-                          <td></td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.tax}</f:format.number> Euro</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.total" /></td>
-                          <td></td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.total}</f:format.number> Euro</td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionTotal}</f:format.number> Euro</td>
-                        </tr>
-                        <tr>
-                          <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding" /></td>
-                          <td></td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.funding}</f:format.number> Euro</td>
-                          <td><f:format.number decimals="0" decimalSeparator=",">{resultItem.fundingPercentage}</f:format.number> %</td>
-                        </tr>
-                        <tr>
-                          <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net" /></td>
-                          <td></td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingNet}</f:format.number> Euro</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_gross" /></td>
-                          <td></td>
-                          <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingGross}</f:format.number> Euro</td>
-                          <td></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+            <div class="v320-1">
 
-                  <div class="v320-1">
+              <h3><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.overview_condition_content" /></h3>
 
-                    <h3><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.overview_condition_content" /></h3>
+              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.name" /></h4>
+              <p>{calculation.selectedProgram.name}</p>
+              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.institution" /></h4>
+              <p>{calculation.selectedProgram.institution.name}</p>
+              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.company_age" /></h4>
+              <p>{calculation.selectedProgram.companyAge}</p>
+              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days"/></h4>
+              <p><rkwCalculation:possibleDaysTranslation calculation="{calculation}"></rkwCalculation:possibleDaysTranslation></p>
+              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.conditions" /></h4>
+              <p>{calculation.selectedProgram.conditions}</p>
+              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.content" /></h4>
+              <p>{calculation.selectedProgram.content}</p>
+              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.label" /></h4>
+              <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.value" arguments="{1:calculation.selectedProgram.rkwFeePerDay}" /></p>
+              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.miscellaneous" /></h4>
+              <p>{calculation.selectedProgram.miscellaneous}</p>
 
-                    <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.name" /></h4>
-                    <p>{calculation.selectedProgram.name}</p>
-                    <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.institution" /></h4>
-                    <p>{calculation.selectedProgram.institution.name}</p>
-                    <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.company_age" /></h4>
-                    <p>{calculation.selectedProgram.companyAge}</p>
-                    <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days"/></h4>
-                    <p><rkwCalculation:possibleDaysTranslation calculation="{calculation}"></rkwCalculation:possibleDaysTranslation></p>
-                    <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.conditions" /></h4>
-                    <p>{calculation.selectedProgram.conditions}</p>
-                    <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.content" /></h4>
-                    <p>{calculation.selectedProgram.content}</p>
-                    <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.label" /></h4>
-                    <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.value" arguments="{1:calculation.selectedProgram.rkwFeePerDay}" /></p>
-                    <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.miscellaneous" /></h4>
-                    <p>{calculation.selectedProgram.miscellaneous}</p>
+            </div>
 
-                  </div>
+          </f:for>
 
-                </f:if>
-
-              </f:for>
-
-            </rkwCalculation:calculation>
-
-          </f:else>
-        </f:form.validationResults>
+        </rkwCalculation:calculation>
 
       </f:if>
 
