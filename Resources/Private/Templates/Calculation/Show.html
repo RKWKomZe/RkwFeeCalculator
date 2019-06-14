@@ -90,7 +90,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
           </button>
         </div>
 
-      <f:if condition="{calculation.selectedProgram}">
+      <f:if condition="{calculation.selectedProgram === calculation.previousSelectedProgram}">
 
       <f:form.validationResults>
           <f:if condition="{validationResults.flattenedErrors}">

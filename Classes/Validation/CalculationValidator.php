@@ -42,30 +42,30 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 
         $isValid = true;
 
-        if ($objectSource->getSelectedProgram() !== $objectSource->getPreviousSelectedProgram()) {
+        if (! $objectSource->getSelectedProgram() || $objectSource->getSelectedProgram() !== $objectSource->getPreviousSelectedProgram()) {
             $objectSource->setPreviousSelectedProgram($objectSource->getSelectedProgram());
             $mandatoryFields = ['selectedProgram'];
         }
 
-        /*
-        $possibleDaysMin = $objectSource->getSelectedProgram()->getPossibleDaysMin();
-        $possibleDaysMax = $objectSource->getSelectedProgram()->getPossibleDaysMax();
+        if ($objectSource->getSelectedProgram()) {
+            $possibleDaysMin = $objectSource->getSelectedProgram()->getPossibleDaysMin();
+            $possibleDaysMax = $objectSource->getSelectedProgram()->getPossibleDaysMax();
 
-        if (
-            $possibleDaysMin > 0
-            && $possibleDaysMax > 0
-        ){
+            if (
+                $possibleDaysMin > 0
+                && $possibleDaysMax > 0
+            ) {
 
-            if ($possibleDaysMin > $objectSource->getDays()) {
-                $isValid = false;
+                if ($possibleDaysMin > $objectSource->getDays()) {
+                    $isValid = false;
+                }
+
+                if ($possibleDaysMax < $objectSource->getDays()) {
+                    $isValid = false;
+                }
+
             }
-
-            if ($possibleDaysMax < $objectSource->getDays()) {
-                $isValid = false;
-            }
-
         }
-        */
 
         //  properties
         $requiredGetters = array_filter(get_class_methods($objectSource), function ($method) use ($mandatoryFields) {
