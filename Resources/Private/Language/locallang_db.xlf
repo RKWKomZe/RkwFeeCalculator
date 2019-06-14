@@ -7,10 +7,13 @@
 				<source>FeeCalculator - Calculator</source>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
-                <source>Calculator</source>
+                <source>RKW FeeCalculator</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation">
+                <source>RKW FeeCalculator: Calculation</source>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.calculator">
-			    <source>Calculator</source>
+			    <source>RKW FeeCalculator: Calculator</source>
 			</trans-unit>
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculation.selected_program">
 				<source>Selected program</source>
@@ -37,7 +40,7 @@
 				<source>Assigned Programs</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program">
-				<source>Program</source>
+				<source>RKW FeeCalculator: Program</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.name">
 				<source>Name</source>
@@ -73,7 +76,7 @@
 				<source>Institution</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution">
-				<source>Institution</source>
+                <source>RKW FeeCalculator: Institution</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution.name">
 				<source>Name</source>

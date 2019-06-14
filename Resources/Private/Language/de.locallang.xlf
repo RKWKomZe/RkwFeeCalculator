@@ -12,7 +12,7 @@
 				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
-				<source>Calculator</source>
+				<source>RKW FeeCalculator</source>
 				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.days">

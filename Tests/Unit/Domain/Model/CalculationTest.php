@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Tests\Unit\Domain\Model;
+namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 
@@ -11,14 +11,14 @@ use Nimut\TestingFramework\TestCase\UnitTestCase;
 class CalculationTest extends UnitTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculation
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rkw\RkwFeecalculator\Domain\Model\Calculation();
+        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Calculation();
     }
 
     /**
@@ -88,7 +88,7 @@ class CalculationTest extends UnitTestCase
      */
     public function setSelectedProgramForProgramSetsSelectedProgram()
     {
-        $selectedProgramFixture = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $this->subject->setSelectedProgram($selectedProgramFixture);
 
         self::assertAttributeEquals(

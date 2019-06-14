@@ -1,6 +1,6 @@
 <?php
 
-namespace Rkw\RkwFeecalculator\ViewHelpers;
+namespace RKW\RkwFeecalculator\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -30,32 +30,12 @@ class PossibleDaysViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVi
 {
 
     /**
-     * Render the possible days
-     *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation
-     */
-    public function render(\Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
-    {
-
-        $possibleDays = $this->getPossibleDays($calculation);
-
-        if ($possibleDays) {
-            $output = new SelectViewHelper();
-        } else {
-            $output = new TextfieldViewHelper();
-        }
-
-        $output = $possibleDays;
-
-        return $output;
-    }
-
-    /**
      * Get the possible days
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation
+     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation|null $calculation
+     * @return array
      */
-    public function getPossibleDays(\Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
+    public function render(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
     {
         return ($calculation->getSelectedProgram()) ? $calculation->getSelectedProgram()->getPossibleDays() : [];
     }

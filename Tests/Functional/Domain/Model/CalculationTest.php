@@ -1,5 +1,5 @@
 <?php
-namespace Rkw\RkwFeecalculator\Tests\Functional\Domain\Model;
+namespace RKW\RkwFeecalculator\Tests\Functional\Domain\Model;
 
 use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 
@@ -11,14 +11,14 @@ use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 class CalculationTest extends FunctionalTestCase
 {
     /**
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculation
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation
      */
     protected $subject = null;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \Rkw\RkwFeecalculator\Domain\Model\Calculation();
+        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Calculation();
     }
 
     /**
@@ -27,11 +27,11 @@ class CalculationTest extends FunctionalTestCase
     public function aSelectedProgramContainedInAssignedProgramsCanBeSelected()
     {
 
-        $calculator = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
+        $calculator = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
 
-        $assignedProgram1 = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignedProgram1 = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $assignedProgram1->setName('Program 1');
-        $assignedProgram2 = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignedProgram2 = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $assignedProgram2->setName('Program 2');
 
         $objectStorageHoldingAssignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
@@ -59,21 +59,21 @@ class CalculationTest extends FunctionalTestCase
     public function aSelectedProgramNotContainedInAssignedProgramsMustNotBeSelected()
     {
 
-        $assignedProgram1 = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignedProgram1 = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $assignedProgram1->setName('Program 1');
-        $assignedProgram2 = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $assignedProgram2 = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $assignedProgram2->setName('Program 2');
 
         $objectStorageHoldingAssignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $objectStorageHoldingAssignedPrograms->attach($assignedProgram1);
         $objectStorageHoldingAssignedPrograms->attach($assignedProgram2);
 
-        $calculator = new \Rkw\RkwFeecalculator\Domain\Model\Calculator();
+        $calculator = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
         $calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
 
         $this->subject->setCalculator($calculator);
 
-        $selectedProgram = new \Rkw\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
 
         //  @todo: Muss hier eine Validierung das Setzen eines Programms außerhalb der AssignedPrograms verhindern?!!
 

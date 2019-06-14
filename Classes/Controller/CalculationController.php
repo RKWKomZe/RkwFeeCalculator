@@ -1,8 +1,7 @@
 <?php
-namespace Rkw\RkwFeecalculator\Controller;
+namespace RKW\RkwFeecalculator\Controller;
 
-use Rkw\RkwFeecalculator\Domain\Model\Calculation;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
 
 /***
  *
@@ -23,7 +22,7 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * calculatorRepository
      *
-     * @var \Rkw\RkwFeecalculator\Domain\Repository\CalculatorRepository
+     * @var \RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository
      * @inject
      */
     protected $calculatorRepository = null;
@@ -31,10 +30,10 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action show
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation
+     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation
      * @return void
      */
-    public function showAction(\Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
+    public function showAction(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
     {
 
         if (! $calculation) {
@@ -52,12 +51,12 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action store
      *
-     * @validate $calculation \Rkw\RkwFeecalculator\Validation\CalculationValidator
+     * @validate $calculation \RKW\RkwFeecalculator\Validation\CalculationValidator
      * @param Calculation|null $calculation
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      */
-    public function storeAction(\Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
+    public function storeAction(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
     {
         if ($calculation === null) {
             $this->redirect('show');

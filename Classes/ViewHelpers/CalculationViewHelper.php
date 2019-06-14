@@ -1,6 +1,6 @@
 <?php
 
-namespace Rkw\RkwFeecalculator\ViewHelpers;
+namespace RKW\RkwFeecalculator\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -29,9 +29,9 @@ class CalculationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
     /**
      * Calculates the fees
      *
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation
+     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation
      */
-    public function render(\Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
+    public function render(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
     {
         $result[] = $this->calculate($calculation);
 
@@ -43,9 +43,9 @@ class CalculationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
     }
 
     /**
-     * @param \Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation
+     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation
      */
-    public function calculate(\Rkw\RkwFeecalculator\Domain\Model\Calculation $calculation)
+    public function calculate(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation)
     {
 
         $result = [];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rkw\RkwFeecalculator\Validation;
+namespace RKW\RkwFeecalculator\Validation;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -29,7 +29,7 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
     /**
      * validation
      *
-     * @var \Rkw\RkwFeecalculator\Domain\Model\Calculation $objectSource
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation $objectSource
      * @return boolean
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
