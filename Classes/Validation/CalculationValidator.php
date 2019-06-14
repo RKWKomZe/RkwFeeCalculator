@@ -29,13 +29,6 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 {
 
     /**
-     * TypoScript Settings
-     *
-     * @var array
-     */
-    protected $settings = null;
-
-    /**
      * validation
      *
      * @var \Rkw\RkwFeecalculator\Domain\Model\Calculation $objectSource
@@ -45,17 +38,12 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
     public function isValid($objectSource)
     {
 
-        // initialize typoscript settings
-        $this->getSettings();
-
-        // get mandatory fields
-        $mandatoryFields = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $this->settings['mandatoryFields']['calculation']);
         $mandatoryFields = ['selectedProgram', 'days', 'consultantFeePerDay'];
 
         $isValid = true;
 
-        if (! $objectSource->getInitialized()) {
-            $objectSource->setInitialized(true);
+        if ($objectSource->getSelectedProgram() !== $objectSource->getPreviousSelectedProgram()) {
+            $objectSource->setPreviousSelectedProgram($objectSource->getSelectedProgram());
             $mandatoryFields = ['selectedProgram'];
         }
 
@@ -109,8 +97,8 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
                 $isValid = false;
             }
 
-            if ($getter === 'getRawConsultantFeePerDay') {
-                if (! preg_match('/^(\d+(?:[\.\,]\d{2})?)$/', $objectSource->$getter())) {
+            if ($getter === 'getRawConsultantFeePerDay' && trim($objectSource->$getter()) !== '') {
+                if (! preg_match('/^(\d+(?:[\.\,]\d{1,2})?)$/', $objectSource->$getter())) {
                     $this->result->forProperty(lcfirst(substr($getter, 3)))->addError(
                         new \TYPO3\CMS\Extbase\Error\Error(
                             \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
@@ -127,29 +115,6 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
         }
 
         return $isValid;
-        //===
-    }
-
-    /**
-     * Returns TYPO3 settings
-     *
-     * @return array
-     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
-     */
-    protected function getSettings()
-    {
-
-        $this->settings = null;
-
-        if (!$this->settings) {
-            $this->settings = Common::getTyposcriptConfiguration('RkwFeecalculator');
-        }
-
-        if (!$this->settings) {
-            return array();
-        }
-
-        return $this->settings;
         //===
     }
 

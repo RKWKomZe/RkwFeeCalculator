@@ -20,9 +20,6 @@ plugin.tx_rkwfeecalculator_calculator {
   }
   settings {
     calculator = {$plugin.tx_rkwfeecalculator_calculator.settings.calculator}
-    mandatoryFields {
-      calculation = {$plugin.tx_rkwfeecalculator_calculator.settings.mandatoryFields.calculation}
-    }
   }
 }
 

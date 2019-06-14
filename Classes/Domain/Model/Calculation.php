@@ -19,13 +19,6 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * initialized
-     *
-     * @var bool
-     */
-    protected $initialized = false;
-
-    /**
      * days
      *
      * @var integer
@@ -54,6 +47,13 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \Rkw\RkwFeecalculator\Domain\Model\Program
      */
     protected $selectedProgram = null;
+
+    /**
+     * previousSelectedProgram
+     *
+     * @var \Rkw\RkwFeecalculator\Domain\Model\Program
+     */
+    protected $previousSelectedProgram = null;
 
     /**
      * rkwFeeSubvention
@@ -140,27 +140,6 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $fundingPercentage;
 
     /**
-     * Returns the initialized
-     *
-     * @return int $initialized
-     */
-    public function getInitialized()
-    {
-        return $this->initialized;
-    }
-
-    /**
-     * Sets the initialized flag to trigger validation
-     *
-     * @param int $initialized
-     * @return void
-     */
-    public function setInitialized($initialized)
-    {
-        $this->initialized = $initialized;
-    }
-
-    /**
      * Returns the days
      *
      * @return int $days
@@ -221,6 +200,27 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setSelectedProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $selectedProgram = null)
     {
         $this->selectedProgram = $selectedProgram;
+    }
+
+    /**
+     * Returns the previousSelectedProgram
+     *
+     * @return \Rkw\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram
+     */
+    public function getPreviousSelectedProgram()
+    {
+        return $this->previousSelectedProgram;
+    }
+
+    /**
+     * Sets the previousSelectedProgram
+     *
+     * @param \Rkw\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram
+     * @return void
+     */
+    public function setPreviousSelectedProgram(\Rkw\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram = null)
+    {
+        $this->previousSelectedProgram = $previousSelectedProgram;
     }
 
     /**
