@@ -54,15 +54,23 @@ class CalculationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         $consultantFeePerDay = $calculation->getConsultantFeePerDay();
         $selectedProgram = $calculation->getSelectedProgram();
 
-        $result['rkwFee'] = $days * $selectedProgram->getRkwFeePerDay();
+        if ($selectedProgram->getRkwFeePerDayAsLimit()) {
+            $result['rkwFeePerDay'] = ($selectedProgram->getRkwFeePerDay() / $days);
+        } else {
+            $result['rkwFeePerDay'] = $selectedProgram->getRkwFeePerDay();
+        }
+
+        $result['rkwFee'] = $days * $result['rkwFeePerDay'];
         $result['consultantFee'] = $days * $consultantFeePerDay;
-        $result['subtotalPerDay'] = $selectedProgram->getRkwFeePerDay() + $consultantFeePerDay;
+        $result['subtotalPerDay'] = $result['rkwFeePerDay'] + $consultantFeePerDay;
         $result['subtotal'] = $days * $result['subtotalPerDay'];
         $result['tax'] = $result['subtotal'] * 0.19;
         $result['total'] = $result['subtotal'] + $result['tax'];
 
         if ($selectedProgram->getConsultantFeePerDayLimit() > 0 && $consultantFeePerDay > $selectedProgram->getConsultantFeePerDayLimit()) {
             $result['consultantFeeSubvention'] = $days * $selectedProgram->getConsultantFeePerDayLimit();
+        } else if ($selectedProgram->getConsultantSubventionLimit() > 0 && $result['consultantFee'] > $selectedProgram->getConsultantSubventionLimit()) {
+            $result['consultantFeeSubvention'] = $selectedProgram->getConsultantSubventionLimit();
         } else {
             $result['consultantFeeSubvention'] = $result['consultantFee'];
         }
