@@ -76,6 +76,14 @@
 				<source>Consultant Fee Per Day Limit</source>
 				<target>maximaler Betrag für Beraterhonorar je Tagwerk</target>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_subvention_limit">
+				<source>Consultant Subvention Limit</source>
+				<target>maximaler Zuschuss zum Beraterhonorar</target>
+			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day_as_limit">
+				<source>Rkw Fee Per Day As Limit</source>
+				<target>RKW Honorar je Tagwerk als Maximalzuschuss berücksichtigen</target>
+			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.miscellaneous">
 				<source>Miscellaneous</source>
 				<target>Sonstiges</target>

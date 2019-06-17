@@ -56,6 +56,8 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_program (
 	content text NOT NULL,
 	rkw_fee_per_day double(11,2) DEFAULT '0.00' NOT NULL,
 	consultant_fee_per_day_limit double(14,10) DEFAULT '0.0000000000' NOT NULL,
+	consultant_subvention_limit double(14,10) DEFAULT '0.0000000000' NOT NULL,
+    rkw_fee_per_day_as_limit tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	miscellaneous text NOT NULL,
 	institution varchar(255) DEFAULT '' NOT NULL,
     funding_factor double(11,2) DEFAULT '1.00' NOT NULL,
