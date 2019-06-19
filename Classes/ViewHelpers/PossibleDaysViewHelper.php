@@ -15,8 +15,8 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Fluid\ViewHelpers\Form\SelectViewHelper;
-use TYPO3\CMS\Fluid\ViewHelpers\Form\TextfieldViewHelper;
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Class PossibleDaysViewHelper
@@ -26,18 +26,18 @@ use TYPO3\CMS\Fluid\ViewHelpers\Form\TextfieldViewHelper;
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class PossibleDaysViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class PossibleDaysViewHelper extends AbstractViewHelper
 {
 
     /**
      * Get the possible days
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation|null $calculation
+     * @param Calculation|null $calculation
      * @return array
      */
-    public function render(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
+    public function render(Calculation $calculation = null)
     {
-        return ($calculation->getSelectedProgram()) ? $calculation->getSelectedProgram()->getPossibleDays() : [];
+        return $calculation->getSelectedProgram() ? $calculation->getSelectedProgram()->getPossibleDays() : [];
     }
 
 }

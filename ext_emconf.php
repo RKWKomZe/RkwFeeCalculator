@@ -11,22 +11,22 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'RKW FeeCalculator',
-    'description' => '',
-    'category' => 'plugin',
-    'author' => 'Christian Dilger',
-    'author_email' => 'c.dilger@addorange.de',
-    'state' => 'beta',
-    'internal' => '',
-    'uploadfolder' => '0',
-    'createDirs' => '',
+    'title'            => 'RKW FeeCalculator',
+    'description'      => '',
+    'category'         => 'plugin',
+    'author'           => 'Christian Dilger',
+    'author_email'     => 'c.dilger@addorange.de',
+    'state'            => 'beta',
+    'internal'         => '',
+    'uploadfolder'     => '0',
+    'createDirs'       => '',
     'clearCacheOnLoad' => 0,
-    'version' => '7.6.4',
-    'constraints' => [
-        'depends' => [
+    'version'          => '7.6.4',
+    'constraints'      => [
+        'depends'   => [
             'typo3' => '7.6.0-7.6.99',
         ],
         'conflicts' => [],
-        'suggests' => [],
+        'suggests'  => [],
     ],
 ];

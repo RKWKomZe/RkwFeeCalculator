@@ -1,4 +1,5 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Controller;
 
 use RKW\RkwFeecalculator\Domain\Model\Calculation;
@@ -25,7 +26,7 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @var \RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository
      * @inject
      */
-    protected $calculatorRepository = null;
+    protected $calculatorRepository;
 
     /**
      * action show
@@ -36,13 +37,13 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     public function showAction(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
     {
 
-        if (! $calculation) {
+        if (!$calculation) {
             $calculation = new Calculation();
             $calculation->setCalculator($this->calculatorRepository->findByUid($this->settings['calculator']));
         }
 
         $this->view->assignMultiple([
-            'calculation' => $calculation,
+            'calculation'      => $calculation,
             'assignedPrograms' => $calculation->getCalculator()->getAssignedPrograms()->toArray(),
         ]);
 

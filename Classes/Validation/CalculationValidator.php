@@ -15,6 +15,12 @@ namespace RKW\RkwFeecalculator\Validation;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Error\Error;
+use TYPO3\CMS\Extbase\Error\Result;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
+
 /**
  * Class CalculationValidator
  *
@@ -23,24 +29,25 @@ namespace RKW\RkwFeecalculator\Validation;
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
+class CalculationValidator extends AbstractValidator
 {
 
     /**
      * validation
      *
-     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation $objectSource
      * @return boolean
-     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation $objectSource
      */
     public function isValid($objectSource)
     {
+
+        $this->result = new Result();
 
         $mandatoryFields = ['selectedProgram', 'days', 'consultantFeePerDay'];
 
         $isValid = true;
 
-        if (! $objectSource->getSelectedProgram() || $objectSource->getSelectedProgram() !== $objectSource->getPreviousSelectedProgram()) {
+        if (!$objectSource->getSelectedProgram() || $objectSource->getSelectedProgram() !== $objectSource->getPreviousSelectedProgram()) {
             $objectSource->setPreviousSelectedProgram($objectSource->getSelectedProgram());
             $mandatoryFields = ['selectedProgram'];
         }
@@ -66,15 +73,15 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
         }
 
         //  properties
-        $requiredGetters = array_filter(get_class_methods($objectSource), function ($method) use ($mandatoryFields) {
-            return strpos($method, 'get') !== false && in_array(lcfirst(substr($method, 3)), $mandatoryFields);
+        $requiredGetters = array_filter(get_class_methods($objectSource), static function ($method) use ($mandatoryFields) {
+            return strpos($method, 'get') !== false && in_array(lcfirst(substr($method, 3)), $mandatoryFields, true);
         });
 
         foreach ($requiredGetters as $getter) {
 
             $property = lcfirst(substr($getter, 3));
-            $field = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                'tx_rkwfeecalculator_domain_model_calculation.form.' . \TYPO3\CMS\Core\Utility\GeneralUtility::camelCaseToLowerCaseUnderscored($property),
+            $field = LocalizationUtility::translate(
+                'tx_rkwfeecalculator_domain_model_calculation.form.' . GeneralUtility::camelCaseToLowerCaseUnderscored($property),
                 'rkw_feecalculator'
             );
 
@@ -84,8 +91,8 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 
             if (!trim($objectSource->$getter())) {
                 $this->result->forProperty($property)->addError(
-                    new \TYPO3\CMS\Extbase\Error\Error(
-                        \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                    new Error(
+                        LocalizationUtility::translate(
                             'validator.notempty.empty',
                             'rkw_feecalculator',
                             [$field]
@@ -95,19 +102,20 @@ class CalculationValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
                 $isValid = false;
             }
 
-            if ($getter === 'getRawConsultantFeePerDay' && trim($objectSource->$getter()) !== '') {
-                if (! preg_match('/^(\d+(?:[\.\,]\d{1,2})?)$/', $objectSource->$getter())) {
-                    $this->result->forProperty(lcfirst(substr($getter, 3)))->addError(
-                        new \TYPO3\CMS\Extbase\Error\Error(
-                            \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'validator.number.notvalid',
-                                'rkw_feecalculator',
-                                [$field]
-                            ), 1449314604
-                        )
-                    );
-                    $isValid = false;
-                }
+            if ($getter === 'getRawConsultantFeePerDay'
+                && trim($objectSource->$getter()) !== ''
+                && !preg_match('/^(\d+(?:[\.\,]\d{1,2})?)$/', $objectSource->$getter())
+            ) {
+                $this->result->forProperty(lcfirst(substr($getter, 3)))->addError(
+                    new Error(
+                        LocalizationUtility::translate(
+                            'validator.number.notvalid',
+                            'rkw_feecalculator',
+                            [$field]
+                        ), 1449314604
+                    )
+                );
+                $isValid = false;
             }
 
         }

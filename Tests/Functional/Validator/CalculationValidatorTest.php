@@ -1,14 +1,18 @@
 <?php
-namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+namespace RKW\RkwFeecalculator\Tests\Functional\Domain\Validator;
+
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use RKW\RkwFeecalculator\Domain\Model\Calculator;
+use RKW\RkwFeecalculator\Tests\Functional\TestCase;
+use RKW\RkwFeecalculator\Validation\CalculationValidator;
 
 /**
  * Test case.
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  */
-class CalculationValidatorTest extends UnitTestCase
+class CalculationValidatorTest extends TestCase
 {
 
     /**
@@ -19,20 +23,32 @@ class CalculationValidatorTest extends UnitTestCase
     ];
 
     /**
-     * @var \RKW\RkwFeecalculator\Validation\CalculationValidator
+     * @var CalculationValidator
      */
-    protected $subject = null;
+    protected $subject;
 
     /**
-     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation
+     * @var Calculation
      */
-    protected $calculation = null;
+    protected $calculation;
+
+    /**
+     * @var Calculator
+     */
+    protected $calculator;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \RKW\RkwFeecalculator\Validation\CalculationValidator();
-        $this->calculation = new \RKW\RkwFeecalculator\Domain\Model\Calculation();
+        $this->subject = new CalculationValidator();
+        $this->calculation = new Calculation();
+        $this->calculator = new Calculator();
+
+        $objectStorageHoldingAssignedPrograms = $this->assignPrograms();
+
+        $this->calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
+        $this->calculation->setCalculator($this->calculator);
+
     }
 
     /**
@@ -40,7 +56,8 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMinLessDaysAreNotValid()
     {
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
+
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -55,7 +72,8 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMinEqualDaysAreValid()
     {
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -72,8 +90,8 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMinMoreDaysAreValid()
     {
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -90,7 +108,8 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMaxMoreDaysAreNotValid()
     {
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -107,7 +126,8 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMaxEqualDaysAreValid()
     {
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -124,7 +144,8 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysMaxLessDaysAreValid()
     {
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -141,7 +162,8 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramHasPossibleDaysSetToZeroAnyDaysValueGreaterZeroIsValid()
     {
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+
         $selectedProgram->setPossibleDaysMin(0);
         $selectedProgram->setPossibleDaysMax(0);
 
@@ -158,9 +180,11 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramDaysIsRequired()
     {
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
+        $this->calculation->setPreviousSelectedProgram($selectedProgram);
+
         $this->calculation->setConsultantFeePerDay(1000);
 
         $this->assertFalse($this->subject->isValid($this->calculation));
@@ -171,9 +195,11 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function givenSelectedProgramConsultantFeePerDayIsRequired()
     {
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
+        $this->calculation->setPreviousSelectedProgram($selectedProgram);
+
         $this->calculation->setDays(10);
 
         $this->assertFalse($this->subject->isValid($this->calculation));
@@ -184,18 +210,15 @@ class CalculationValidatorTest extends UnitTestCase
      */
     public function submittingAMoneyValueWithLettersIsNotValid()
     {
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
+        $this->calculation->setPreviousSelectedProgram($selectedProgram);
+
         $this->calculation->setDays(10);
         $this->calculation->setConsultantFeePerDay('A7236483,234');
 
         $this->assertFalse($this->subject->isValid($this->calculation));
-    }
-
-    protected function tearDown()
-    {
-        parent::tearDown();
     }
 
 }

@@ -1,24 +1,40 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use RKW\RkwFeecalculator\Domain\Model\Calculator;
+use RKW\RkwFeecalculator\Domain\Model\Program;
+use RKW\RkwFeecalculator\Tests\Unit\TestCase;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Test case.
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  */
-class CalculationTest extends UnitTestCase
+class CalculationTest extends TestCase
 {
     /**
-     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation
+     * @var Calculation
      */
-    protected $subject = null;
+    protected $subject;
+
+    /**
+     * @var Calculator
+     */
+    protected $calculator;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Calculation();
+        $this->subject = new Calculation();
+        $this->calculator = new Calculator();
+
+        $objectStorageHoldingAssignedPrograms = $this->assignPrograms();
+
+        $this->calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
+        $this->subject->setCalculator($this->calculator);
     }
 
     /**
@@ -88,7 +104,7 @@ class CalculationTest extends UnitTestCase
      */
     public function setSelectedProgramForProgramSetsSelectedProgram()
     {
-        $selectedProgramFixture = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $selectedProgramFixture = $this->getFirstAssignedProgram($this->calculator);
         $this->subject->setSelectedProgram($selectedProgramFixture);
 
         self::assertAttributeEquals(
@@ -152,9 +168,106 @@ class CalculationTest extends UnitTestCase
         );
     }
 
-    protected function tearDown()
+    /**
+     * @test
+     */
+    public function givenPossibleDaysMinAndMaxPossibleDaysAreCalculated()
     {
-        parent::tearDown();
+
+        $calculator = new Calculator();
+
+        $assignableProgram = new Program();
+        $assignableProgram->setPossibleDaysMin(5);
+        $assignableProgram->setPossibleDaysMax(10);
+
+        $objectStorage = new ObjectStorage();
+        $objectStorage->attach($assignableProgram);
+
+        $calculator->setAssignedPrograms($objectStorage);
+
+        $this->subject->setCalculator($calculator);
+        $this->subject->setSelectedProgram($assignableProgram);
+
+        $expectedPossibleDays = [
+            '5'  => 5,
+            '6'  => 6,
+            '7'  => 7,
+            '8'  => 8,
+            '9'  => 9,
+            '10' => 10,
+        ];
+
+        $result = $this->subject->getSelectedProgram()->getPossibleDays();
+
+        self::assertEquals(
+            $expectedPossibleDays,
+            $result
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function givenPossibleDaysMinAndMaxAreZeroPossibleDaysAreCalculated()
+    {
+
+        $calculator = new Calculator();
+
+        $assignableProgram = new Program();
+        $assignableProgram->setPossibleDaysMin(0);
+        $assignableProgram->setPossibleDaysMax(0);
+
+        $objectStorage = new ObjectStorage();
+        $objectStorage->attach($assignableProgram);
+
+        $calculator->setAssignedPrograms($objectStorage);
+
+        $this->subject->setCalculator($calculator);
+        $this->subject->setSelectedProgram($assignableProgram);
+
+        $expectedPossibleDays = [];
+
+        $result = $this->subject->getSelectedProgram()->getPossibleDays();
+
+        self::assertEquals(
+            $expectedPossibleDays,
+            $result
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function givenPossibleDaysMinAndMaxAreNotZeroButSamePossibleDaysAreCalculated()
+    {
+
+        $calculator = new Calculator();
+
+        $assignableProgram = new Program();
+        $assignableProgram->setPossibleDaysMin(5);
+        $assignableProgram->setPossibleDaysMax(5);
+
+        $objectStorage = new ObjectStorage();
+        $objectStorage->attach($assignableProgram);
+
+        $calculator->setAssignedPrograms($objectStorage);
+
+        $this->subject->setCalculator($calculator);
+        $this->subject->setSelectedProgram($assignableProgram);
+
+        $expectedPossibleDays = [
+            '5' => 5,
+        ];
+
+        $result = $this->subject->getSelectedProgram()->getPossibleDays();
+
+        self::assertEquals(
+            $expectedPossibleDays,
+            $result
+        );
+
     }
 
 }

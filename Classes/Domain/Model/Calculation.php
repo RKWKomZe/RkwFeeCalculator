@@ -1,11 +1,12 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Domain\Model;
 
 /***
  *
  * This file is part of the "RKW FeeCalculator" Extension for TYPO3 CMS.
  *
- * For the full copyright and flicense information, please read the
+ * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
  *  (c) 2019 Christian Dilger <c.dilger@addorange.de>
@@ -39,28 +40,28 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      * @validate NotEmpty
      */
-    protected $consultantFeePerDay = '0.00';
+    protected $consultantFeePerDay = '0';
 
     /**
      * calculator
      *
      * @var \RKW\RkwFeecalculator\Domain\Model\Calculator
      */
-    protected $calculator = null;
+    protected $calculator;
 
     /**
      * selectedProgram
      *
      * @var \RKW\RkwFeecalculator\Domain\Model\Program
      */
-    protected $selectedProgram = null;
+    protected $selectedProgram;
 
     /**
      * previousSelectedProgram
      *
      * @var \RKW\RkwFeecalculator\Domain\Model\Program
      */
-    protected $previousSelectedProgram = null;
+    protected $previousSelectedProgram;
 
     /**
      * rkwFeeSubvention
@@ -227,7 +228,9 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setSelectedProgram(\RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram = null)
     {
-        $this->selectedProgram = $selectedProgram;
+        if ($this->getCalculator()->getAssignedPrograms()->contains($selectedProgram)) {
+            $this->selectedProgram = $selectedProgram;
+        }
     }
 
     /**
@@ -258,10 +261,10 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getConsultantFeePerDay()
     {
-        $val = str_replace(",",".", $this->consultantFeePerDay);
+        $val = str_replace(',', '.', $this->consultantFeePerDay);
         $val = preg_replace('/\.(?=.*\.)/', '', $val);
 
-        return floatval($val);
+        return (float)$val;
     }
 
     /**
@@ -304,48 +307,6 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getConsultantFeeSubvention()
     {
         return $this->consultantFeeSubvention;
-    }
-
-    /**
-     * Sets the rkwFee
-     *
-     * @param $rkwFee
-     * @return void;
-     */
-    public function setRkwFee($rkwFee)
-    {
-        $this->rkwFee = $rkwFee;
-    }
-
-    /**
-     * Returns the rkwFee
-     *
-     * @return int rkwFee
-     */
-    public function getRkwFee()
-    {
-        return $this->rkwFee;
-    }
-
-    /**
-     * Sets the consultantFee
-     *
-     * @param $consultantFee
-     * @return void;
-     */
-    public function setConsultantFee($consultantFee)
-    {
-        $this->consultantFee = $consultantFee;
-    }
-
-    /**
-     * Returns the consultantFee
-     *
-     * @return int consultantFee
-     */
-    public function getConsultantFee()
-    {
-        return $this->consultantFee;
     }
 
     /**

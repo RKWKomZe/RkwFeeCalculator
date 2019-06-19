@@ -1,4 +1,5 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Domain\Model;
 
 /***
@@ -116,7 +117,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \RKW\RkwFeecalculator\Domain\Model\Institution
      * @validate NotEmpty
      */
-    protected $institution = null;
+    protected $institution;
 
     /**
      * Returns the name

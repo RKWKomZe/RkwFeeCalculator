@@ -1,24 +1,28 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Tests\Functional\Domain\Model;
 
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use RKW\RkwFeecalculator\Domain\Model\Calculator;
+use RKW\RkwFeecalculator\Domain\Model\Program;
+use RKW\RkwFeecalculator\Tests\Functional\TestCase;
 
 /**
  * Test case.
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  */
-class CalculationTest extends FunctionalTestCase
+class CalculationTest extends TestCase
 {
     /**
-     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation
+     * @var Calculation
      */
-    protected $subject = null;
+    protected $subject;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Calculation();
+        $this->subject = new Calculation();
     }
 
     /**
@@ -27,24 +31,14 @@ class CalculationTest extends FunctionalTestCase
     public function aSelectedProgramContainedInAssignedProgramsCanBeSelected()
     {
 
-        $calculator = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
+        $calculator = new Calculator();
 
-        $assignedProgram1 = new \RKW\RkwFeecalculator\Domain\Model\Program();
-        $assignedProgram1->setName('Program 1');
-        $assignedProgram2 = new \RKW\RkwFeecalculator\Domain\Model\Program();
-        $assignedProgram2->setName('Program 2');
-
-        $objectStorageHoldingAssignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingAssignedPrograms->attach($assignedProgram1);
-        $objectStorageHoldingAssignedPrograms->attach($assignedProgram2);
+        $objectStorageHoldingAssignedPrograms = $this->assignPrograms();
 
         $calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
         $this->subject->setCalculator($calculator);
 
-
-        $selectedProgram = $assignedProgram1;
-
-        //  @todo: Muss hier eine Validierung das Setzen eines Programms außerhalb der AssignedPrograms verhindern?!!
+        $selectedProgram = $this->getFirstAssignedProgram($calculator);
 
         $this->subject->setSelectedProgram($selectedProgram);
 
@@ -54,39 +48,25 @@ class CalculationTest extends FunctionalTestCase
     }
 
     /**
-     * @todo
+     * @test
      */
     public function aSelectedProgramNotContainedInAssignedProgramsMustNotBeSelected()
     {
 
-        $assignedProgram1 = new \RKW\RkwFeecalculator\Domain\Model\Program();
-        $assignedProgram1->setName('Program 1');
-        $assignedProgram2 = new \RKW\RkwFeecalculator\Domain\Model\Program();
-        $assignedProgram2->setName('Program 2');
+        $objectStorageHoldingAssignedPrograms = $this->assignPrograms();
 
-        $objectStorageHoldingAssignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingAssignedPrograms->attach($assignedProgram1);
-        $objectStorageHoldingAssignedPrograms->attach($assignedProgram2);
-
-        $calculator = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
+        $calculator = new Calculator();
         $calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
 
         $this->subject->setCalculator($calculator);
 
-        $selectedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
-
-        //  @todo: Muss hier eine Validierung das Setzen eines Programms außerhalb der AssignedPrograms verhindern?!!
+        $selectedProgram = new Program();
 
         $this->subject->setSelectedProgram($selectedProgram);
 
         self::assertFalse($this->subject->getCalculator()->getAssignedPrograms()->contains($this->subject->getSelectedProgram()));
         self::assertNull($this->subject->getSelectedProgram());
 
-    }
-
-    protected function tearDown()
-    {
-        parent::tearDown();
     }
 
 }

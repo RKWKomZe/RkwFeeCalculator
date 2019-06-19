@@ -64,7 +64,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
             </label>
             <f:if condition="<rkwCalculation:possibleDays calculation='{calculation}'/>">
               <f:then>
-                <f:form.select id="days" property="days" options="<rkwCalculation:possibleDays calculation='{calculation}'/>" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_program.form.select')}" prependOptionValue=""/>
+                <f:form.select id="days" property="days" options="<rkwCalculation:possibleDays calculation='{calculation}'/>" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_program.form.select')}" prependOptionValue="0"/>
               </f:then>
               <f:else>
                 <f:form.textfield id="days" property="days" additionalAttributes="{autocomplete:'days'}" />
@@ -99,13 +99,15 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <div class="v320-1">
               <table class="responsive">
                 <thead>
-                  <th></th>
-                  <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days" /></th>
-                  <th></th>
-                  <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" /></th>
-                  <th></th>
-                  <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.amount" /></th>
-                  <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount" /></th>
+                  <tr>
+                    <th></th>
+                    <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days" /></th>
+                    <th></th>
+                    <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" /></th>
+                    <th></th>
+                    <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.amount" /></th>
+                    <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount" /></th>
+                  </tr>
                 </thead>
                 <tbody>
                   <tr>

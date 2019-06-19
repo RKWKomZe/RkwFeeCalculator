@@ -1,5 +1,8 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Domain\Repository;
+
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /***
  *
@@ -15,6 +18,6 @@ namespace RKW\RkwFeecalculator\Domain\Repository;
 /**
  * The repository for Institutions
  */
-class InstitutionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class InstitutionRepository extends Repository
 {
 }

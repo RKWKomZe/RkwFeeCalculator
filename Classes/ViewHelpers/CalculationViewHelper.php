@@ -15,6 +15,9 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /**
  * Class CalculationViewHelper
  *
@@ -23,15 +26,19 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class CalculationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class CalculationViewHelper extends AbstractViewHelper
 {
 
     /**
      * Calculates the fees
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation
+     * @param Calculation $calculation
+     * @return mixed
+     * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception\InvalidVariableException
+     * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception\InvalidVariableException
+     * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception\InvalidVariableException
      */
-    public function render(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
+    public function render(Calculation $calculation = null)
     {
         $result[] = $this->calculate($calculation);
 
@@ -43,9 +50,10 @@ class CalculationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
     }
 
     /**
-     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation
+     * @param Calculation $calculation
+     * @return array
      */
-    public function calculate(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation)
+    public function calculate(Calculation $calculation)
     {
 
         $result = [];
@@ -53,6 +61,8 @@ class CalculationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         $days = $calculation->getDays();
         $consultantFeePerDay = $calculation->getConsultantFeePerDay();
         $selectedProgram = $calculation->getSelectedProgram();
+        $consultantFeePerDayLimit = $selectedProgram->getConsultantFeePerDayLimit();
+        $consultantSubventionLimit = $selectedProgram->getConsultantSubventionLimit();
 
         if ($selectedProgram->getRkwFeePerDayAsLimit()) {
             $result['rkwFeePerDay'] = ($selectedProgram->getRkwFeePerDay() / $days);
@@ -67,10 +77,10 @@ class CalculationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         $result['tax'] = $result['subtotal'] * 0.19;
         $result['total'] = $result['subtotal'] + $result['tax'];
 
-        if ($selectedProgram->getConsultantFeePerDayLimit() > 0 && $consultantFeePerDay > $selectedProgram->getConsultantFeePerDayLimit()) {
-            $result['consultantFeeSubvention'] = $days * $selectedProgram->getConsultantFeePerDayLimit();
-        } else if ($selectedProgram->getConsultantSubventionLimit() > 0 && $result['consultantFee'] > $selectedProgram->getConsultantSubventionLimit()) {
-            $result['consultantFeeSubvention'] = $selectedProgram->getConsultantSubventionLimit();
+        if ($consultantFeePerDayLimit > 0 && $consultantFeePerDay > $consultantFeePerDayLimit) {
+            $result['consultantFeeSubvention'] = $days * $consultantFeePerDayLimit;
+        } else if ($consultantSubventionLimit > 0 && $result['consultantFee'] > $consultantSubventionLimit) {
+            $result['consultantFeeSubvention'] = $consultantSubventionLimit;
         } else {
             $result['consultantFeeSubvention'] = $result['consultantFee'];
         }

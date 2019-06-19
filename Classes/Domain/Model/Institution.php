@@ -1,5 +1,8 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Domain\Model;
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /***
  *
@@ -15,7 +18,7 @@ namespace RKW\RkwFeecalculator\Domain\Model;
 /**
  * Institution
  */
-class Institution extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Institution extends AbstractEntity
 {
     /**
      * name
