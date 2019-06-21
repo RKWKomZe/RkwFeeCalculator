@@ -121,6 +121,7 @@ return [
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.assigned_programs',
             'config'  => [
                 'type'                => 'select',
+                'renderType'          => 'selectMultipleSideBySide',
                 'foreign_table'       => 'tx_rkwfeecalculator_domain_model_program',
                 'foreign_table_where' => 'ORDER BY tx_rkwfeecalculator_domain_model_program.name ASC',
                 'maxitems'            => 9999,

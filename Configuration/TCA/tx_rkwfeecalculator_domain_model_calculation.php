@@ -113,6 +113,7 @@ return [
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculation.calculator',
             'config'  => [
                 'type'                => 'select',
+                'renderType'          => 'selectSingle',
                 'foreign_table'       => 'tx_rkwfeecalculator_domain_model_calculator',
                 'foreign_table_where' => 'ORDER BY tx_rkwfeecalculator_domain_model_calculator.name ASC',
                 'minitems'            => 0,
@@ -131,6 +132,7 @@ return [
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculation.selected_program',
             'config'  => [
                 'type'                => 'select',
+                'renderType'          => 'selectSingle',
                 'foreign_table'       => 'tx_rkwfeecalculator_domain_model_program',
                 'foreign_table_where' => 'ORDER BY tx_rkwfeecalculator_domain_model_program.name ASC',
                 'minitems'            => 0,
@@ -149,6 +151,7 @@ return [
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculation.previous_selected_program',
             'config'  => [
                 'type'                => 'select',
+                'renderType'          => 'selectSingle',
                 'foreign_table'       => 'tx_rkwfeecalculator_domain_model_program',
                 'foreign_table_where' => 'ORDER BY tx_rkwfeecalculator_domain_model_program.name ASC',
                 'minitems'            => 0,

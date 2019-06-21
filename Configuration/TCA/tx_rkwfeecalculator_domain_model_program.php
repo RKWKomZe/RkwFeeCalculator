@@ -226,6 +226,7 @@ return [
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.institution',
             'config'  => [
                 'type'                => 'select',
+                'renderType'          => 'selectSingle',
                 'foreign_table'       => 'tx_rkwfeecalculator_domain_model_institution',
                 'foreign_table_where' => 'ORDER BY tx_rkwfeecalculator_domain_model_institution.name ASC',
                 'minitems'            => 0,
