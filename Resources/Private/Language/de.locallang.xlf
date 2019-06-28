@@ -45,23 +45,23 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.days">
 				<source>Days</source>
-				<target>Anzahl Tagwerke</target>
+				<target>Tagwerke</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day">
-				<source>Consultant Fee Per Day</source>
-				<target>Honorar je Tagwerk (netto)</target>
+				<source>Consultant Fee (net)</source>
+				<target>Honorar (netto)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days">
 				<source>Number of days</source>
 				<target>Anzahl Tagwerke</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.amount">
-				<source>Amount in Euro</source>
-				<target>Betrag in Euro</target>
+				<source>Amount</source>
+				<target>Summe</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount">
-				<source>Fundable in Euro</source>
-				<target>zuschussfähig in Euro</target>
+				<source>Fundable</source>
+				<target>Zuschussfähig</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee">
 				<source>Consultant fee</source>
@@ -89,7 +89,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net">
                 <source>Own funding (net)</source>
-                <target>Eigenmittel des Antragstellers netto</target>
+                <target>Eigenmittel des Antragstellers (netto)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_gross">
                 <source>Own funding (gross)</source>

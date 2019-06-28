@@ -129,21 +129,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
                     <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeeSubvention}</f:format.number> Euro</td>
                   </tr>
                   <tr>
-                    <td><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.subtotal" /></td>
-                    <td>{calculation.days}</td>
-                    <td>x</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subtotalPerDay}</f:format.number> Euro</td>
-                    <td>=</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subtotal}</f:format.number> Euro</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionSubtotal}</f:format.number> Euro</td>
-                  </tr>
-                  <tr>
-                    <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.tax" /></td>
-                    <td></td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.tax}</f:format.number> Euro</td>
-                    <td></td>
-                  </tr>
-                  <tr>
                     <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.total" /></td>
                     <td></td>
                     <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.total}</f:format.number> Euro</td>
@@ -159,12 +144,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
                     <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net" /></td>
                     <td></td>
                     <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingNet}</f:format.number> Euro</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_gross" /></td>
-                    <td></td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingGross}</f:format.number> Euro</td>
                     <td></td>
                   </tr>
                 </tbody>
