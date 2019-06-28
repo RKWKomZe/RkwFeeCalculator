@@ -1,6 +1,42 @@
-th.text-right, td.text-right {
+.rkw-feecalculator .text-right {
     text-align: right;
 }
-th.text-center, td.text-center {
+.rkw-feecalculator .text-center {
     text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+    .rkw-feecalculator table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .rkw-feecalculator table tr {
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    .rkw-feecalculator table td {
+        display: block;
+    }
+
+    .rkw-feecalculator table td.collapsed--hidden {
+        display: none;
+    }
+
+    .rkw-feecalculator table td.collapsed--th {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .rkw-feecalculator table td::before {
+        content: attr(data-label);
+        float: left;
+    }
 }
