@@ -101,49 +101,49 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <thead>
                   <tr>
                     <th></th>
-                    <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days" /></th>
+                    <th class="text-center"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days" /></th>
                     <th></th>
-                    <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" /></th>
+                    <th class="text-center"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" /></th>
                     <th></th>
-                    <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.amount" /></th>
-                    <th><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount" /></th>
+                    <th class="text-center"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.amount" /></th>
+                    <th class="text-center"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount" /></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee" /></td>
-                    <td>{calculation.days}</td>
+                    <td class="text-right">{calculation.days}</td>
                     <td>x</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{calculation.consultantFeePerDay}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{calculation.consultantFeePerDay}</f:format.number> Euro</td>
                     <td>=</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFee}</f:format.number> Euro</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFeeSubvention}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFee}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFeeSubvention}</f:format.number> Euro</td>
                   </tr>
                   <tr>
                     <td><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.rkw_fee" /></td>
-                    <td>{calculation.days}</td>
+                    <td class="text-right">{calculation.days}</td>
                     <td>x</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeePerDay}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeePerDay}</f:format.number> Euro</td>
                     <td>=</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFee}</f:format.number> Euro</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeeSubvention}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFee}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeeSubvention}</f:format.number> Euro</td>
                   </tr>
                   <tr>
                     <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.total" /></td>
                     <td></td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.total}</f:format.number> Euro</td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionTotal}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.total}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionTotal}</f:format.number> Euro</td>
                   </tr>
                   <tr>
                     <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding" /></td>
                     <td></td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.funding}</f:format.number> Euro</td>
-                    <td><f:format.number decimals="0" decimalSeparator=",">{resultItem.fundingPercentage}</f:format.number> %</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.funding}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="0" decimalSeparator=",">{resultItem.fundingPercentage}</f:format.number> %</td>
                   </tr>
                   <tr>
                     <td colspan="4"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net" /></td>
                     <td></td>
-                    <td><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingNet}</f:format.number> Euro</td>
+                    <td class="text-right"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingNet}</f:format.number> Euro</td>
                     <td></td>
                   </tr>
                 </tbody>
