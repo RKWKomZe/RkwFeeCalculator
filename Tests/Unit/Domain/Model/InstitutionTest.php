@@ -1,22 +1,26 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
+
+use RKW\RkwFeecalculator\Domain\Model\Institution;
+use RKW\RkwFeecalculator\Tests\Unit\TestCase;
 
 /**
  * Test case.
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  */
-class InstitutionTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class InstitutionTest extends TestCase
 {
     /**
-     * @var \RKW\RkwFeecalculator\Domain\Model\Institution
+     * @var Institution
      */
-    protected $subject = null;
+    protected $subject;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Institution();
+        $this->subject = new Institution();
     }
 
     /**
@@ -44,11 +48,6 @@ class InstitutionTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             $this->subject
         );
 
-    }
-
-    protected function tearDown()
-    {
-        parent::tearDown();
     }
 
 }

@@ -15,6 +15,10 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /**
  * Class PossibleDaysTranslationViewHelper
  *
@@ -23,21 +27,25 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class PossibleDaysTranslationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class PossibleDaysTranslationViewHelper extends AbstractViewHelper
 {
 
     /**
      * Calculates the fees
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation
+     * @param Calculation $calculation
+     * @return NULL|string
      */
-    public function render(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
+    public function render(Calculation $calculation = null)
     {
 
-        $output = '';
+        $output = LocalizationUtility::translate(
+            'tx_rkwfeecalculator_domain_model_program.form.possible_days.value.unlimited',
+            'rkw_feecalculator'
+        );
 
         if ($calculation->getSelectedProgram()->getPossibleDays()) {
-            $output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+            $output = LocalizationUtility::translate(
                 'tx_rkwfeecalculator_domain_model_program.form.possible_days.value',
                 'rkw_feecalculator',
                 [$calculation->getSelectedProgram()->getPossibleDaysMin(), $calculation->getSelectedProgram()->getPossibleDaysMax()]
@@ -45,11 +53,6 @@ class PossibleDaysTranslationViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper
 
             return $output;
         }
-
-        $output = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-            'tx_rkwfeecalculator_domain_model_program.form.possible_days.value.unlimited',
-            'rkw_feecalculator'
-        );
 
         return $output;
     }

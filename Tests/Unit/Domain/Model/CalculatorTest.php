@@ -1,24 +1,28 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use RKW\RkwFeecalculator\Domain\Model\Calculator;
+use RKW\RkwFeecalculator\Domain\Model\Program;
+use RKW\RkwFeecalculator\Tests\Unit\TestCase;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Test case.
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  */
-class CalculatorTest extends UnitTestCase
+class CalculatorTest extends TestCase
 {
     /**
-     * @var \RKW\RkwFeecalculator\Domain\Model\Calculator
+     * @var Calculator
      */
-    protected $subject = null;
+    protected $subject;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Calculator();
+        $this->subject = new Calculator();
     }
 
     /**
@@ -26,7 +30,7 @@ class CalculatorTest extends UnitTestCase
      */
     public function getAssignedProgramsReturnsInitialValueForProgram()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $newObjectStorage = new ObjectStorage();
         self::assertEquals(
             $newObjectStorage,
             $this->subject->getAssignedPrograms()
@@ -39,8 +43,8 @@ class CalculatorTest extends UnitTestCase
      */
     public function setAssignedProgramsForObjectStorageContainingProgramSetsAssignedPrograms()
     {
-        $assignedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
-        $objectStorageHoldingExactlyOneAssignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $assignedProgram = new Program();
+        $objectStorageHoldingExactlyOneAssignedPrograms = new ObjectStorage();
         $objectStorageHoldingExactlyOneAssignedPrograms->attach($assignedProgram);
         $this->subject->setAssignedPrograms($objectStorageHoldingExactlyOneAssignedPrograms);
 
@@ -57,8 +61,8 @@ class CalculatorTest extends UnitTestCase
      */
     public function addAssignedProgramToObjectStorageHoldingAssignedPrograms()
     {
-        $assignedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
-        $assignedProgramsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $assignedProgram = new Program();
+        $assignedProgramsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -74,8 +78,8 @@ class CalculatorTest extends UnitTestCase
      */
     public function removeAssignedProgramFromObjectStorageHoldingAssignedPrograms()
     {
-        $assignedProgram = new \RKW\RkwFeecalculator\Domain\Model\Program();
-        $assignedProgramsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        $assignedProgram = new Program();
+        $assignedProgramsObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -110,11 +114,6 @@ class CalculatorTest extends UnitTestCase
             'name',
             $this->subject->getName()
         );
-    }
-
-    protected function tearDown()
-    {
-        parent::tearDown();
     }
 
 }

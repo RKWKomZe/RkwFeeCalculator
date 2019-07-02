@@ -1,22 +1,27 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
+
+use RKW\RkwFeecalculator\Domain\Model\Institution;
+use RKW\RkwFeecalculator\Domain\Model\Program;
+use RKW\RkwFeecalculator\Tests\Unit\TestCase;
 
 /**
  * Test case.
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  */
-class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class ProgramTest extends TestCase
 {
     /**
-     * @var \RKW\RkwFeecalculator\Domain\Model\Program
+     * @var Program
      */
-    protected $subject = null;
+    protected $subject;
 
     protected function setUp()
     {
         parent::setUp();
-        $this->subject = new \RKW\RkwFeecalculator\Domain\Model\Program();
+        $this->subject = new Program();
     }
 
     /**
@@ -257,8 +262,7 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getRkwFeePerDayAsLimitReturnsInitialValueForBoolean()
     {
-        self::assertSame(
-            false,
+        self::assertFalse(
             $this->subject->getRkwFeePerDayAsLimit()
         );
     }
@@ -346,7 +350,7 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setInstitutionForInstitutionSetsInstitution()
     {
-        $institutionFixture = new \RKW\RkwFeecalculator\Domain\Model\Institution();
+        $institutionFixture = new Institution();
         $this->subject->setInstitution($institutionFixture);
 
         self::assertAttributeEquals(
@@ -389,12 +393,12 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 
         self::assertSame(
             [
-                '5' => 5,
-                '6' => 6,
-                '7' => 7,
-                '8' => 8,
-                '9' => 9,
-                '10' => 10
+                '5'  => 5,
+                '6'  => 6,
+                '7'  => 7,
+                '8'  => 8,
+                '9'  => 9,
+                '10' => 10,
             ],
             $this->subject->getPossibleDays()
         );
@@ -412,11 +416,6 @@ class ProgramTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             [],
             $this->subject->getPossibleDays()
         );
-    }
-
-    protected function tearDown()
-    {
-        parent::tearDown();
     }
 
 }

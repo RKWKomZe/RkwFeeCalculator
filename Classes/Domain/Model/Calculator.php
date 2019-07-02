@@ -1,5 +1,9 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Domain\Model;
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /***
  *
@@ -15,7 +19,7 @@ namespace RKW\RkwFeecalculator\Domain\Model;
 /**
  * Calculator
  */
-class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Calculator extends AbstractEntity
 {
 
     /**
@@ -31,7 +35,7 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Program>
      * @cascade remove
      */
-    protected $assignedPrograms = null;
+    protected $assignedPrograms;
 
     /**
      * __construct
@@ -52,7 +56,7 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->assignedPrograms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->assignedPrograms = new ObjectStorage();
     }
 
     /**
@@ -79,10 +83,10 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Adds a Program
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\Program $assignedProgram
+     * @param Program $assignedProgram
      * @return void
      */
-    public function addAssignedProgram(\RKW\RkwFeecalculator\Domain\Model\Program $assignedProgram)
+    public function addAssignedProgram(Program $assignedProgram)
     {
         $this->assignedPrograms->attach($assignedProgram);
     }
@@ -90,10 +94,10 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Removes a Program
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\Program $assignedProgramToRemove The Program to be removed
+     * @param Program $assignedProgramToRemove
      * @return void
      */
-    public function removeAssignedProgram(\RKW\RkwFeecalculator\Domain\Model\Program $assignedProgramToRemove)
+    public function removeAssignedProgram(Program $assignedProgramToRemove)
     {
         $this->assignedPrograms->detach($assignedProgramToRemove);
     }
@@ -114,7 +118,7 @@ class Calculator extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Program> $assignedPrograms
      * @return void
      */
-    public function setAssignedPrograms(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $assignedPrograms)
+    public function setAssignedPrograms(ObjectStorage $assignedPrograms)
     {
         $this->assignedPrograms = $assignedPrograms;
     }

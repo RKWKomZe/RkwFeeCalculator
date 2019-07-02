@@ -23,4 +23,6 @@ plugin.tx_rkwfeecalculator_calculator {
   }
 }
 
+page.includeCSS.txRkwFeecalculator = EXT:rkw_feecalculator/Resources/Public/Css/Feecalculator.css
+
 plugin.rkwfeecalculator_calculator.settings < module.rkwfeecalculator_calculator.settings

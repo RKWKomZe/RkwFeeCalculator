@@ -1,5 +1,9 @@
 <?php
+
 namespace RKW\RkwFeecalculator\Domain\Repository;
+
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /***
  *
@@ -15,12 +19,12 @@ namespace RKW\RkwFeecalculator\Domain\Repository;
 /**
  * The repository for Programs
  */
-class ProgramRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class ProgramRepository extends Repository
 {
     /**
      * @var array
      */
     protected $defaultOrderings = array(
-        'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+        'sorting' => QueryInterface::ORDER_ASCENDING,
     );
 }
