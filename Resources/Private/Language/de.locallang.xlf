@@ -73,7 +73,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.subtotal">
                 <source>Subtotal</source>
-                <target>Zwischensumme</target>
+                <target>Gesamthonorar (netto)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.total">
                 <source>Total</source>

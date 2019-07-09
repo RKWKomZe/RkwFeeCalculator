@@ -4,6 +4,9 @@
 .rkw-feecalculator .text-center {
     text-align: center;
 }
+.rkw-feecalculator .text-bold {
+    font-weight: bold;
+}
 
 @media screen and (max-width: 1200px) {
     .rkw-feecalculator table thead {

@@ -128,9 +128,9 @@ Otherwise your changes will be overwritten the next time you save the extension 
                     <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFee}</f:format.number> Euro</td>
                     <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.funding_amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeeSubvention}</f:format.number> Euro</td>
                   </tr>
-                  <tr>
-                    <td colspan="5" class="collapsed--th"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.total" /></td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.total}</f:format.number> Euro</td>
+                  <tr class="text-bold">
+                    <td colspan="5" class="collapsed--th"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.subtotal" /></td>
+                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.subtotal')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subtotal}</f:format.number> Euro</td>
                     <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.funding_amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionTotal}</f:format.number> Euro</td>
                   </tr>
                   <tr>
