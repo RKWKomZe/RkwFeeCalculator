@@ -15,7 +15,7 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use RKW\RkwFeecalculator\Domain\Model\Program;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -32,12 +32,12 @@ class PossibleDaysViewHelper extends AbstractViewHelper
     /**
      * Get the possible days
      *
-     * @param Calculation|null $calculation
+     * @param Program|null $program
      * @return array
      */
-    public function render(Calculation $calculation = null)
+    public function render(Program $program = null)
     {
-        return $calculation->getSelectedProgram() ? $calculation->getSelectedProgram()->getPossibleDays() : [];
+        return $program ? $program->getPossibleDays() : [];
     }
 
 }
