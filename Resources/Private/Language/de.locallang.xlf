@@ -167,6 +167,10 @@
                 <source>Responsible institution</source>
                 <target>Zuständig für Zuwendungsbescheid</target>
             </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.consulting">
+                <source>Consulting</source>
+                <target>Art der Beratung</target>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.company_age">
                 <source>Age of the company</source>
                 <target>Unternehmensalter</target>
@@ -211,6 +215,14 @@
 				<source>Name</source>
 				<target></target>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_consulting">
+                <source>Consulting</source>
+                <target>Art der Beratung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_consulting.title">
+                <source>Title</source>
+                <target>Name</target>
+            </trans-unit>
 			<trans-unit id="validator.notempty.empty">
 				<source>Please fill out the field '%s'.</source>
 				<target>Da fehlt noch was: Bitte füllen Sie das Feld '%s' aus.</target>
