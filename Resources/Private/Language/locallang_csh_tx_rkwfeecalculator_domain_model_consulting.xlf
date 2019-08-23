@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-07-22T10:58:48Z" product-name="rkw_management_consultancy">
+		<header/>
+		<body>
+			<trans-unit id="tx_rkw_management_consultancy_domain_model_request">
+				<source>RKW Management Consulting: Antragsformular</source>
+			</trans-unit>
+			<trans-unit id="tx_rkw_management_consultancy_domain_model_request.description">
+				<source>Provides a form for mangement consultancy with a Backend Module for evaluation and csv export</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="duration.description">
+				<source>duration</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

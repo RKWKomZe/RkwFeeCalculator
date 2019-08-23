@@ -103,6 +103,18 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consulting">
+				<source>Consulting</source>
+                <target>Art der Beratung</target>
+			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_consulting">
+                <source>Consulting</source>
+                <target>Art der Beratung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_consulting.title">
+                <source>Title</source>
+                <target>Name</target>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -15,29 +15,33 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwFeecalculator\Domain\Model\Program;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
- * Class PossibleDaysViewHelper
+ * Class ZeroPlaceholderViewHelper
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class PossibleDaysViewHelper extends AbstractViewHelper
+class ZeroPlaceholderViewHelper extends AbstractViewHelper
 {
 
     /**
-     * Get the possible days
+     * Show zero value as empty
      *
-     * @param Program|null $program
-     * @return array
+     * due to https://fluidtypo3.org/viewhelpers/fluid/master/Form/TextfieldViewHelper.html commit 967b86239e2459ce60938dbe42f0a66129942e1d
+     *
+     * @param float $value
+     * @return string
      */
-    public function render(Program $program = null)
+    public function render($value = '0')
     {
-        return $program ? $program->getPossibleDays() : [];
+        $value = ($value == '0') ? '' : $value;
+
+        return $value;
+
     }
 
 }

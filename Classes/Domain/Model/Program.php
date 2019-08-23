@@ -120,6 +120,35 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $institution;
 
     /**
+     * consulting
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Consulting>
+     */
+    protected $consulting = null;
+
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->consulting = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
      * Returns the name
      *
      * @return string $name
@@ -346,6 +375,49 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setInstitution(\RKW\RkwFeecalculator\Domain\Model\Institution $institution)
     {
         $this->institution = $institution;
+    }
+
+    /**
+     * Adds a Consulting
+     *
+     * @param \RKW\RkwFeecalculator\Domain\Model\Consulting $consulting
+     * @return void
+     */
+    public function addConsulting(\RKW\RkwFeecalculator\Domain\Model\Consulting $consulting)
+    {
+        $this->consulting->attach($consulting);
+    }
+
+    /**
+     * Removes a Consulting
+     *
+     * @param \RKW\RkwFeecalculator\Domain\Model\Consulting $consultingToRemove The Consulting to be removed
+     * @return void
+     */
+    public function removeConsulting(\RKW\RkwFeecalculator\Domain\Model\Consulting $consultingToRemove)
+    {
+        $this->consulting->detach($consultingToRemove);
+    }
+
+    /**
+     * Returns the consulting
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Consulting> $consulting
+     */
+    public function getConsulting()
+    {
+        return $this->consulting;
+    }
+
+    /**
+     * Sets the consulting
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Consulting> $consulting
+     * @return void
+     */
+    public function setConsulting(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $consulting)
+    {
+        $this->consulting = $consulting;
     }
 
     /**

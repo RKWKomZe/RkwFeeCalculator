@@ -418,4 +418,69 @@ class ProgramTest extends TestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function getConsultingReturnsInitialValueForConsulting()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getConsulting()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setConsultingForObjectStorageContainingConsultingSetsConsulting()
+    {
+        $consulting = new \RKW\RkwFeecalculator\Domain\Model\Consulting();
+        $objectStorageHoldingExactlyOneConsulting = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneConsulting->attach($consulting);
+        $this->subject->setConsulting($objectStorageHoldingExactlyOneConsulting);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneConsulting,
+            'consulting',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function addConsultingToObjectStorageHoldingConsulting()
+    {
+        $consulting = new \RKW\RkwFeecalculator\Domain\Model\Consulting();
+        $consultingObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $consultingObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($consulting));
+        $this->inject($this->subject, 'consulting', $consultingObjectStorageMock);
+
+        $this->subject->addConsulting($consulting);
+    }
+
+    /**
+     * @test
+     */
+    public function removeConsultingFromObjectStorageHoldingConsulting()
+    {
+        $consulting = new \RKW\RkwFeecalculator\Domain\Model\Consulting();
+        $consultingObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $consultingObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($consulting));
+        $this->inject($this->subject, 'consulting', $consultingObjectStorageMock);
+
+        $this->subject->removeConsulting($consulting);
+
+    }
 }

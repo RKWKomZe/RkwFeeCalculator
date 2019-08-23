@@ -49,6 +49,14 @@ call_user_func(
             'tx_rkwfeecalculator_domain_model_institution'
         );
 
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr(
+            'tx_rkwfeecalculator_domain_model_consulting',
+            'EXT:rkw_feecalculator/Resources/Private/Language/locallang_csh_tx_rkwfeecalculator_domain_model_consulting.xlf'
+        );
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages(
+            'tx_rkwfeecalculator_domain_model_consulting'
+        );
+
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
             $extKey,
             'tx_rkwfeecalculator_domain_model_program'

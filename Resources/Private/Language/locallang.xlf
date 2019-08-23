@@ -39,6 +39,9 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day">
 				<source>Consultant Fee Per Day</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day.placeholder">
+            	<source>e.g. 100</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days">
 				<source>Number of days</source>
 			</trans-unit>
