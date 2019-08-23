@@ -78,7 +78,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
               <label class="form-label" for="consultantFeePerDay">
               <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" />
             </label>
-            <f:form.textfield property="consultantFeePerDay" id="consultantFeePerDay" additionalAttributes="{autocomplete:'consultantFeePerDay'}" class="text-right"/>
+            <f:form.textfield property="consultantFeePerDay" id="consultantFeePerDay" additionalAttributes="{autocomplete:'consultantFeePerDay'}" placeholder="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day.placeholder')}" value="<rkwCalculation:zeroPlaceholder value='{calculation.consultantFeePerDay}'/>" class="text-right"/>
           </div>
         </div>
 
