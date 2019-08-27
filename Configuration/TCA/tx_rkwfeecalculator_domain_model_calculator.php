@@ -108,7 +108,7 @@ return [
             ],
         ],
         'name'              => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculator.name',
             'config'  => [
                 'type' => 'input',
