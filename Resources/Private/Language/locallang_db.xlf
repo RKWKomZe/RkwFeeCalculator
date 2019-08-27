@@ -7,7 +7,7 @@
 				<source>FeeCalculator - Calculator</source>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
-                <source>RKW FeeCalculator</source>
+                <source>RKW FeeCalculator: Calculator</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculation">
                 <source>RKW FeeCalculator: Calculation</source>
@@ -28,10 +28,7 @@
                 <source>Consultant fee per day</source>
             </trans-unit>
             <trans-unit id="tx_rkw_feecalculator_domain_model_calculator.description">
-				<source></source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
-				<source>Calculator</source>
+				<source>Description</source>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.name">
 				<source>Name</source>
@@ -86,6 +83,12 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution.name">
 				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_consulting">
+                <source>RKW FeeCalculator: Consulting</source>
+			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_consulting.title">
+				<source>Title</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -83,7 +83,7 @@ return [
             ],
         ],
         'title' => [
-	        'exclude' => true,
+	        'exclude' => false,
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_consulting.title',
 	        'config' => [
 			    'type' => 'input',
