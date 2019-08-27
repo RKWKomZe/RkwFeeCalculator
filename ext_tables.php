@@ -57,11 +57,6 @@ call_user_func(
             'tx_rkwfeecalculator_domain_model_consulting'
         );
 
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
-            $extKey,
-            'tx_rkwfeecalculator_domain_model_program'
-        );
-
     },
     $_EXTKEY
 );
