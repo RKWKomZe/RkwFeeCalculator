@@ -189,14 +189,5 @@ CREATE TABLE tx_rkwfeecalculator_program_consulting_mm (
 # Table structure for table 'tx_rkwfeecalculator_domain_model_program'
 #
 CREATE TABLE tx_rkwfeecalculator_domain_model_program (
-
 	calculator int(11) unsigned DEFAULT '0' NOT NULL,
-
-);
-
-#
-# Table structure for table 'tx_rkwfeecalculator_domain_model_program'
-#
-CREATE TABLE tx_rkwfeecalculator_domain_model_program (
-	categories int(11) unsigned DEFAULT '0' NOT NULL,
 );

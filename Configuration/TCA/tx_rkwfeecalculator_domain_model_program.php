@@ -109,7 +109,7 @@ return [
             ],
         ],
         'name'                         => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.name',
             'config'  => [
                 'type' => 'input',
@@ -118,7 +118,7 @@ return [
             ],
         ],
         'company_age'                  => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.company_age',
             'config'  => [
                 'type' => 'input',
@@ -127,7 +127,7 @@ return [
             ],
         ],
         'possible_days_min'            => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.possible_days_min',
             'config'  => [
                 'type' => 'input',
@@ -136,7 +136,7 @@ return [
             ],
         ],
         'possible_days_max'            => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.possible_days_max',
             'config'  => [
                 'type' => 'input',
@@ -145,7 +145,7 @@ return [
             ],
         ],
         'conditions'                   => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.conditions',
             'config'  => [
                 'type' => 'text',
@@ -155,7 +155,7 @@ return [
             ],
         ],
         'content'                      => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.content',
             'config'  => [
                 'type' => 'text',
@@ -165,7 +165,7 @@ return [
             ],
         ],
         'rkw_fee_per_day'              => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day',
             'config'  => [
                 'type' => 'input',
@@ -174,7 +174,7 @@ return [
             ],
         ],
         'consultant_fee_per_day_limit' => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit',
             'config'  => [
                 'type'    => 'input',
@@ -184,7 +184,7 @@ return [
             ],
         ],
         'consultant_subvention_limit'  => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.consultant_subvention_limit',
             'config'  => [
                 'type'    => 'input',
@@ -194,7 +194,7 @@ return [
             ],
         ],
         'rkw_fee_per_day_as_limit'     => array(
-            'exclude' => 0,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day_as_limit',
             'config'  => array(
                 'type'    => 'check',
@@ -202,7 +202,7 @@ return [
             ),
         ),
         'miscellaneous'                => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.miscellaneous',
             'config'  => [
                 'type' => 'text',
@@ -212,7 +212,7 @@ return [
             ],
         ],
         'funding_factor'               => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.funding_factor',
             'config'  => [
                 'type'    => 'input',
@@ -222,7 +222,7 @@ return [
             ],
         ],
         'institution'                  => [
-            'exclude' => 0,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.institution',
             'config'  => [
                 'type'                => 'select',
@@ -241,7 +241,7 @@ return [
             ],
         ],
         'consulting' => [
-            'exclude' => true,
+            'exclude' => false,
             'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.consulting',
             'config' => [
                 'type' => 'inline',

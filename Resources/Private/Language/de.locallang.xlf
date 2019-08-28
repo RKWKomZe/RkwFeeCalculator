@@ -213,11 +213,11 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution">
 				<source>Institution</source>
-				<target></target>
+				<target>Institution</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_institution.name">
 				<source>Name</source>
-				<target></target>
+				<target>Name</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_consulting">
                 <source>Consulting</source>

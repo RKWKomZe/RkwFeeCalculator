@@ -166,7 +166,7 @@ return [
             ],
         ],
         'days'                      => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_calculation.days',
             'config'  => [
                 'type' => 'input',
@@ -175,7 +175,7 @@ return [
             ],
         ],
         'consultant_fee_per_day'    => [
-            'exclude' => true,
+            'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day',
             'config'  => [
                 'type' => 'input',
