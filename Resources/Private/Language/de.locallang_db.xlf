@@ -101,6 +101,10 @@
 				<source>Name</source>
 				<target>Name</target>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.can_start_prematurely">
+                <source>Premature start is possible</source>
+                <target>Ein vorzeitiger Start des Programms ist möglich</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consulting">
 				<source>Consulting</source>
                 <target>Art der Beratung</target>
