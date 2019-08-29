@@ -483,4 +483,14 @@ class ProgramTest extends TestCase
         $this->subject->removeConsulting($consulting);
 
     }
+
+    /**
+     * @test
+     */
+    public function getCanStartPrematurelyReturnsInitialValueForBoolean()
+    {
+        self::assertFalse(
+            $this->subject->getCanStartPrematurely()
+        );
+    }
 }
