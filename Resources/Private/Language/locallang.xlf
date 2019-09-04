@@ -87,20 +87,11 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.name">
 				<source>Name</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.responsible_institution">
-				<source>Responsible Institution</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.company_age">
-				<source>Company Age</source>
-			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_min">
 				<source>Possible Days Min</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_max">
 				<source>Possible Days Max</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.conditions">
-				<source>Conditions</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.content">
 				<source>Content</source>
@@ -111,56 +102,17 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
 				<source>Consultant Fee Per Day Limit</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.miscellaneous">
-				<source>Miscellaneous</source>
-			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.select">
 				<source>-- Please select --</source>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.name">
                 <source>Name</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.institution">
-                <source>Responsible institution</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.company_age">
-                <source>Age of the company</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.possible_days">
-                <source>Possible days</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.possible_days.value">
-                <source>%1$s to %2$s</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.possible_days.value.unlimited">
-                <source>No limitation</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.conditions">
-                <source>Conditions</source>
-            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.content">
                 <source>Content</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.label">
-                <source>RKW fee per day</source>
-            </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.value">
-				<source>%1$s Euro per day</source>
-			</trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.miscellaneous">
-                <source>Miscellaneous</source>
-            </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.institution">
-				<source>Institution</source>
-			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
 				<source>Funding factor</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_institution">
-				<source>Institution</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_institution.name">
-				<source>Name</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_consulting">
 				<source>Consulting</source>

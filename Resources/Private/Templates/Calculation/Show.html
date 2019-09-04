@@ -151,22 +151,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
               <h3><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.overview_condition_content" /></h3>
 
-              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.name" /></h4>
-              <p>{calculation.selectedProgram.name}</p>
-              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.institution" /></h4>
-              <p>{calculation.selectedProgram.institution.name}</p>
-              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.company_age" /></h4>
-              <p>{calculation.selectedProgram.companyAge}</p>
-              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.possible_days"/></h4>
-              <p><rkwCalculation:possibleDaysTranslation calculation="{calculation}"></rkwCalculation:possibleDaysTranslation></p>
-              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.conditions" /></h4>
-              <p><f:format.nl2br>{calculation.selectedProgram.conditions}</f:format.nl2br></p>
-              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.content" /></h4>
-              <p><f:format.nl2br>{calculation.selectedProgram.content}</f:format.nl2br></p>
-              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.label" /></h4>
-              <p><f:translate key="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.value" arguments="{1:calculation.selectedProgram.rkwFeePerDay}" /></p>
-              <h4><f:translate key="tx_rkwfeecalculator_domain_model_program.form.miscellaneous" /></h4>
-              <p><f:format.nl2br>{calculation.selectedProgram.miscellaneous}</f:format.nl2br></p>
+              <f:format.html>{calculation.selectedProgram.content}</f:format.html>
 
             </div>
 
