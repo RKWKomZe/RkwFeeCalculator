@@ -45,10 +45,6 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.name">
 				<source>Name</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.company_age">
-				<source>Company Age</source>
-				<target>Unternehmensalter</target>
-			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_min">
 				<source>Possible Days Min</source>
                 <target>minimal mögliche Anzahl Tagwerke</target>
@@ -56,10 +52,6 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_max">
 				<source>Possible Days Max</source>
                 <target>maximal mögliche Anzahl Tagwerke</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.conditions">
-				<source>Conditions</source>
-                <target>Zuschuss</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.content">
 				<source>Content</source>
@@ -81,26 +73,10 @@
 				<source>Rkw Fee Per Day As Limit</source>
 				<target>RKW Honorar je Tagwerk als Maximalzuschuss berücksichtigen</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.miscellaneous">
-				<source>Miscellaneous</source>
-				<target>Sonstiges</target>
-			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
                 <source>Funding factor</source>
                 <target>Faktor für zu beantragende Fördermittel</target>
             </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.institution">
-				<source>Institution</source>
-                <target>Zuständig für Zuwendungsbescheid</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_institution">
-				<source>RKW FeeCalculator: Institution</source>
-				<target>RKW FeeCalculator: Institution</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_institution.name">
-				<source>Name</source>
-				<target>Name</target>
-			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.can_start_prematurely">
                 <source>Premature start is possible</source>
                 <target>Ein vorzeitiger Start des Programms ist möglich</target>

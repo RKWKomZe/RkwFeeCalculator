@@ -115,28 +115,12 @@
 				<source>Name</source>
 				<target></target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.institution">
-				<source>Institution</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.responsible_institution">
-				<source>Responsible Institution</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.company_age">
-				<source>Company Age</source>
-				<target></target>
-			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_min">
 				<source>Possible Days Min</source>
 				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_max">
 				<source>Possible Days Max</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.conditions">
-				<source>Conditions</source>
 				<target></target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.content">
@@ -151,10 +135,6 @@
 				<source>Consultant Fee Per Day Limit</source>
 				<target></target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.miscellaneous">
-				<source>Miscellaneous</source>
-				<target>Sonstiges</target>
-			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
 				<source>Funding factor</source>
 				<target>Zuschussfaktor</target>
@@ -167,10 +147,6 @@
                 <source>Name</source>
                 <target>Name des Förderprogramms</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.institution">
-                <source>Responsible institution</source>
-                <target>Zuständig für Zuwendungsbescheid</target>
-            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.can_start_prematurely">
                 <source>Premature start is possible</source>
                 <target>Ein vorzeitiger Start des Programms ist möglich</target>
@@ -179,50 +155,10 @@
                 <source>Consulting</source>
                 <target>Art der Beratung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.company_age">
-                <source>Age of the company</source>
-                <target>Unternehmensalter</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.possible_days">
-                <source>Possible days</source>
-                <target>Mögliche Anzahl Tagwerke</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.possible_days.value">
-                <source>%1$s to %2$s</source>
-                <target>%1$s TW bis %2$s TW</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.possible_days.value.unlimited">
-                <source>No limitation</source>
-                <target>keine Begrenzung</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.conditions">
-                <source>Conditions</source>
-                <target>Zuschuss</target>
-            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.content">
                 <source>Content</source>
                 <target>Beratungsinhalte</target>
             </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.label">
-                <source>RKW fee per day</source>
-                <target>RKW Honorar je Tagwerk</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.rkw_fee_per_day.value">
-				<source>%1$s Euro per day</source>
-				<target>%1$s Euro je Tagwerk</target>
-			</trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.miscellaneous">
-                <source>Miscellaneous</source>
-                <target>Sonstige Bestimmungen</target>
-            </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_institution">
-				<source>Institution</source>
-				<target>Institution</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_institution.name">
-				<source>Name</source>
-				<target>Name</target>
-			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_consulting">
                 <source>Consulting</source>
                 <target>Art der Beratung</target>
