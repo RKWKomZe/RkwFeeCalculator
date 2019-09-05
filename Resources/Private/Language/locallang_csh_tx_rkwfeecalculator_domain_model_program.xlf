@@ -12,20 +12,11 @@
 			<trans-unit id="name.description">
 				<source>name</source>
 			</trans-unit>
-			<trans-unit id="responsible_institution.description">
-				<source>responsibleInstitution</source>
-			</trans-unit>
-			<trans-unit id="company_age.description">
-				<source>companyAge</source>
-			</trans-unit>
 			<trans-unit id="possible_days_min.description">
 				<source>possibleDaysMin</source>
 			</trans-unit>
 			<trans-unit id="possible_days_max.description">
 				<source>possibleDaysMax</source>
-			</trans-unit>
-			<trans-unit id="conditions.description">
-				<source>conditions</source>
 			</trans-unit>
 			<trans-unit id="content.description">
 				<source>content</source>
@@ -35,12 +26,6 @@
 			</trans-unit>
 			<trans-unit id="consultant_fee_per_day_limit.description">
 				<source>consultantFeePerDayLimit</source>
-			</trans-unit>
-			<trans-unit id="miscellaneous.description">
-				<source>miscellaneous</source>
-			</trans-unit>
-			<trans-unit id="institution.description">
-				<source>institution</source>
 			</trans-unit>
 		</body>
 	</file>
