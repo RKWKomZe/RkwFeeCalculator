@@ -4,7 +4,6 @@
 
 <f:render partial="FormErrors" arguments="{object:SupportRequest}" />
 
-
 <f:form class="form-fields" action="create" name="newSupportRequest" object="{newSupportRequest}" >
 
     <f:form.hidden property="supportProgramme" value="{supportProgramme}" />
@@ -13,13 +12,13 @@
         <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.headline" arguments="{0 : supportProgramme.name}" />
     </h3>
 
-    <f:render partial="SupportRequest/RequestFormParts/01-applicant" arguments="{_all}" />
+    <f:render partial="SupportRequest/Components/01-Applicant" arguments="{_all}" />
 
-    <f:render partial="SupportRequest/RequestFormParts/02-consulting" arguments="{_all}" />
+    <f:render partial="SupportRequest/Components/02-Consulting" arguments="{_all}" />
 
-    <f:render partial="SupportRequest/RequestFormParts/03-consultant" arguments="{_all}" />
+    <f:render partial="SupportRequest/Components/03-Consultant" arguments="{_all}" />
 
-    <f:render partial="SupportRequest/RequestFormParts/04-misc" arguments="{_all}" />
+    <f:render partial="SupportRequest/Components/04-Misc" arguments="{_all}" />
 
     <f:form.button class="button">
         <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.send" />

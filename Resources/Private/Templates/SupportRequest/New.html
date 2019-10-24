@@ -18,7 +18,10 @@ Otherwise your changes will be overwritten the next time you save the extension 
     <f:render partial="FormErrors" arguments="{object:SupportRequest}" />
 
     <f:form class="form-fields" action="requestForm" name="newSupportRequest" object="{newSupportRequest}">
-        <f:render partial="SupportRequest/FormFields" arguments="{_all}" />
+        <label class="form-label" for="supportProgramme">
+            <f:translate key="tx_rkwfeecalculator_domain_model_supportprogramme" />
+        </label>
+        <f:form.select name="supportProgramme" options="{supportProgrammeList}" optionValueField="uid" optionLabelField="name" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_partials_supportrequest_formfields.chooseSupportProgramme')}" additionalAttributes="{onChange : 'this.form.submit();'}"/>
 
         <f:form.button class="button">
             <f:translate key="tx_rkwfeecalculator_templates_new.choose" />
