@@ -15,6 +15,18 @@ call_user_func(
                 'Calculation' => 'show,store',
             ]
         );
+
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'RKW.RkwFeecalculator',
+            'Request',
+            [
+                'SupportRequest' => 'new, requestForm, create'
+            ],
+            // non-cacheable actions
+            [
+                'SupportRequest' => 'new, requestForm, create'
+            ]
+        );
     },
     $_EXTKEY
 );

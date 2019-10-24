@@ -1,0 +1,10 @@
+<div class="v320">
+
+    <div class="v320-1">
+        <label class="form-label" for="supportProgramme">
+            <f:translate key="tx_rkwmanagementconsultancy_domain_model_supportprogramme" />
+        </label>
+        <f:form.select name="supportProgramme" options="{supportProgrammeList}" optionValueField="uid" optionLabelField="name" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwmanagementconsultancy_partials_supportrequest_formfields.chooseSupportProgramme')}" additionalAttributes="{onChange : 'this.form.submit();'}"/>
+    </div>
+
+</div>

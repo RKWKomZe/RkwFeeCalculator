@@ -1,0 +1,46 @@
+{namespace rkwCalculation=RKW\RkwFeecalculator\ViewHelpers}
+
+<fieldset>
+    <legend>
+        <f:translate key="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.consulting" extensionName="RkwManagementConsultancy" />
+    </legend>
+
+    <div class="v320-1">
+        <label for="consulting">
+            <f:translate key="tx_rkwfeecalculator_domain_model_program.consulting" extensionName="RkwFeecalculator" />
+        </label>
+        <f:form.select property="consulting" options="{consultingList}" optionValueField="uid" optionLabelField="title" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwmanagementconsultancy_domain_model_supportrequest.general.pleaseChoose')}" />
+    </div>
+
+    <div class="v320-1">
+        <div class="v320-1-of-2">
+            <label for="consultingDays">
+                <f:translate key="tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_days" extensionName="RkwManagementConsultancy" />
+            </label>
+            <f:form.select property="consultingDays" options="<rkwCalculation:possibleDays program='{supportProgramme}'/>" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwmanagementconsultancy_domain_model_supportrequest.general.pleaseChoose')}" />
+        </div>
+    </div>
+
+    <div class="v320-1">
+        <div class="v320-1-of-2">
+            <label for="consultingDateFrom">
+                <f:translate key="tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_date_from" extensionName="RkwManagementConsultancy" />
+            </label>
+            <f:form.textfield property="consultingDateFrom" value="{supportRequest.consultingDateFrom->f:format.date()}" placeholder="DD.MM.YYYY" />
+        </div>
+        <div class="v320-2-of-2">
+            <label for="consultingDateTo">
+                <f:translate key="tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_date_to" extensionName="RkwManagementConsultancy" />
+            </label>
+            <f:form.textfield property="consultingDateTo" value="{supportRequest.consultingDateTo->f:format.date()}" placeholder="DD.MM.YYYY" />
+        </div>
+    </div>
+
+    <div class="v320-1">
+        <label for="consultingContent">
+            <f:translate key="tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_content" extensionName="RkwManagementConsultancy" />
+        </label>
+        <f:form.textarea property="consultingContent" cols="40" rows="5" />
+    </div>
+
+</fieldset>

@@ -179,6 +179,674 @@
 				<source>The given subject was not a valid number.</source>
 				<target>Der angegebene Wert ist keine gültige Eingabe.</target>
 			</trans-unit>
+
+			<trans-unit id="tx_rkw_management_consultancy_domain_model_request">
+                <source>RKW Management Consulting: Form</source>
+                <target>RKW Management Consulting: Antragsformular</target>
+            </trans-unit>
+            <trans-unit id="tx_rkw_management_consultancy_domain_model_request.description">
+                <source>Provides a form for management consultancy</source>
+                <target>Diese Erweiterung beinhaltet ein Formular zur Beantragung einer Unternehmensberatung.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportprogramme">
+                <source>Support program</source>
+                <target>Förderprogramm</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest">
+                <source>Support Request</source>
+                <target>Beratungsanfrage</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.tab.consultation">
+                <source>Consultation</source>
+                <target>Beratung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.tab.consultant">
+                <source>Consultant</source>
+                <target>Berater</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.tab.misc">
+                <source>Misc</source>
+                <target>Sonstiges</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.general.pleaseChoose">
+                <source>-- Please choose --</source>
+                <target>-- Bitte wählen --</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.name">
+                <source>Name</source>
+                <target>Name des Unternehmens</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.address">
+                <source>Address</source>
+                <target>Straße, Nr.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.zip">
+                <source>Zip</source>
+                <target>PLZ</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.city">
+                <source>City</source>
+                <target>Ort</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.foundation_date">
+                <source>(Intended) Foundation Date</source>
+                <target>(Geplantes) Gründungsdatum</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.citizenship">
+                <source>Citizenship</source>
+                <target>Staatsangehörigkeit</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.birthdate">
+                <source>Birthdate</source>
+                <target>Geburtsdatum</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.company_type">
+                <source>Company type</source>
+                <target>Rechtsform</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.foundation_location">
+                <source>Intended location of foundation</source>
+                <target>Geplanter Ort der Gründung (PLZ, Ort)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.sales">
+                <source>Sales</source>
+                <target>Umsatz in T€</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.balance">
+                <source>Balance</source>
+                <target>Bilanzsumme T€</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.employees_count">
+                <source>Number Of Employees</source>
+                <target>Mitarbeiterzahl</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.manager">
+                <source>Manager Name</source>
+                <target>Geschäftsführer / Inhaber</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.single_representative">
+                <source>Single Representative</source>
+                <target>Einzelvertretungsberechtigung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.single_representative.1">
+                <source>Yes</source>
+                <target>Ja</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.single_representative.99">
+                <source>No</source>
+                <target>Nein</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_tax_deduction">
+                <source>Deduction Right</source>
+                <target>Vorsteuerabzugsberechtigung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_tax_deduction.1">
+                <source>Yes</source>
+                <target>Ja</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_tax_deduction.99">
+                <source>No</source>
+                <target>Nein</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.business_purpose">
+                <source>Business Purpose</source>
+                <target>Unternehmensgegenstand</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.insolvency_proceedings">
+                <source>Insolvency Proceedings</source>
+                <target>Ist für das Unternehmen, einen der Gesellschafter oder Geschäftsführer ein Insolvenzverfahren anhängig oder eröffnet?</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.insolvency_proceedings.1">
+                <source>Yes</source>
+                <target>Ja</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.insolvency_proceedings.99">
+                <source>No</source>
+                <target>Nein</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.chamber">
+                <source>Chamber</source>
+                <target>Kammerzugehörigkeit</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.chamber.1">
+                <source>none</source>
+                <target>keine</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.chamber.2">
+                <source>IHK</source>
+                <target>IHK</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.chamber.3">
+                <source>HWK</source>
+                <target>HWK</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.company_shares">
+                <source>Company Shares</source>
+                <target>Gesellschaftsanteile (namentliche Verteilung der Anteile in %)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.principal_bank">
+                <source>Principle Bank</source>
+                <target>Hausbank</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.bic">
+                <source>BIC</source>
+                <target>BIC</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.iban">
+                <source>IBAN</source>
+                <target>IBAN</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_last_name">
+                <source>Contact Person Last Name</source>
+                <target>Ansprechpartner für RKW (Nachname)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_first_name">
+                <source>Contact Person First Name</source>
+                <target>Ansprechpartner für RKW (Vorname)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_phone">
+                <source>Contact Person Phone</source>
+                <target>Telefon</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_fax">
+                <source>Contact Person Fax</source>
+                <target>Telefax</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_mobile">
+                <source>Contact Person Mobile</source>
+                <target>Mobil</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_email">
+                <source>Contact Person Email</source>
+                <target>E-Mail (personenbezogen)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_employment">
+                <source>Start Up Employment Status Before</source>
+                <target>Erwerbsstatus vor Gründung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_employment.employed">
+                <source>Employed</source>
+                <target>angestellt</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_employment.self_employed">
+                <source>Self-employed</source>
+                <target>selbstständig</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_employment.in_education">
+                <source>In education</source>
+                <target>in Ausbildung/im Studium</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_employment.unemployed">
+                <source>Unemployed</source>
+                <target>arbeitslos</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment">
+                <source>Start Up Independent Work</source>
+                <target>Liegt bereits eine selbstständige Tätigkeit vor?</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment.no">
+                <source>No</source>
+                <target>Nein</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment.part_time">
+                <source>Part-time</source>
+                <target>Ja, im Nebenerwerb</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment.full_time">
+                <source>Full-time</source>
+                <target>Ja, im Vollerwerb</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment.shareholder">
+                <source>Shareholder</source>
+                <target>Ja, Anteile an bestehenden Unternehmen</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_days">
+                <source>Intended consulting days</source>
+                <target>geplante Anzahl Tagwerke</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_date_from">
+                <source>Consulting Date From</source>
+                <target>Zeitraum von</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_date_to">
+                <source>Consulting Date Up To</source>
+                <target>Zeitraum bis</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_content">
+                <source>Consulting Description</source>
+                <target>Beratungsinhalte</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_type">
+                <source>Consultant Type</source>
+                <target>Beraterauswahl</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_type.1">
+                <source>I need a RKW recommendation</source>
+                <target>Ich wünsche eine Berater-Empfehlung aus dem RKW-Beraterpool.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_type.2">
+                <source>I've decided for a special onsultant</source>
+                <target>Ich habe mich bereits für einen akkreditierten Berater entschieden.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_type.3">
+                <source>I've NOT decided for a special consultant</source>
+                <target>Ich habe mich bereits für einen NOCH NICHT akkreditierten Berater entschieden.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_company">
+                <source>Consultant Company</source>
+                <target>Beratungsfirma</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_name1">
+                <source>Consultant Name1</source>
+                <target>Berater (Name, Vorname)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_name2">
+                <source>Consultant Name2</source>
+                <target>2. Berater (Name, Vorname)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant1_accreditation_number">
+                <source>Consultant1 Accreditation Number</source>
+                <target>Akkr-Nr.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant2_accreditation_number">
+                <source>Consultant2 Accreditation Number</source>
+                <target>Akkr-Nr.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_fee">
+                <source>Consultant Fee</source>
+                <target>Honorar je Tagwerk in Euro (netto)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_phone">
+                <source>Consultant Phone</source>
+                <target>Telefon</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_email">
+                <source>Consultant Email</source>
+                <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.premature_start">
+                <source>Early Start Desired</source>
+                <target>Vorzeitiger Maßnahmebeginn erwünscht</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.premature_start.hint1">
+                <source>It's possible to start prematurely. There is no legal claim.</source>
+                 <target>Für die %s kann ein vorzeitiger Maßnahmebeginn beantragt werden! Möchten Sie auf eigenes Risiko einen vorzeitigen Maßnahmebeginn beantragen?</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.premature_start.hint2">
+                <source>You do this on your own risk.</source>
+                 <target>Mir ist bekannt, dass kein Rechtsanspruch auf eine Förderung besteht und dass die Maßnahme in Verbindung mit der Gewährung des vorzeitigen Maßnahmebeginns auf eigenes Risiko durchgeführt wird.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.premature_start.1">
+                <source>Yes</source>
+                <target>Ja</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.premature_start.99">
+                <source>No</source>
+                <target>Nein</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.send_documents">
+                <source>Send Documents Allowed</source>
+                <target>Wie dürfen wir Ihnen Ihre Antragsunterlagen zusenden?</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.bafa_support">
+                <source>Already received BAFA support?</source>
+                <target>Haben Sie bereits BAFA-Förderung erhalten?</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.send_documents.1">
+                <source>via E-Mail</source>
+                <target>Per E-Mail</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.send_documents.2">
+                <source>via post</source>
+                <target>Per Post</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.support_programme">
+                <source>Support Programme</source>
+                <target>Förderprogramm</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting">
+                <source>Consulting</source>
+                <target>Beratung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.privacy">
+                <source>Privacy</source>
+                <target>Datenschutz</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_domain_model_supportrequest.terms">
+                <source>Terms</source>
+                <target>Allgemeine Geschäftsbedingungen</target>
+            </trans-unit>
+
+
+
+            <!-- CONTROLLER -->
+            <trans-unit id="tx_rkwmanagementconsultancy_controller_supportrequest.error.choose_support_programme">
+                <source>Please choose a support programme.</source>
+                <target>Ein Förderprogramm muss ausgewählt werden.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_controller_supportrequest.success.requestCreated">
+                <source>Success! We got your support request.</source>
+                <target>Wohooo! Wir haben ihre Förderanfrage erhalten :)</target>
+            </trans-unit>
+
+
+
+            <!-- TEMPLATES -->
+            <trans-unit id="tx_rkwmanagementconsultancy_templates_new.choose">
+                <source>Choose</source>
+                <target>Auswählen</target>
+            </trans-unit>
+
+
+            <!-- PARTIALS -->
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_formfields.chooseSupportProgramme">
+                <source>Choose support programme</source>
+                <target>Förderprogramm wählen</target>
+            </trans-unit>
+
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_formHeader.text1">
+                <source>Management consultancy</source>
+                <target>Erfassungsbogen für Unternehmensberatungen </target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_formHeader.text2">
+                <source>KMI - Freie Berufe - Gründer</source>
+                <target>Auswählen</target>
+            </trans-unit>
+
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.headline">
+                <source>Consulting request within "%s"</source>
+                <target>Beratungsanfrage im Rahmen des Programms "%s"</target>
+            </trans-unit>
+
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.send">
+                <source>Send</source>
+                <target>Antrag abschicken</target>
+            </trans-unit>
+
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.applicant">
+                <source>applicant</source>
+                <target>Antragsteller</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.consulting">
+                <source>Consulting</source>
+                <target>Beratung</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.consultant">
+                <source>Consultant</source>
+                <target>Berater</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.additional">
+                <source>Additional information</source>
+                <target>Zusätzliche Angaben</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.chooseCompanyType">
+                <source>Choose company type</source>
+                <target>Rechtsform wählen</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.chooseConsulting">
+                <source>Choose kind of consulting</source>
+                <target>Art der Beratung auswählen</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.termsIntro">
+                <source>I accept the</source>
+                <target>Ich akzeptiere die</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.terms">
+                <source>terms</source>
+                <target>Nutzungsbedingungen</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.terms2Intro">
+                <source>and</source>
+                <target>und</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.terms2">
+                <source>conditions</source>
+                <target>AGB.</target>
+            </trans-unit>
+
+            <!-- PARTIAL: Form errors -->
+            <trans-unit id="form.error.1221560718">
+                <source>Please fill out the field '%s'.</source>
+                <target>Bitte füllen Sie das Feld '%s' aus.</target>
+            </trans-unit>
+            <trans-unit id="form.error.1221560910">
+                <source>Please fill out the field '%s'.</source>
+                <target>Bitte füllen Sie das Feld '%s' aus.</target>
+            </trans-unit>
+
+            <trans-unit id="form.error.newSupportRequest.name">
+                <source>Name</source>
+                <target>Unternehmen</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.address">
+                <source>Address</source>
+                <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.zip">
+                <source>Zip</source>
+                <target>PLZ</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.city">
+                <source>City</source>
+                <target>Ort</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.foundationDate">
+                <source>Foundation Date</source>
+                <target>Gründungsdatum</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.citizenship">
+                <source>Citizenship</source>
+                <target>Staatsangehörigkeit</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.birthdate">
+                <source>Birthdate</source>
+                <target>Geburtsdatum</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.foundationLocation">
+                <source>Intended location of foundation</source>
+                <target>Geplanter Ort der Gründung (PLZ, Ort)</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.companyType">
+                <source>Company type</source>
+                <target>Rechtsform</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.sales">
+                <source>Sales</source>
+                <target>Umsatz in T€</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.balance">
+                <source>Balance</source>
+                <target>Bilanzsumme in T€</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.employeesCount">
+                <source>Number Of Employees</source>
+                <target>Mitarbeiteranzahl</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.manager">
+                <source>Manager Name</source>
+                <target>Geschäftsführer / Inhaber</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.singleRepresentative">
+                <source>Single Representative</source>
+                <target>Einzelvertretung</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.preTaxDeduction">
+                <source>Deduction Right</source>
+                <target>Vorsteuerabzugsberechtigung</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.businessPurpose">
+                <source>Business Purpose</source>
+                <target>Unternehmensgegenstand</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.companyShares">
+                <source>Company Shares</source>
+                <target>Gesellschaftsanteile</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.principalBank">
+                <source>Principle Bank</source>
+                <target>Hausbank</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.bic">
+                <source>BIC</source>
+                <target>BIC</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.iban">
+                <source>IBAN</source>
+                <target>IBAN</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.contactPersonLastName">
+                <source>Contact Person Last Name</source>
+                <target>Ansprechpartner (Nachname)</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.contactPersonFirstName">
+                <source>Contact Person First Name</source>
+                <target>Ansprechpartner (Vorname)</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.contactPersonPhone">
+                <source>Contact Person Phone</source>
+                <target>Ansprechpartner (Telefonnummer)</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.contactPersonFax">
+                <source>Contact Person Fax</source>
+                <target>Ansprechpartner (Faxnummer)</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.contactPersonMobile">
+                <source>Contact Person Mobile</source>
+                <target>Ansprechpartner (Mobilnummer)</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.contactPersonEmail">
+                <source>Contact Person Email</source>
+                <target>Ansprechpartner (E-Mail-Adresse)</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.startUpFoundationDate">
+                <source>Start Up Foundation Date</source>
+                <target>StartUp: Gründungsdatum</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.preFoundationEmployment">
+                <source>Start Up Employment Status Before</source>
+                <target>StartUp: Erwerbsstatus vor Gründung</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.preFoundationSelfEmployment">
+                <source>Start Up Independent Work</source>
+                <target>StartUp: Selbstständige Arbeit</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultingDays">
+                <source>Intended consulting days</source>
+                <target>geplante Anzahl Tagwerke</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultingDateFrom">
+                <source>Consulting Date From</source>
+                <target>Zeitraum: Von</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultingDateTo">
+                <source>Consulting Date Up To</source>
+                <target>Zeitraum: Bis</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultingContent">
+                <source>Consulting Description</source>
+                <target>Beratungsinhalt</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultantType">
+                <source>Consultant Type</source>
+                <target>Art der Beratung</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultantCompany">
+                <source>Consultant Company</source>
+                <target>Name der Beratungsfirma</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultantName1">
+                <source>Consultant Name1</source>
+                <target>Berater 1: Name</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultantName2">
+                <source>Consultant Name2</source>
+                <target>Berater 2: Name</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultant1AccreditationNumber">
+                <source>Consultant1 Accreditation Number</source>
+                <target>Berater 1: Akkr-Nr.</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultant2AccreditationNumber">
+                <source>Consultant2 Accreditation Number</source>
+                <target>Berater 2: Akkr-Nr.</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultantFee">
+                <source>Consultant Fee</source>
+                <target>Berater: Honorar</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultantPhone">
+                <source>Consultant Phone</source>
+                <target>Berater: Telefon</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consultantEmail">
+                <source>Consultant Email</source>
+                <target>Berater: E-Mail</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.prematureStart">
+                <source>Early Start Desired</source>
+                <target>Vorzeitiger Maßnahmebeginn</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.sendDocuments">
+                <source>Send Documents Allowed</source>
+                <target>Wie möchten Sie ihre Unterlagen erhalten?</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.bafaSupport">
+                <source>Already received BAFA support?</source>
+                <target>Haben Sie bereits BAFA-Förderung erhalten?</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.supportProgramme">
+                <source>Support Programme</source>
+                <target>Förderprogramm</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.consulting">
+                <source>Consulting</source>
+                <target>Beratung</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.privacy">
+                <source>Privacy</source>
+                <target>Datenschutz</target>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.terms">
+                <source>Terms</source>
+                <target>AGB</target>
+            </trans-unit>
+
+
+            <!-- EMAIL -->
+
+            <!-- Templates/Email/ConfirmationUser.html -->
+            <trans-unit id="templates_email_confirmationUser.headline">
+                <source>Hello %s %s,</source>
+                <target>Hallo %s %s,</target>
+            </trans-unit>
+            <trans-unit id="templates_email_confirmationUser.text1">
+                <source>thank you for your support request.</source>
+                <target>vielen Dank für Ihren Antrag auf ein Förderprogramm des RKW.</target>
+            </trans-unit>
+            <trans-unit id="templates_email_confirmationUser.text2">
+                <source>You will get an answer to your support request shortly.</source>
+                <target>Untenstehend finden Sie die Details Ihres Antrags. Wir melden uns baldmöglichst wieder bei Ihnen.</target>
+            </trans-unit>
+
+            <trans-unit id="rkwMailService.confirmationUser.subject">
+                <source>Thanks for your request</source>
+                <target>RKW Förderprogramm: Ihr Antrag</target>
+            </trans-unit>
+            <trans-unit id="rkwMailService.notifyAdmin.subject">
+                <source>A new support request has arrived</source>
+                <target>RKW Förderprogramm: Ein neuer Antrag wurde gestellt</target>
+            </trans-unit>
+
+
+            <!-- Templates/Email/NotifyAdmin.html -->
+            <trans-unit id="templates_email_notifyAdmin.headline">
+                <source>Hello %s,</source>
+                <target>Hallo %s,</target>
+            </trans-unit>
+            <trans-unit id="templates_email_notifyAdmin.text1">
+                <source>a new support request arrived. Please show below for details.</source>
+                <target>über die Website wurde ein Förderantrag gestellt. Bitte prüfen Sie den untenstehende Antrag. Sie können bei etwaigen Rückfragen direkt auf diese E-Mail antworten.</target>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>
