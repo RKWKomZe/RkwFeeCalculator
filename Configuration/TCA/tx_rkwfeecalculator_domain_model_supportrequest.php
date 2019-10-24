@@ -1,7 +1,7 @@
 <?php
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest',
+        'title' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest',
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -15,7 +15,7 @@ return [
             'disabled' => 'hidden',
         ],
         'searchFields' => 'name, address, zip, city, foundation_date, citizenship, birthdate, foundation_location, sales, balance, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_last_name, contact_person_first_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, consulting_days, consulting_date_from, consulting_date_to, consulting_content, consultant_type, consultant_company, consultant_name1, consultant1_accreditation_number, consultant_name2, consultant2_accreditation_number, consultant_fee, consultant_phone, consultant_email, premature_start, send_documents, bafa_support, support_programme, consulting, company_type',
-        'iconfile' => 'EXT:rkw_feecalculator/Resources/Public/Icons/tx_rkwmanagementconsultancy_domain_model_supportrequest.gif'
+        'iconfile' => 'EXT:rkw_feecalculator/Resources/Public/Icons/tx_rkwfeecalculator_domain_model_supportrequest.gif'
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, address, zip, city, foundation_date, citizenship, birthdate, foundation_location, sales, balance, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_last_name,contact_person_first_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, consulting_days, consulting_date_from, consulting_date_to, consulting_content, consultant_type, consultant_company, consultant_name1, consultant1_accreditation_number, consultant_name2, consultant2_accreditation_number, consultant_fee, consultant_phone, consultant_email, premature_start, send_documents, bafa_support, support_programme, consulting, company_type',
@@ -26,13 +26,13 @@ return [
             sys_language_uid, l10n_parent, l10n_diffsource, hidden, 
             support_programme, name, address, zip, city, foundation_date, citizenship, birthdate, foundation_location, company_type, balance, sales, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_last_name, contact_person_first_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, 
             
-             --div--;LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.tab.consultation,
+             --div--;LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.tab.consultation,
             consulting, consulting_days, consulting_date_from, consulting_date_to, consulting_content, 
             
-             --div--;LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.tab.consultant,
+             --div--;LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.tab.consultant,
             consultant_type, consultant_company, consultant_name1, consultant1_accreditation_number, consultant_name2, consultant2_accreditation_number, consultant_fee, consultant_phone, consultant_email, 
             
-            --div--;LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.tab.misc,
+            --div--;LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.tab.misc,
             premature_start, send_documents, bafa_support, 
             '
         ],
@@ -65,8 +65,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_rkwmanagementconsultancy_domain_model_supportrequest',
-                'foreign_table_where' => 'AND tx_rkwmanagementconsultancy_domain_model_supportrequest.pid=###CURRENT_PID### AND tx_rkwmanagementconsultancy_domain_model_supportrequest.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_rkwfeecalculator_domain_model_supportrequest',
+                'foreign_table_where' => 'AND tx_rkwfeecalculator_domain_model_supportrequest.pid=###CURRENT_PID### AND tx_rkwfeecalculator_domain_model_supportrequest.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -97,7 +97,7 @@ return [
 
         'support_programme' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.support_programme',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.support_programme',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -108,7 +108,7 @@ return [
         ],
 	    'name' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.name',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.name',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -117,7 +117,7 @@ return [
 	    ],
 	    'address' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.address',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.address',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -126,7 +126,7 @@ return [
 	    ],
 	    'zip' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.zip',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.zip',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 4,
@@ -135,7 +135,7 @@ return [
 	    ],
 	    'city' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.city',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.city',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -144,7 +144,7 @@ return [
 	    ],
 	    'foundation_date' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.foundation_date',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.foundation_date',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
@@ -156,7 +156,7 @@ return [
 	    ],
         'citizenship' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.citizenship',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.citizenship',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -165,7 +165,7 @@ return [
         ],
         'birthdate' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.birthdate',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.birthdate',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
@@ -177,7 +177,7 @@ return [
         ],
         'foundation_location' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.foundation_location',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.foundation_location',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -186,7 +186,7 @@ return [
         ],
         'company_type' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.company_type',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.company_type',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -195,7 +195,7 @@ return [
         ],
         'balance' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.balance',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.balance',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -204,7 +204,7 @@ return [
         ],
         'sales' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.sales',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.sales',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -213,7 +213,7 @@ return [
 	    ],
 	    'employees_count' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.employees_count',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.employees_count',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 4,
@@ -222,7 +222,7 @@ return [
 	    ],
 	    'manager' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.manager',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.manager',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -231,7 +231,7 @@ return [
 	    ],
 	    'single_representative' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.single_representative',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.single_representative',
             'config'  => array(
                 'type'    => 'check',
                 'default' => 0,
@@ -239,7 +239,7 @@ return [
 	    ],
 	    'pre_tax_deduction' => [
 	        'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_tax_deduction',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction',
             'config'  => array(
                 'type'    => 'check',
                 'default' => 0,
@@ -247,7 +247,7 @@ return [
 	    ],
 	    'business_purpose' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.business_purpose',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.business_purpose',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -256,7 +256,7 @@ return [
 	    ],
         'insolvency_proceedings' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.insolvency_proceedings',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings',
             'config'  => array(
                 'type'    => 'check',
                 'default' => 0,
@@ -264,22 +264,22 @@ return [
         ],
         'chamber' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.chamber',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.chamber',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'default' => 0,
                 'items' => [
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.general.pleaseChoose', 0],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.chamber.1', 1],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.chamber.2', 2],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.chamber.3', 3],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose', 0],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.chamber.1', 1],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.chamber.2', 2],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.chamber.3', 3],
                 ]
             ]
         ],
 	    'company_shares' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.company_shares',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.company_shares',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -288,7 +288,7 @@ return [
 	    ],
 	    'principal_bank' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.principal_bank',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.principal_bank',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -297,7 +297,7 @@ return [
 	    ],
 	    'bic' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.bic',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.bic',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -306,7 +306,7 @@ return [
 	    ],
 	    'iban' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.iban',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.iban',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -315,7 +315,7 @@ return [
 	    ],
         'contact_person_last_name' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_last_name',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.contact_person_last_name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -324,7 +324,7 @@ return [
         ],
         'contact_person_first_name' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_first_name',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.contact_person_first_name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -333,7 +333,7 @@ return [
         ],
 	    'contact_person_phone' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_phone',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.contact_person_phone',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -342,7 +342,7 @@ return [
 	    ],
 	    'contact_person_fax' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_fax',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.contact_person_fax',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -351,7 +351,7 @@ return [
 	    ],
         'contact_person_mobile' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_mobile',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.contact_person_mobile',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -360,7 +360,7 @@ return [
         ],
 	    'contact_person_email' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.contact_person_email',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.contact_person_email',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -369,32 +369,32 @@ return [
 	    ],
 	    'pre_foundation_employment' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_employment',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment',
 	        'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'default' => 0,
                 'items' => [
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.general.pleaseChoose', 0],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_employment.employed', 1],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_employment.unemployed', 2],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_employment.self_employed', 3],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose', 0],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.employed', 1],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.unemployed', 2],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.self_employed', 3],
                 ]
 			]
 	    ],
 	    'pre_foundation_self_employment' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment',
 	        'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'default' => 0,
                 'items' => [
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.general.pleaseChoose', 0],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment.no', 1],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment.part_time', 2],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment.full_time', 3],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.pre_foundation_self_employment.shareholder', 4],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose', 0],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.no', 1],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.part_time', 2],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.full_time', 3],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.shareholder', 4],
                 ]
 			]
 	    ],
@@ -409,7 +409,7 @@ return [
         ],
         'consulting_days' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_days',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consulting_days',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
@@ -418,7 +418,7 @@ return [
         ],
 	    'consulting_date_from' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_date_from',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consulting_date_from',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
@@ -430,7 +430,7 @@ return [
 	    ],
 	    'consulting_date_to' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_date_to',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consulting_date_to',
             'config' => [
                 'type' => 'input',
                 'size' => 13,
@@ -442,7 +442,7 @@ return [
 	    ],
 	    'consulting_content' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consulting_content',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consulting_content',
 	        'config' => [
 			    'type' => 'text',
 			    'cols' => 40,
@@ -452,23 +452,23 @@ return [
 	    ],
         'consultant_type' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_type',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_type',
 	        'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'default' => 0,
                 'items' => [
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.general.pleaseChoose', 0],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_type.1', 1],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_type.2', 2],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_type.3', 3],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose', 0],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_type.1', 1],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_type.2', 2],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_type.3', 3],
                 ],
                 'eval' => 'required'
 			]
 	    ],
 	    'consultant_company' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_company',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_company',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -477,7 +477,7 @@ return [
 	    ],
 	    'consultant_name1' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_name1',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_name1',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -486,7 +486,7 @@ return [
 	    ],
         'consultant1_accreditation_number' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant1_accreditation_number',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant1_accreditation_number',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -495,7 +495,7 @@ return [
         ],
 	    'consultant_name2' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_name2',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_name2',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -504,7 +504,7 @@ return [
 	    ],
 	    'consultant2_accreditation_number' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant2_accreditation_number',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant2_accreditation_number',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -513,7 +513,7 @@ return [
 	    ],
 	    'consultant_fee' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_fee',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_fee',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -522,7 +522,7 @@ return [
 	    ],
 	    'consultant_phone' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_phone',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_phone',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -531,7 +531,7 @@ return [
 	    ],
 	    'consultant_email' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.consultant_email',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultant_email',
 	        'config' => [
 			    'type' => 'input',
 			    'size' => 30,
@@ -540,7 +540,7 @@ return [
 	    ],
 	    'premature_start' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.premature_start',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.premature_start',
             'config'  => array(
                 'type'    => 'check',
                 'default' => 0,
@@ -548,21 +548,21 @@ return [
 	    ],
 	    'send_documents' => [
             'exclude' => false,
-	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.send_documents',
+	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.send_documents',
 	        'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'default' => 0,
                 'items' => [
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.general.pleaseChoose', 0],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.send_documents.1', 1],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.send_documents.2', 2],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose', 0],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.send_documents.1', 1],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.send_documents.2', 2],
                 ]
 			]
 	    ],
         'bafa_support' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.bafa_support',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.bafa_support',
             'config'  => array(
                 'type'    => 'check',
                 'default' => 0,
@@ -570,7 +570,7 @@ return [
         ],
         'privacy' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.privacy',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.privacy',
             'config' => [
                 'type' => 'check',
                 'items' => [
@@ -582,7 +582,7 @@ return [
         ],
         'terms' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwmanagementconsultancy_domain_model_supportrequest.terms',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.terms',
             'config' => [
                 'type' => 'check',
                 'items' => [

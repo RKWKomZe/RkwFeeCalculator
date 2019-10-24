@@ -1,5 +1,5 @@
 <?php
-namespace RKW\RkwManagementConsultancy\Validation\Validator;
+namespace RKW\RkwFeecalculator\Validation\Validator;
 
 /*
  * This file is part of the TYPO3 CMS project.

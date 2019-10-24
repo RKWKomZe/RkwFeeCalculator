@@ -1,10 +1,10 @@
 <?php
-namespace RKW\RkwManagementConsultancy\Domain\Validator;
+namespace RKW\RkwFeecalculator\Domain\Validator;
 
 /**
  * Class SupportRequestValidator
  *
- * @package RKW\RkwManagementConsultancy\Domain\Validator
+ * @package RKW\RkwFeecalculator\Domain\Validator
  */
 class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
 {
@@ -32,7 +32,7 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
     /**
      * Validates a support request depending on chosen program
      *
-     * @param \RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $supportRequest
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      * @return bool
      */
     protected function isValid($supportRequest)
@@ -48,7 +48,7 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
                         new \TYPO3\CMS\Extbase\Error\Error(
                             $this->translateErrorMessage(
                                 'form.error.1221560718',
-                                'RkwManagementConsultancy',
+                                'RkwFeecalculator',
                                 $this->getTranslationArguments($property)
                             ), 1238087674, $this->getTranslationArguments($property)
                         )
@@ -71,7 +71,7 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
         return [
             \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
                 'form.error.newSupportRequest.' . $property,
-                'RkwManagementConsultancy'
+                'RkwFeecalculator'
             )
         ];
     }

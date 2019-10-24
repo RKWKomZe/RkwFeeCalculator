@@ -1,5 +1,5 @@
 <?php
-namespace RKW\RkwManagementConsultancy\Domain\Model;
+namespace RKW\RkwFeecalculator\Domain\Model;
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -18,7 +18,7 @@ namespace RKW\RkwManagementConsultancy\Domain\Model;
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
- * @package RKW_RkwManagementConsultancy
+ * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
@@ -60,7 +60,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * foundationDate
      *
      * @var string
-     * @validate NotEmpty, \RKW\RkwManagementConsultancy\Validation\Validator\CustomDateValidator
+     * @validate NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
      */
     protected $foundationDate = 0;
 
@@ -75,7 +75,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * birthdate
      *
      * @var string
-     * @validate NotEmpty, \RKW\RkwManagementConsultancy\Validation\Validator\CustomDateValidator
+     * @validate NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
      */
     protected $birthdate = 0;
 
@@ -255,7 +255,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingDateFrom
      *
      * @var string
-     * @validate NotEmpty, \RKW\RkwManagementConsultancy\Validation\Validator\CustomDateValidator
+     * @validate NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
      */
     protected $consultingDateFrom = 0;
 
@@ -263,7 +263,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingDateTo
      *
      * @var string
-     * @validate NotEmpty, \RKW\RkwManagementConsultancy\Validation\Validator\CustomDateValidator
+     * @validate NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
      */
     protected $consultingDateTo = 0;
 
@@ -1414,7 +1414,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the consulting
      *
-     * @return \RKW\RkwManagementConsultancy\Domain\Model\Consulting $consulting
+     * @return \RKW\RkwFeecalculator\Domain\Model\Consulting $consulting
      */
     public function getConsulting()
     {
@@ -1424,7 +1424,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the consulting
      *
-     * @param \RKW\RkwManagementConsultancy\Domain\Model\Consulting $consulting
+     * @param \RKW\RkwFeecalculator\Domain\Model\Consulting $consulting
      * @return void
      */
     public function setConsulting($consulting)

@@ -50,11 +50,11 @@ call_user_func(
         );
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr(
-            'tx_rkwmanagementconsultancy_domain_model_supportrequest',
-            'EXT:rkw_feecalculator/Resources/Private/Language/locallang_csh_tx_rkwmanagementconsultancy_domain_model_supportrequest.xlf'
+            'tx_rkwfeecalculator_domain_model_supportrequest',
+            'EXT:rkw_feecalculator/Resources/Private/Language/locallang_csh_tx_rkwfeecalculator_domain_model_supportrequest.xlf'
         );
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages(
-            'tx_rkwmanagementconsultancy_domain_model_supportrequest'
+            'tx_rkwfeecalculator_domain_model_supportrequest'
         );
 
         //  Flexform

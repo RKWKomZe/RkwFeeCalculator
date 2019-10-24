@@ -1,6 +1,6 @@
 <?php
 
-namespace RKW\RkwManagementConsultancy\Service;
+namespace RKW\RkwFeecalculator\Service;
 
 use \RKW\RkwBasics\Helper\Common;
 use \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -23,7 +23,7 @@ use \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
- * @package RKW_RkwManagementConsultancy
+ * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
@@ -32,7 +32,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * Sends an E-Mail to a Frontend-User
      *
      * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
-     * @param \RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $supportRequest
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      *
      * @throws \RKW\RkwMailer\Service\MailException
      * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
@@ -42,7 +42,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException
      */
-    public function userMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $supportRequest)
+    public function userMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
         // get settings
         $settings = $this->getSettings(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
@@ -67,7 +67,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                 $mailService->getQueueMail()->setSubject(
                     \RKW\RkwMailer\Helper\FrontendLocalization::translate(
                         'rkwMailService.confirmationUser.subject',
-                        'rkw_management_consultancy',
+                        'rkw_feecalculator',
                         null,
                         ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
                     )
@@ -90,7 +90,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * Sends an E-Mail to an Admin
      *
      * @param \RKW\RkwOrder\Domain\Model\BackendUser|array $backendUser
-     * @param \RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $supportRequest
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      *
      * @throws \RKW\RkwMailer\Service\MailException
      * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
@@ -100,7 +100,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException
      */
-    public function adminMail($backendUser, \RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $supportRequest)
+    public function adminMail($backendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
         // get settings
         $settings = $this->getSettings(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
@@ -120,7 +120,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             foreach ($recipients as $recipient) {
                 if (
-                    ($recipient instanceof \RKW\RkwManagementConsultancy\Domain\Model\BackendUser)
+                    ($recipient instanceof \RKW\RkwFeecalculator\Domain\Model\BackendUser)
                     && ($recipient->getEmail())
                 ) {
                     // send new user an email with token
@@ -133,7 +133,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                         ],
                         'subject' => \RKW\RkwMailer\Helper\FrontendLocalization::translate(
                             'rkwMailService.notifyAdmin.subject',
-                            'rkw_management_consultancy',
+                            'rkw_feecalculator',
                             null,
                             $recipient->getLang()
                         ),
@@ -150,7 +150,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $mailService->getQueueMail()->setSubject(
                 \RKW\RkwMailer\Helper\FrontendLocalization::translate(
                     'rkwMailService.NotifyAdmin.subject',
-                    'rkw_management_consultancy',
+                    'rkw_feecalculator',
                     null,
                     'de'
                 )

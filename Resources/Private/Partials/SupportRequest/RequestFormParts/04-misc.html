@@ -3,19 +3,19 @@
 <fieldset>
 
     <legend>
-        <f:translate key="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.additional" extensionName="RkwManagementConsultancy" />
+        <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.additional" extensionName="RkwFeecalculator" />
     </legend>
 
     <f:if condition="{supportProgramme.canStartPrematurely}">
         <div class="v320-1">
-            <span class="text-smaller"><f:translate key="tx_rkwmanagementconsultancy_domain_model_supportrequest.premature_start.hint1" arguments="{0 : supportProgramme.name}" extensionName="RkwManagementConsultancy" /></span>
+            <span class="text-smaller"><f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.hint1" arguments="{0 : supportProgramme.name}" extensionName="RkwFeecalculator" /></span>
             <span class="checkbox">
                 <label>
                     <f:form.checkbox property="prematureStart" value="1" />
-                    <f:translate key="tx_rkwmanagementconsultancy_domain_model_supportrequest.premature_start" extensionName="RkwManagementConsultancy" />
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.premature_start" extensionName="RkwFeecalculator" />
                 </label>
             </span>
-            <span class="text-smaller"><f:translate key="tx_rkwmanagementconsultancy_domain_model_supportrequest.premature_start.hint2" extensionName="RkwManagementConsultancy" /></span>
+            <span class="text-smaller"><f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.hint2" extensionName="RkwFeecalculator" /></span>
         </div>
     </f:if>
 
@@ -23,16 +23,16 @@
         <span class="checkbox">
             <label>
                 <f:form.checkbox property="bafaSupport" value="1" />
-                <f:translate key="tx_rkwmanagementconsultancy_domain_model_supportrequest.bafa_support" extensionName="RkwManagementConsultancy" />
+                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support" extensionName="RkwFeecalculator" />
             </label>
         </span>
     </div>
 
     <div class="v320-1">
         <label for="sendDocuments">
-            <f:translate key="tx_rkwmanagementconsultancy_domain_model_supportrequest.send_documents" extensionName="RkwManagementConsultancy" />
+            <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.send_documents" extensionName="RkwFeecalculator" />
         </label>
-        <f:form.select property="sendDocuments" options="{1: '{f:translate(key:\"tx_rkwmanagementconsultancy_domain_model_supportrequest.send_documents.1\", extensionName:\"RkwManagementConsultancy\")}', 2: '{f:translate(key:\"tx_rkwmanagementconsultancy_domain_model_supportrequest.send_documents.2\", extensionName:\"RkwManagementConsultancy\")}'}" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwmanagementconsultancy_domain_model_supportrequest.general.pleaseChoose')}" />
+        <f:form.select property="sendDocuments" options="{1: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.send_documents.1\", extensionName:\"RkwFeecalculator\")}', 2: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.send_documents.2\", extensionName:\"RkwFeecalculator\")}'}" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" />
     </div>
 
     <div class="v320-1">
@@ -40,11 +40,11 @@
             <label>
                 <f:form.checkbox class="feedback-field" property="terms" value="1" />
                 <span class="text-smaller">
-                    <f:translate key="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.termsIntro" extensionName="RkwManagementConsultancy" /> <f:link.page pageUid="{settingsArray.termsPid}" target="_blank"><f:translate key="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.terms" extensionName="RkwManagementConsultancy" /></f:link.page>
+                    <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.termsIntro" extensionName="RkwFeecalculator" /> <f:link.page pageUid="{settingsArray.termsPid}" target="_blank"><f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.terms" extensionName="RkwFeecalculator" /></f:link.page>
                     <f:if condition="{settings.terms2Pid}">
-                        <f:translate key="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.terms2Intro" extensionName="RkwManagementConsultancy" /> <f:link.page pageUid="{settingsArray.terms2Pid}" target="_blank"><f:translate key="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.terms2" extensionName="RkwManagementConsultancy" /></f:link.page>
+                        <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.terms2Intro" extensionName="RkwFeecalculator" /> <f:link.page pageUid="{settingsArray.terms2Pid}" target="_blank"><f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.terms2" extensionName="RkwFeecalculator" /></f:link.page>
                     </f:if>
-                    <f:translate key="tx_rkwmanagementconsultancy_partials_supportrequest_requestForm.terms3" extensionName="RkwManagementConsultancy" />
+                    <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.terms3" extensionName="RkwFeecalculator" />
                 </span>
             </label>
         </span>

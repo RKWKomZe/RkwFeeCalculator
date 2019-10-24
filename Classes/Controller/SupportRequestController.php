@@ -1,5 +1,5 @@
 <?php
-namespace RKW\RkwManagementConsultancy\Controller;
+namespace RKW\RkwFeecalculator\Controller;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -16,15 +16,16 @@ namespace RKW\RkwManagementConsultancy\Controller;
 
 use RKW\RkwBasics\Helper\Common;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use RKW\RkwManagementConsultancy\Domain\Model\FrontendUser;
-use RKW\RkwManagementConsultancy\Domain\Model\SupportRequest;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use RKW\RkwFeecalculator\Domain\Model\FrontendUser;
+use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 
 /**
  * SupportRequestController
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright Rkw Kompetenzzentrum
- * @package RKW_RkwManagementConsultancy
+ * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
@@ -63,7 +64,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * supportRequestRepository
      *
-     * @var \RKW\RkwManagementConsultancy\Domain\Repository\SupportRequestRepository
+     * @var \RKW\RkwFeecalculator\Domain\Repository\SupportRequestRepository
      * @inject
      */
     protected $supportRequestRepository = null;
@@ -71,7 +72,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * FrontendUserRepository
      *
-     * @var \RKW\RkwManagementConsultancy\Domain\Repository\FrontendUserRepository
+     * @var \RKW\RkwFeecalculator\Domain\Repository\FrontendUserRepository
      * @inject
      */
     protected $frontendUserRepository;
@@ -79,7 +80,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * BackendUserRepository
      *
-     * @var \RKW\RkwManagementConsultancy\Domain\Repository\BackendUserRepository
+     * @var \RKW\RkwFeecalculator\Domain\Repository\BackendUserRepository
      * @inject
      */
     protected $backendUserRepository;
@@ -117,7 +118,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         if (!$supportProgramme) {
             $this->addFlashMessage(
                 \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                    'tx_rkwmanagementconsultancy_controller_supportrequest.error.choose_support_programme', 'rkw_management_consultancy'
+                    'tx_rkwfeecalculator_controller_supportrequest.error.choose_support_programme', 'rkw_feecalculator'
                 ),
                 '',
                 \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR
@@ -134,12 +135,12 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * action create
      *
-     * @param \RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $newSupportRequest
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
      * @param integer $terms
      * @param integer $privacy
      * @return void
      */
-    public function createAction(\RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $newSupportRequest, $terms = null, $privacy = null)
+    public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest, $terms = null, $privacy = null)
     {
         /** @var \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser */
         $frontendUser = GeneralUtility::makeInstance('RKW\\RkwRegistration\\Domain\\Model\\FrontendUser');
@@ -157,7 +158,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
         $this->addFlashMessage(
             \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                'tx_rkwmanagementconsultancy_controller_supportrequest.success.requestCreated', 'rkw_management_consultancy'
+                'tx_rkwfeecalculator_controller_supportrequest.success.requestCreated', 'rkw_feecalculator'
             )
         );
 
@@ -178,9 +179,9 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * Sends confirmation mail to frontenduser.
      *
      * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
-     * @param \RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $newSupportRequest
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
      */
-    protected function sendConfirmationMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $newSupportRequest)
+    protected function sendConfirmationMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest)
     {
         $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_USER, [$frontendUser, $newSupportRequest]);
     }
@@ -188,9 +189,9 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * Sends notification mail to admin.
      *
-     * @param \RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $newSupportRequest
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
      */
-    protected function sendNotificationMail(\RKW\RkwManagementConsultancy\Domain\Model\SupportRequest $newSupportRequest)
+    protected function sendNotificationMail(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest)
     {
 
         // send information mail to admins

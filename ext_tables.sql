@@ -144,9 +144,9 @@ CREATE TABLE tx_rkwfeecalculator_program_consulting_mm (
 );
 
 #
-# Table structure for table 'tx_rkwmanagementconsultancy_domain_model_supportrequest'
+# Table structure for table 'tx_rkwfeecalculator_domain_model_supportrequest'
 #
-CREATE TABLE tx_rkwmanagementconsultancy_domain_model_supportrequest (
+CREATE TABLE tx_rkwfeecalculator_domain_model_supportrequest (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,

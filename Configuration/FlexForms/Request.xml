@@ -3,13 +3,13 @@
         <sDEF>
             <ROOT>
                 <TCEforms>
-                    <sheetTitle>LLL:EXT:rkw_management_consultancy/Resources/Private/Language/locallang_db.xlf:flexform.request.sheetTitle</sheetTitle>
+                    <sheetTitle>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:flexform.request.sheetTitle</sheetTitle>
                 </TCEforms>
                 <type>array</type>
                 <el>
                     <settings.mail.backendUser>
                         <TCEforms>
-                            <label>LLL:EXT:rkw_management_consultancy/Resources/Private/Language/locallang_db.xlf:flexform.select.beuser</label>
+                            <label>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:flexform.select.beuser</label>
                             <config>
                                 <type>select</type>
                                 <size>10</size>

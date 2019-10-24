@@ -1,6 +1,6 @@
 <?php
 
-namespace RKW\RkwManagementConsultancy\Domain\Repository;
+namespace RKW\RkwFeecalculator\Domain\Repository;
 /*
  * This file is part of the TYPO3 CMS project.
  *
