@@ -1,6 +1,9 @@
 <?php
 namespace RKW\RkwFeecalculator\Domain\Validator;
 
+use Doctrine\Common\Util\Debug;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 /**
  * Class SupportRequestValidator
  *
@@ -11,22 +14,22 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
     protected $checkProperties = [];
 
+    protected $objectManager;
+
+    protected $validatorResolver;
+
+    protected $reflectionService;
+
     public function __construct(array $options = [])
     {
         parent::__construct($options);
 
-        /** @todo pull these checkable properties from the support program config */
-        $this->checkProperties = [
-            'Thüringer Beratungsrichtlinie' => [
+        /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+        $this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+        $this->reflectionService = $this->objectManager->get(\TYPO3\CMS\Extbase\Reflection\ReflectionService::class);
 
-            ],
-            'Thüringer Gründerrichtlinie' => [
-                'citizenship',
-                'birthdate',
-                'foundationLocation'
-            ]
-            //  ...
-        ];
+        $this->validatorResolver = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Validation\\ValidatorResolver');
+
     }
 
     /**
@@ -40,21 +43,41 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
         $isValid = true;
 
-        foreach($this->checkProperties[$supportRequest->getSupportProgramme()->getName()] as $property) {
-            $getter = 'get' . $property;
-            if ($supportRequest->$getter() === '') {
-                $this->result->forProperty($property)
-                    ->addError(
-                        new \TYPO3\CMS\Extbase\Error\Error(
-                            $this->translateErrorMessage(
-                                'form.error.1221560718',
-                                'RkwFeecalculator',
-                                $this->getTranslationArguments($property)
-                            ), 1238087674, $this->getTranslationArguments($property)
-                        )
-                    );
+        $requestFieldsArray = array_map('trim', explode(',', $supportRequest->getSupportProgramme()->getMandatoryFields()));
 
-                $isValid = false;
+        foreach($requestFieldsArray as $property) {
+            $getter = 'get' . ucfirst($property);
+
+            if (method_exists($supportRequest, $getter)) {
+
+                $propertyTagsValues = $this->reflectionService->getPropertyTagsValues(get_class($supportRequest), $property);
+
+                if (isset($propertyTagsValues['validateOnObject'])) {
+
+                    foreach ($propertyTagsValues['validateOnObject'] as $rule) {
+
+                        $validator = $this->validatorResolver->createValidator($rule);
+
+                        if ($validator->validate($supportRequest->$getter())) {
+
+                            $this->result->forProperty($property)
+                                ->addError(
+                                    new \TYPO3\CMS\Extbase\Error\Error(
+                                        $this->translateErrorMessage(
+                                            'form.error.1221560718',
+                                            'RkwFeecalculator',
+                                            $this->getTranslationArguments($property)
+                                        ), 1238087674, $this->getTranslationArguments($property)
+                                    )
+                                );
+
+                            $isValid = false;
+                        }
+
+                    }
+
+                }
+
             }
 
         };

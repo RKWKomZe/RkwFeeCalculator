@@ -120,6 +120,14 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_consulting.title">
 				<source>Title</source>
 			</trans-unit>
+
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.request_fields">
+                <source>Fields to be present in corresponding support request</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.mandatory_fields">
+                <source>Fields to be mandatory in corresponding support request</source>
+            </trans-unit>
+
 			<trans-unit id="validator.not_numeric">
 				<source>Please enter numbers only.</source>
 			</trans-unit>

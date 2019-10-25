@@ -14,11 +14,7 @@ namespace RKW\RkwFeecalculator\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwBasics\Helper\Common;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use RKW\RkwFeecalculator\Domain\Model\FrontendUser;
-use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 
 /**
  * SupportRequestController

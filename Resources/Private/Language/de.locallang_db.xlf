@@ -94,6 +94,15 @@
                 <target>Name</target>
             </trans-unit>
 
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.request_fields">
+                <source>Fields to be present in corresponding support request</source>
+                <target>Anzuzeigende Felder in der entsprechenden Förderanfrage</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.mandatory_fields">
+                <source>Fields to be mandatory in corresponding support request</source>
+                <target>Pflichtfelder in der entsprechenden Förderanfrage</target>
+            </trans-unit>
+            
 			<trans-unit id="tx_rkw_feecalculator_domain_model_request">
 				<source>RKW Feecalculator: Form</source>
 				<target>RKW Feecalculator: Antragsformular</target>

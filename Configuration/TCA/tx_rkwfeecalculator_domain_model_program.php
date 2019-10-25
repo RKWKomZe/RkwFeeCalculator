@@ -17,14 +17,14 @@ return [
             'starttime' => 'starttime',
             'endtime'   => 'endtime',
         ],
-        'searchFields'             => 'name,possible_days_min,possible_days_max,content,rkw_fee_per_day,consultant_fee_per_day_limit,consultant_subvention_limit, rkw_fee_per_day_as_limit,funding_factor,can_start_prematurely,consulting',
+        'searchFields'             => 'name,possible_days_min,possible_days_max,content,rkw_fee_per_day,consultant_fee_per_day_limit,consultant_subvention_limit, rkw_fee_per_day_as_limit,funding_factor,can_start_prematurely,consulting,request_fields,mandatory_fields',
         'iconfile'                 => 'EXT:rkw_feecalculator/Resources/Public/Icons/tx_rkwfeecalculator_domain_model_program.gif',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, possible_days_min, possible_days_max, content, rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, funding_factor, can_start_prematurely, consulting',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, possible_days_min, possible_days_max, content, rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, funding_factor, can_start_prematurely, consulting, request_fields, mandatory_fields',
     ],
     'types'     => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, possible_days_min, possible_days_max, content;;;richtext:rte_transform[mode=ts_links], rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, funding_factor, can_start_prematurely, consulting, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, possible_days_min, possible_days_max, content;;;richtext:rte_transform[mode=ts_links], rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, funding_factor, can_start_prematurely, consulting, request_fields, mandatory_fields, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns'   => [
         'sys_language_uid'             => [
@@ -227,6 +227,24 @@ return [
                     'showPossibleLocalizationRecords' => 1,
                     'showAllLocalizationLink' => 1
                 ],
+            ],
+        ],
+        'request_fields'                         => [
+            'exclude' => false,
+            'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.request_fields',
+            'config'  => [
+                'type' => 'input',
+                'size' => 100,
+                'eval' => 'trim,required',
+            ],
+        ],
+        'mandatory_fields'                         => [
+            'exclude' => false,
+            'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.mandatory_fields',
+            'config'  => [
+                'type' => 'input',
+                'size' => 100,
+                'eval' => 'trim,required',
             ],
         ],
         'calculator' => [

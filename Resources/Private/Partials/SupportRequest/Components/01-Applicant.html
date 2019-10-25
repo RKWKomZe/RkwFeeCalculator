@@ -1,15 +1,21 @@
+{namespace vh=RKW\RkwFeecalculator\ViewHelpers}
+
 <fieldset>
     <legend>
         <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.applicant" extensionName="RkwFeecalculator" />
     </legend>
 
     <div class="v320-1">
-        <div class="v320-1-of-2">
-            <label for="name">
-                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.name" extensionName="RkwFeecalculator" />
-            </label>
-            <f:form.textfield property="name" />
-        </div>
+        <f:if condition="<vh:isRequestField fieldName='name' requestFields='{supportProgramme.requestFields}' />">
+
+            <div class="v320-1-of-2">
+                <label for="name">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.name" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="name" />
+            </div>
+
+        </f:if>
         <div class="v320-2-of-2">
             <label for="address">
                 <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.address" extensionName="RkwFeecalculator" />
@@ -122,7 +128,7 @@
         </div>
     </f:if>
 
-    <f:if condition="{supportProgramme.name} == 'Thüringer Gründerrichtlinie'">
+    <f:if condition="<vh:isRequestField fieldName='name' requestFields='{supportProgramme.requestFields}' />">
         <div class="v320-1">
             <div class="v320-1-of-2">
                 <label for="foundationLocation">

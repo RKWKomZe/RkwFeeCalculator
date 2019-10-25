@@ -102,6 +102,22 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $consulting = null;
 
     /**
+     * requestFields
+     *
+     * @var string
+     * @validate StringLength(minimum=3, maximum=100)
+     */
+    protected $requestFields = '';
+
+    /**
+     * mandatoryFields
+     *
+     * @var string
+     * @validate StringLength(minimum=3, maximum=100)
+     */
+    protected $mandatoryFields = '';
+
+    /**
      * __construct
      */
     public function __construct()
@@ -384,5 +400,46 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this->canStartPrematurely;
     }
 
+    /**
+     * Returns the requestFields
+     *
+     * @return string $requestFields
+     */
+    public function getRequestFields()
+    {
+        return $this->requestFields;
+    }
+
+    /**
+     * Sets the requestFields
+     *
+     * @param string $requestFields
+     * @return void
+     */
+    public function setRequestFields($requestFields)
+    {
+        $this->requestFields = $requestFields;
+    }
+
+    /**
+     * Returns the mandatoryFields
+     *
+     * @return string $mandatoryFields
+     */
+    public function getMandatoryFields()
+    {
+        return $this->mandatoryFields;
+    }
+
+    /**
+     * Sets the mandatoryFields
+     *
+     * @param string $mandatoryFields
+     * @return void
+     */
+    public function setMandatoryFields($mandatoryFields)
+    {
+        $this->mandatoryFields = $mandatoryFields;
+    }
 
 }
