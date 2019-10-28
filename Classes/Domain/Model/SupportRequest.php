@@ -1476,7 +1476,11 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function transformDate($dateString)
     {
-        return \DateTime::createFromFormat('d.m.Y', $dateString)->getTimestamp();
+        if ($dateTime = \DateTime::createFromFormat('d.m.Y', $dateString)) {
+            return $dateTime->getTimestamp();
+        }
+
+        return $dateString;
     }
 
 

@@ -42,7 +42,7 @@ class CustomDateValidator extends DateTimeValidator
         $this->addError(
             $this->translateErrorMessage(
                 'validator.datetime.notvalid',
-                'extbase',
+                'RkwFeecalculator',
                 [
                     gettype($value)
                 ]
