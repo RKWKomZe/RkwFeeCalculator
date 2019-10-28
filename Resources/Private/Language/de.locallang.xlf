@@ -187,6 +187,14 @@
 				<source>The given subject was not a valid number.</source>
 				<target>Der angegebene Wert ist keine gültige Eingabe.</target>
 			</trans-unit>
+			<trans-unit id="validator.datetime.notvalid">
+				<source>The given subject was not a valid date.</source>
+				<target>Der angegebene Wert ist kein gültiges Datum.</target>
+			</trans-unit>
+            <trans-unit id="validator.iban.notvalid">
+				<source>The given subject was not a iban.</source>
+				<target>Der angegebene Wert ist keine gültige IBAN.</target>
+			</trans-unit>
 
 			<trans-unit id="tx_rkw_feecalculator_domain_model_request">
                 <source>RKW Feecalculator: Form</source>

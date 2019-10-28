@@ -1,8 +1,9 @@
 <?php
 namespace RKW\RkwFeecalculator\Domain\Validator;
 
-use Doctrine\Common\Util\Debug;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use RKW\RkwFeecalculator\Validation\Validator\IbanValidator;
+use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
 
 /**
  * Class SupportRequestValidator
@@ -54,24 +55,22 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
                 if (isset($propertyTagsValues['validateOnObject'])) {
 
-                    foreach ($propertyTagsValues['validateOnObject'] as $rule) {
+                    foreach ($propertyTagsValues['validateOnObject'] as $rules) {
 
-                        $validator = $this->validatorResolver->createValidator($rule);
+                        foreach (GeneralUtility::trimExplode(',', $rules) as $rule) {
 
-                        if ($validator->validate($supportRequest->$getter())) {
+                            $validator = $this->validatorResolver->createValidator($rule);
 
-                            $this->result->forProperty($property)
-                                ->addError(
-                                    new \TYPO3\CMS\Extbase\Error\Error(
-                                        $this->translateErrorMessage(
-                                            'form.error.1221560718',
-                                            'RkwFeecalculator',
-                                            $this->getTranslationArguments($property)
-                                        ), 1238087674, $this->getTranslationArguments($property)
-                                    )
-                                );
+                            $validation = $validator->validate($supportRequest->$getter());
 
-                            $isValid = false;
+                            if ($validation->hasErrors()) {
+
+                                $this->addErrors($property, $validator, $validation);
+
+                                $isValid = false;
+
+                            }
+
                         }
 
                     }
@@ -80,9 +79,34 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
             }
 
-        };
+        }
 
         return $isValid;
+    }
+
+    /**
+     * @param $property
+     * @param $validator
+     * @param $validation
+     */
+    protected function addErrors($property, $validator, $validation)
+    {
+        if ($validator instanceof IbanValidator
+            || $validator instanceof CustomDateValidator) {
+            $this->result->forProperty($property)
+                ->addError($validation->getFirstError());
+        } else {
+            $this->result->forProperty($property)
+                ->addError(
+                    new \TYPO3\CMS\Extbase\Error\Error(
+                        $this->translateErrorMessage(
+                            'form.error.1221560718',
+                            'RkwFeecalculator',
+                            $this->getTranslationArguments($property)
+                        ), 1238087674, $this->getTranslationArguments($property)
+                    )
+                );
+        }
     }
 
     /**

@@ -182,6 +182,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * iban
      *
      * @var string
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\IbanValidator
      */
     protected $iban = '';
 
