@@ -38,6 +38,13 @@ plugin.tx_rkwfeecalculator_request {
     persistence {
         storagePid = {$plugin.tx_rkwfeecalculator_request.persistence.storagePid}
         #recursive = 1
+        classes {
+            RKW\RkwFeecalculator\Domain\Model\BackendUser {
+                mapping {
+                    tableName = be_users
+                }
+            }
+        }
     }
     features {
         #skipDefaultArguments = 1
