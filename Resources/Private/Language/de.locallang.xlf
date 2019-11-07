@@ -375,7 +375,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_email">
                 <source>Contact Person Email</source>
-                <target>E-Mail (personenbezogen)</target>
+                <target>Persönliche E-Mail-Adresse</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment">
                 <source>Start Up Employment Status Before</source>
