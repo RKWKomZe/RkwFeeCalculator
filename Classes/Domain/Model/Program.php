@@ -105,7 +105,6 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * requestFields
      *
      * @var string
-     * @validate StringLength(minimum=3, maximum=100)
      */
     protected $requestFields = '';
 
@@ -113,7 +112,6 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * mandatoryFields
      *
      * @var string
-     * @validate StringLength(minimum=3, maximum=100)
      */
     protected $mandatoryFields = '';
 
