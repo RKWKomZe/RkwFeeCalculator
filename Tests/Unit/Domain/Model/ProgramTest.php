@@ -375,13 +375,4 @@ class ProgramTest extends TestCase
 
     }
 
-    /**
-     * @test
-     */
-    public function getCanStartPrematurelyReturnsInitialValueForBoolean()
-    {
-        self::assertFalse(
-            $this->subject->getCanStartPrematurely()
-        );
-    }
 }

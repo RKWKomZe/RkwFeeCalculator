@@ -1,0 +1,56 @@
+{namespace vh=RKW\RkwFeecalculator\ViewHelpers}
+
+<fieldset>
+    <legend>
+        <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.consulting" extensionName="RkwFeecalculator" />
+    </legend>
+
+    <f:if condition="<vh:isRequestField fieldName='consulting' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <label for="consulting">
+                <f:translate key="tx_rkwfeecalculator_domain_model_program.consulting" extensionName="RkwFeecalculator" />
+            </label>
+            <f:form.select property="consulting" options="{consultingList}" optionValueField="uid" optionLabelField="title" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" />
+        </div>
+    </f:if>
+
+    <f:if condition="<vh:isRequestField fieldName='consultingDays' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <div class="v320-1-of-2">
+                <label for="consultingDays">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consulting_days" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.select property="consultingDays" options="<vh:possibleDays program='{supportProgramme}'/>" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" />
+            </div>
+        </div>
+    </f:if>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='consultingDateFrom' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="consultingDateFrom">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consulting_date_from" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="consultingDateFrom" value="{supportRequest.consultingDateFrom->f:format.date()}" placeholder="DD.MM.YYYY" />
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='consultingDateTo' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="consultingDateTo">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consulting_date_to" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="consultingDateTo" value="{supportRequest.consultingDateTo->f:format.date()}" placeholder="DD.MM.YYYY" />
+            </div>
+        </f:if>
+    </div>
+
+    <f:if condition="<vh:isRequestField fieldName='consultingContent' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <label for="consultingContent">
+                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consulting_content" extensionName="RkwFeecalculator" />
+            </label>
+            <f:form.textarea property="consultingContent" cols="40" rows="5" />
+        </div>
+    </f:if>
+
+</fieldset>

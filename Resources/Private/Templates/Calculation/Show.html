@@ -16,25 +16,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="main">
 
-  <f:form.validationResults>
-    <f:if condition="{validationResults.flattenedErrors}">
-        <div class="typo3-messages">
-          <div class="alert alert-danger">
-            <div class="media">
-              <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyPath">
-                <div class="media-body">
-                  <f:for each="{errors}" as="error">
-                    <div class="alert-message">
-                      <f:format.raw>{error}</f:format.raw>
-                    </div>
-                  </f:for>
-                </div>
-              </f:for>
-             </div>
-          </div>
-        </div>
-    </f:if>
-  </f:form.validationResults>
+  <f:render partial="FormErrors" arguments="{object:Calculation}" />
 
   <f:form action="store" name="calculation" object="{calculation}" class="form-fields rkw-feecalculator">
 

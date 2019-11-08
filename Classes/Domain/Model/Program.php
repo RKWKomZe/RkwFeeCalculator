@@ -81,12 +81,6 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $rkwFeePerDayAsLimit = false;
 
     /**
-     *
-     * @var boolean
-     */
-    protected $canStartPrematurely = false;
-
-    /**
      * fundingFactor
      *
      * @var double
@@ -100,6 +94,20 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Consulting>
      */
     protected $consulting = null;
+
+    /**
+     * requestFields
+     *
+     * @var string
+     */
+    protected $requestFields = '';
+
+    /**
+     * mandatoryFields
+     *
+     * @var string
+     */
+    protected $mandatoryFields = '';
 
     /**
      * __construct
@@ -375,14 +383,45 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the canStartPrematurely value
+     * Returns the requestFields
      *
-     * @return int $canStartPrematurely
+     * @return string $requestFields
      */
-    public function getCanStartPrematurely()
+    public function getRequestFields()
     {
-        return $this->canStartPrematurely;
+        return $this->requestFields;
     }
 
+    /**
+     * Sets the requestFields
+     *
+     * @param string $requestFields
+     * @return void
+     */
+    public function setRequestFields($requestFields)
+    {
+        $this->requestFields = $requestFields;
+    }
+
+    /**
+     * Returns the mandatoryFields
+     *
+     * @return string $mandatoryFields
+     */
+    public function getMandatoryFields()
+    {
+        return $this->mandatoryFields;
+    }
+
+    /**
+     * Sets the mandatoryFields
+     *
+     * @param string $mandatoryFields
+     * @return void
+     */
+    public function setMandatoryFields($mandatoryFields)
+    {
+        $this->mandatoryFields = $mandatoryFields;
+    }
 
 }

@@ -43,3 +43,19 @@
         float: left;
     }
 }
+
+body.topic-1 .hint {
+    color: #e64415;
+}
+
+body.topic-2 .hint {
+    color: #74b929;
+}
+
+body.topic-3 .hint {
+    color: #009fee;
+}
+
+body.topic-4 .hint {
+    color: #c6007b;
+}

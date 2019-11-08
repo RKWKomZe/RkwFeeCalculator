@@ -1,0 +1,321 @@
+{namespace vh=RKW\RkwFeecalculator\ViewHelpers}
+
+<fieldset>
+    <legend>
+        <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.applicant" extensionName="RkwFeecalculator" />
+    </legend>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='name' requestFields='{supportProgramme.requestFields}' />">
+
+            <div class="v320-1-of-2">
+                <label for="name">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.name" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="name" />
+            </div>
+
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='address' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="address">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.address" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="address" />
+            </div>
+        </f:if>
+    </div>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='zip' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="zip">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.zip" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="zip" />
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='city' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="city">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.city" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="city" />
+            </div>
+        </f:if>
+    </div>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='foundationDate' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="foundationDate">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.foundation_date" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="foundationDate" id="foundationDate" value="{supportRequest.foundationDate->f:format.date()}" placeholder="DD.MM.YYYY"/>
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='companyType' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="companyType">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.company_type" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.select property="companyType" options="{companyTypeList}" optionValueField="uid" optionLabelField="name" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" />
+            </div>
+        </f:if>
+    </div>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='citizenship' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="citizenship">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.citizenship" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="citizenship" />
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='birthdate' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="birthdate">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.birthdate" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="birthdate" id="birthdate" value="{supportRequest.birthdate->f:format.date()}" placeholder="DD.MM.YYYY"/>
+            </div>
+        </f:if>
+    </div>
+
+    <f:if condition="<vh:isRequestField fieldName='foundationLocation' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <div class="v320-1-of-2">
+                <label for="foundationLocation">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.foundation_location" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="foundationLocation" />
+            </div>
+            <div class="v320-2-of-2">
+            </div>
+        </div>
+    </f:if>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='balance' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="balance">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.balance" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="balance" />
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='sales' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="sales">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.sales" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="sales" />
+            </div>
+        </f:if>
+    </div>
+
+    <f:if condition="<vh:isRequestField fieldName='employeesCount' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <div class="v320-1-of-2">
+                <label for="employeesCount">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.employees_count" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="employeesCount" />
+            </div>
+        </div>
+    </f:if>
+
+    <f:if condition="<vh:isRequestField fieldName='employeesCount' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <label for="manager">
+                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.manager" extensionName="RkwFeecalculator" />
+            </label>
+            <f:form.textfield property="manager" />
+        </div>
+    </f:if>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='singleRepresentative' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="singleRepresentative">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.single_representative" extensionName="RkwFeecalculator" />
+                </label>
+                <span class="radio">
+                    <label>
+                         <f:form.radio property="singleRepresentative" value="1" />
+                        &nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.single_representative.1" extensionName="RkwFeecalculator" />
+                    </label>
+                </span>
+                <span class="radio">
+                    <label>
+                        <f:form.radio property="singleRepresentative" value="99" />
+                        <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.single_representative.99" extensionName="RkwFeecalculator" />
+                    </label>
+                </span>
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='preTaxDeduction' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="preTaxDeduction">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction" extensionName="RkwFeecalculator" />
+                </label>
+                <span class="radio">
+                    <label>
+                         <f:form.radio property="preTaxDeduction" value="1" />
+                        &nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction.1" extensionName="RkwFeecalculator" />
+                    </label>
+                </span>
+                <span class="radio">
+                    <label>
+                        <f:form.radio property="preTaxDeduction" value="99" />
+                        <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction.99" extensionName="RkwFeecalculator" />
+                    </label>
+                </span>
+            </div>
+        </f:if>
+    </div>
+
+    <f:if condition="<vh:isRequestField fieldName='businessPurpose' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <label for="businessPurpose">
+                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.business_purpose" extensionName="RkwFeecalculator" />
+            </label>
+            <f:form.textarea property="businessPurpose" cols="40" rows="5" />
+        </div>
+    </f:if>
+
+    <f:if condition="<vh:isRequestField fieldName='insolvencyProceedings' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <label for="insolvencyProceedings">
+                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings" extensionName="RkwFeecalculator" />
+            </label>
+            <span class="radio">
+                <label>
+                     <f:form.radio property="insolvencyProceedings" value="1" />
+                    &nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings.1" extensionName="RkwFeecalculator" />
+                </label>
+            </span>
+            <span class="radio">
+                <label>
+                    <f:form.radio property="insolvencyProceedings" value="99" />
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings.99" extensionName="RkwFeecalculator" />
+                </label>
+            </span>
+        </div>
+    </f:if>
+
+    <f:if condition="<vh:isRequestField fieldName='chamber' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <label for="chamber">
+                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.chamber" extensionName="RkwFeecalculator" />
+            </label>
+            <f:form.select property="chamber" options="{1: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.chamber.1\", extensionName:\"RkwFeecalculator\")}', 2: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.chamber.2\", extensionName:\"RkwFeecalculator\")}', 3: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.chamber.3\", extensionName:\"RkwFeecalculator\")}'}" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" />
+        </div>
+    </f:if>
+
+    <f:if condition="<vh:isRequestField fieldName='companyShares' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <label for="companyShares">
+                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.company_shares" extensionName="RkwFeecalculator" />
+            </label>
+            <f:form.textarea property="companyShares" cols="40" rows="5" />
+        </div>
+    </f:if>
+
+    <f:if condition="<vh:isRequestField fieldName='principalBank' requestFields='{supportProgramme.requestFields}' />">
+        <div class="v320-1">
+            <div class="v320-1-of-2">
+                <label for="principalBank">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.principal_bank" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="principalBank" />
+            </div>
+        </div>
+    </f:if>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='bic' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="bic">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.bic" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="bic" />
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='iban' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="iban">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.iban" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="iban" />
+            </div>
+        </f:if>
+    </div>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='contactPersonName' requestFields='{supportProgramme.requestFields}' />">
+            <label for="contactPersonName">
+                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_name" extensionName="RkwFeecalculator" />
+            </label>
+            <f:form.textfield property="contactPersonName" />
+        </f:if>
+    </div>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='contactPersonPhone' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="contactPersonPhone">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_phone" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="contactPersonPhone" />
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='contactPersonFax' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="contactPersonFax">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_fax" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="contactPersonFax" />
+            </div>
+        </f:if>
+    </div>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='contactPersonMobile' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="contactPersonMobile">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_mobile" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="contactPersonMobile" />
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='contactPersonEmail' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="contactPersonEmail">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_email" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="contactPersonEmail" />
+            </div>
+        </f:if>
+    </div>
+
+    <div class="v320-1">
+        <f:if condition="<vh:isRequestField fieldName='preFoundationEmployment' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="preFoundationEmployment">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.select property="preFoundationEmployment" options="{0: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose\", extensionName:\"RkwFeecalculator\")}', 1: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.employed\", extensionName:\"RkwFeecalculator\")}', 2: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.self_employed\", extensionName:\"RkwFeecalculator\")}', 3: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.in_education\", extensionName:\"RkwFeecalculator\")}', 4: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.unemployed\", extensionName:\"RkwFeecalculator\")}'}" />
+            </div>
+        </f:if>
+        <f:if condition="<vh:isRequestField fieldName='preFoundationSelfEmployment' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-2-of-2">
+                <label for="preFoundationSelfEmployment">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.select property="preFoundationSelfEmployment" options="{0: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose\", extensionName:\"RkwFeecalculator\")}', 1: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.no\", extensionName:\"RkwFeecalculator\")}', 2: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.part_time\", extensionName:\"RkwFeecalculator\")}', 3: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.full_time\", extensionName:\"RkwFeecalculator\")}', 4: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.shareholder\", extensionName:\"RkwFeecalculator\")}'}" />
+            </div>
+        </f:if>
+    </div>
+</fieldset>
