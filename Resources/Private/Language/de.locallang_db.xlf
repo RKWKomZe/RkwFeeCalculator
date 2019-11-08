@@ -357,11 +357,11 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant1_accreditation_number">
 				<source>Consultant1 Accreditation Number</source>
-				<target>Akkr-Nr. (Berater)</target>
+				<target>Berater (Akkr.-Nr.</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant2_accreditation_number">
 				<source>Consultant2 Accreditation Number</source>
-				<target>Akkr-Nr. (2. Berater)</target>
+				<target>2. Berater (Akkr.-Nr.)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_fee">
 				<source>Consultant Fee</source>
@@ -369,11 +369,11 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_phone">
 				<source>Consultant Phone</source>
-				<target>Telefon</target>
+				<target>Berater (Telefon)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_email">
 				<source>Consultant Email</source>
-				<target>E-Mail</target>
+				<target>Berater (E-Mail-Adresse)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start">
 				<source>Early Start Desired</source>

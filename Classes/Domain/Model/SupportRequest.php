@@ -156,7 +156,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * chamber
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
      */
     protected $chamber = 0;
 
@@ -236,7 +236,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * preFoundationEmployment
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
      */
     protected $preFoundationEmployment = 0;
 
@@ -244,7 +244,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * preFoundationSelfEmployment
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
      */
     protected $preFoundationSelfEmployment = 0;
 
@@ -252,7 +252,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingDays
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
      */
     protected $consultingDays = 0;
 
@@ -284,7 +284,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantType
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
      */
     protected $consultantType = 0;
 
@@ -364,7 +364,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * sendDocuments
      *
      * @var int
-     * @validateObObject NotEmpty
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
      */
     protected $sendDocuments = 0;
 

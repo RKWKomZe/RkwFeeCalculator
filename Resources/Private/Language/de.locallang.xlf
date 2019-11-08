@@ -455,11 +455,11 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant1_accreditation_number">
                 <source>Consultant1 Accreditation Number</source>
-                <target>Akkr-Nr.</target>
+                <target>Berater (Akkr.-Nr.)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant2_accreditation_number">
                 <source>Consultant2 Accreditation Number</source>
-                <target>Akkr-Nr.</target>
+                <target>2. Berater (Akkr.-Nr.)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_fee">
                 <source>Consultant Fee</source>
@@ -467,11 +467,11 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_phone">
                 <source>Consultant Phone</source>
-                <target>Telefon</target>
+                <target>Berater (Telefon)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_email">
                 <source>Consultant Email</source>
-                <target>E-Mail</target>
+                <target>Berater (E-Mail-Adresse)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start">
                 <source>Early Start Desired</source>
@@ -649,7 +649,7 @@
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.address">
                 <source>Address</source>
-                <target>Adresse</target>
+                <target>Straße, Nr.</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.zip">
                 <source>Zip</source>
@@ -711,6 +711,10 @@
                 <source>Insolvency proceedings</source>
                 <target>Insolvenzverfahren</target>
             </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.chamber">
+                <source>Chamber</source>
+                <target>Kammerzugehörigkeit</target>
+            </trans-unit>
             <trans-unit id="form.error.newSupportRequest.companyShares">
                 <source>Company Shares</source>
                 <target>Gesellschaftsanteile</target>
@@ -727,29 +731,25 @@
                 <source>IBAN</source>
                 <target>IBAN</target>
             </trans-unit>
-            <trans-unit id="form.error.newSupportRequest.contactPersonLastName">
-                <source>Contact Person Last Name</source>
-                <target>Ansprechpartner (Nachname)</target>
-            </trans-unit>
-            <trans-unit id="form.error.newSupportRequest.contactPersonFirstName">
-                <source>Contact Person First Name</source>
-                <target>Ansprechpartner (Vorname)</target>
+            <trans-unit id="form.error.newSupportRequest.contactPersonName">
+                <source>Contact Person Name</source>
+                <target>Ansprechpartner</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.contactPersonPhone">
                 <source>Contact Person Phone</source>
-                <target>Ansprechpartner (Telefonnummer)</target>
+                <target>Ansprechpartner (Telefon)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.contactPersonFax">
                 <source>Contact Person Fax</source>
-                <target>Ansprechpartner (Faxnummer)</target>
+                <target>Ansprechpartner (Fax)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.contactPersonMobile">
                 <source>Contact Person Mobile</source>
-                <target>Ansprechpartner (Mobilnummer)</target>
+                <target>Ansprechpartner (Mobil)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.contactPersonEmail">
                 <source>Contact Person Email</source>
-                <target>Ansprechpartner (E-Mail-Adresse)</target>
+                <target>Persönliche E-Mail-Adresse</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.startUpFoundationDate">
                 <source>Start Up Foundation Date</source>
@@ -757,11 +757,11 @@
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.preFoundationEmployment">
                 <source>Start Up Employment Status Before</source>
-                <target>StartUp: Erwerbsstatus vor Gründung</target>
+                <target>Erwerbsstatus vor Gründung</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.preFoundationSelfEmployment">
                 <source>Start Up Independent Work</source>
-                <target>StartUp: Selbstständige Arbeit</target>
+                <target>Liegt bereits eine selbstständige Tätigkeit vor?</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultingDays">
                 <source>Intended consulting days</source>
@@ -777,7 +777,7 @@
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultingContent">
                 <source>Consulting Description</source>
-                <target>Beratungsinhalt</target>
+                <target>Beratungsinhalte</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultantType">
                 <source>Consultant Type</source>
@@ -789,31 +789,31 @@
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultantName1">
                 <source>Consultant Name1</source>
-                <target>Berater 1: Name</target>
+                <target>Berater (Name, Vorname)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultantName2">
                 <source>Consultant Name2</source>
-                <target>Berater 2: Name</target>
+                <target>2. Berater (Name, Vorname)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultant1AccreditationNumber">
                 <source>Consultant1 Accreditation Number</source>
-                <target>Berater 1: Akkr-Nr.</target>
+                <target>Berater (Akkr-Nr.)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultant2AccreditationNumber">
                 <source>Consultant2 Accreditation Number</source>
-                <target>Berater 2: Akkr-Nr.</target>
+                <target>2. Berater (Akkr-Nr.)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultantFee">
                 <source>Consultant Fee</source>
-                <target>Berater: Honorar</target>
+                <target>Honorar je Tagwerk in Euro (netto)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultantPhone">
                 <source>Consultant Phone</source>
-                <target>Berater: Telefon</target>
+                <target>Berater (Telefon)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultantEmail">
                 <source>Consultant Email</source>
-                <target>Berater: E-Mail</target>
+                <target>Berater (E-Mail-Adresse)</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.prematureStart">
                 <source>Early Start Desired</source>
@@ -821,7 +821,7 @@
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.sendDocuments">
                 <source>Send Documents Allowed</source>
-                <target>Wie möchten Sie ihre Unterlagen erhalten?</target>
+                <target>Wie dürfen wir Ihnen Ihre Antragsunterlagen zusenden?</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.bafaSupport">
                 <source>Already received BAFA support?</source>
