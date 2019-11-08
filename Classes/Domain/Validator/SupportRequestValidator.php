@@ -2,6 +2,7 @@
 namespace RKW\RkwFeecalculator\Domain\Validator;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use RKW\RkwFeecalculator\Validation\Validator\IbanValidator;
 use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
 
@@ -44,11 +45,11 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
         $isValid = true;
 
-        $requestFieldsArray = array_map(function($item) {
+        $mandatoryFieldsArray = array_map(function($item) {
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
         }, explode(',', $supportRequest->getSupportProgramme()->getMandatoryFields()));
 
-        foreach($requestFieldsArray as $property) {
+        foreach($mandatoryFieldsArray as $property) {
             $getter = 'get' . ucfirst($property);
 
             if (method_exists($supportRequest, $getter)) {

@@ -255,13 +255,9 @@
 				<source>IBAN</source>
 				<target>IBAN</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_last_name">
-				<source>Contact Person Last Name</source>
-				<target>Ansprechpartner für RKW (Nachname)</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_first_name">
-				<source>Contact Person First Name</source>
-				<target>Ansprechpartner für RKW (Vorname)</target>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_name">
+				<source>Contact Person Name</source>
+				<target>Ansprechpartner für RKW</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_phone">
 				<source>Contact Person Phone</source>
@@ -387,13 +383,13 @@
 				<source>Early Start Desired</source>
 				<target>Vorzeitiger Maßnahmebeginn erwünscht</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.1">
                 <source>Yes</source>
-                <target>Ja</target>
+                <target>Ja, das RKW Thüringen teilt mir das frühestmögliche Beginndatum zeitnah mit.</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.99">
                 <source>No</source>
-                <target>Nein</target>
+                <target>Nein, die Beratung kann erst mit Bescheiderteilung durch die GFAW beginnen.</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.send_documents">
 				<source>Send Documents Allowed</source>
@@ -401,7 +397,27 @@
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support">
                 <source>Already received BAFA support?</source>
-                <target>Haben Sie bereits BAFA-Förderung erhalten?</target>
+                <target>Haben Sie bereits eine BAFA-Förderung unternehmerischen Know-hows in Anspruch genommen?</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support.1">
+                <source>Yes</source>
+                <target>Ja.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support.99">
+                <source>No</source>
+                <target>Nein.</target>
+            </trans-unit>
+           <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis">
+                <source>Already received de-minimis support?</source>
+                <target>Haben Sie in den letzten 2 Jahren bereits de-minimis Förderungen erhalten?</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis.1">
+                <source>Yes</source>
+                <target>Ja, ich reiche die jeweiligen de-minimis-Informationen nach.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis.99">
+                <source>No</source>
+                <target>Nein, ich habe keine de-minimis-Beihilfen erhalten.</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.send_documents.1">
                 <source>via E-Mail</source>

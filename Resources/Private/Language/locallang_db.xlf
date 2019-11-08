@@ -164,10 +164,10 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings">
 				<source>Insolvency Proceedings</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction.1">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings.1">
                 <source>Yes</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction.99">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings.99">
                 <source>No</source>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.chamber">
@@ -194,11 +194,8 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.iban">
 				<source>Iban</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_last_name">
-				<source>Contact Person Last Name</source>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_first_name">
-				<source>Contact Person First Name</source>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_name">
+				<source>Contact Person Name</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_phone">
 				<source>Contact Person Phone</source>
@@ -299,9 +296,24 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.99">
                 <source>No</source>
             </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support">
                 <source>Already received BAFA support?</source>
-			</trans-unit>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support.1">
+                <source>Yes</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support.99">
+                <source>No</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis">
+                <source>Already received de-minimis support?</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis.1">
+                <source>Yes</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis.99">
+                <source>No</source>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.send_documents">
 				<source>Send Documents Allowed</source>
 			</trans-unit>

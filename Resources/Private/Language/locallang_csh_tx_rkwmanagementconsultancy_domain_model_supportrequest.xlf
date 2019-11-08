@@ -72,11 +72,8 @@
 			<trans-unit id="iban.description">
 				<source>iban</source>
 			</trans-unit>
-			<trans-unit id="contact_person_last_name.description">
-				<source>contactPersonLastName</source>
-			</trans-unit>
-			<trans-unit id="contact_person_first_name.description">
-				<source>contactPersonFirstName</source>
+			<trans-unit id="contact_person_name.description">
+				<source>contactPersonName</source>
 			</trans-unit>
 			<trans-unit id="contact_person_phone.description">
 				<source>contactPersonPhone</source>
@@ -144,6 +141,9 @@
 			<trans-unit id="bafa_support.description">
 				<source>bafaSupport</source>
 			</trans-unit>
+			<trans-unit id="de_minimis.description">
+			    <source>deMinimis</source>
+            </trans-unit>
 			<trans-unit id="support_programme.description">
 				<source>supportProgramme</source>
 			</trans-unit>

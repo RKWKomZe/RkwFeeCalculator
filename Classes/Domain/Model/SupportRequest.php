@@ -126,7 +126,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      * @validateOnObject NotEmpty
      */
-    protected $singleRepresentative = 0;
+    protected $singleRepresentative;
 
     /**
      * preTaxDeduction
@@ -134,7 +134,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      * @validateOnObject NotEmpty
      */
-    protected $preTaxDeduction = 0;
+    protected $preTaxDeduction;
 
     /**
      * businessPurpose
@@ -150,7 +150,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      * @validateOnObject NotEmpty
      */
-    protected $insolvencyProceedings = 0;
+    protected $insolvencyProceedings;
 
     /**
      * chamber
@@ -193,20 +193,12 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $iban = '';
 
     /**
-     * contactPersonFirstName
+     * contactPersonName
      *
      * @var string
      * @validateOnObject NotEmpty
      */
-    protected $contactPersonFirstName = '';
-
-    /**
-     * contactPersonLastName
-     *
-     * @var string
-     * @validateOnObject NotEmpty
-     */
-    protected $contactPersonLastName = '';
+    protected $contactPersonName = '';
 
     /**
      * contactPersonPhone
@@ -366,7 +358,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      * @validateOnObject NotEmpty
      */
-    protected $prematureStart = 0;
+    protected $prematureStart;
 
     /**
      * sendDocuments
@@ -380,9 +372,17 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * bafaSupport
      *
      * @var int
-     * @validateObObject NotEmpty
+     * @validateOnObject NotEmpty
      */
-    protected $bafaSupport = 0;
+    protected $bafaSupport;
+
+    /**
+     * deMinimis
+     *
+     * @var int
+     * @validateOnObject NotEmpty
+     */
+    protected $deMinimis;
 
     /**
      * privacy
@@ -404,7 +404,6 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * supportProgramme
      *
      * @var \RKW\RkwFeecalculator\Domain\Model\Program
-     * @validateOnObject NotEmpty
      */
     protected $supportProgramme = null;
 
@@ -866,45 +865,24 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the contactPersonFirstName
+     * Returns the contactPersonName
      *
-     * @return string $contactPersonFirstName
+     * @return string $contactPersonName
      */
-    public function getContactPersonFirstName()
+    public function getContactPersonName()
     {
-        return $this->contactPersonFirstName;
+        return $this->contactPersonName;
     }
 
     /**
-     * Sets the contactPersonFirstName
+     * Sets the contactPersonName
      *
-     * @param string $contactPersonFirstName
+     * @param string $contactPersonName
      * @return void
      */
-    public function setContactPersonFirstName($contactPersonFirstName)
+    public function setContactPersonName($contactPersonName)
     {
-        $this->contactPersonFirstName = $contactPersonFirstName;
-    }
-
-    /**
-     * Returns the contactPersonLastName
-     *
-     * @return string $contactPersonLastName
-     */
-    public function getContactPersonLastName()
-    {
-        return $this->contactPersonLastName;
-    }
-
-    /**
-     * Sets the contactPersonLastName
-     *
-     * @param string $contactPersonLastName
-     * @return void
-     */
-    public function setContactPersonLastName($contactPersonLastName)
-    {
-        $this->contactPersonLastName = $contactPersonLastName;
+        $this->contactPersonName = $contactPersonName;
     }
 
     /**
@@ -1367,6 +1345,27 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setBafaSupport($bafaSupport)
     {
         $this->bafaSupport = $bafaSupport;
+    }
+
+    /**
+     * Returns the deMinimis
+     *
+     * @return int $deMinimis
+     */
+    public function getDeMinimis()
+    {
+        return $this->deMinimis;
+    }
+
+    /**
+     * Sets the deMinimis
+     *
+     * @param int $deMinimis
+     * @return void
+     */
+    public function setDeMinimis($deMinimis)
+    {
+        $this->deMinimis = $deMinimis;
     }
 
     /**

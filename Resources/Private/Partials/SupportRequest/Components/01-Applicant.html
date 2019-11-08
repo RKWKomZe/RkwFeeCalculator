@@ -143,7 +143,7 @@
                 </label>
                 <span class="radio">
                     <label>
-                         <f:form.radio property="singleRepresentative" value="1" checked="checked" />
+                         <f:form.radio property="singleRepresentative" value="1" />
                         &nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.single_representative.1" extensionName="RkwFeecalculator" />
                     </label>
                 </span>
@@ -162,7 +162,7 @@
                 </label>
                 <span class="radio">
                     <label>
-                         <f:form.radio property="preTaxDeduction" value="1" checked="checked" />
+                         <f:form.radio property="preTaxDeduction" value="1" />
                         &nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction.1" extensionName="RkwFeecalculator" />
                     </label>
                 </span>
@@ -192,7 +192,7 @@
             </label>
             <span class="radio">
                 <label>
-                     <f:form.radio property="insolvencyProceedings" value="1" checked="checked" />
+                     <f:form.radio property="insolvencyProceedings" value="1" />
                     &nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings.1" extensionName="RkwFeecalculator" />
                 </label>
             </span>
@@ -254,21 +254,11 @@
     </div>
 
     <div class="v320-1">
-        <f:if condition="<vh:isRequestField fieldName='contactPersonLastName' requestFields='{supportProgramme.requestFields}' />">
-            <div class="v320-1-of-2">
-                <label for="contactPersonLastName">
-                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_last_name" extensionName="RkwFeecalculator" />
-                </label>
-                <f:form.textfield property="contactPersonLastName" />
-            </div>
-        </f:if>
-        <f:if condition="<vh:isRequestField fieldName='contactPersonFirstName' requestFields='{supportProgramme.requestFields}' />">
-            <div class="v320-2-of-2">
-                <label for="contactPersonFirstName">
-                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_first_name" extensionName="RkwFeecalculator" />
-                </label>
-                <f:form.textfield property="contactPersonFirstName" />
-            </div>
+        <f:if condition="<vh:isRequestField fieldName='contactPersonName' requestFields='{supportProgramme.requestFields}' />">
+            <label for="contactPersonName">
+                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_name" extensionName="RkwFeecalculator" />
+            </label>
+            <f:form.textfield property="contactPersonName" />
         </f:if>
     </div>
 

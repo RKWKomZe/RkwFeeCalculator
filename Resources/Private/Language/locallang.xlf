@@ -246,11 +246,8 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.iban">
                 <source>Iban</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_last_name">
-                <source>Contact Person Last Name</source>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_first_name">
-                <source>Contact Person First Name</source>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_name">
+                <source>Contact Person Name</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_phone">
                 <source>Contact Person Phone</source>
