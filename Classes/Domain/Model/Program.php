@@ -81,12 +81,6 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $rkwFeePerDayAsLimit = false;
 
     /**
-     *
-     * @var boolean
-     */
-    protected $canStartPrematurely = false;
-
-    /**
      * fundingFactor
      *
      * @var double
@@ -386,16 +380,6 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setRkwFeePerDayAsLimit($rkwFeePerDayAsLimit)
     {
         $this->rkwFeePerDayAsLimit = $rkwFeePerDayAsLimit;
-    }
-
-    /**
-     * Returns the canStartPrematurely value
-     *
-     * @return int $canStartPrematurely
-     */
-    public function getCanStartPrematurely()
-    {
-        return $this->canStartPrematurely;
     }
 
     /**

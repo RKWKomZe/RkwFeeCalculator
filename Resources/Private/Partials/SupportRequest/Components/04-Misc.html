@@ -7,7 +7,7 @@
         <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.additional" extensionName="RkwFeecalculator" />
     </legend>
 
-    <f:if condition="{supportProgramme.canStartPrematurely}">
+    <f:if condition="<vh:isRequestField fieldName='prematureStart' requestFields='{supportProgramme.requestFields}' />">
         <div class="v320-1">
             <span class="text-smaller hint"><f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.hint1" arguments="{0 : supportProgramme.name}" extensionName="RkwFeecalculator" /></span>
             <span class="radio">
