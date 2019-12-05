@@ -14,8 +14,6 @@ use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
 class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
 {
 
-    protected $checkProperties = [];
-
     protected $objectManager;
 
     protected $validatorResolver;

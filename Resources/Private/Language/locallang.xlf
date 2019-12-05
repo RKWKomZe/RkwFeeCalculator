@@ -159,6 +159,9 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.name">
                 <source>Name</source>
             </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.founder_name">
+                <source>Name of the Founder</source>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.address">
                 <source>Address</source>
             </trans-unit>
@@ -473,6 +476,9 @@
             <trans-unit id="form.error.newSupportRequest.name">
                 <source>Name</source>
             </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.founderName">
+                <source>Name of the Founder</source>
+            </trans-unit>
             <trans-unit id="form.error.newSupportRequest.address">
                 <source>Address</source>
             </trans-unit>
@@ -484,6 +490,9 @@
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.foundationDate">
                 <source>Foundation Date</source>
+            </trans-unit>
+            <trans-unit id="form.error.newSupportRequest.intendedFoundationDate">
+                <source>Intended Foundation Date</source>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.sales">
                 <source>Sales</source>

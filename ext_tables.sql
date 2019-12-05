@@ -155,6 +155,7 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_supportrequest (
 	support_programme int(11) unsigned DEFAULT '0',
 
 	name varchar(255) DEFAULT '' NOT NULL,
+	founder_name varchar(255) DEFAULT '' NOT NULL,
 	address varchar(255) DEFAULT '' NOT NULL,
 	zip int(11) DEFAULT '0' NOT NULL,
 	city varchar(255) DEFAULT '' NOT NULL,

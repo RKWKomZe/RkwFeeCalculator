@@ -33,6 +33,14 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $name = '';
 
     /**
+     * name of the founder
+     *
+     * @var string
+     * @validateOnObject NotEmpty
+     */
+    protected $founderName = '';
+
+    /**
      * address
      *
      * @var string
@@ -450,6 +458,27 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * Returns the name of the founder
+     *
+     * @return string $founderName
+     */
+    public function getFounderName()
+    {
+        return $this->founderName;
+    }
+
+    /**
+     * Sets the founderName
+     *
+     * @param string $founderName
+     * @return void
+     */
+    public function setFounderName($founderName)
+    {
+        $this->founderName = $founderName;
     }
 
     /**

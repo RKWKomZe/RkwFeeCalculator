@@ -107,6 +107,9 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.founder_name">
+				<source>Name of the Founder</source>
+			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.address">
 				<source>Address</source>
 			</trans-unit>

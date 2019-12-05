@@ -133,8 +133,12 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.name">
 				<source>Name</source>
-				<target>Unternehmen</target>
+				<target>Name des Unternehmens</target>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.founder_name">
+                <source>Name of the Founder</source>
+                <target>Name des Gründers/der Gründerin</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.address">
 				<source>Address</source>
 				<target>Straße, Nr.</target>
