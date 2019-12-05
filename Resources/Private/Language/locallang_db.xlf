@@ -117,8 +117,11 @@
 				<source>City</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.foundation_date">
-				<source>(Intended) Foundation Date</source>
+				<source>Foundation Date</source>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date">
+                <source>Intended Foundation Date</source>
+            </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.citizenship">
 				<source>Citizenship</source>
 			</trans-unit>

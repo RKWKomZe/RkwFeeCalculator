@@ -65,6 +65,14 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $foundationDate = 0;
 
     /**
+     * intendedFoundationDate
+     *
+     * @var string
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     */
+    protected $intendedFoundationDate = 0;
+
+    /**
      * citizenship
      *
      * @var string
@@ -526,6 +534,27 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setFoundationDate($foundationDate)
     {
         $this->foundationDate = $foundationDate;
+    }
+
+    /**
+     * Returns the intendedFoundationDate
+     *
+     * @return \DateTime
+     */
+    public function getIntendedFoundationDate()
+    {
+        return $this->intendedFoundationDate;
+    }
+
+    /**
+     * Sets the intendedFoundationDate
+     *
+     * @param \DateTime $intendedFoundationDate
+     * @return void
+     */
+    public function setIntendedFoundationDate($intendedFoundationDate)
+    {
+        $this->intendedFoundationDate = $intendedFoundationDate;
     }
 
     /**
@@ -1481,6 +1510,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function transformDates()
     {
         $this->foundationDate = $this->transformDate($this->foundationDate);
+        $this->intendedFoundationDate = $this->transformDate($this->intendedFoundationDate);
         $this->birthdate = $this->transformDate($this->birthdate);
         $this->consultingDateFrom = $this->transformDate($this->consultingDateFrom);
         $this->consultingDateTo = $this->transformDate($this->consultingDateTo);

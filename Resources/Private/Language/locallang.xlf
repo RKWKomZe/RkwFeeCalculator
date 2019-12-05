@@ -169,7 +169,10 @@
                 <source>City</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.foundation_date">
-                <source>(Intended) Foundation Date</source>
+                <source>Foundation Date</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date">
+                <source>Intended Foundation Date</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.citizenship">
                 <source>Citizenship</source>
@@ -529,9 +532,6 @@
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.contactPersonEmail">
                 <source>Contact Person Email</source>
-            </trans-unit>
-            <trans-unit id="form.error.newSupportRequest.startUpFoundationDate">
-                <source>Start Up Foundation Date</source>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.preFoundationEmployment">
                 <source>Start Up Employment Status Before</source>

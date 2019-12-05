@@ -54,6 +54,14 @@
                 <f:form.textfield property="foundationDate" id="foundationDate" value="{supportRequest.foundationDate->f:format.date()}" placeholder="DD.MM.YYYY"/>
             </div>
         </f:if>
+        <f:if condition="<vh:isRequestField fieldName='intendedFoundationDate' requestFields='{supportProgramme.requestFields}' />">
+            <div class="v320-1-of-2">
+                <label for="intendedFoundationDate">
+                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date" extensionName="RkwFeecalculator" />
+                </label>
+                <f:form.textfield property="intendedFoundationDate" id="intendedFoundationDate" value="{supportRequest.intendedFoundationDate->f:format.date()}" placeholder="DD.MM.YYYY"/>
+            </div>
+        </f:if>
         <f:if condition="<vh:isRequestField fieldName='companyType' requestFields='{supportProgramme.requestFields}' />">
             <div class="v320-2-of-2">
                 <label for="companyType">

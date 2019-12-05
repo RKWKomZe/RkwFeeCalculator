@@ -19,6 +19,10 @@
 	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.foundation_date" />
 </label><br />
 	<f:form.textfield property="foundationDate" value="{supportRequest.foundationDate->f:format.date()}" /><br />
+<label for="intendedFoundationDate">
+    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date" />
+</label><br />
+<f:form.textfield property="intendedFoundationDate" value="{supportRequest.intendedFoundationDate->f:format.date()}" /><br />
 <label for="sales">
 	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.sales" />
 </label><br />
@@ -79,10 +83,10 @@
 	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_email" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="contactPersonEmail" /><br />
-<label for="startUpFoundationDate">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.start_up_foundation_date" />
+<label for="intendedFoundationDate">
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date" />
 </label><br />
-	<f:form.textfield property="startUpFoundationDate" value="{supportRequest.startUpFoundationDate->f:format.date()}" /><br />
+	<f:form.textfield property="intendedFoundationDate" value="{supportRequest.intendedFoundationDate->f:format.date()}" /><br />
 <label for="preFoundationEmployment">
 	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment" />
 </label><br />

@@ -148,8 +148,12 @@
 				<target>Ort</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.foundation_date">
-                <source>(Intended) Foundation Date</source>
-                <target>(Geplantes) Gründungsdatum</target>
+                <source>Foundation Date</source>
+                <target>Gründungsdatum</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date">
+                <source>Intended Foundation Date</source>
+                <target>Geplantes Gründungsdatum</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.citizenship">
                 <source>Citizenship</source>
