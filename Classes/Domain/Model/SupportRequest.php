@@ -28,7 +28,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $name = '';
 
@@ -36,7 +36,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name of the founder
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $founderName = '';
 
@@ -44,7 +44,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * address
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $address = '';
 
@@ -52,7 +52,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * zip
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Integer
      */
     protected $zip = 0;
 
@@ -60,7 +60,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * city
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $city = '';
 
@@ -84,7 +84,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * citizenship
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $citizenship = '';
 
@@ -100,23 +100,23 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * sales
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $foundationLocation = '';
 
     /**
      * sales
      *
-     * @var string
-     * @validateOnObject NotEmpty
+     * @var int
+     * @validateOnObject NotEmpty, Integer
      */
     protected $sales = '';
 
     /**
      * balance
      *
-     * @var string
-     * @validateOnObject NotEmpty
+     * @var int
+     * @validateOnObject NotEmpty, Integer
      */
     protected $balance = '';
 
@@ -124,7 +124,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * employeesCount
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Integer
      */
     protected $employeesCount = 0;
 
@@ -132,7 +132,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * manager
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $manager = '';
 
@@ -156,7 +156,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * businessPurpose
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Text
      */
     protected $businessPurpose = '';
 
@@ -180,7 +180,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * companyShares
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Text
      */
     protected $companyShares = '';
 
@@ -188,7 +188,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * principalBank
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $principalBank = '';
 
@@ -196,7 +196,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * bic
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $bic = '';
 
@@ -212,7 +212,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contactPersonName
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $contactPersonName = '';
 
@@ -292,7 +292,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingContent
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Text
      */
     protected $consultingContent = '';
 
@@ -308,7 +308,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantCompany
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $consultantCompany = '';
 
@@ -316,7 +316,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantName1
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $consultantName1 = '';
 
@@ -324,7 +324,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantName2
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $consultantName2 = '';
 
@@ -347,8 +347,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * consultantFee
      *
-     * @var string
-     * @validateOnObject NotEmpty
+     * @var int
+     * @validateOnObject NotEmpty, Integer
      */
     protected $consultantFee = '';
 
@@ -364,7 +364,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantEmail
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, EmailAddress
      */
     protected $consultantEmail = '';
 
