@@ -49,6 +49,15 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
         }, explode(',', $supportRequest->getSupportProgramme()->getMandatoryFields()));
 
+        $requestFieldsArray = array_map(function($item) {
+            return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
+        }, explode(',', $supportRequest->getSupportProgramme()->getRequestFields()));
+
+        //  filter mandatoryFieldsArray to only contain requested fields
+        $mandatoryFieldsArray = array_filter($mandatoryFieldsArray, function($item) use ($requestFieldsArray) {
+            return in_array($item, $requestFieldsArray);
+        });
+
         foreach($mandatoryFieldsArray as $property) {
             $getter = 'get' . ucfirst($property);
 
