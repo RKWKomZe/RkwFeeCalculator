@@ -315,7 +315,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings">
                 <source>Insolvency Proceedings</source>
-                <target>Ist für das Unternehmen, einen der Gesellschafter oder Geschäftsführer ein Insolvenzverfahren anhängig oder eröffnet?</target>
+                <target>Ist für das Unternehmen, einen der Gesellschafter oder einen der Geschäftsführer ein Insolvenzverfahren anhängig oder eröffnet?</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings.1">
                 <source>Yes</source>
