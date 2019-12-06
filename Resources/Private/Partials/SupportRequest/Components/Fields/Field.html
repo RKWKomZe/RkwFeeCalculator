@@ -1,0 +1,38 @@
+{namespace vh=RKW\RkwFeecalculator\ViewHelpers}
+
+<!--        <div class="v320-1-of-2">-->
+    <label for="{fieldName}">
+        <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />
+    </label>
+    <f:if condition="{field.type} == 'text'">
+        <f:form.textfield property="{fieldName}" id="{fieldName}" />
+    </f:if>
+    <f:if condition="{field.type} == 'date'">
+        <f:form.textfield property="{fieldName}" id="{fieldName}" value="{supportRequest.fieldName->f:format.date()}" placeholder="DD.MM.YYYY"/>
+    </f:if>
+    <f:if condition="{field.type} == 'select'">
+        <f:form.select property="{fieldName}" options="{field.options}" optionValueField="{field.optionValueField}" optionLabelField="{field.optionLabelField}" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" />
+    </f:if>
+    <f:if condition="{field.type} == 'radio'">
+        <f:if condition="{field.hints.0 != ''}">
+            <span class="text-smaller hint">{field.hints.0}</span>
+        </f:if>
+
+        <f:for each="{field.options}" as="option">
+            <span class="radio">
+                <label>
+                     <f:form.radio property="{fieldName}" value="{option.value}" />
+                    &nbsp;{option.label}
+                </label>
+            </span>
+        </f:for>
+
+        <f:if condition="{field.hints.1 != ''}">
+            <span class="text-smaller hint">{field.hints.1}</span>
+        </f:if>
+    </f:if>
+    <f:if condition="{field.type} == 'textarea'">
+        <f:form.textarea property="{fieldName}" cols="40" rows="5" />
+    </f:if>
+<!--        </div>-->
+

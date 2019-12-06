@@ -229,7 +229,7 @@
                 <source>Name</source>
                 <target>Name des Unternehmens</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.founder_name">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.founderName">
                 <source>Name of the Founder</source>
                 <target>Name des Gründers/der Gründerin</target>
             </trans-unit>
@@ -245,7 +245,7 @@
                 <source>City</source>
                 <target>Ort</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.foundation_date">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.foundationDate">
                 <source>Foundation Date</source>
                 <target>Gründungsdatum</target>
             </trans-unit>
@@ -261,11 +261,11 @@
                 <source>Birthdate</source>
                 <target>Geburtsdatum</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.company_type">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companyType">
                 <source>Company type</source>
                 <target>Rechtsform</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.foundation_location">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.foundationLocation">
                 <source>Intended location of foundation</source>
                 <target>Geplanter Ort der Gründung (PLZ, Ort)</target>
             </trans-unit>
@@ -277,7 +277,7 @@
                 <source>Balance</source>
                 <target>Bilanzsumme T€</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.employees_count">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount">
                 <source>Number Of Employees</source>
                 <target>Mitarbeiterzahl</target>
             </trans-unit>
@@ -285,43 +285,43 @@
                 <source>Manager Name</source>
                 <target>Geschäftsführer / Inhaber</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.single_representative">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative">
                 <source>Single Representative</source>
                 <target>Einzelvertretungsberechtigung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.single_representative.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative.1">
                 <source>Yes</source>
                 <target>Ja</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.single_representative.99">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative.99">
                 <source>No</source>
                 <target>Nein</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction">
                 <source>Deduction Right</source>
                 <target>Vorsteuerabzugsberechtigung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.1">
                 <source>Yes</source>
                 <target>Ja</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction.99">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.99">
                 <source>No</source>
                 <target>Nein</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.business_purpose">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.businessPurpose">
                 <source>Business Purpose</source>
                 <target>Unternehmensgegenstand</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings">
                 <source>Insolvency Proceedings</source>
                 <target>Ist für das Unternehmen, einen der Gesellschafter oder einen der Geschäftsführer ein Insolvenzverfahren anhängig oder eröffnet?</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings.1">
                 <source>Yes</source>
                 <target>Ja</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvency_proceedings.99">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings.99">
                 <source>No</source>
                 <target>Nein</target>
             </trans-unit>
@@ -341,11 +341,11 @@
                 <source>HWK</source>
                 <target>HWK</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.company_shares">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companyShares">
                 <source>Company Shares</source>
                 <target>Gesellschaftsanteile (namentliche Verteilung der Anteile in %)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.principal_bank">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.principalBank">
                 <source>Principle Bank</source>
                 <target>Hausbank</target>
             </trans-unit>
@@ -357,183 +357,183 @@
                 <source>IBAN</source>
                 <target>IBAN</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_name">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonName">
                 <source>Contact Person Name</source>
                 <target>Ansprechpartner für RKW</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_phone">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonPhone">
                 <source>Contact Person Phone</source>
                 <target>Telefon</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_fax">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonFax">
                 <source>Contact Person Fax</source>
                 <target>Telefax</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_mobile">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonMobile">
                 <source>Contact Person Mobile</source>
                 <target>Mobil</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_email">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonEmail">
                 <source>Contact Person Email</source>
                 <target>Persönliche E-Mail-Adresse</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment">
                 <source>Start Up Employment Status Before</source>
                 <target>Erwerbsstatus vor Gründung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.employed">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.employed">
                 <source>Employed</source>
                 <target>angestellt</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.self_employed">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.self_employed">
                 <source>Self-employed</source>
                 <target>selbstständig</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.in_education">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.in_education">
                 <source>In education</source>
                 <target>in Ausbildung/im Studium</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment.unemployed">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.unemployed">
                 <source>Unemployed</source>
                 <target>arbeitslos</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment">
                 <source>Start Up Independent Work</source>
                 <target>Liegt bereits eine selbstständige Tätigkeit vor?</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.no">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.no">
                 <source>No</source>
                 <target>Nein</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.part_time">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.part_time">
                 <source>Part-time</source>
                 <target>Ja, im Nebenerwerb</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.full_time">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.full_time">
                 <source>Full-time</source>
                 <target>Ja, im Vollerwerb</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment.shareholder">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.shareholder">
                 <source>Shareholder</source>
                 <target>Ja, Anteile an bestehenden Unternehmen</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consulting_days">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultingDays">
                 <source>Intended consulting days</source>
                 <target>geplante Anzahl Tagwerke</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consulting_date_from">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultingDateFrom">
                 <source>Consulting Date From</source>
                 <target>Zeitraum von</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consulting_date_to">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultingDateTo">
                 <source>Consulting Date Up To</source>
                 <target>Zeitraum bis</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consulting_content">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultingContent">
                 <source>Consulting Description</source>
                 <target>Beratungsinhalte</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_type">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType">
                 <source>Consultant Type</source>
                 <target>Beraterauswahl</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_type.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.1">
                 <source>I need a RKW recommendation</source>
                 <target>Ich wünsche eine Berater-Empfehlung aus dem RKW-Beraterpool.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_type.2">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.2">
                 <source>I've decided for a special onsultant</source>
                 <target>Ich habe mich bereits für einen akkreditierten Berater entschieden.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_type.3">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.3">
                 <source>I've NOT decided for a special consultant</source>
                 <target>Ich habe mich bereits für einen NOCH NICHT akkreditierten Berater entschieden.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_company">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantCompany">
                 <source>Consultant Company</source>
                 <target>Beratungsfirma</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_name1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName1">
                 <source>Consultant Name1</source>
                 <target>Berater (Name, Vorname)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_name2">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName2">
                 <source>Consultant Name2</source>
                 <target>2. Berater (Name, Vorname)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant1_accreditation_number">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant1AccreditationNumber">
                 <source>Consultant1 Accreditation Number</source>
                 <target>Berater (Akkr.-Nr.)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant2_accreditation_number">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant2AccreditationNumber">
                 <source>Consultant2 Accreditation Number</source>
                 <target>2. Berater (Akkr.-Nr.)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_fee">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantFee">
                 <source>Consultant Fee</source>
                 <target>Honorar je Tagwerk in Euro (netto)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_phone">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantPhone">
                 <source>Consultant Phone</source>
                 <target>Berater (Telefon)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant_email">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantEmail">
                 <source>Consultant Email</source>
                 <target>Berater (E-Mail-Adresse)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart">
                 <source>Early Start Desired</source>
                 <target>Vorzeitiger Maßnahmebeginn erwünscht</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.hint1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint1">
                 <source>It's possible to start prematurely. There is no legal claim.</source>
                  <target>Für die %s kann ein vorzeitiger Maßnahmebeginn beantragt werden! Möchten Sie auf eigenes Risiko einen vorzeitigen Maßnahmebeginn beantragen?</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.hint2">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint2">
                 <source>You do this on your own risk.</source>
                  <target>Mir ist bekannt, dass kein Rechtsanspruch auf eine Förderung besteht und dass die Maßnahme in Verbindung mit der Gewährung des vorzeitigen Maßnahmebeginns auf eigenes Risiko durchgeführt wird.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.1">
                 <source>Yes</source>
                 <target>Ja, das RKW Thüringen teilt mir das frühestmögliche Beginndatum zeitnah mit.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.99">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.99">
                 <source>No</source>
                 <target>Nein, die Beratung kann erst mit Bescheiderteilung durch die GFAW beginnen.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.send_documents">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments">
                 <source>Send Documents Allowed</source>
                 <target>Wie dürfen wir Ihnen Ihre Antragsunterlagen zusenden?</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport">
                 <source>Already received BAFA support?</source>
                 <target>Haben Sie bereits eine BAFA-Förderung unternehmerischen Know-hows in Anspruch genommen?</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport.1">
                 <source>Yes</source>
                 <target>Ja.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support.99">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport.99">
                 <source>No</source>
                 <target>Nein.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.deMinimis">
                 <source>Already received de-minimis support?</source>
                 <target>Haben Sie in den letzten 2 Jahren bereits de-minimis Förderungen erhalten?</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.deMinimis.1">
                 <source>Yes</source>
                 <target>Ja, ich reiche die jeweiligen de-minimis-Informationen nach.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis.99">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.deMinimis.99">
                 <source>No</source>
                 <target>Nein, ich habe keine de-minimis-Beihilfen erhalten.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.send_documents.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.1">
                 <source>via E-Mail</source>
                 <target>Per E-Mail</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.send_documents.2">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.2">
                 <source>via post</source>
                 <target>Per Post</target>
             </trans-unit>
