@@ -15,7 +15,7 @@
     </f:if>
     <f:if condition="{field.type} == 'radio'">
         <f:if condition="{field.hints.0 != ''}">
-            <span class="text-smaller hint">{field.hints.0}</span>
+            <p class="text-smaller hint">{field.hints.0}</p>
         </f:if>
 
         <f:for each="{field.options}" as="option">
@@ -28,7 +28,7 @@
         </f:for>
 
         <f:if condition="{field.hints.1 != ''}">
-            <span class="text-smaller hint">{field.hints.1}</span>
+            <p class="text-smaller hint">{field.hints.1}</p>
         </f:if>
     </f:if>
     <f:if condition="{field.type} == 'textarea'">

@@ -59,3 +59,7 @@ body.topic-3 .hint {
 body.topic-4 .hint {
     color: #c6007b;
 }
+
+body .wysiwyg p.hint {
+    font-size: 80%;
+}

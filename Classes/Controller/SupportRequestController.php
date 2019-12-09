@@ -53,6 +53,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     protected $supportProgrammeRepository = null;
 
     /**
+     * supportProgramme
+     *
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program
+     * @inject
+     */
+    protected $supportProgramme = null;
+
+    /**
      * companyTypeRepository
      *
      * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
@@ -126,25 +134,124 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             //===
         }
 
-        //  get request fields and use them in the view, getting rid of the view helper
-        $mandatoryFieldsArray = array_map(function($item) {
-            return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
-        }, explode(',', $supportProgramme->getMandatoryFields()));
+        $this->supportProgramme = $supportProgramme;
 
         $requestFieldsArray = array_map(function($item) {
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
-        }, explode(',', $supportProgramme->getRequestFields()));
-
-        //  filter mandatoryFieldsArray to only contain requested fields
-        $mandatoryFieldsArray = array_filter($mandatoryFieldsArray, function($item) use ($requestFieldsArray) {
-            return in_array($item, $requestFieldsArray);
-        });
+        }, explode(',', $this->supportProgramme->getRequestFields()));
 
         $companyTypeList = $this->companyTypeRepository->findAll();
-        $consultingList = $supportProgramme->getConsulting();
+        $consultingList = $this->supportProgramme->getConsulting();
 
         //  group the fields
-        $fieldsets = [
+        $fieldsets = $this->groupFields();
+
+        $fieldsets = $this->filterFieldsets($fieldsets, $requestFieldsArray);
+
+        $this->view->assign('supportProgramme', $this->supportProgramme);
+        $this->view->assign('applicant', $fieldsets['applicant']);
+        $this->view->assign('consulting', $fieldsets['consulting']);
+        $this->view->assign('consultant', $fieldsets['consultant']);
+        $this->view->assign('misc', $fieldsets['misc']);
+        $this->view->assign('consultingList', $consultingList);
+        $this->view->assign('companyTypeList', $companyTypeList);
+    }
+
+    /**
+     * action create
+     *
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
+     * @param integer $terms
+     * @param integer $privacy
+     * @return void
+     */
+    public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest, $terms = null, $privacy = null)
+    {
+        /** @var \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser */
+        $frontendUser = GeneralUtility::makeInstance('RKW\\RkwRegistration\\Domain\\Model\\FrontendUser');
+        $frontendUser->setEmail($newSupportRequest->getContactPersonEmail());
+        $frontendUser->setFirstName($newSupportRequest->getContactPersonFirstName());
+        $frontendUser->setLastName($newSupportRequest->getContactPersonLastName());
+
+        //  transform dates from string to timestamp
+        $newSupportRequest->transformDates();
+
+        if ($this->settings['includeRkwRegistrationPrivacy']) {
+            // add privacy info
+            \RKW\RkwRegistration\Tools\Privacy::addPrivacyData($this->request, $frontendUser, $newSupportRequest, 'new support request');
+        }
+
+        $this->addFlashMessage(
+            \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                'tx_rkwfeecalculator_controller_supportrequest.success.requestCreated', 'rkw_feecalculator'
+            )
+        );
+
+        $newSupportRequest->setPid((int)($this->settings['storagePid']));
+        $this->supportRequestRepository->add($newSupportRequest);
+
+        // persist first before sending mail!
+        $this->persistenceManager->persistAll();
+
+        $this->sendConfirmationMail($frontendUser, $newSupportRequest);
+
+        $this->sendNotificationMail($newSupportRequest);
+
+        $this->redirect('new');
+    }
+
+    /**
+     * Sends confirmation mail to frontenduser.
+     *
+     * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
+     */
+    protected function sendConfirmationMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest)
+    {
+        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_USER, [$frontendUser, $newSupportRequest]);
+    }
+
+    /**
+     * Sends notification mail to admin.
+     *
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
+     */
+    protected function sendNotificationMail(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest)
+    {
+
+        // send information mail to admins
+        $adminUidList = explode(',', $this->settings['mail']['backendUser']);
+        $backendUsers = [];
+        foreach ($adminUidList as $adminUid) {
+            if ($adminUid) {
+                $admin = $this->backendUserRepository->findByUid($adminUid);
+                if ($admin) {
+                    $backendUsers[] = $admin;
+                }
+            }
+        }
+
+        // fallback-handling
+        if (
+            (count($backendUsers) < 1)
+            && ($backendUserFallback = (int)$this->settings['backendUserIdForMails'])
+        ) {
+            $admin = $this->backendUserRepository->findByUid($backendUserFallback);
+            if (
+                ($admin)
+                && ($admin->getEmail())
+            ) {
+                $backendUsers[] = $admin;
+            }
+
+        }
+
+        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $newSupportRequest]);
+    }
+
+    protected function groupFields()
+    {
+        return [
             'applicant' => [
                 'name' => [
                     'type' => 'text'
@@ -261,8 +368,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'type' => 'select',
                     'options' => [
                         1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.chamber.1',
-                                'RkwFeecalculator'
+                            'tx_rkwfeecalculator_domain_model_supportrequest.chamber.1',
+                            'RkwFeecalculator'
                         ),
                         2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.chamber.2',
@@ -437,12 +544,12 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                         \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint1',
                             'RkwFeecalculator',
-                            $supportProgramme.name
+                            [$this->supportProgramme->getName()]
                         ),
                         \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint2',
                             'RkwFeecalculator',
-                            $supportProgramme.name
+                            [$this->supportProgramme->getName()]
                         ),
                     ]
                 ],
@@ -502,121 +609,16 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 ],
             ]
         ];
-
-        $fieldsets['applicant'] = array_filter($fieldsets['applicant'], function($item) use ($requestFieldsArray) {
-            return in_array($item, $requestFieldsArray);
-        }, ARRAY_FILTER_USE_KEY);
-
-        $fieldsets['consulting'] = array_filter($fieldsets['consulting'], function($item) use ($requestFieldsArray) {
-            return in_array($item, $requestFieldsArray);
-        }, ARRAY_FILTER_USE_KEY);
-
-        $fieldsets['consultant'] = array_filter($fieldsets['consultant'], function($item) use ($requestFieldsArray) {
-            return in_array($item, $requestFieldsArray);
-        }, ARRAY_FILTER_USE_KEY);
-
-        $fieldsets['misc'] = array_filter($fieldsets['misc'], function($item) use ($requestFieldsArray) {
-            return in_array($item, $requestFieldsArray);
-        }, ARRAY_FILTER_USE_KEY);
-
-        $this->view->assign('supportProgramme', $supportProgramme);
-        $this->view->assign('applicant', $fieldsets['applicant']);
-        $this->view->assign('consulting', $fieldsets['consulting']);
-        $this->view->assign('consultant', $fieldsets['consultant']);
-        $this->view->assign('misc', $fieldsets['misc']);
-        $this->view->assign('consultingList', $consultingList);
-        $this->view->assign('companyTypeList', $companyTypeList);
     }
 
-    /**
-     * action create
-     *
-     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
-     * @param integer $terms
-     * @param integer $privacy
-     * @return void
-     */
-    public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest, $terms = null, $privacy = null)
+    protected function filterFieldsets($fieldsets, $requestFieldsArray)
     {
-        /** @var \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser */
-        $frontendUser = GeneralUtility::makeInstance('RKW\\RkwRegistration\\Domain\\Model\\FrontendUser');
-        $frontendUser->setEmail($newSupportRequest->getContactPersonEmail());
-        $frontendUser->setFirstName($newSupportRequest->getContactPersonFirstName());
-        $frontendUser->setLastName($newSupportRequest->getContactPersonLastName());
-
-        //  transform dates from string to timestamp
-        $newSupportRequest->transformDates();
-
-        if ($this->settings['includeRkwRegistrationPrivacy']) {
-            // add privacy info
-            \RKW\RkwRegistration\Tools\Privacy::addPrivacyData($this->request, $frontendUser, $newSupportRequest, 'new support request');
+        foreach($fieldsets as $key => $fieldset) {
+            $fieldsets[$key] = array_filter($fieldset, function($item) use ($requestFieldsArray) {
+                return in_array($item, $requestFieldsArray);
+            }, ARRAY_FILTER_USE_KEY);
         }
 
-        $this->addFlashMessage(
-            \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                'tx_rkwfeecalculator_controller_supportrequest.success.requestCreated', 'rkw_feecalculator'
-            )
-        );
-
-        $newSupportRequest->setPid((int)($this->settings['storagePid']));
-        $this->supportRequestRepository->add($newSupportRequest);
-
-        // persist first before sending mail!
-        $this->persistenceManager->persistAll();
-
-        $this->sendConfirmationMail($frontendUser, $newSupportRequest);
-
-        $this->sendNotificationMail($newSupportRequest);
-
-        $this->redirect('new');
-    }
-
-    /**
-     * Sends confirmation mail to frontenduser.
-     *
-     * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
-     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
-     */
-    protected function sendConfirmationMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest)
-    {
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_USER, [$frontendUser, $newSupportRequest]);
-    }
-
-    /**
-     * Sends notification mail to admin.
-     *
-     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
-     */
-    protected function sendNotificationMail(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest)
-    {
-
-        // send information mail to admins
-        $adminUidList = explode(',', $this->settings['mail']['backendUser']);
-        $backendUsers = [];
-        foreach ($adminUidList as $adminUid) {
-            if ($adminUid) {
-                $admin = $this->backendUserRepository->findByUid($adminUid);
-                if ($admin) {
-                    $backendUsers[] = $admin;
-                }
-            }
-        }
-
-        // fallback-handling
-        if (
-            (count($backendUsers) < 1)
-            && ($backendUserFallback = (int)$this->settings['backendUserIdForMails'])
-        ) {
-            $admin = $this->backendUserRepository->findByUid($backendUserFallback);
-            if (
-                ($admin)
-                && ($admin->getEmail())
-            ) {
-                $backendUsers[] = $admin;
-            }
-
-        }
-
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $newSupportRequest]);
+        return $fieldsets;
     }
 }
