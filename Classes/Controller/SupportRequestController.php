@@ -101,6 +101,19 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     protected $persistenceManager;
 
     /**
+     * A template method for displaying custom error flash messages, or to
+     * display no flash message at all on errors. Override this to customize
+     * the flash message in your action controller.
+     *
+     * @return string The flash message or FALSE if no flash message should be set
+     * @api
+     */
+    protected function getErrorFlashMessage()
+    {
+        return false;
+    }
+
+    /**
      * action new
      *
      * @return void
