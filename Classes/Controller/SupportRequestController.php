@@ -15,6 +15,7 @@ namespace RKW\RkwFeecalculator\Controller;
  */
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 
 /**
@@ -489,6 +490,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 ],
                 'consultingDateFrom' => [
                     'type' => 'date',
+                    'width' => 'new',   //  force new line
                 ],
                 'consultingDateTo' => [
                     'type' => 'date',
@@ -660,12 +662,16 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
             foreach ($fieldset as $fieldKey => $field) {
 
-                if ($this->fieldWidth === 'full' || $this->fieldWidth === '2-2') {
-                    $field['width'] = ($field['width'] === 'full') ? 'full' : '1-2';
+                if ($this->fieldWidth === 'full' || $this->fieldWidth === '2-2' || $field['width'] === 'new') {
+                    $field['width'] = (isset($field['width'])) ? $field['width'] : '1-2';
                 }
 
-                if ($this->fieldWidth === '1-2' && $field['width'] !== 'full') {
+                if ($this->fieldWidth === '1-2' && $field['width'] !== 'full' && $field['width'] !== 'new') {
                     $field['width'] = '2-2';
+                }
+
+                if ($field['width'] === 'new') {
+                    $field['width'] = '1-2';
                 }
 
                 $this->fieldWidth = $field['width'];
