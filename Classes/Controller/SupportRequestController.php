@@ -15,8 +15,6 @@ namespace RKW\RkwFeecalculator\Controller;
  */
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Core\Error\DebugExceptionHandler;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 
 /**
@@ -100,6 +98,12 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      */
     protected $persistenceManager;
 
+    protected $companyTypeList;
+
+    protected $consultingList;
+
+    protected $fieldWidth = 'full';
+
     /**
      * A template method for displaying custom error flash messages, or to
      * display no flash message at all on errors. Override this to customize
@@ -153,21 +157,21 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
         }, explode(',', $this->supportProgramme->getRequestFields()));
 
-        $companyTypeList = $this->companyTypeRepository->findAll();
-        $consultingList = $this->supportProgramme->getConsulting();
+        $this->companyTypeList = $this->companyTypeRepository->findAll();
+        $this->consultingList = $this->supportProgramme->getConsulting();
 
         //  group the fields
         $fieldsets = $this->groupFields();
 
-        $fieldsets = $this->filterFieldsets($fieldsets, $requestFieldsArray);
+        $fieldsets = $this->arrangeFields($this->filterFieldsets($fieldsets, $requestFieldsArray));
 
         $this->view->assign('supportProgramme', $this->supportProgramme);
         $this->view->assign('applicant', $fieldsets['applicant']);
         $this->view->assign('consulting', $fieldsets['consulting']);
         $this->view->assign('consultant', $fieldsets['consultant']);
         $this->view->assign('misc', $fieldsets['misc']);
-        $this->view->assign('consultingList', $consultingList);
-        $this->view->assign('companyTypeList', $companyTypeList);
+        $this->view->assign('consultingList', $this->consultingList);
+        $this->view->assign('companyTypeList', $this->companyTypeList);
     }
 
     /**
@@ -267,55 +271,56 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         return [
             'applicant' => [
                 'name' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'founderName' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'address' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'zip' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'city' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'foundationDate' => [
-                    'type' => 'date'
+                    'type' => 'date',
                 ],
                 'intendedFoundationDate' => [
-                    'type' => 'date'
+                    'type' => 'date',
                 ],
                 'companyType' => [
                     'type' => 'select',
-                    'options' => $companyTypeList,
+                    'options' => $this->companyTypeList,
                     'optionValueField' => 'uid',
-                    'optionLabelField' => 'name'
+                    'optionLabelField' => 'name',
                 ],
                 'city' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'citizenship' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'birthdate' => [
-                    'type' => 'date'
+                    'type' => 'date',
                 ],
                 'foundationLocation' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'balance' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'sales' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'employeesCount' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'manager' => [
-                    'type' => 'text'
+                    'type' => 'text',
+                    'width' => 'full',
                 ],
                 'singleRepresentative' => [
                     'type' => 'radio',
@@ -356,10 +361,12 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     ]
                 ],
                 'businessPurpose' => [
-                    'type' => 'textarea'
+                    'type' => 'textarea',
+                    'width' => 'full',
                 ],
                 'insolvencyProceedings' => [
                     'type' => 'radio',
+                    'width' => 'full',
                     'options' => [
                         [
                             'value' => 1,
@@ -375,10 +382,11 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                                 'RkwFeecalculator'
                             ),
                         ]
-                    ]
+                    ],
                 ],
                 'chamber' => [
                     'type' => 'select',
+                    'width' => 'full',
                     'options' => [
                         1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.chamber.1',
@@ -392,34 +400,37 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                             'tx_rkwfeecalculator_domain_model_supportrequest.chamber.3',
                             'RkwFeecalculator'
                         ),
-                    ]
+                    ],
                 ],
                 'companyShares' => [
-                    'type' => 'textarea'
+                    'type' => 'textarea',
+                    'width' => 'full',
                 ],
                 'principalBank' => [
-                    'type' => 'text'
+                    'type' => 'text',
+                    'width' => 'full',
                 ],
                 'bic' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'iban' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'contactPersonName' => [
-                    'type' => 'text'
+                    'type' => 'text',
+                    'width' => 'full',
                 ],
                 'contactPersonPhone' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'contactPersonFax' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'contactPersonMobile' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'contactPersonEmail' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'preFoundationEmployment' => [
                     'type' => 'select',
@@ -440,7 +451,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.unemployed',
                             'RkwFeecalculator'
                         ),
-                    ]
+                    ],
                 ],
                 'preFoundationSelfEmployment' => [
                     'type' => 'select',
@@ -461,33 +472,36 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.shareholder',
                             'RkwFeecalculator'
                         ),
-                    ]
+                    ],
                 ],
             ],
             'consulting' => [
                 'consulting' => [
                     'type' => 'select',
-                    'options' => $consultingList,
+                    'width' => 'full',
+                    'options' => $this->consultingList,
                     'optionValueField' => 'uid',
                     'optionLabelField' => 'title'
                 ],
                 'consultingDays' => [
                     'type' => 'select',
-                    'options' => (new PossibleDaysViewHelper())->render($supportProgramme),
+                    'options' => (new PossibleDaysViewHelper())->render($this->supportProgramme),
                 ],
                 'consultingDateFrom' => [
-                    'type' => 'date'
+                    'type' => 'date',
                 ],
                 'consultingDateTo' => [
-                    'type' => 'date'
+                    'type' => 'date',
                 ],
                 'consultingContent' => [
-                    'type' => 'textarea'
+                    'type' => 'textarea',
+                    'width' => 'full',
                 ],
             ],
             'consultant' => [
                 'consultantType' => [
                     'type' => 'select',
+                    'width' => 'full',
                     'options' => [
                         1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.consultantType.1',
@@ -504,39 +518,41 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     ]
                 ],
                 'consultantCompany' => [
-                    'type' => 'text'
+                    'type' => 'text',
+                    'width' => 'full',
                 ],
                 'consultantName1' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'consultant1AccreditationNumber' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'consultantName2' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'consultant2AccreditationNumber' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'consultantFee' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'consultantFee' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'consultantPhone' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'consultantFee' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'consultantEmail' => [
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
             ],
             'misc' => [
                 'prematureStart' => [
                     'type' => 'radio',
+                    'width' => 'full',
                     'options' => [
                         [
                             'value' => 1,
@@ -568,6 +584,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 ],
                 'bafaSupport' => [
                     'type' => 'radio',
+                    'width' => 'full',
                     'options' => [
                         [
                             'value' => 1,
@@ -588,6 +605,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 ],
                 'deMinimis' => [
                     'type' => 'radio',
+                    'width' => 'full',
                     'options' => [
                         [
                             'value' => 1,
@@ -608,6 +626,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 ],
                 'sendDocuments' => [
                     'type' => 'select',
+                    'width' => 'full',
                     'options' => [
                         1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.1',
@@ -630,6 +649,33 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             $fieldsets[$key] = array_filter($fieldset, function($item) use ($requestFieldsArray) {
                 return in_array($item, $requestFieldsArray);
             }, ARRAY_FILTER_USE_KEY);
+        }
+
+        return $fieldsets;
+    }
+
+    protected function arrangeFields($fieldsets)
+    {
+        foreach ($fieldsets as $key => $fieldset) {
+
+            foreach ($fieldset as $fieldKey => $field) {
+
+                if ($this->fieldWidth === 'full' || $this->fieldWidth === '2-2') {
+                    $field['width'] = ($field['width'] === 'full') ? 'full' : '1-2';
+                }
+
+                if ($this->fieldWidth === '1-2' && $field['width'] !== 'full') {
+                    $field['width'] = '2-2';
+                }
+
+                $this->fieldWidth = $field['width'];
+
+                $fieldsets[$key][$fieldKey] = $field;
+
+            }
+
+            $this->fieldWidth = 'full';
+
         }
 
         return $fieldsets;
