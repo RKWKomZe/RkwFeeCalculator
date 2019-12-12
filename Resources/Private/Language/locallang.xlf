@@ -174,7 +174,7 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.foundationDate">
                 <source>Foundation Date</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.intendedFoundationDate">
                 <source>Intended Foundation Date</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.citizenship">

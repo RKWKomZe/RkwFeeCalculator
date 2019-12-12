@@ -135,7 +135,7 @@
 				<source>Name</source>
 				<target>Name des Unternehmens</target>
 			</trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.foundeame">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.founderName">
                 <source>Name of the Founder</source>
                 <target>Name des Gründers/der Gründerin</target>
             </trans-unit>
@@ -155,7 +155,7 @@
                 <source>Foundation Date</source>
                 <target>Gründungsdatum</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.intendedFoundationDate">
                 <source>Intended Foundation Date</source>
                 <target>Geplantes Gründungsdatum</target>
             </trans-unit>

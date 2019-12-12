@@ -209,9 +209,9 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         // persist first before sending mail!
         $this->persistenceManager->persistAll();
 
-        $this->sendConfirmationMail($frontendUser, $newSupportRequest);
+//        $this->sendConfirmationMail($frontendUser, $newSupportRequest);
 
-        $this->sendNotificationMail($newSupportRequest);
+//        $this->sendNotificationMail($newSupportRequest);
 
         $this->redirect('new');
     }
