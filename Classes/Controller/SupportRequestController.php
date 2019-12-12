@@ -15,7 +15,6 @@ namespace RKW\RkwFeecalculator\Controller;
  */
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 
 /**
@@ -161,10 +160,9 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->companyTypeList = $this->companyTypeRepository->findAll();
         $this->consultingList = $this->supportProgramme->getConsulting();
 
-        //  group the fields
-        $fieldsets = $this->groupFields();
+        $fieldsets = $this->getFieldsConfig();
 
-        $fieldsets = $this->arrangeFields($this->filterFieldsets($fieldsets, $requestFieldsArray));
+        $fieldsets = $this->getFieldsLayout($this->filterFieldsets($fieldsets, $requestFieldsArray));
 
         $this->view->assign('supportProgramme', $this->supportProgramme);
         $this->view->assign('applicant', $fieldsets['applicant']);
@@ -267,7 +265,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $newSupportRequest]);
     }
 
-    protected function groupFields()
+    protected function getFieldsConfig()
     {
         return [
             'applicant' => [
@@ -297,9 +295,6 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'options' => $this->companyTypeList,
                     'optionValueField' => 'uid',
                     'optionLabelField' => 'name',
-                ],
-                'city' => [
-                    'type' => 'text',
                 ],
                 'citizenship' => [
                     'type' => 'text',
@@ -647,16 +642,19 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
     protected function filterFieldsets($fieldsets, $requestFieldsArray)
     {
-        foreach($fieldsets as $key => $fieldset) {
+        foreach ($fieldsets as $key => $fieldset) {
             $fieldsets[$key] = array_filter($fieldset, function($item) use ($requestFieldsArray) {
                 return in_array($item, $requestFieldsArray);
-            }, ARRAY_FILTER_USE_KEY);
+            },ARRAY_FILTER_USE_KEY);
+
+            //  sort array
+            $sortedFieldsets[$key] = array_merge(array_flip(($requestFieldsArray)), $fieldsets[$key]);
         }
 
-        return $fieldsets;
+        return $sortedFieldsets;
     }
 
-    protected function arrangeFields($fieldsets)
+    protected function getFieldsLayout($fieldsets)
     {
         foreach ($fieldsets as $key => $fieldset) {
 
