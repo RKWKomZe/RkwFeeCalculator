@@ -186,8 +186,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         /** @var \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser */
         $frontendUser = GeneralUtility::makeInstance('RKW\\RkwRegistration\\Domain\\Model\\FrontendUser');
         $frontendUser->setEmail($newSupportRequest->getContactPersonEmail());
-        $frontendUser->setFirstName($newSupportRequest->getContactPersonFirstName());
-        $frontendUser->setLastName($newSupportRequest->getContactPersonLastName());
+//        $frontendUser->setFirstName($newSupportRequest->getContactPersonName());
+//        $frontendUser->setLastName($newSupportRequest->getContactPersonName());
 
         //  transform dates from string to timestamp
         $newSupportRequest->transformDates();
@@ -204,6 +204,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         );
 
         $newSupportRequest->setPid((int)($this->settings['storagePid']));
+
         $this->supportRequestRepository->add($newSupportRequest);
 
         // persist first before sending mail!

@@ -97,7 +97,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $birthdate = 0;
 
     /**
-     * sales
+     * foundationLocation
      *
      * @var string
      * @validateOnObject NotEmpty, String
@@ -437,7 +437,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \RKW\RkwBasics\Domain\Model\CompanyType
      * @validateOnObject NotEmpty
      */
-    protected $companyType = 0;
+    protected $companyType = null;
 
     /**
      * Returns the name
