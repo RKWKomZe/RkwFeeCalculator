@@ -29,6 +29,8 @@ plugin.tx_rkwfeecalculator_request {
     persistence {
         # cat=plugin.tx_rkwfeecalculator_request//a; type=string; label=Default storage PID
         storagePid =
+        # cat=plugin.tx_rkwfeecalculator_request//a; type=string; label=Default storage PID of FeUsers
+        storagePidFeUser =
     }
     settings {
         # cat=plugin.tx_rkwfeecalculator_request//a; type=integer; label=Ajax type num

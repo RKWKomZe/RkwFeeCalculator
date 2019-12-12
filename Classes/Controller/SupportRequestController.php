@@ -185,6 +185,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     {
         /** @var \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser */
         $frontendUser = GeneralUtility::makeInstance('RKW\\RkwRegistration\\Domain\\Model\\FrontendUser');
+
+        $frontendUser->setPid((int)($this->settings['storagePidFeUser']));
         $frontendUser->setEmail($newSupportRequest->getContactPersonEmail());
 //        $frontendUser->setFirstName($newSupportRequest->getContactPersonName());
 //        $frontendUser->setLastName($newSupportRequest->getContactPersonName());
