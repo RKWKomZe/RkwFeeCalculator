@@ -648,8 +648,10 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             },ARRAY_FILTER_USE_KEY);
 
             //  sort array
-            $sortedFieldsets[$key] = array_merge(array_flip(($requestFieldsArray)), $fieldsets[$key]);
+            $sortedFieldsets[$key] = array_merge(array_flip(array_intersect(array_keys($fieldsets[$key]), $requestFieldsArray)), $fieldsets[$key]);
+
         }
+
 
         return $sortedFieldsets;
     }
