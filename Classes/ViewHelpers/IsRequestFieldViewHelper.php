@@ -14,7 +14,6 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class IsRequestFieldViewHelper
@@ -41,7 +40,7 @@ class IsRequestFieldViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
         }, explode(',', $requestFields));
 
-        if (!in_array($fieldName, $requestFieldsArray)) {
+        if (!in_array($fieldName, $requestFieldsArray, true)) {
 
             return false;
             //===

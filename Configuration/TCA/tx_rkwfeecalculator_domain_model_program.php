@@ -24,7 +24,15 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, possible_days_min, possible_days_max, content, rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, funding_factor, consulting, request_fields, mandatory_fields',
     ],
     'types'     => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, possible_days_min, possible_days_max, content;;;richtext:rte_transform[mode=ts_links], rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, funding_factor, consulting, request_fields, mandatory_fields, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => [
+            'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1,name, possible_days_min, possible_days_max, content, rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, funding_factor, consulting, request_fields, mandatory_fields, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime',
+            // add RTE
+            'columnsOverrides' => [
+                'content' => [
+                    'defaultExtras' => 'richtext:rte_transform[mode=ts_links]'
+                ],
+            ]
+        ],
     ],
     'columns'   => [
         'sys_language_uid'             => [
@@ -145,7 +153,7 @@ return [
                 'eval' => 'trim, required',
                 'wizards' => array(
                     'RTE' => array(
-                        'icon' => 'wizard_rte2.gif',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_rte.gif',
                         'notNewRecords'=> 1,
                         'RTEonly' => 1,
                         'module' => array(
@@ -186,14 +194,14 @@ return [
                 'default' => '0.0000000000',
             ],
         ],
-        'rkw_fee_per_day_as_limit'     => array(
+        'rkw_fee_per_day_as_limit'     => [
             'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day_as_limit',
-            'config'  => array(
+            'config'  => [
                 'type'    => 'check',
                 'default' => 0,
-            ),
-        ),
+            ],
+        ],
         'funding_factor'               => [
             'exclude' => false,
             'label'   => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_program.funding_factor',

@@ -533,12 +533,6 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 'consultant2AccreditationNumber' => [
                     'type' => 'text',
                 ],
-                'consultantFee' => [
-                    'type' => 'text',
-                ],
-                'consultantFee' => [
-                    'type' => 'text',
-                ],
                 'consultantPhone' => [
                     'type' => 'text',
                 ],
@@ -647,7 +641,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     {
         foreach ($fieldsets as $key => $fieldset) {
             $fieldsets[$key] = array_filter($fieldset, function($item) use ($requestFieldsArray) {
-                return in_array($item, $requestFieldsArray);
+                return in_array($item, $requestFieldsArray, true);
             },ARRAY_FILTER_USE_KEY);
 
             //  sort array
