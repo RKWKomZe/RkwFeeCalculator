@@ -7,69 +7,9 @@
         <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.additional" extensionName="RkwFeecalculator" />
     </legend>
 
-    <f:if condition="<vh:isRequestField fieldName='prematureStart' requestFields='{supportProgramme.requestFields}' />">
-        <div class="v320-1">
-            <span class="text-smaller hint"><f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.hint1" arguments="{0 : supportProgramme.name}" extensionName="RkwFeecalculator" /></span>
-            <span class="radio">
-                    <label>
-                         <f:form.radio property="prematureStart" value="1" />
-                        &nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.1" extensionName="RkwFeecalculator" />
-                    </label>
-                </span>
-            <span class="radio">
-                <label>
-                    <f:form.radio property="prematureStart" value="99" />
-                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.99" extensionName="RkwFeecalculator" />
-                </label>
-            </span>
-            <span class="text-smaller hint"><f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.premature_start.hint2" extensionName="RkwFeecalculator" /></span>
-        </div>
-    </f:if>
-
-    <f:if condition="<vh:isRequestField fieldName='bafaSupport' requestFields='{supportProgramme.requestFields}' />">
-        <div class="v320-1">
-            <span class="text-smaller"><f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support" extensionName="RkwFeecalculator" /></span>
-            <span class="radio">
-                <label>
-                     <f:form.radio property="bafaSupport" value="1" />
-                    &nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support.1" extensionName="RkwFeecalculator" />
-                </label>
-            </span>
-            <span class="radio">
-                <label>
-                    <f:form.radio property="bafaSupport" value="99" />
-                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.bafa_support.99" extensionName="RkwFeecalculator" />
-                </label>
-            </span>
-        </div>
-    </f:if>
-
-    <f:if condition="<vh:isRequestField fieldName='deMinimis' requestFields='{supportProgramme.requestFields}' />">
-        <div class="v320-1">
-            <span class="text-smaller"><f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis" extensionName="RkwFeecalculator" /></span>
-            <span class="radio">
-                <label>
-                     <f:form.radio property="deMinimis" value="1" />
-                    &nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis.1" extensionName="RkwFeecalculator" />
-                </label>
-            </span>
-            <span class="radio">
-                <label>
-                    <f:form.radio property="deMinimis" value="99" />
-                    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.de_minimis.99" extensionName="RkwFeecalculator" />
-                </label>
-            </span>
-        </div>
-    </f:if>
-
-    <f:if condition="<vh:isRequestField fieldName='sendDocuments' requestFields='{supportProgramme.requestFields}' />">
-        <div class="v320-1">
-            <label for="sendDocuments">
-                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.send_documents" extensionName="RkwFeecalculator" />
-            </label>
-            <f:form.select property="sendDocuments" options="{1: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.send_documents.1\", extensionName:\"RkwFeecalculator\")}', 2: '{f:translate(key:\"tx_rkwfeecalculator_domain_model_supportrequest.send_documents.2\", extensionName:\"RkwFeecalculator\")}'}" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" />
-        </div>
-    </f:if>
+    <f:for each="{misc}" as="field" key="fieldName">
+        <f:render partial="SupportRequest/Components/Fields/Field" arguments="{field: field, fieldName: fieldName}" />
+    </f:for>
 
     <div class="v320-1">
         <span class="checkbox">

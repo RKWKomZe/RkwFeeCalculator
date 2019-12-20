@@ -2,7 +2,6 @@
 namespace RKW\RkwFeecalculator\Domain\Validator;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use RKW\RkwFeecalculator\Validation\Validator\IbanValidator;
 use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
 
@@ -13,8 +12,6 @@ use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
  */
 class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
 {
-
-    protected $checkProperties = [];
 
     protected $objectManager;
 
@@ -48,6 +45,15 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
         $mandatoryFieldsArray = array_map(function($item) {
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
         }, explode(',', $supportRequest->getSupportProgramme()->getMandatoryFields()));
+
+        $requestFieldsArray = array_map(function($item) {
+            return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
+        }, explode(',', $supportRequest->getSupportProgramme()->getRequestFields()));
+
+        //  filter mandatoryFieldsArray to only contain requested fields
+        $mandatoryFieldsArray = array_filter($mandatoryFieldsArray, function($item) use ($requestFieldsArray) {
+            return in_array($item, $requestFieldsArray, true);
+        });
 
         foreach($mandatoryFieldsArray as $property) {
             $getter = 'get' . ucfirst($property);

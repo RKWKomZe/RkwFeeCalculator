@@ -28,15 +28,23 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $name = '';
+
+    /**
+     * name of the founder
+     *
+     * @var string
+     * @validateOnObject NotEmpty, String
+     */
+    protected $founderName = '';
 
     /**
      * address
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $address = '';
 
@@ -44,7 +52,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * zip
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Integer
      */
     protected $zip = 0;
 
@@ -52,7 +60,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * city
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $city = '';
 
@@ -65,10 +73,18 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $foundationDate = 0;
 
     /**
+     * intendedFoundationDate
+     *
+     * @var string
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     */
+    protected $intendedFoundationDate = 0;
+
+    /**
      * citizenship
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $citizenship = '';
 
@@ -81,26 +97,26 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $birthdate = 0;
 
     /**
-     * sales
+     * foundationLocation
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $foundationLocation = '';
 
     /**
      * sales
      *
-     * @var string
-     * @validateOnObject NotEmpty
+     * @var int
+     * @validateOnObject NotEmpty, Integer
      */
     protected $sales = '';
 
     /**
      * balance
      *
-     * @var string
-     * @validateOnObject NotEmpty
+     * @var int
+     * @validateOnObject NotEmpty, Integer
      */
     protected $balance = '';
 
@@ -108,7 +124,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * employeesCount
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Integer
      */
     protected $employeesCount = 0;
 
@@ -116,7 +132,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * manager
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $manager = '';
 
@@ -140,7 +156,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * businessPurpose
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Text
      */
     protected $businessPurpose = '';
 
@@ -164,7 +180,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * companyShares
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Text
      */
     protected $companyShares = '';
 
@@ -172,7 +188,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * principalBank
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $principalBank = '';
 
@@ -180,7 +196,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * bic
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $bic = '';
 
@@ -196,7 +212,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contactPersonName
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $contactPersonName = '';
 
@@ -276,7 +292,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingContent
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, Text
      */
     protected $consultingContent = '';
 
@@ -292,7 +308,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantCompany
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $consultantCompany = '';
 
@@ -300,7 +316,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantName1
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $consultantName1 = '';
 
@@ -308,7 +324,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantName2
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, String
      */
     protected $consultantName2 = '';
 
@@ -331,8 +347,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * consultantFee
      *
-     * @var string
-     * @validateOnObject NotEmpty
+     * @var int
+     * @validateOnObject NotEmpty, Integer
      */
     protected $consultantFee = '';
 
@@ -348,7 +364,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantEmail
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @validateOnObject NotEmpty, EmailAddress
      */
     protected $consultantEmail = '';
 
@@ -421,7 +437,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var \RKW\RkwBasics\Domain\Model\CompanyType
      * @validateOnObject NotEmpty
      */
-    protected $companyType = 0;
+    protected $companyType = null;
 
     /**
      * Returns the name
@@ -442,6 +458,27 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * Returns the name of the founder
+     *
+     * @return string $founderName
+     */
+    public function getFounderName()
+    {
+        return $this->founderName;
+    }
+
+    /**
+     * Sets the founderName
+     *
+     * @param string $founderName
+     * @return void
+     */
+    public function setFounderName($founderName)
+    {
+        $this->founderName = $founderName;
     }
 
     /**
@@ -526,6 +563,27 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setFoundationDate($foundationDate)
     {
         $this->foundationDate = $foundationDate;
+    }
+
+    /**
+     * Returns the intendedFoundationDate
+     *
+     * @return \DateTime
+     */
+    public function getIntendedFoundationDate()
+    {
+        return $this->intendedFoundationDate;
+    }
+
+    /**
+     * Sets the intendedFoundationDate
+     *
+     * @param \DateTime $intendedFoundationDate
+     * @return void
+     */
+    public function setIntendedFoundationDate($intendedFoundationDate)
+    {
+        $this->intendedFoundationDate = $intendedFoundationDate;
     }
 
     /**
@@ -1481,6 +1539,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function transformDates()
     {
         $this->foundationDate = $this->transformDate($this->foundationDate);
+        $this->intendedFoundationDate = $this->transformDate($this->intendedFoundationDate);
         $this->birthdate = $this->transformDate($this->birthdate);
         $this->consultingDateFrom = $this->transformDate($this->consultingDateFrom);
         $this->consultingDateTo = $this->transformDate($this->consultingDateTo);

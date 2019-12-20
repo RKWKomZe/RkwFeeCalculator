@@ -48,39 +48,37 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
         $settings = $this->getSettings(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
         $settingsDefault = $this->getSettings();
 
-        if ($frontendUser->getEmail()) {
-            if ($settings['view']['templateRootPaths'][0]) {
+        if ($frontendUser->getEmail() && $settings['view']['templateRootPaths'][0]) {
 
-                /** @var \RKW\RkwMailer\Service\MailService $mailService */
-                $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
+            /** @var \RKW\RkwMailer\Service\MailService $mailService */
+            $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
 
-                // send new user an email with token
-                $mailService->setTo($frontendUser, [
-                    'marker' => [
-                        'supportRequest' => $supportRequest,
-                        'frontendUser' => $frontendUser,
-                        'pageUid'      => intval($GLOBALS['TSFE']->id),
-                        'loginPid'     => intval($settingsDefault['loginPid']),
-                    ],
-                ]);
+            // send new user an email with token
+            $mailService->setTo($frontendUser, [
+                'marker' => [
+                    'supportRequest' => $supportRequest,
+                    'frontendUser' => $frontendUser,
+                    'pageUid'      => intval($GLOBALS['TSFE']->id),
+                    'loginPid'     => intval($settingsDefault['loginPid']),
+                ],
+            ]);
 
-                $mailService->getQueueMail()->setSubject(
-                    \RKW\RkwMailer\Helper\FrontendLocalization::translate(
-                        'rkwMailService.confirmationUser.subject',
-                        'rkw_feecalculator',
-                        null,
-                        ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
-                    )
-                );
+            $mailService->getQueueMail()->setSubject(
+                \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                    'rkwMailService.confirmationUser.subject',
+                    'rkw_feecalculator',
+                    null,
+                    ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
+                )
+            );
 
-                $mailService->getQueueMail()->addTemplatePaths($settings['view']['templateRootPaths']);
-                $mailService->getQueueMail()->addPartialPaths($settings['view']['partialRootPaths']);
+            $mailService->getQueueMail()->addTemplatePaths($settings['view']['templateRootPaths']);
+            $mailService->getQueueMail()->addPartialPaths($settings['view']['partialRootPaths']);
 
-                $mailService->getQueueMail()->setPlaintextTemplate('Email/ConfirmationUser');
-                $mailService->getQueueMail()->setHtmlTemplate('Email/ConfirmationUser');
+            $mailService->getQueueMail()->setPlaintextTemplate('Email/ConfirmationUser');
+            $mailService->getQueueMail()->setHtmlTemplate('Email/ConfirmationUser');
 
-                $mailService->send();
-            }
+            $mailService->send();
         }
 
     }

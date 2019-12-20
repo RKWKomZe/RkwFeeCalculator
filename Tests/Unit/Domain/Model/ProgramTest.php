@@ -2,7 +2,6 @@
 
 namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
-use RKW\RkwFeecalculator\Domain\Model\Institution;
 use RKW\RkwFeecalculator\Domain\Model\Program;
 use RKW\RkwFeecalculator\Tests\Unit\TestCase;
 

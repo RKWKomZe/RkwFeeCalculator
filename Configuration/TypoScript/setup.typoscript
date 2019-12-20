@@ -56,6 +56,7 @@ plugin.tx_rkwfeecalculator_request {
         termsPid = {$plugin.tx_rkwfeecalculator_request.settings.termsPid}
         terms2Pid = {$plugin.tx_rkwfeecalculator_request.settings.terms2Pid}
         storagePid = {$plugin.tx_rkwfeecalculator_request.persistence.storagePid}
+        storagePidFeUser = {$plugin.tx_rkwfeecalculator_request.persistence.storagePidFeUser}
         programStoragePid = {$plugin.tx_rkwfeecalculator_calculator.persistence.storagePid}
         includeRkwRegistrationPrivacy = {$plugin.tx_rkwfeecalculator_request.settings.includeRkwRegistrationPrivacy}
     }

@@ -16,9 +16,13 @@
 </label><br />
 	<f:form.textfield property="city" /><br />
 <label for="foundationDate">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.foundation_date" />
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.foundationDate" />
 </label><br />
 	<f:form.textfield property="foundationDate" value="{supportRequest.foundationDate->f:format.date()}" /><br />
+<label for="intendedFoundationDate">
+    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date" />
+</label><br />
+<f:form.textfield property="intendedFoundationDate" value="{supportRequest.intendedFoundationDate->f:format.date()}" /><br />
 <label for="sales">
 	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.sales" />
 </label><br />
@@ -28,7 +32,7 @@
 </label><br />
 	<f:form.textfield property="balance" /><br />
 <label for="employeesCount">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.employees_count" />
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount" />
 </label><br />
 	<f:form.textfield property="employeesCount" /><br />
 <label for="manager">
@@ -36,23 +40,23 @@
 </label><br />
 	<f:form.textfield property="manager" /><br />
 <label for="singleRepresentative">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.single_representative" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="singleRepresentative" /><br />
 <label for="preTaxDeduction">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_tax_deduction" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="preTaxDeduction" /><br />
 <label for="businessPurpose">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.business_purpose" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.businessPurpose" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="businessPurpose" /><br />
 <label for="companyShares">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.company_shares" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.companyShares" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="companyShares" /><br />
 <label for="principalBank">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.principal_bank" />
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.principalBank" />
 </label><br />
 	<f:form.textfield property="principalBank" /><br />
 <label for="bic">
@@ -64,86 +68,86 @@
 </label><br />
 	<f:form.textfield property="iban" /><br />
 <label for="contactPersonName">
-    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_name" /> <span class="required">(required)</span>
+    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonName" /> <span class="required">(required)</span>
 </label><br />
 <f:form.textfield property="contactPersonName" /><br />
 <label for="contactPersonPhone">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_phone" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonPhone" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="contactPersonPhone" /><br />
 <label for="contactPersonFax">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_fax" />
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonFax" />
 </label><br />
 	<f:form.textfield property="contactPersonFax" /><br />
 <label for="contactPersonEmail">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contact_person_email" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonEmail" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="contactPersonEmail" /><br />
-<label for="startUpFoundationDate">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.start_up_foundation_date" />
+<label for="intendedFoundationDate">
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.intended_foundation_date" />
 </label><br />
-	<f:form.textfield property="startUpFoundationDate" value="{supportRequest.startUpFoundationDate->f:format.date()}" /><br />
+	<f:form.textfield property="intendedFoundationDate" value="{supportRequest.intendedFoundationDate->f:format.date()}" /><br />
 <label for="preFoundationEmployment">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_employment" />
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment" />
 </label><br />
 	<f:form.textfield property="preFoundationEmployment" /><br />
 <label for="preFoundationSelfEmployment">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.pre_foundation_self_employment" />
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment" />
 </label><br />
 	<f:form.textfield property="preFoundationSelfEmployment" /><br />
 <label for="consultingDateFrom">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consulting_date_from" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultingDateFrom" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="consultingDateFrom" value="{supportRequest.consultingDateFrom->f:format.date()}" /><br />
 <label for="consultingDateTo">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consulting_date_to" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultingDateTo" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="consultingDateTo" value="{supportRequest.consultingDateTo->f:format.date()}" /><br />
 <label for="consultingContent">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consulting_content" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultingContent" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textarea property="consultingContent" cols="40" rows="15" /><br />
 <label for="consultantType">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant_type" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultantType" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="consultantType" /><br />
 <label for="consultantCompany">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant_company" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultantCompany" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="consultantCompany" /><br />
 <label for="consultantName1">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant_name1" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultantName1" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="consultantName1" /><br />
 <label for="consultantName2">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant_name2" />
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultantName2" />
 </label><br />
 	<f:form.textfield property="consultantName2" /><br />
 <label for="consultant1AccreditationNumber">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant1_accreditation_number" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant1AccreditationNumber" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="consultant1AccreditationNumber" /><br />
 <label for="consultant2AccreditationNumber">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant2_accreditation_number" />
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant2AccreditationNumber" />
 </label><br />
 	<f:form.textfield property="consultant2AccreditationNumber" /><br />
 <label for="consultantFee">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant_fee" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultantFee" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="consultantFee" /><br />
 <label for="consultantPhone">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant_phone" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultantPhone" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="consultantPhone" /><br />
 <label for="consultantEmail">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultant_email" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultantEmail" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="consultantEmail" /><br />
 <label for="prematureStart">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.premature_start" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="prematureStart" /><br />
 <label for="sendDocuments">
-	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.send_documents" /> <span class="required">(required)</span>
+	<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments" /> <span class="required">(required)</span>
 </label><br />
 	<f:form.textfield property="sendDocuments" /><br />
