@@ -781,11 +781,11 @@
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultingDateFrom">
                 <source>Consulting Date From</source>
-                <target>Zeitraum: Von</target>
+                <target>Zeitraum von</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultingDateTo">
                 <source>Consulting Date Up To</source>
-                <target>Zeitraum: Bis</target>
+                <target>Zeitraum bis</target>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.consultingContent">
                 <source>Consulting Description</source>

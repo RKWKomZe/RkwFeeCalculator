@@ -276,17 +276,17 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingDateFrom
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @validateOnObject NotEmpty, String
      */
-    protected $consultingDateFrom = 0;
+    protected $consultingDateFrom = '';
 
     /**
      * consultingDateTo
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @validateOnObject NotEmpty, String
      */
-    protected $consultingDateTo = 0;
+    protected $consultingDateTo = '';
 
     /**
      * consultingContent
@@ -1114,7 +1114,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the consultingDateTo
      *
-     * @return int $consultingDateTo
+     * @return string $consultingDateTo
      */
     public function getConsultingDateTo()
     {
@@ -1124,7 +1124,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the consultingDateTo
      *
-     * @param int $consultingDateTo
+     * @param string $consultingDateTo
      * @return void
      */
     public function setConsultingDateTo($consultingDateTo)
@@ -1541,8 +1541,6 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->foundationDate = $this->transformDate($this->foundationDate);
         $this->intendedFoundationDate = $this->transformDate($this->intendedFoundationDate);
         $this->birthdate = $this->transformDate($this->birthdate);
-        $this->consultingDateFrom = $this->transformDate($this->consultingDateFrom);
-        $this->consultingDateTo = $this->transformDate($this->consultingDateTo);
     }
 
     /**

@@ -434,11 +434,8 @@ return [
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultingDateFrom',
             'config' => [
                 'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime, required',
-                'checkbox' => 0,
-                'default' => 0,
+                'size' => 30,
+                'eval' => 'trim,required'
             ],
 	    ],
 	    'consulting_date_to' => [
@@ -446,11 +443,8 @@ return [
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultingDateTo',
             'config' => [
                 'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime, required',
-                'checkbox' => 0,
-                'default' => 0,
+                'size' => 30,
+                'eval' => 'trim,required'
             ],
 	    ],
 	    'consulting_content' => [

@@ -487,11 +487,11 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'options' => (new PossibleDaysViewHelper())->render($this->supportProgramme),
                 ],
                 'consultingDateFrom' => [
-                    'type' => 'date',
+                    'type' => 'text',
                     'width' => 'new',   //  force new line
                 ],
                 'consultingDateTo' => [
-                    'type' => 'date',
+                    'type' => 'text',
                 ],
                 'consultingContent' => [
                     'type' => 'textarea',
