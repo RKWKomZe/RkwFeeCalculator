@@ -347,8 +347,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * consultantFee
      *
-     * @var int
-     * @validateOnObject NotEmpty, Integer
+     * @var string
+     * @validateOnObject NotEmpty, String
      */
     protected $consultantFee = '';
 
