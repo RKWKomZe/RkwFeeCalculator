@@ -563,7 +563,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_controller_supportrequest.success.requestCreated">
                 <source>Success! We got your support request.</source>
-                <target>Wohooo! Wir haben ihre Förderanfrage erhalten :)</target>
+                <target>Vielen Dank, wir haben Ihre Förderanfrage erhalten.</target>
             </trans-unit>
 
 
