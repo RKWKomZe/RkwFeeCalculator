@@ -3,6 +3,7 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest',
         'label' => 'name',
+        'label_userFunc' => \RKW\RkwFeecalculator\Utilities\TCA::class . '->supportRequestTitle',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
