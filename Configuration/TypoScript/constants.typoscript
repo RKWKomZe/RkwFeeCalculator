@@ -35,12 +35,6 @@ plugin.tx_rkwfeecalculator_request {
     settings {
         # cat=plugin.tx_rkwfeecalculator_request//a; type=integer; label=Ajax type num
         ajaxTypeNum = 1563872060
-        # cat=plugin.tx_rkwfeecalculator_request; type=integer; label=PID for terms and conditions (AGB)
-        termsPid =
-        # cat=plugin.tx_rkwfeecalculator_request; type=integer; label=PID for terms and conditions (AGB)
-        terms2Pid =
-        # cat=plugin.tx_rkwfeecalculator_request; type=integer; label=Include RkwRegistration privacy
-        includeRkwRegistrationPrivacy = 1
     }
 }
 

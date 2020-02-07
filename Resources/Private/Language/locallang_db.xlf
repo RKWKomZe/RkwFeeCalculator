@@ -341,9 +341,6 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.privacy">
                 <source>Privacy</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.terms">
-                <source>Terms</source>
-            </trans-unit>
 
             <!-- flexform -->
 

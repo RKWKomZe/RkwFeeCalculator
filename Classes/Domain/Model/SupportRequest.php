@@ -404,17 +404,9 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * privacy
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject Boolean
      */
     protected $privacy = 0;
-
-    /**
-     * terms
-     *
-     * @var int
-     * @validateOnObject NotEmpty
-     */
-    protected $terms = 0;
 
     /**
      * supportProgramme
@@ -1445,27 +1437,6 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setPrivacy($privacy)
     {
         $this->privacy = $privacy;
-    }
-
-    /**
-     * Returns the terms
-     *
-     * @return int $terms
-     */
-    public function getTerms()
-    {
-        return $this->terms;
-    }
-
-    /**
-     * Sets the terms
-     *
-     * @param int $terms
-     * @return void
-     */
-    public function setTerms($terms)
-    {
-        $this->terms = $terms;
     }
 
     /**

@@ -208,7 +208,6 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_supportrequest (
     de_minimis tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	privacy tinyint(4) unsigned DEFAULT '0' NOT NULL,
-	terms tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

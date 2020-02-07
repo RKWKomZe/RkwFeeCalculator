@@ -1,3 +1,39 @@
+config.tx_extbase.persistence {
+
+    classes {
+
+        #===============================================
+
+        RKW\RkwRegistration\Domain\Model\FrontendUser {
+            subclasses {
+                Tx_RkwFeecalculator_FrontendUser = RKW\RkwFeecalculator\Domain\Model\FrontendUser
+            }
+        }
+
+        RKW\RkwFeecalculator\Domain\Model\FrontendUser {
+            mapping {
+                tableName = fe_users
+                recordType =
+            }
+        }
+
+        #===============================================
+
+        RKW\RkwRegistration\Domain\Model\BackendUser {
+            subclasses {
+                Tx_RkwForm_BackendUser = RKW\RkwFeecalculator\Domain\Model\BackendUser
+            }
+        }
+
+
+        RKW\RkwFeecalculator\Domain\Model\BackendUser {
+            mapping {
+                tableName = be_users
+                recordType =
+            }
+        }
+    }
+}
 
 plugin.tx_rkwfeecalculator_calculator {
   view {
@@ -20,7 +56,6 @@ plugin.tx_rkwfeecalculator_calculator {
   }
   settings {
     calculator = {$plugin.tx_rkwfeecalculator_calculator.settings.calculator}
-
   }
 }
 
@@ -38,13 +73,6 @@ plugin.tx_rkwfeecalculator_request {
     persistence {
         storagePid = {$plugin.tx_rkwfeecalculator_request.persistence.storagePid}
         #recursive = 1
-        classes {
-            RKW\RkwFeecalculator\Domain\Model\BackendUser {
-                mapping {
-                    tableName = be_users
-                }
-            }
-        }
     }
     features {
         #skipDefaultArguments = 1
@@ -53,12 +81,8 @@ plugin.tx_rkwfeecalculator_request {
         #callDefaultActionIfActionCantBeResolved = 1
     }
     settings {
-        termsPid = {$plugin.tx_rkwfeecalculator_request.settings.termsPid}
-        terms2Pid = {$plugin.tx_rkwfeecalculator_request.settings.terms2Pid}
         storagePid = {$plugin.tx_rkwfeecalculator_request.persistence.storagePid}
-        storagePidFeUser = {$plugin.tx_rkwfeecalculator_request.persistence.storagePidFeUser}
         programStoragePid = {$plugin.tx_rkwfeecalculator_calculator.persistence.storagePid}
-        includeRkwRegistrationPrivacy = {$plugin.tx_rkwfeecalculator_request.settings.includeRkwRegistrationPrivacy}
     }
 }
 

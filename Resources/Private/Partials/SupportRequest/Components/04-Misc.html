@@ -14,24 +14,10 @@
     <div class="v320-1">
         <span class="checkbox">
             <label>
-                <f:form.checkbox class="feedback-field" property="terms" value="1" />
-                <span class="text-smaller">
-                    <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.termsIntro" extensionName="RkwFeecalculator" /> <f:link.page pageUid="{settingsArray.termsPid}" target="_blank"><f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.terms" extensionName="RkwFeecalculator" /></f:link.page>
-                    <f:if condition="{settings.terms2Pid}">
-                        <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.terms2Intro" extensionName="RkwFeecalculator" /> <f:link.page pageUid="{settingsArray.terms2Pid}" target="_blank"><f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.terms2" extensionName="RkwFeecalculator" /></f:link.page>
-                    </f:if>
-                    <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.terms3" extensionName="RkwFeecalculator" />
-                </span>
+                <f:form.checkbox property="privacy" value="1" />
+                <rkwRegistration:privacyText />
             </label>
         </span>
-        <f:if condition="{settings.includeRkwRegistrationPrivacy}">
-            <span class="checkbox">
-                <label>
-                    <f:form.checkbox property="privacy" value="1" />
-                    <rkwRegistration:privacyText />
-                </label>
-            </span>
-        </f:if>
     </div>
 
 </fieldset>

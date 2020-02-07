@@ -596,17 +596,5 @@ return [
                 ],
             ],
         ],
-        'terms' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.terms',
-            'config' => [
-                'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
-                    ]
-                ],
-            ],
-        ],
     ],
 ];
