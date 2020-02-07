@@ -15,12 +15,16 @@ namespace RKW\RkwFeecalculator\Controller;
  */
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
+use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
+use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
 
 /**
  * SupportRequestController
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -105,16 +109,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     protected $fieldWidth = 'full';
 
     /**
-     * A template method for displaying custom error flash messages, or to
-     * display no flash message at all on errors. Override this to customize
-     * the flash message in your action controller.
+     * Remove ErrorFlashMessage
      *
-     * @return string The flash message or FALSE if no flash message should be set
-     * @api
+     * @see \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::getErrorFlashMessage()
      */
     protected function getErrorFlashMessage()
     {
         return false;
+        //===
     }
 
     /**
@@ -135,6 +137,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * action requestForm
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme
+     *
      * @return void
      */
     public function requestFormAction(\RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme = null)
@@ -145,7 +148,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'tx_rkwfeecalculator_controller_supportrequest.error.choose_support_programme', 'rkw_feecalculator'
                 ),
                 '',
-                \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR
+                AbstractMessage::ERROR
             );
             $this->forward('new');
             //===
@@ -176,28 +179,24 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * action create
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
-     * @param integer $terms
-     * @param integer $privacy
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
+     * @validate $supportRequest \RKW\RkwFeecalculator\Validation\SupportRequestValidator
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
+     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
      */
-    public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest, $terms = null, $privacy = null)
+    public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
-        /** @var \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser */
-        $frontendUser = GeneralUtility::makeInstance('RKW\\RkwRegistration\\Domain\\Model\\FrontendUser');
-
-        $frontendUser->setPid((int)($this->settings['storagePidFeUser']));
-        $frontendUser->setEmail($newSupportRequest->getContactPersonEmail());
-//        $frontendUser->setFirstName($newSupportRequest->getContactPersonName());
-//        $frontendUser->setLastName($newSupportRequest->getContactPersonName());
-
         //  transform dates from string to timestamp
-        $newSupportRequest->transformDates();
+        $supportRequest->transformDates();
+        $supportRequest->setPid((int)($this->settings['storagePid']));
 
-        if ($this->settings['includeRkwRegistrationPrivacy']) {
-            // add privacy info
-            \RKW\RkwRegistration\Tools\Privacy::addPrivacyData($this->request, $frontendUser, $newSupportRequest, 'new support request');
-        }
+        $this->supportRequestRepository->add($supportRequest);
+        $this->persistenceManager->persistAll();
+
+        $this->mailHandling($supportRequest);
 
         $this->addFlashMessage(
             \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
@@ -205,40 +204,75 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             )
         );
 
-        $newSupportRequest->setPid((int)($this->settings['storagePid']));
-
-        $this->supportRequestRepository->add($newSupportRequest);
-
-        // persist first before sending mail!
-        $this->persistenceManager->persistAll();
-
-//        $this->sendConfirmationMail($frontendUser, $newSupportRequest);
-
-//        $this->sendNotificationMail($newSupportRequest);
-
         $this->redirect('new');
+    }
+
+    /**
+     * Manage email sending
+     *
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
+     *
+     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
+     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
+     */
+    protected function mailHandling(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
+    {
+
+        /** @var \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser */
+        $frontendUser = GeneralUtility::makeInstance('RKW\\RkwRegistration\\Domain\\Model\\FrontendUser');
+
+        $frontendUser->setEmail($supportRequest->getContactPersonEmail());
+        $frontendUser->setFirstName($supportRequest->getContactPersonName());
+        $frontendUser->setLastName($supportRequest->getContactPersonName());
+        $frontendUser->setTxRkwregistrationLanguageKey($GLOBALS['TSFE']->config['config']['language'] ? $GLOBALS['TSFE']->config['config']['language'] : 'de');
+
+        /*
+        // currently we do not use real privacy-entries
+        if ($this->settings['includeRkwRegistrationPrivacy']) {
+            // add privacy info
+            \RKW\RkwRegistration\Tools\Privacy::addPrivacyData($this->request, $frontendUser, $supportRequest, 'new support request');
+        }
+        */
+
+        try {
+            $this->sendConfirmationMail($frontendUser, $supportRequest);
+        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException $e) {
+        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException $e) {
+        }
+
+        try {
+            $this->sendNotificationMail($supportRequest);
+        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException $e) {
+        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException $e) {
+        }
+
     }
 
     /**
      * Sends confirmation mail to frontenduser.
      *
      * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
-     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
+     *
+     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
+     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
      */
-    protected function sendConfirmationMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest)
+    protected function sendConfirmationMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_USER, [$frontendUser, $newSupportRequest]);
+        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_USER, [$frontendUser, $supportRequest]);
     }
 
     /**
      * Sends notification mail to admin.
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
+     *
+     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
+     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
      */
-    protected function sendNotificationMail(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $newSupportRequest)
+    protected function sendNotificationMail(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
 
-        // send information mail to admins
         $adminUidList = explode(',', $this->settings['mail']['backendUser']);
         $backendUsers = [];
         foreach ($adminUidList as $adminUid) {
@@ -262,10 +296,9 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             ) {
                 $backendUsers[] = $admin;
             }
-
         }
 
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $newSupportRequest]);
+        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $supportRequest]);
     }
 
     protected function getFieldsConfig()
@@ -487,11 +520,11 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'options' => (new PossibleDaysViewHelper())->render($this->supportProgramme),
                 ],
                 'consultingDateFrom' => [
-                    'type' => 'date',
+                    'type' => 'text',
                     'width' => 'new',   //  force new line
                 ],
                 'consultingDateTo' => [
-                    'type' => 'date',
+                    'type' => 'text',
                 ],
                 'consultingContent' => [
                     'type' => 'textarea',

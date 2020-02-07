@@ -1,5 +1,6 @@
 <?php
-namespace RKW\RkwFeecalculator\Domain\Validator;
+
+namespace RKW\RkwFeecalculator\Validation;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use RKW\RkwFeecalculator\Validation\Validator\IbanValidator;
@@ -8,7 +9,10 @@ use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
 /**
  * Class SupportRequestValidator
  *
- * @package RKW\RkwFeecalculator\Domain\Validator
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwFeeCalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
 {
@@ -90,6 +94,21 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
         }
 
+        if (method_exists($supportRequest, 'getPrivacy') && !$supportRequest->getPrivacy()) {
+
+            $property = 'privacy';
+            $this->result->forProperty($property)
+                ->addError(
+                    new \TYPO3\CMS\Extbase\Error\Error(
+                        $this->translateErrorMessage(
+                            'registrationController.error.accept_privacy',
+                            'RkwRegistration',
+                            $this->getTranslationArguments($property)
+                        ), 1238087674, $this->getTranslationArguments($property)
+                    )
+                );
+        }
+
         return $isValid;
     }
 
@@ -126,7 +145,7 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
     {
         return [
             \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                'form.error.newSupportRequest.' . $property,
+                'form.error.supportRequest.' . $property,
                 'RkwFeecalculator'
             )
         ];

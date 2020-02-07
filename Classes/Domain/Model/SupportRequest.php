@@ -276,17 +276,17 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingDateFrom
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @validateOnObject NotEmpty, String
      */
-    protected $consultingDateFrom = 0;
+    protected $consultingDateFrom = '';
 
     /**
      * consultingDateTo
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @validateOnObject NotEmpty, String
      */
-    protected $consultingDateTo = 0;
+    protected $consultingDateTo = '';
 
     /**
      * consultingContent
@@ -347,8 +347,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * consultantFee
      *
-     * @var int
-     * @validateOnObject NotEmpty, Integer
+     * @var string
+     * @validateOnObject NotEmpty, String
      */
     protected $consultantFee = '';
 
@@ -404,17 +404,9 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * privacy
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @validateOnObject Boolean
      */
     protected $privacy = 0;
-
-    /**
-     * terms
-     *
-     * @var int
-     * @validateOnObject NotEmpty
-     */
-    protected $terms = 0;
 
     /**
      * supportProgramme
@@ -1114,7 +1106,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the consultingDateTo
      *
-     * @return int $consultingDateTo
+     * @return string $consultingDateTo
      */
     public function getConsultingDateTo()
     {
@@ -1124,7 +1116,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the consultingDateTo
      *
-     * @param int $consultingDateTo
+     * @param string $consultingDateTo
      * @return void
      */
     public function setConsultingDateTo($consultingDateTo)
@@ -1448,27 +1440,6 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the terms
-     *
-     * @return int $terms
-     */
-    public function getTerms()
-    {
-        return $this->terms;
-    }
-
-    /**
-     * Sets the terms
-     *
-     * @param int $terms
-     * @return void
-     */
-    public function setTerms($terms)
-    {
-        $this->terms = $terms;
-    }
-
-    /**
      * Returns the supportProgramme
      *
      * @return \RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme
@@ -1541,8 +1512,6 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->foundationDate = $this->transformDate($this->foundationDate);
         $this->intendedFoundationDate = $this->transformDate($this->intendedFoundationDate);
         $this->birthdate = $this->transformDate($this->birthdate);
-        $this->consultingDateFrom = $this->transformDate($this->consultingDateFrom);
-        $this->consultingDateTo = $this->transformDate($this->consultingDateTo);
     }
 
     /**

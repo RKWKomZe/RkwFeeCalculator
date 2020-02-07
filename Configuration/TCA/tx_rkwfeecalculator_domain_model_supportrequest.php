@@ -3,6 +3,7 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest',
         'label' => 'name',
+        'label_userFunc' => \RKW\RkwFeecalculator\Utilities\TCA::class . '->supportRequestTitle',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -434,11 +435,8 @@ return [
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultingDateFrom',
             'config' => [
                 'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime, required',
-                'checkbox' => 0,
-                'default' => 0,
+                'size' => 30,
+                'eval' => 'trim,required'
             ],
 	    ],
 	    'consulting_date_to' => [
@@ -446,11 +444,8 @@ return [
 	        'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.consultingDateTo',
             'config' => [
                 'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime, required',
-                'checkbox' => 0,
-                'default' => 0,
+                'size' => 30,
+                'eval' => 'trim,required'
             ],
 	    ],
 	    'consulting_content' => [
@@ -592,18 +587,6 @@ return [
         'privacy' => [
             'exclude' => false,
             'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.privacy',
-            'config' => [
-                'type' => 'check',
-                'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
-                    ]
-                ],
-            ],
-        ],
-        'terms' => [
-            'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.terms',
             'config' => [
                 'type' => 'check',
                 'items' => [

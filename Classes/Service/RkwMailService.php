@@ -87,7 +87,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
     /**
      * Sends an E-Mail to an Admin
      *
-     * @param \RKW\RkwOrder\Domain\Model\BackendUser|array $backendUser
+     * @param \RKW\RkwFeecalculator\Domain\Model\BackendUser|array $backendUser
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      *
      * @throws \RKW\RkwMailer\Service\MailException
@@ -147,7 +147,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $mailService->getQueueMail()->setSubject(
                 \RKW\RkwMailer\Helper\FrontendLocalization::translate(
-                    'rkwMailService.NotifyAdmin.subject',
+                    'rkwMailService.notifyAdmin.subject',
                     'rkw_feecalculator',
                     null,
                     'de'
@@ -176,7 +176,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
     protected function getSettings($which = ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS)
     {
 
-        return Common::getTyposcriptConfiguration('Rkwmanagementconsultancy', $which);
+        return Common::getTyposcriptConfiguration('Rkwfeecalculator', $which);
         //===
     }
 }

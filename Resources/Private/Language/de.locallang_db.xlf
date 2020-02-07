@@ -405,11 +405,11 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport.1">
                 <source>Yes</source>
-                <target>Ja.</target>
+                <target>Ja</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport.99">
                 <source>No</source>
-                <target>Nein.</target>
+                <target>Nein</target>
             </trans-unit>
            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.deMinimis">
                 <source>Already received de-minimis support?</source>
@@ -447,11 +447,6 @@
                 <source>Privacy</source>
                 <target>Datenschutz</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.terms">
-                <source>Terms</source>
-                <target>Allgemeine Geschäftsbedingungen</target>
-            </trans-unit>
-
 
             <!-- flexform -->
 

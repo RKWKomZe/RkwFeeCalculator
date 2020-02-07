@@ -188,8 +188,8 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_supportrequest (
 
 	consulting int(11) unsigned DEFAULT '0',
 	consulting_days int(11) DEFAULT '0' NOT NULL,
-	consulting_date_from int(11) unsigned DEFAULT '0' NOT NULL,
-	consulting_date_to int(11) unsigned DEFAULT '0' NOT NULL,
+	consulting_date_from varchar(255) DEFAULT '' NOT NULL,
+	consulting_date_to varchar(255) DEFAULT '' NOT NULL,
 	consulting_content text NOT NULL,
 
 	consultant_type int(11) DEFAULT '0' NOT NULL,
@@ -208,7 +208,6 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_supportrequest (
     de_minimis tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	privacy tinyint(4) unsigned DEFAULT '0' NOT NULL,
-	terms tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

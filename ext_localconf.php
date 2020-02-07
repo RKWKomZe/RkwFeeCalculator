@@ -31,6 +31,28 @@ call_user_func(
                 'SupportRequest' => 'new, requestForm, create'
             ]
         );
+
+        //=================================================================
+        // Register SignalSlots
+        //=================================================================
+        /**
+         * @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher $signalSlotDispatcher
+         */
+        $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
+
+        $signalSlotDispatcher->connect(
+            'RKW\\RkwFeecalculator\\Controller\\SupportRequestController',
+            \RKW\RkwFeecalculator\Controller\SupportRequestController::SIGNAL_AFTER_REQUEST_CREATED_USER,
+            'RKW\\RkwFeecalculator\\Service\\RkwMailService',
+            'userMail'
+        );
+
+        $signalSlotDispatcher->connect(
+            'RKW\\RkwFeecalculator\\Controller\\SupportRequestController',
+            \RKW\RkwFeecalculator\Controller\SupportRequestController::SIGNAL_AFTER_REQUEST_CREATED_ADMIN,
+            'RKW\\RkwFeecalculator\\Service\\RkwMailService',
+            'adminMail'
+        );
     },
     $_EXTKEY
 );
