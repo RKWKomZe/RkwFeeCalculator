@@ -21,7 +21,7 @@ config.tx_extbase.persistence {
 
         RKW\RkwRegistration\Domain\Model\BackendUser {
             subclasses {
-                Tx_RkwForm_BackendUser = RKW\RkwFeecalculator\Domain\Model\BackendUser
+                Tx_RkwFeecalculator_BackendUser = RKW\RkwFeecalculator\Domain\Model\BackendUser
             }
         }
 
