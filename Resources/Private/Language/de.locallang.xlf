@@ -455,19 +455,19 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName1">
                 <source>Consultant Name1</source>
-                <target>Berater (Name, Vorname)</target>
+                <target>Name, Vorname (Berater)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName2">
                 <source>Consultant Name2</source>
-                <target>2. Berater (Name, Vorname)</target>
+                <target>Name, Vorname (2. Berater)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant1AccreditationNumber">
                 <source>Consultant1 Accreditation Number</source>
-                <target>Berater (Akkr.-Nr.)</target>
+                <target>Akkreditierungsnummer</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant2AccreditationNumber">
                 <source>Consultant2 Accreditation Number</source>
-                <target>2. Berater (Akkr.-Nr.)</target>
+                <target>Akkreditierungsnummer</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantFee">
                 <source>Consultant Fee</source>
@@ -475,11 +475,11 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantPhone">
                 <source>Consultant Phone</source>
-                <target>Berater (Telefon)</target>
+                <target>Telefon (Berater)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantEmail">
                 <source>Consultant Email</source>
-                <target>Berater (E-Mail-Adresse)</target>
+                <target>E-Mail-Adresse (Berater)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart">
                 <source>Early Start Desired</source>
@@ -487,7 +487,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint1">
                 <source>It's possible to start prematurely. There is no legal claim.</source>
-                 <target>Für die %s kann ein vorzeitiger Maßnahmebeginn beantragt werden! Möchten Sie auf eigenes Risiko einen vorzeitigen Maßnahmebeginn beantragen?</target>
+                 <target>Für die %s kann ein vorzeitiger Maßnahmebeginn beantragt werden! Möchten Sie auf eigenes Risiko einen vorzeitigen Maßnahmebeginn beantragen? Wichtig: Das RKW teilt Ihnen Ihren Förderbeginn verbindlich mit.</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint2">
                 <source>You do this on your own risk.</source>
@@ -779,11 +779,11 @@
             </trans-unit>
             <trans-unit id="form.error.supportRequest.consultantName1">
                 <source>Consultant Name1</source>
-                <target>Berater (Name, Vorname)</target>
+                <target>Name, Vorname (Berater)</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.consultantName2">
                 <source>Consultant Name2</source>
-                <target>2. Berater (Name, Vorname)</target>
+                <target>Name, Vorname (2. Berater)</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.consultant1AccreditationNumber">
                 <source>Consultant1 Accreditation Number</source>
@@ -799,11 +799,11 @@
             </trans-unit>
             <trans-unit id="form.error.supportRequest.consultantPhone">
                 <source>Consultant Phone</source>
-                <target>Berater (Telefon)</target>
+                <target>Telefon (Berater)</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.consultantEmail">
                 <source>Consultant Email</source>
-                <target>Berater (E-Mail-Adresse)</target>
+                <target>E-Mail-Adresse (Berater)</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.prematureStart">
                 <source>Early Start Desired</source>
