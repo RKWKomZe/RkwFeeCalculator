@@ -139,6 +139,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @param \RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme
      *
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
     public function requestFormAction(\RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme = null)
     {
@@ -180,11 +181,13 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      * @validate $supportRequest \RKW\RkwFeecalculator\Validation\SupportRequestValidator
-     * @return void
+     *
+     * @throws InvalidSlotException
+     * @throws InvalidSlotReturnException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
+     * @return void
      */
     public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
@@ -211,8 +214,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      *
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
+     * @throws InvalidSlotException
+     * @throws InvalidSlotReturnException
      */
     protected function mailHandling(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
@@ -233,28 +236,20 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         }
         */
 
-        try {
-            $this->sendConfirmationMail($frontendUser, $supportRequest);
-        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException $e) {
-        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException $e) {
-        }
+        $this->sendConfirmationMail($frontendUser, $supportRequest);
 
-        try {
-            $this->sendNotificationMail($supportRequest);
-        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException $e) {
-        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException $e) {
-        }
+        $this->sendNotificationMail($supportRequest);
 
     }
 
     /**
      * Sends confirmation mail to frontenduser.
      *
-     * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
+     * @param \RKW\RkwRegistration\Domain\Model\FrontendUser    $frontendUser
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      *
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
+     * @throws InvalidSlotException
+     * @throws InvalidSlotReturnException
      */
     protected function sendConfirmationMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
@@ -265,9 +260,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * Sends notification mail to admin.
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
-     *
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
+     * @throws InvalidSlotException
+     * @throws InvalidSlotReturnException
      */
     protected function sendNotificationMail(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
@@ -300,6 +294,11 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $supportRequest]);
     }
 
+    /**
+     * Provide fields config to compile from
+     *
+     * @return array
+     */
     protected function getFieldsConfig()
     {
         return [
@@ -667,6 +666,13 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         ];
     }
 
+    /**
+     * Provide fieldsets
+     *
+     * @param $fieldsets
+     * @param $requestFieldsArray
+     * @return mixed
+     */
     protected function filterFieldsets($fieldsets, $requestFieldsArray)
     {
         foreach ($fieldsets as $key => $fieldset) {
@@ -681,6 +687,12 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         return $sortedFieldsets;
     }
 
+    /**
+     * Provide fields layout helpers
+     *
+     * @param $fieldsets
+     * @return mixed
+     */
     protected function getFieldsLayout($fieldsets)
     {
         foreach ($fieldsets as $key => $fieldset) {
