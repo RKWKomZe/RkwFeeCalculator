@@ -170,7 +170,6 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->view->assign('supportProgramme', $this->supportProgramme);
         $this->view->assign('applicant', $fieldsets['applicant']);
         $this->view->assign('consulting', $fieldsets['consulting']);
-        $this->view->assign('consultant', $fieldsets['consultant']);
         $this->view->assign('misc', $fieldsets['misc']);
         $this->view->assign('consultingList', $this->consultingList);
         $this->view->assign('companyTypeList', $this->companyTypeList);
@@ -530,8 +529,6 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'type' => 'textarea',
                     'width' => 'full',
                 ],
-            ],
-            'consultant' => [
                 'consultantType' => [
                     'type' => 'select',
                     'width' => 'full',

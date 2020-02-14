@@ -600,7 +600,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.consulting">
                 <source>Consulting</source>
-                <target>Beratung</target>
+                <target>Beratung und Berater</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.consultant">
                 <source>Consultant</source>

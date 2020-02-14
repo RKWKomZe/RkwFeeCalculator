@@ -427,7 +427,7 @@
                 <source>applicant</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.consulting">
-                <source>Consulting</source>
+                <source>Consulting and Consultant</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.consultant">
                 <source>Consultant</source>
