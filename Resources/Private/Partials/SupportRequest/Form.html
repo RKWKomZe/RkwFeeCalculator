@@ -4,7 +4,7 @@
 
 <f:render partial="FormErrors" arguments="{object:SupportRequest}" />
 
-<f:form class="form-fields" action="create" name="supportRequest" object="{supportRequest}" >
+<f:form class="form-fields" action="create" name="supportRequest" object="{supportRequest}"  enctype="multipart/form-data">
 
     <f:form.hidden property="supportProgramme" value="{supportProgramme}" />
 

@@ -377,6 +377,21 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $prematureStart;
 
     /**
+     * file
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\FileReference>
+     */
+    protected $file = '';
+
+    /**
+     * fileUpload
+     * Array store for form file upload
+     *
+     * @var array
+     */
+    protected $fileUpload = [];
+
+    /**
      * sendDocuments
      *
      * @var int
@@ -430,6 +445,27 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @validateOnObject NotEmpty
      */
     protected $companyType = null;
+
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->file = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->initStorageObjects();
+    }
 
     /**
      * Returns the name
@@ -1353,6 +1389,73 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setPrematureStart($prematureStart)
     {
         $this->prematureStart = $prematureStart;
+    }
+
+    /**
+     * Returns the file
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\FileReference> file
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Sets the file
+     *
+     * @param string $file
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\FileReference> file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Adds a file
+     *
+     * @param \RKW\RkwFeecalculator\Domain\Model\FileReference $file
+     * @return void
+     */
+    public function addFile(\RKW\RkwFeecalculator\Domain\Model\FileReference $file)
+    {
+        $this->file->attach($file);
+    }
+
+    /**
+     * Removes a file
+     *
+     * @param \RKW\RkwFeecalculator\Domain\Model\FileReference $file
+     * @return void
+     * @api
+     */
+    public function removeFile(\RKW\RkwFeecalculator\Domain\Model\FileReference $file)
+    {
+        $this->file->detach($file);
+    }
+
+    /**
+     * Returns the fileUpload
+     * ### only for form upload ###
+     *
+     * @return array $fileUpload
+     */
+    public function getFileUpload()
+    {
+        return $this->fileUpload;
+    }
+
+    /**
+     * Sets the fileUpload
+     * ### only for form upload ###
+     *
+     * @param array $fileUpload
+     * @return void
+     */
+    public function setFileUpload($fileUpload)
+    {
+        $this->fileUpload = $fileUpload;
     }
 
     /**
