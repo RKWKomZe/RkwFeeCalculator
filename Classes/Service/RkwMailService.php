@@ -111,6 +111,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $recipients[] = $backendUser;
         }
 
+        //  create pdf and attach it to email
+
+
         if ($settings['view']['templateRootPaths'][0]) {
 
             /** @var \RKW\RkwMailer\Service\MailService $mailService */
