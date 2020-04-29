@@ -7,13 +7,17 @@
 =============================================================
 <vh:frontend.translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.applicant" languageKey="{language}" extensionName="RkwFeecalculator"/>
 =============================================================
-<vh:frontend.translate key="tx_rkwfeecalculator_domain_model_calculation.form.selected_program" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.supportProgramme.title}
+<vh:frontend.translate key="tx_rkwfeecalculator_domain_model_calculation.form.selected_program" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.supportProgramme.name}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.name" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.name}
+<vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.founderName" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.founderName}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.address" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.address}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.zip" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.zip}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.city" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.city}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.foundationDate" languageKey="{language}" extensionName="RkwFeecalculator"/>: <f:format.date format="d.m.Y">{supportRequest.foundationDate}</f:format.date>
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.intendedFoundationDate" languageKey="{language}" extensionName="RkwFeecalculator"/>: <f:format.date format="d.m.Y">{supportRequest.intendedFoundationDate}</f:format.date>
+<vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.citizenship" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.citizenship}
+<vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.birthdate" languageKey="{language}" extensionName="RkwFeecalculator"/>: <f:format.date format="d.m.Y">{supportRequest.birthdate}</f:format.date>
+<vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.foundationLocation" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.foundationLocation}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.sales" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.sales}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.balance" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.balance}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.employeesCount}
@@ -38,7 +42,7 @@
 <vh:frontend.translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.consulting" languageKey="{language}" extensionName="RkwFeecalculator" />
 =============================================================
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_consulting" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.consulting.title}
-    <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultingDays" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.consultingDays}
+<vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultingDays" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.consultingDays}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultingDateFrom" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.consultingDateFrom}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultingDateTo" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.consultingDateTo}
 <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.consultingContent" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.consultingContent}
@@ -63,7 +67,7 @@
 <f:section name="Html">
 	<h2><vh:frontend.translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.applicant" languageKey="{language}" extensionName="RkwFeecalculator"/></h2>
 	<br>
-        <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_calculation.form.selected_program" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.supportProgramme.title}<br/>
+        <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_calculation.form.selected_program" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.supportProgramme.name}<br/>
         <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.name" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.name}<br/>
         <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.address" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.address}<br/>
         <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.zip" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.zip}<br/>
@@ -78,6 +82,8 @@
         <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative" languageKey="{language}" extensionName="RkwFeecalculator"/>: <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative.{supportRequest.singleRepresentative}" languageKey="{language}" extensionName="RkwFeecalculator"/><br/>
         <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction" languageKey="{language}" extensionName="RkwFeecalculator"/>: <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.{supportRequest.preTaxDeduction}" languageKey="{language}" extensionName="RkwFeecalculator"/><br/>
         <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.businessPurpose" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.businessPurpose}<br/>
+        <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.insolvencyProceedings}<br/>
+        <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.chamber" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.chamber}<br/>
         <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.companyShares" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.companyShares}<br/>
         <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.principalBank" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.principalBank}<br/>
         <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.bic" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.bic}</br/>
