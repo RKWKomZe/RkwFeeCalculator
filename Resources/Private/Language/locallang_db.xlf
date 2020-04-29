@@ -323,6 +323,15 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.deMinimis.99">
                 <source>No</source>
             </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass">
+                <source>Already got an "Existenzgründerpass"?</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass.1">
+                <source>Yes</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass.99">
+                <source>No</source>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments">
 				<source>Send Documents Allowed</source>
 			</trans-unit>

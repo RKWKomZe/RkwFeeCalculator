@@ -677,6 +677,27 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     ],
                     'hints' => []
                 ],
+                'existenzGruenderPass' => [
+                    'type' => 'radio',
+                    'width' => 'full',
+                    'options' => [
+                        [
+                            'value' => 1,
+                            'label' => LocalizationUtility::translate(
+                                'tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass.1',
+                                'RkwFeecalculator'
+                            ),
+                        ],
+                        [
+                            'value' => 99,
+                            'label' => LocalizationUtility::translate(
+                                'tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass.99',
+                                'RkwFeecalculator'
+                            ),
+                        ]
+                    ],
+                    'hints' => []
+                ],
                 'sendDocuments' => [
                     'type' => 'select',
                     'width' => 'full',

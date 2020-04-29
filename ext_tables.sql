@@ -208,6 +208,7 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_supportrequest (
 	send_documents int(11) DEFAULT '0' NOT NULL,
     bafa_support tinyint(4) unsigned DEFAULT '0' NOT NULL,
     de_minimis tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    existenz_gruender_pass tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	privacy tinyint(4) unsigned DEFAULT '0' NOT NULL,
 

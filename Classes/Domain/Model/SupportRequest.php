@@ -416,6 +416,14 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $deMinimis;
 
     /**
+     * existenzGruenderPass
+     *
+     * @var int
+     * @validateOnObject NotEmpty
+     */
+    protected $existenzGruenderPass;
+
+    /**
      * privacy
      *
      * @var int
@@ -1519,6 +1527,27 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDeMinimis($deMinimis)
     {
         $this->deMinimis = $deMinimis;
+    }
+
+    /**
+     * Returns the existenzGruenderPass
+     *
+     * @return int $existenzGruenderPass
+     */
+    public function getExistenzGruenderPass()
+    {
+        return $this->existenzGruenderPass;
+    }
+
+    /**
+     * Sets the existenzGruenderPass
+     *
+     * @param int $existenzGruenderPass
+     * @return void
+     */
+    public function setExistenzGruenderPass($existenzGruenderPass)
+    {
+        $this->existenzGruenderPass = $existenzGruenderPass;
     }
 
     /**
