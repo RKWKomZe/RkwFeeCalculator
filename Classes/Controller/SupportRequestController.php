@@ -17,10 +17,8 @@ namespace RKW\RkwFeecalculator\Controller;
 use RKW\RkwFeecalculator\Helper\Misc;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
-use RKW\RkwFeecalculator\Domain\Model\Program;
 use RKW\RkwRegistration\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
@@ -179,6 +177,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->view->assign('misc', $fieldsets['misc']);
         $this->view->assign('consultingList', $this->consultingList);
         $this->view->assign('companyTypeList', $this->companyTypeList);
+        $this->view->assign('mandatoryFields', $this->supportProgramme->getMandatoryFields());
     }
 
     /**

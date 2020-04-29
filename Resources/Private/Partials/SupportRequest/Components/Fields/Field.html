@@ -1,4 +1,4 @@
-{namespace vh=RKW\RkwBasics\ViewHelpers}
+{namespace vh=RKW\RkwFeecalculator\ViewHelpers}
 
 <f:if condition="{field.width} != '2-2'">
     <div class="v320-1">
@@ -9,8 +9,11 @@
     <f:if condition="{field.width} == '2-2'">
         <div class="v320-2-of-2">
     </f:if>
-            <label for="{fieldName}">
+            <label class="form-label" for="{fieldName}">
                 <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />
+                <f:if condition="<vh:isMandatoryField fieldName='{fieldName}' mandatoryFields='{mandatoryFields}' /> == 0">
+                    <span class="optional">&nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional" extensionName="RkwFeecalculator" /></span>
+                </f:if>
             </label>
             <f:if condition="{field.type} == 'text'">
                 <f:form.textfield property="{fieldName}" id="{fieldName}" />

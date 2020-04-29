@@ -156,6 +156,9 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose">
                 <source>-- Please choose --</source>
             </trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional">
+                <source>(optional)</source>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.name">
                 <source>Name</source>
             </trans-unit>

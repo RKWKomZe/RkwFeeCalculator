@@ -225,6 +225,10 @@
                 <source>-- Please choose --</source>
                 <target>-- Bitte wählen --</target>
             </trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional">
+                <source>(optional)</source>
+                <target>(optional)</target>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.name">
                 <source>Name</source>
                 <target>Name des Unternehmens</target>
