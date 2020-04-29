@@ -14,21 +14,16 @@ namespace RKW\RkwFeecalculator\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwBasics\Helper\Common;
-use RKW\RkwFeecalculator\Domain\Model\Program;
-use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 use RKW\RkwFeecalculator\Helper\Misc;
-use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
-use RKW\RkwRegistration\Domain\Model\FrontendUser;
-use Spipu\Html2Pdf\Exception\Html2PdfException;
-use Spipu\Html2Pdf\Html2Pdf;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use RKW\RkwFeecalculator\Domain\Model\Program;
+use RKW\RkwRegistration\Domain\Model\FrontendUser;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
+use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * SupportRequestController
