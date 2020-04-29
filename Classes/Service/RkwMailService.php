@@ -4,6 +4,7 @@ namespace RKW\RkwFeecalculator\Service;
 
 use RKW\RkwBasics\Helper\Common;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -35,6 +36,12 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * @inject
      */
     protected $pdfService;
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\LayoutService
+     * @inject
+     */
+    protected $layoutService;
 
     /**
      * Sends an E-Mail to a Frontend-User
@@ -121,6 +128,8 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
         if ($settings['view']['templateRootPaths'][0]) {
 
+            $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
+
             /** @var \RKW\RkwMailer\Service\MailService $mailService */
             $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
 
@@ -129,6 +138,19 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     ($recipient instanceof \RKW\RkwFeecalculator\Domain\Model\BackendUser)
                     && ($recipient->getEmail())
                 ) {
+
+                    /*
+                    foreach ($fieldsets['applicant'] as $fieldName => $field) {
+                        DebuggerUtility::var_dump(\RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                            'tx_rkwfeecalculator_domain_model_supportrequest.' . $fieldName,
+                            'rkw_feecalculator',
+                            null,
+                            'de'
+                        ));
+                    }
+                    exit();
+                    */
+
                     // send new user an email with token
                     $mailService->setTo($recipient, [
                         'marker'  => [
@@ -136,6 +158,10 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                             'backendUser'  => $recipient,
                             'pageUid'      => intval($GLOBALS['TSFE']->id),
                             'loginPid'     => intval($settingsDefault['loginPid']),
+                            'supportProgramme' => $supportRequest->getSupportProgramme(),
+                            'applicant' => $fieldsets['applicant'],
+                            'consulting' => $fieldsets['consulting'],
+                            'misc' => $fieldsets['misc'],
                         ],
                         'subject' => \RKW\RkwMailer\Helper\FrontendLocalization::translate(
                             'rkwMailService.notifyAdmin.subject',

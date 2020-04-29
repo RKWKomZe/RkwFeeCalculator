@@ -1,0 +1,8 @@
+{namespace vh=RKW\RkwFeecalculator\ViewHelpers}
+
+<h2><vh:frontend.translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.consulting" languageKey="{language}" extensionName="RkwFeecalculator" /></h2>
+<br>
+
+<f:for each="{consulting}" as="field" key="fieldName">
+    <vh:frontend.translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" languageKey="{language}" extensionName="RkwFeecalculator"/>: {supportRequest.name}<br/>
+</f:for>
