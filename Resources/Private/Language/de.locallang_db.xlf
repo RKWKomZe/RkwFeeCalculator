@@ -423,6 +423,10 @@
                 <source>No</source>
                 <target>Nein, ich habe keine de-minimis-Beihilfen erhalten.</target>
             </trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.file">
+                <source>Upload</source>
+                <target>Upload</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.1">
                 <source>via E-Mail</source>
                 <target>Per E-Mail</target>

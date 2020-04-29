@@ -202,6 +202,8 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_supportrequest (
 	consultant_phone varchar(255) DEFAULT '' NOT NULL,
 	consultant_email varchar(255) DEFAULT '' NOT NULL,
 
+	file int(11) unsigned NOT NULL default '0',
+
     premature_start tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	send_documents int(11) DEFAULT '0' NOT NULL,
     bafa_support tinyint(4) unsigned DEFAULT '0' NOT NULL,

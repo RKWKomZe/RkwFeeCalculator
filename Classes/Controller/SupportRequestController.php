@@ -14,8 +14,13 @@ namespace RKW\RkwFeecalculator\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use RKW\RkwFeecalculator\Helper\Misc;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use RKW\RkwFeecalculator\Domain\Model\Program;
+use RKW\RkwRegistration\Domain\Model\FrontendUser;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
@@ -145,7 +150,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     {
         if (!$supportProgramme) {
             $this->addFlashMessage(
-                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                LocalizationUtility::translate(
                     'tx_rkwfeecalculator_controller_supportrequest.error.choose_support_programme', 'rkw_feecalculator'
                 ),
                 '',
@@ -187,6 +192,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     *
      * @return void
      */
     public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
@@ -198,10 +204,26 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->supportRequestRepository->add($supportRequest);
         $this->persistenceManager->persistAll();
 
+        /** @var \RKW\RkwFeecalculator\Helper\Misc $miscHelper */
+        $miscHelper = GeneralUtility::makeInstance(Misc::class);
+
+        // save file(s)
+        foreach ($supportRequest->getFileUpload() as $file) {
+
+            if ($file['name'] == "" || $file['name'] == " ") {
+                continue;
+                //===
+            }
+
+            $miscHelper->createFileReference($file, 'file', $supportRequest);
+        }
+
+        $this->supportRequestRepository->update($supportRequest);
+
         $this->mailHandling($supportRequest);
 
         $this->addFlashMessage(
-            \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+            LocalizationUtility::translate(
                 'tx_rkwfeecalculator_controller_supportrequest.success.requestCreated', 'rkw_feecalculator'
             )
         );
@@ -220,8 +242,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     protected function mailHandling(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
 
-        /** @var \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser */
-        $frontendUser = GeneralUtility::makeInstance('RKW\\RkwRegistration\\Domain\\Model\\FrontendUser');
+        /** @var FrontendUser $frontendUser */
+        $frontendUser = GeneralUtility::makeInstance(FrontendUser::class);
 
         $frontendUser->setEmail($supportRequest->getContactPersonEmail());
         $frontendUser->setFirstName($supportRequest->getContactPersonName());
@@ -236,9 +258,17 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         }
         */
 
-        $this->sendConfirmationMail($frontendUser, $supportRequest);
+        try {
+            $this->sendConfirmationMail($frontendUser, $supportRequest);
+        } catch (InvalidSlotException $e) {
+        } catch (InvalidSlotReturnException $e) {
+        }
 
-        $this->sendNotificationMail($supportRequest);
+        try {
+            $this->sendNotificationMail($supportRequest);
+        } catch (InvalidSlotException $e) {
+        } catch (InvalidSlotReturnException $e) {
+        }
 
     }
 
@@ -260,8 +290,9 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * Sends notification mail to admin.
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
-     * @throws InvalidSlotException
-     * @throws InvalidSlotReturnException
+     *
+     * @throws InvalidSlotException if the slot is not valid
+     * @throws InvalidSlotReturnException if a slot return
      */
     protected function sendNotificationMail(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
@@ -357,14 +388,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'options' => [
                         [
                             'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative.1',
                                 'RkwFeecalculator'
                             ),
                         ],
                         [
                             'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative.99',
                                 'RkwFeecalculator'
                             ),
@@ -376,14 +407,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'options' => [
                         [
                             'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.1',
                                 'RkwFeecalculator'
                             ),
                         ],
                         [
                             'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.99',
                                 'RkwFeecalculator'
                             ),
@@ -400,14 +431,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'options' => [
                         [
                             'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings.1',
                                 'RkwFeecalculator'
                             ),
                         ],
                         [
                             'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings.99',
                                 'RkwFeecalculator'
                             ),
@@ -418,15 +449,15 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'type' => 'select',
                     'width' => 'full',
                     'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        1 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.chamber.1',
                             'RkwFeecalculator'
                         ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        2 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.chamber.2',
                             'RkwFeecalculator'
                         ),
-                        3 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        3 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.chamber.3',
                             'RkwFeecalculator'
                         ),
@@ -465,19 +496,19 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 'preFoundationEmployment' => [
                     'type' => 'select',
                     'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        1 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.employed',
                             'RkwFeecalculator'
                         ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        2 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.self_employed',
                             'RkwFeecalculator'
                         ),
-                        3 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        3 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.in_education',
                             'RkwFeecalculator'
                         ),
-                        4 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        4 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.unemployed',
                             'RkwFeecalculator'
                         ),
@@ -486,19 +517,19 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 'preFoundationSelfEmployment' => [
                     'type' => 'select',
                     'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        1 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.no',
                             'RkwFeecalculator'
                         ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        2 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.part_time',
                             'RkwFeecalculator'
                         ),
-                        3 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        3 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.full_time',
                             'RkwFeecalculator'
                         ),
-                        4 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        4 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.shareholder',
                             'RkwFeecalculator'
                         ),
@@ -532,15 +563,15 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'type' => 'select',
                     'width' => 'full',
                     'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        1 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.consultantType.1',
                             'RkwFeecalculator'
                         ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        2 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.consultantType.2',
                             'RkwFeecalculator'
                         ),
-                        3 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        3 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.consultantType.3',
                             'RkwFeecalculator'
                         ),
@@ -579,26 +610,26 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'options' => [
                         [
                             'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.1',
                                 'RkwFeecalculator'
                             ),
                         ],
                         [
                             'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.99',
                                 'RkwFeecalculator'
                             ),
                         ]
                     ],
                     'hints' => [
-                        \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint1',
                             'RkwFeecalculator',
                             [$this->supportProgramme->getName()]
                         ),
-                        \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint2',
                             'RkwFeecalculator',
                             [$this->supportProgramme->getName()]
@@ -611,14 +642,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'options' => [
                         [
                             'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport.1',
                                 'RkwFeecalculator'
                             ),
                         ],
                         [
                             'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport.99',
                                 'RkwFeecalculator'
                             ),
@@ -632,14 +663,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'options' => [
                         [
                             'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.deMinimis.1',
                                 'RkwFeecalculator'
                             ),
                         ],
                         [
                             'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                            'label' => LocalizationUtility::translate(
                                 'tx_rkwfeecalculator_domain_model_supportrequest.deMinimis.99',
                                 'RkwFeecalculator'
                             ),
@@ -651,17 +682,21 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                     'type' => 'select',
                     'width' => 'full',
                     'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        1 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.1',
                             'RkwFeecalculator'
                         ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                        2 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.2',
                             'RkwFeecalculator'
                         ),
                     ],
                     'hints' => []
                 ],
+                'file' => [
+                    'type' => 'upload',
+                    'width' => 'full'
+                ]
             ]
         ];
     }
@@ -671,6 +706,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      *
      * @param $fieldsets
      * @param $requestFieldsArray
+     *
      * @return mixed
      */
     protected function filterFieldsets($fieldsets, $requestFieldsArray)
@@ -691,6 +727,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * Provide fields layout helpers
      *
      * @param $fieldsets
+     *
      * @return mixed
      */
     protected function getFieldsLayout($fieldsets)

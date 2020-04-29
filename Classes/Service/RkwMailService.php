@@ -2,8 +2,8 @@
 
 namespace RKW\RkwFeecalculator\Service;
 
-use \RKW\RkwBasics\Helper\Common;
-use \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use RKW\RkwBasics\Helper\Common;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -22,12 +22,20 @@ use \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  * RkwMailService
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 {
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\PdfService
+     * @inject
+     */
+    protected $pdfService;
+
     /**
      * Sends an E-Mail to a Frontend-User
      *
@@ -160,12 +168,20 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $mailService->getQueueMail()->setPlaintextTemplate('Email/NotifyAdmin');
             $mailService->getQueueMail()->setHtmlTemplate('Email/NotifyAdmin');
 
+            //  create pdf and attach it to email
+            if ($attachment = $this->pdfService->createPdf($supportRequest)) {
+
+                $mailService->getQueueMail()->setAttachment($attachment);
+                $mailService->getQueueMail()->setAttachmentType('application/pdf');
+                $mailService->getQueueMail()->setAttachmentName('beratungsanfrage.pdf');
+
+            }
+
             if (count($mailService->getTo())) {
                 $mailService->send();
             }
         }
     }
-
 
     /**
      * Returns TYPO3 settings
