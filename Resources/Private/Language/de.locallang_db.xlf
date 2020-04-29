@@ -177,7 +177,7 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sales">
 				<source>Sales</source>
-				<target>Umsatz in T€</target>
+				<target>(geplanter) Umsatz in T€</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.balance">
 				<source>Balance</source>
