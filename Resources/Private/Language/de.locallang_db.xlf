@@ -217,7 +217,7 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.businessPurpose">
 				<source>Business Purpose</source>
-				<target>Unternehmensgegenstand</target>
+				<target>Unternehmensgegenstand/Gründungsidee</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings">
                 <source>Insolvency Proceedings</source>
