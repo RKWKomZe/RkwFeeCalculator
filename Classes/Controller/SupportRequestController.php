@@ -17,6 +17,7 @@ namespace RKW\RkwFeecalculator\Controller;
 use RKW\RkwFeecalculator\Helper\Misc;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use RKW\RkwRegistration\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
@@ -258,11 +259,13 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         }
         */
 
+        /*
         try {
             $this->sendConfirmationMail($frontendUser, $supportRequest);
         } catch (InvalidSlotException $e) {
         } catch (InvalidSlotReturnException $e) {
         }
+        */
 
         try {
             $this->sendNotificationMail($supportRequest);

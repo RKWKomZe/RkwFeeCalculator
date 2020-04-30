@@ -35,6 +35,12 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
 {
 
     /**
+     * @var \RKW\RkwFeecalculator\Service\LayoutService
+     * @inject
+     */
+    protected $layoutService;
+
+    /**
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      *
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
@@ -56,6 +62,13 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
                 $standaloneView->setTemplateRootPaths(array(GeneralUtility::getFileAbsFileName($settingsFramework['view']['templateRootPaths'][0])));
                 $standaloneView->setTemplate('SupportRequest/Pdf.html');
                 $standaloneView->assign('supportRequest', $supportRequest);
+                $standaloneView->assign('supportProgramme', $supportRequest->getSupportProgramme());
+
+                $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
+
+                $standaloneView->assign('applicant', $fieldsets['applicant']);
+                $standaloneView->assign('consulting', $fieldsets['consulting']);
+                $standaloneView->assign('misc', $fieldsets['misc']);
 
                 ob_start();
 
@@ -72,7 +85,7 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
 
                 // Show for Ending "D", "F" or "S": https://github.com/spipu/html2pdf/blob/master/doc/output.md
                 // -> "D" - Forcing the download of PDF via web browser, with a specific name
-                //  $html2pdf->output($_SERVER['DOCUMENT_ROOT'] . $fileName, 'F');
+                // $html2pdf->output($_SERVER['DOCUMENT_ROOT'] . $fileName, 'F');
                 return $html2pdf->output($fileName, 'S');
 
                 // do not use "exit" here. Is making trouble (provides a unnamed "binary"-file instead a names pdf)

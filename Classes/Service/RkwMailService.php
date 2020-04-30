@@ -4,7 +4,6 @@ namespace RKW\RkwFeecalculator\Service;
 
 use RKW\RkwBasics\Helper\Common;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -115,6 +114,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function adminMail($backendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
+
         // get settings
         $settings = $this->getSettings(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
         $settingsDefault = $this->getSettings();
@@ -138,18 +138,6 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     ($recipient instanceof \RKW\RkwFeecalculator\Domain\Model\BackendUser)
                     && ($recipient->getEmail())
                 ) {
-
-                    /*
-                    foreach ($fieldsets['applicant'] as $fieldName => $field) {
-                        DebuggerUtility::var_dump(\RKW\RkwMailer\Helper\FrontendLocalization::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.' . $fieldName,
-                            'rkw_feecalculator',
-                            null,
-                            'de'
-                        ));
-                    }
-                    exit();
-                    */
 
                     // send new user an email with token
                     $mailService->setTo($recipient, [
@@ -197,9 +185,11 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             //  create pdf and attach it to email
             if ($attachment = $this->pdfService->createPdf($supportRequest)) {
 
+                $attachmentName = 'Beratungsanfrage-' . date('Y-m-d-Hi') . '.pdf';
+
                 $mailService->getQueueMail()->setAttachment($attachment);
                 $mailService->getQueueMail()->setAttachmentType('application/pdf');
-                $mailService->getQueueMail()->setAttachmentName('beratungsanfrage.pdf');
+                $mailService->getQueueMail()->setAttachmentName($attachmentName);
 
             }
 

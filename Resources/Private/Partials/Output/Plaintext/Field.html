@@ -1,0 +1,21 @@
+{namespace vh=RKW\RkwFeecalculator\ViewHelpers}
+<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />:
+<f:if condition="{field.type} == 'text'">
+    {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}
+</f:if>
+<f:if condition="{field.type} == 'textarea'">
+    {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}
+</f:if>
+<f:if condition="{field.type} == 'date'">
+    <f:format.date format="d.m.Y">{vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}</f:format.date>
+</f:if>
+<f:if condition="{field.type} == 'select'">
+    Select
+    {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}
+    <f:comment><f:form.select property="{fieldName}" options="{field.options}" optionValueField="{field.optionValueField}" optionLabelField="{field.optionLabelField}" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" /></f:comment>
+</f:if>
+<f:if condition="{field.type} == 'radio'">
+    Radio
+    {supportRequest.fieldName}
+    <f:comment><f:form.select property="{fieldName}" options="{field.options}" optionValueField="{field.optionValueField}" optionLabelField="{field.optionLabelField}" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" /></f:comment>
+</f:if>
