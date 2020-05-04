@@ -8,7 +8,7 @@
     <vh:frontend.translate key="templates_email_confirmationUser.text1" languageKey="{frontendUser.txRkwregistrationLanguageKey}" extensionName="RkwFeecalculator" />
     <vh:frontend.translate key="templates_email_confirmationUser.text2" languageKey="{frontendUser.txRkwregistrationLanguageKey}" extensionName="RkwFeecalculator" />
 
-    <f:render partial="Email/SupportRequest" section="Plaintext" arguments="{supportRequest: supportRequest, applicant: applicant, consulting: consulting, misc: misc, frontendUser: frontendUser, language: frontendUser.txRkwregistrationLanguageKey}"/>
+    <f:render partial="Email/SupportRequest" section="Plaintext" arguments="{supportRequest: supportRequest, supportProgramme: supportProgramme, applicant: applicant, consulting: consulting, misc: misc, frontendUser: frontendUser, language: frontendUser.txRkwregistrationLanguageKey}"/>
 </f:section>
 
 <!-- HTML -->
@@ -18,5 +18,5 @@
 		<vh:frontend.translate key="templates_email_confirmationUser.text1" languageKey="{frontendUser.txRkwregistrationLanguageKey}" extensionName="RkwFeecalculator" /><br>
 		<vh:frontend.translate key="templates_email_confirmationUser.text2" languageKey="{frontendUser.txRkwregistrationLanguageKey}" extensionName="RkwFeecalculator" />
 	</p>
-    <f:render partial="Email/SupportRequest" section="Html" arguments="{supportRequest: supportRequest, applicant: applicant, consulting: consulting, misc: misc, frontendUser: frontendUser, language: frontendUser.txRkwregistrationLanguageKey}"/>
+    <f:render partial="Email/SupportRequest" section="Html" arguments="{supportRequest: supportRequest, supportProgramme: supportProgramme, applicant: applicant, consulting: consulting, misc: misc, frontendUser: frontendUser, language: frontendUser.txRkwregistrationLanguageKey}"/>
 </f:section>

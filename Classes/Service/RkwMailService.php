@@ -71,15 +71,15 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $mailService->setTo($frontendUser, [
                 'marker' => [
                     'supportRequest' => $supportRequest,
+                    'supportProgramme' => $supportRequest->getSupportProgramme(),
                     'frontendUser' => $frontendUser,
                     'pageUid'      => intval($GLOBALS['TSFE']->id),
-                    'loginPid'     => intval($settingsDefault['loginPid']),
                 ],
             ]);
 
             $mailService->getQueueMail()->setSubject(
                 \RKW\RkwMailer\Helper\FrontendLocalization::translate(
-                    'rkwMailService.confirmationUser.subject',
+                    'tx_rkwfeecalculator_domain_model_supportrequest',
                     'rkw_feecalculator',
                     null,
                     ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
@@ -143,10 +143,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     $mailService->setTo($recipient, [
                         'marker'  => [
                             'supportRequest' => $supportRequest,
+                            'supportProgramme' => $supportRequest->getSupportProgramme(),
                             'backendUser'  => $recipient,
                             'pageUid'      => intval($GLOBALS['TSFE']->id),
-                            'loginPid'     => intval($settingsDefault['loginPid']),
-                            'supportProgramme' => $supportRequest->getSupportProgramme(),
                             'applicant' => $fieldsets['applicant'],
                             'consulting' => $fieldsets['consulting'],
                             'misc' => $fieldsets['misc'],
@@ -185,7 +184,14 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             //  create pdf and attach it to email
             if ($attachment = $this->pdfService->createPdf($supportRequest)) {
 
-                $attachmentName = 'Beratungsanfrage-' . date('Y-m-d-Hi') . '.pdf';
+                $fileName = \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                    'tx_rkwfeecalculator_domain_model_supportrequest',
+                    'rkw_feecalculator',
+                    null,
+                    'de'
+                );
+
+                $attachmentName = $fileName . '-' . date('Y-m-d-Hi') . '.pdf';
 
                 $mailService->getQueueMail()->setAttachment($attachment);
                 $mailService->getQueueMail()->setAttachmentType('application/pdf');

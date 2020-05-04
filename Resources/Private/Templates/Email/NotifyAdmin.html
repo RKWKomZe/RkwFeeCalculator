@@ -7,7 +7,7 @@
 
     <vh:frontend.translate key="templates_email_notifyAdmin.text1" languageKey="{backendUser.lang}" extensionName="RkwFeecalculator" />
 
-    <f:render partial="Email/SupportRequest" section="Plaintext" arguments="{supportRequest: supportRequest, loginPid: loginPid, applicant: applicant, consulting: consulting, misc: misc, language: backendUser.lang}"/>
+    <f:render partial="Email/SupportRequest" section="Plaintext" arguments="{supportRequest: supportRequest, supportProgramme: supportProgramme, applicant: applicant, consulting: consulting, misc: misc, language: backendUser.lang}"/>
 </f:section>
 
 <!-- HTML -->
@@ -15,5 +15,5 @@
 	<h1><vh:frontend.translate key="templates_email_notifyAdmin.headline" languageKey="{backendUser.lang}" extensionName="RkwFeecalculator" arguments="{0 : backendUser.realName}" /></h1>
 	<p><vh:frontend.translate key="templates_email_notifyAdmin.text1" languageKey="{backendUser.lang}" extensionName="RkwFeecalculator" /></p>
 
-	<f:render partial="Email/SupportRequest" section="Html" arguments="{supportRequest: supportRequest, loginPid: loginPid, applicant: applicant, consulting: consulting, misc: misc, language: backendUser.lang}"/>
+	<f:render partial="Email/SupportRequest" section="Html" arguments="{supportRequest: supportRequest, supportProgramme: supportProgramme, applicant: applicant, consulting: consulting, misc: misc, language: backendUser.lang}"/>
 </f:section>

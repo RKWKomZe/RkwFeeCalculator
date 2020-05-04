@@ -3,6 +3,8 @@
 
 <!-- PLAINTEXT -->
 <f:section name="Plaintext">
+    <f:render partial="Email/Components/Plaintext/00-Header" arguments="{_all}" />
+    =============================================================
     <f:render partial="Email/Components/Plaintext/01-Applicant" arguments="{_all}" />
     =============================================================
     <f:render partial="Email/Components/Plaintext/02-Consulting" arguments="{_all}" />
@@ -12,6 +14,7 @@
 
 <!-- HTML -->
 <f:section name="Html">
+    <f:render partial="Email/Components/Html/00-Header" arguments="{_all}" />
     <f:render partial="Email/Components/Html/01-Applicant" arguments="{_all}" />
     <f:render partial="Email/Components/Html/02-Consulting" arguments="{_all}" />
     <f:render partial="Email/Components/Html/04-Misc" arguments="{_all}" />

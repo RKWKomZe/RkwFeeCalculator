@@ -76,20 +76,26 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
 
                 ob_end_clean();
 
-                $html2pdf = new Html2Pdf('P', 'A4', 'de', true, 'UTF-8', 0);
-                $html2pdf->pdf->IncludeJS("print(true);");  //  force printer dialog
+                $html2pdf = new Html2Pdf('P', 'A4', 'de', true, 'UTF-8');
                 $html2pdf->parsingCss;
                 $html2pdf->writeHTML($content);
 
-                $fileName = 'Beratungsanfrage-' . date('Y-m-d-Hi') . '.pdf';
+                $fileName = \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                    'tx_rkwfeecalculator_domain_model_supportrequest',
+                    'rkw_feecalculator',
+                    null,
+                    'de'
+                );
+
+                $attachmentName = $fileName . '-' . date('Y-m-d-Hi') . '.pdf';
 
                 // Show for Ending "D", "F" or "S": https://github.com/spipu/html2pdf/blob/master/doc/output.md
                 // -> "D" - Forcing the download of PDF via web browser, with a specific name
-                // $html2pdf->output($_SERVER['DOCUMENT_ROOT'] . $fileName, 'F');
-                return $html2pdf->output($fileName, 'S');
+                //  $html2pdf->output($_SERVER['DOCUMENT_ROOT'] . $attachmentName, 'F');
+                return $html2pdf->output($attachmentName, 'S');
 
                 // do not use "exit" here. Is making trouble (provides a unnamed "binary"-file instead a names pdf)
-                //  readfile($fileName);
+                //  readfile($attachmentName);
                 //  echo $html2pdf->output();
                 //  aber dadurch wird das Formular nicht weitergeleitet, das muss ich verhindern!
                 //  hmm, liefert jetzt ein binary, dass ich auf .pdf umbenenne und siehe da, es hat den inhalt, aber warum nimmt es nicht den namen.

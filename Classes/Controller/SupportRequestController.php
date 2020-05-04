@@ -259,13 +259,11 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         }
         */
 
-        /*
         try {
             $this->sendConfirmationMail($frontendUser, $supportRequest);
         } catch (InvalidSlotException $e) {
         } catch (InvalidSlotReturnException $e) {
         }
-        */
 
         try {
             $this->sendNotificationMail($supportRequest);
