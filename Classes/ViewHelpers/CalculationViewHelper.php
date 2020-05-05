@@ -34,9 +34,7 @@ class CalculationViewHelper extends AbstractViewHelper
      *
      * @param Calculation $calculation
      * @return mixed
-     * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception\InvalidVariableException
-     * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception\InvalidVariableException
-     * @throws \TYPO3\CMS\Fluid\Core\ViewHelper\Exception\InvalidVariableException
+     * @throws \TYPO3Fluid\Fluid\Core\Exception
      */
     public function render(Calculation $calculation = null)
     {
