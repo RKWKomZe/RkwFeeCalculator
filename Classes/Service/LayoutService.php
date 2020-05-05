@@ -479,7 +479,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'file' => [
                     'type' => 'upload',
-                    'width' => 'full'
+                    'width' => 'new'
                 ]
             ]
         ];

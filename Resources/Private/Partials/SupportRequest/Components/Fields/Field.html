@@ -48,7 +48,12 @@
             <f:if condition="{field.type} == 'upload'">
                 <f:for each="{0:1, 1:2, 2:3, 3:4, 4:5}" as="file" iteration="fileIteration">
                     <f:if condition="{fileIteration.cycle} > <f:count>{consultant.file}</f:count>">
-                        <f:form.upload property="fileUpload.{fileIteration.cycle}" name="fileUpload"/>
+                        <span class="jcf-file">
+                            <span class="jcf-fake-input"><f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.general.{field.type}.placeholder" extensionName="RkwFeecalculator" /></span><span class="jcf-upload-button button">
+                                <span class="jcf-button-content"><f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.general.{field.type}.button.label" extensionName="RkwFeecalculator" /></span>
+                            </span>
+                            <f:form.upload class="jcf-real-element" style="position: absolute; opacity: 0;" property="fileUpload.{fileIteration.cycle}" name="fileUpload"/>
+                        </span>
                     </f:if>
                 </f:for>
             </f:if>

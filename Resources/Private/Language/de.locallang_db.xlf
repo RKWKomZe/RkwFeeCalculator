@@ -135,6 +135,14 @@
                 <source>(optional)</source>
                 <target>(optional)</target>
             </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.upload.placeholder">
+                <source>No file chosen</source>
+                <target>Keine Datei gewählt</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.upload.button.label">
+                <source>Choose file</source>
+                <target>Datei wählen</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.name">
 				<source>Name</source>
 				<target>Name des Unternehmens</target>
