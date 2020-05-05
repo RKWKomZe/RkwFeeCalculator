@@ -21,7 +21,7 @@ config.tx_extbase.persistence {
 
         RKW\RkwRegistration\Domain\Model\BackendUser {
             subclasses {
-                Tx_RkwForm_BackendUser = RKW\RkwFeecalculator\Domain\Model\BackendUser
+                Tx_RkwFeecalculator_BackendUser = RKW\RkwFeecalculator\Domain\Model\BackendUser
             }
         }
 
@@ -30,6 +30,21 @@ config.tx_extbase.persistence {
             mapping {
                 tableName = be_users
                 recordType =
+            }
+        }
+
+        RKW\RkwFeecalculator\Domain\Model\File {
+            mapping {
+                tableName = sys_file
+            }
+        }
+
+        RKW\RkwFeecalculator\Domain\Model\FileReference {
+            mapping {
+                tableName = sys_file_reference
+                columns {
+                    uid_local.mapOnProperty = file
+                }
             }
         }
     }
@@ -81,6 +96,7 @@ plugin.tx_rkwfeecalculator_request {
         #callDefaultActionIfActionCantBeResolved = 1
     }
     settings {
+        sysFileStorageUid = 1
         storagePid = {$plugin.tx_rkwfeecalculator_request.persistence.storagePid}
         programStoragePid = {$plugin.tx_rkwfeecalculator_calculator.persistence.storagePid}
     }

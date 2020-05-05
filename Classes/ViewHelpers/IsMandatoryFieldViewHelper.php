@@ -16,37 +16,36 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Class IsRequestFieldViewHelper
+ * Class IsMandatoryFieldViewHelper
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class IsRequestFieldViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class IsMandatoryFieldViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 {
 
     /**
-     * return FALSE, if the given fieldName is CONTAINED IN given requestFields (string-list from TypoScript)
-     * TRUE if optional
+     * return TRUE, if the given fieldName is CONTAINED IN given mandatoryFields
      *
      * @param string $fieldName
-     * @param string $requestFields
+     * @param string $mandatoryFields
      * @return bool
      */
-    public function render($fieldName, $requestFields)
+    public function render($fieldName, $mandatoryFields)
     {
-        $requestFieldsArray = array_map(function($item) {
+        $mandatoryFieldsArray = array_map(function($item) {
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
-        }, explode(',', $requestFields));
+        }, explode(',', $mandatoryFields));
 
-        if (!in_array($fieldName, $requestFieldsArray, true)) {
+        if (in_array($fieldName, $mandatoryFieldsArray, true)) {
 
-            return false;
+            return true;
             //===
         }
 
-        return true;
+        return false;
         //===
     }
 

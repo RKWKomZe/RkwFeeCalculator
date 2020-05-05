@@ -63,3 +63,61 @@ body.topic-4 .hint {
 body .wysiwyg p.hint {
     font-size: 80%;
 }
+
+form .jcf-file  .jcf-real-element {
+    height: 100%;
+    width: 100%;
+}
+
+form .jcf-file .jcf-fake-input {
+    padding: 0 14px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.form-fields fieldset div:first-of-type .jcf-upload-button.button {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-top: 0;
+}
+
+body.topic-1 form .jcf-file .jcf-upload-button {
+    background: #e64415;
+}
+
+body.topic-1 form .jcf-file .jcf-upload-button:hover {
+    background: #fff;
+    color: #e64415;
+}
+
+body.topic-2 form .jcf-file .jcf-upload-button {
+    background: #74b929;
+}
+
+body.topic-2 form .jcf-file .jcf-upload-button:hover {
+    background: #fff;
+    color: #74b929;
+}
+
+body.topic-3 form .jcf-file .jcf-upload-button {
+    background: #009fee;
+}
+
+body.topic-3 form .jcf-file .jcf-upload-button:hover {
+    background: #fff;
+    color: #009fee;
+}
+
+body.topic-4 form .jcf-file .jcf-upload-button {
+    background: #c6007b;
+}
+
+body.topic-4 form .jcf-file .jcf-upload-button:hover {
+    background: #fff;
+    color: #c6007b;
+}
+

@@ -131,6 +131,18 @@
                 <source>-- Please choose --</source>
                 <target>-- Bitte wählen --</target>
             </trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional">
+                <source>(optional)</source>
+                <target>(optional)</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.upload.placeholder">
+                <source>No file chosen</source>
+                <target>Keine Datei gewählt</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.upload.button.label">
+                <source>Choose file</source>
+                <target>Datei wählen</target>
+            </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.name">
 				<source>Name</source>
 				<target>Name des Unternehmens</target>
@@ -173,7 +185,7 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sales">
 				<source>Sales</source>
-				<target>Umsatz in T€</target>
+				<target>(geplanter) Umsatz in T€</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.balance">
 				<source>Balance</source>
@@ -213,7 +225,7 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.businessPurpose">
 				<source>Business Purpose</source>
-				<target>Unternehmensgegenstand</target>
+				<target>Unternehmensgegenstand/Gründungsidee</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings">
                 <source>Insolvency Proceedings</source>
@@ -357,11 +369,11 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName1">
 				<source>Consultant Name1</source>
-				<target>Berater (Name, Vorname)</target>
+				<target>Name, Vorname (Berater)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName2">
 				<source>Consultant Name2</source>
-				<target>2. Berater (Name, Vorname)</target>
+				<target>Name, Vorname (2. Berater)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant1AccreditationNumber">
 				<source>Consultant1 Accreditation Number</source>
@@ -369,7 +381,7 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant2AccreditationNumber">
 				<source>Consultant2 Accreditation Number</source>
-				<target>2. Berater (Akkr.-Nr.)</target>
+				<target>Akkreditierungsnummer</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantFee">
 				<source>Consultant Fee</source>
@@ -377,11 +389,11 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantPhone">
 				<source>Consultant Phone</source>
-				<target>Berater (Telefon)</target>
+				<target>Telefon (Berater)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantEmail">
 				<source>Consultant Email</source>
-				<target>Berater (E-Mail-Adresse)</target>
+				<target>E-Mail-Adresse (Berater)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart">
 				<source>Early Start Desired</source>
@@ -422,6 +434,22 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.deMinimis.99">
                 <source>No</source>
                 <target>Nein, ich habe keine de-minimis-Beihilfen erhalten.</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass">
+                <source>Already got an "Existenzgründerpass"?</source>
+                <target>Haben Sie bereits einen Existenzgründerpass?</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass.1">
+                <source>Yes</source>
+                <target>Ja</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass.99">
+                <source>No</source>
+                <target>Nein</target>
+            </trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.file">
+                <source>Upload</source>
+                <target>Upload</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.1">
                 <source>via E-Mail</source>
