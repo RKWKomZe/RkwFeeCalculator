@@ -64,6 +64,8 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
         if ($frontendUser->getEmail() && $settings['view']['templateRootPaths'][0]) {
 
+            $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
+
             /** @var \RKW\RkwMailer\Service\MailService $mailService */
             $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
 
@@ -74,6 +76,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     'supportProgramme' => $supportRequest->getSupportProgramme(),
                     'frontendUser' => $frontendUser,
                     'pageUid'      => intval($GLOBALS['TSFE']->id),
+                    'applicant' => $fieldsets['applicant'],
+                    'consulting' => $fieldsets['consulting'],
+                    'misc' => $fieldsets['misc'],
                 ],
             ]);
 
