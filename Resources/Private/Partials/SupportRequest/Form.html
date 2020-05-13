@@ -4,7 +4,7 @@
 
 <f:render partial="FormErrors" arguments="{object:SupportRequest}" />
 
-<f:form class="form-fields" action="create" name="supportRequest" object="{supportRequest}" >
+<f:form class="form-fields" action="create" name="supportRequest" object="{supportRequest}"  enctype="multipart/form-data">
 
     <f:form.hidden property="supportProgramme" value="{supportProgramme}" />
 
@@ -15,8 +15,6 @@
     <f:render partial="SupportRequest/Components/01-Applicant" arguments="{_all}" />
 
     <f:render partial="SupportRequest/Components/02-Consulting" arguments="{_all}" />
-
-    <f:render partial="SupportRequest/Components/03-Consultant" arguments="{_all}" />
 
     <f:render partial="SupportRequest/Components/04-Misc" arguments="{_all}" />
 

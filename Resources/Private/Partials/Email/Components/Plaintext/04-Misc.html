@@ -1,0 +1,5 @@
+{namespace vh=RKW\RkwFeecalculator\ViewHelpers}
+<vh:frontend.translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.additional" languageKey="{language}" extensionName="RkwFeecalculator" />
+<f:for each="{additional}" as="field" key="fieldName">
+    <f:render partial="Output/Plaintext/Field" arguments="{field: field, fieldName: fieldName, supportRequest: supportRequest}" />
+</f:for>

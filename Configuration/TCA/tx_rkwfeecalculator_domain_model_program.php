@@ -285,6 +285,8 @@ return [
                     [ 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments', 'send_documents' ],
                     [ 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport', 'bafa_support' ],
                     [ 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.deMinimis', 'de_minimis' ],
+                    [ 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass', 'existenz_gruender_pass' ],
+                    [ 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.file', 'file' ],
                 ],
                 'maxitems'            => 9999,
                 'appearance'          => [
@@ -352,6 +354,7 @@ return [
                     [ 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments', 'send_documents' ],
                     [ 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport', 'bafa_support' ],
                     [ 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.deMinimis', 'de_minimis' ],
+                    [ 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.existenzGruenderPass', 'existenz_gruender_pass' ],
                 ],
                 'maxitems'            => 9999,
                 'appearance'          => [

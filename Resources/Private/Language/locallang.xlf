@@ -156,6 +156,15 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose">
                 <source>-- Please choose --</source>
             </trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional">
+                <source>(optional)</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.upload.placeholder">
+                <source>No file chosen</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.upload.button.label">
+                <source>Choose file</source>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.name">
                 <source>Name</source>
             </trans-unit>
@@ -366,6 +375,9 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments">
                 <source>Send Documents Allowed</source>
             </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.file">
+                <source>Upload</source>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.1">
                 <source>via E-Mail</source>
             </trans-unit>
@@ -427,7 +439,7 @@
                 <source>applicant</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.consulting">
-                <source>Consulting</source>
+                <source>Consulting and Consultant</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.consultant">
                 <source>Consultant</source>

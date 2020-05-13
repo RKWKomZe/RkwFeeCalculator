@@ -14,9 +14,12 @@ namespace RKW\RkwFeecalculator\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use RKW\RkwFeecalculator\Helper\Misc;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
-use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use RKW\RkwRegistration\Domain\Model\FrontendUser;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
 
@@ -45,6 +48,12 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @const string
      */
     const SIGNAL_AFTER_REQUEST_CREATED_ADMIN = 'afterRequestCreatedAdmin';
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\LayoutService
+     * @inject
+     */
+    protected $layoutService;
 
     /**
      * supportProgrammeRepository
@@ -106,8 +115,6 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
     protected $consultingList;
 
-    protected $fieldWidth = 'full';
-
     /**
      * Remove ErrorFlashMessage
      *
@@ -139,12 +146,13 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @param \RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme
      *
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
     public function requestFormAction(\RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme = null)
     {
         if (!$supportProgramme) {
             $this->addFlashMessage(
-                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                LocalizationUtility::translate(
                     'tx_rkwfeecalculator_controller_supportrequest.error.choose_support_programme', 'rkw_feecalculator'
                 ),
                 '',
@@ -163,17 +171,15 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->companyTypeList = $this->companyTypeRepository->findAll();
         $this->consultingList = $this->supportProgramme->getConsulting();
 
-        $fieldsets = $this->getFieldsConfig();
-
-        $fieldsets = $this->getFieldsLayout($this->filterFieldsets($fieldsets, $requestFieldsArray));
+        $fieldsets = $this->layoutService->getFields($supportProgramme);
 
         $this->view->assign('supportProgramme', $this->supportProgramme);
         $this->view->assign('applicant', $fieldsets['applicant']);
         $this->view->assign('consulting', $fieldsets['consulting']);
-        $this->view->assign('consultant', $fieldsets['consultant']);
         $this->view->assign('misc', $fieldsets['misc']);
         $this->view->assign('consultingList', $this->consultingList);
         $this->view->assign('companyTypeList', $this->companyTypeList);
+        $this->view->assign('mandatoryFields', $this->supportProgramme->getMandatoryFields());
     }
 
     /**
@@ -181,11 +187,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      * @validate $supportRequest \RKW\RkwFeecalculator\Validation\SupportRequestValidator
-     * @return void
+     *
+     * @throws InvalidSlotException
+     * @throws InvalidSlotReturnException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
+     *
+     * @return void
      */
     public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
@@ -196,10 +205,26 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->supportRequestRepository->add($supportRequest);
         $this->persistenceManager->persistAll();
 
+        /** @var \RKW\RkwFeecalculator\Helper\Misc $miscHelper */
+        $miscHelper = GeneralUtility::makeInstance(Misc::class);
+
+        // save file(s)
+        foreach ($supportRequest->getFileUpload() as $file) {
+
+            if ($file['name'] == "" || $file['name'] == " ") {
+                continue;
+                //===
+            }
+
+            $miscHelper->createFileReference($file, 'file', $supportRequest);
+        }
+
+        $this->supportRequestRepository->update($supportRequest);
+
         $this->mailHandling($supportRequest);
 
         $this->addFlashMessage(
-            \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+            LocalizationUtility::translate(
                 'tx_rkwfeecalculator_controller_supportrequest.success.requestCreated', 'rkw_feecalculator'
             )
         );
@@ -212,14 +237,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      *
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
+     * @throws InvalidSlotException
+     * @throws InvalidSlotReturnException
      */
     protected function mailHandling(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
 
-        /** @var \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser */
-        $frontendUser = GeneralUtility::makeInstance('RKW\\RkwRegistration\\Domain\\Model\\FrontendUser');
+        /** @var FrontendUser $frontendUser */
+        $frontendUser = GeneralUtility::makeInstance(FrontendUser::class);
 
         $frontendUser->setEmail($supportRequest->getContactPersonEmail());
         $frontendUser->setFirstName($supportRequest->getContactPersonName());
@@ -236,14 +261,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
         try {
             $this->sendConfirmationMail($frontendUser, $supportRequest);
-        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException $e) {
-        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException $e) {
+        } catch (InvalidSlotException $e) {
+        } catch (InvalidSlotReturnException $e) {
         }
 
         try {
             $this->sendNotificationMail($supportRequest);
-        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException $e) {
-        } catch (\TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException $e) {
+        } catch (InvalidSlotException $e) {
+        } catch (InvalidSlotReturnException $e) {
         }
 
     }
@@ -251,11 +276,11 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * Sends confirmation mail to frontenduser.
      *
-     * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
+     * @param \RKW\RkwRegistration\Domain\Model\FrontendUser    $frontendUser
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      *
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
+     * @throws InvalidSlotException
+     * @throws InvalidSlotReturnException
      */
     protected function sendConfirmationMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
@@ -267,8 +292,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      *
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException if the slot is not valid
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException if a slot return
+     * @throws InvalidSlotException if the slot is not valid
+     * @throws InvalidSlotReturnException if a slot return
      */
     protected function sendNotificationMail(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
@@ -301,417 +326,4 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $supportRequest]);
     }
 
-    protected function getFieldsConfig()
-    {
-        return [
-            'applicant' => [
-                'name' => [
-                    'type' => 'text',
-                ],
-                'founderName' => [
-                    'type' => 'text',
-                ],
-                'address' => [
-                    'type' => 'text',
-                ],
-                'zip' => [
-                    'type' => 'text',
-                ],
-                'city' => [
-                    'type' => 'text',
-                ],
-                'foundationDate' => [
-                    'type' => 'date',
-                ],
-                'intendedFoundationDate' => [
-                    'type' => 'date',
-                ],
-                'companyType' => [
-                    'type' => 'select',
-                    'options' => $this->companyTypeList,
-                    'optionValueField' => 'uid',
-                    'optionLabelField' => 'name',
-                ],
-                'citizenship' => [
-                    'type' => 'text',
-                ],
-                'birthdate' => [
-                    'type' => 'date',
-                ],
-                'foundationLocation' => [
-                    'type' => 'text',
-                ],
-                'balance' => [
-                    'type' => 'text',
-                ],
-                'sales' => [
-                    'type' => 'text',
-                ],
-                'employeesCount' => [
-                    'type' => 'text',
-                ],
-                'manager' => [
-                    'type' => 'text',
-                    'width' => 'full',
-                ],
-                'singleRepresentative' => [
-                    'type' => 'radio',
-                    'options' => [
-                        [
-                            'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative.1',
-                                'RkwFeecalculator'
-                            ),
-                        ],
-                        [
-                            'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative.99',
-                                'RkwFeecalculator'
-                            ),
-                        ]
-                    ]
-                ],
-                'preTaxDeduction' => [
-                    'type' => 'radio',
-                    'options' => [
-                        [
-                            'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.1',
-                                'RkwFeecalculator'
-                            ),
-                        ],
-                        [
-                            'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.99',
-                                'RkwFeecalculator'
-                            ),
-                        ]
-                    ]
-                ],
-                'businessPurpose' => [
-                    'type' => 'textarea',
-                    'width' => 'full',
-                ],
-                'insolvencyProceedings' => [
-                    'type' => 'radio',
-                    'width' => 'full',
-                    'options' => [
-                        [
-                            'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings.1',
-                                'RkwFeecalculator'
-                            ),
-                        ],
-                        [
-                            'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings.99',
-                                'RkwFeecalculator'
-                            ),
-                        ]
-                    ],
-                ],
-                'chamber' => [
-                    'type' => 'select',
-                    'width' => 'full',
-                    'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.chamber.1',
-                            'RkwFeecalculator'
-                        ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.chamber.2',
-                            'RkwFeecalculator'
-                        ),
-                        3 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.chamber.3',
-                            'RkwFeecalculator'
-                        ),
-                    ],
-                ],
-                'companyShares' => [
-                    'type' => 'textarea',
-                    'width' => 'full',
-                ],
-                'principalBank' => [
-                    'type' => 'text',
-                    'width' => 'full',
-                ],
-                'bic' => [
-                    'type' => 'text',
-                ],
-                'iban' => [
-                    'type' => 'text',
-                ],
-                'contactPersonName' => [
-                    'type' => 'text',
-                    'width' => 'full',
-                ],
-                'contactPersonPhone' => [
-                    'type' => 'text',
-                ],
-                'contactPersonFax' => [
-                    'type' => 'text',
-                ],
-                'contactPersonMobile' => [
-                    'type' => 'text',
-                ],
-                'contactPersonEmail' => [
-                    'type' => 'text',
-                ],
-                'preFoundationEmployment' => [
-                    'type' => 'select',
-                    'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.employed',
-                            'RkwFeecalculator'
-                        ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.self_employed',
-                            'RkwFeecalculator'
-                        ),
-                        3 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.in_education',
-                            'RkwFeecalculator'
-                        ),
-                        4 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.unemployed',
-                            'RkwFeecalculator'
-                        ),
-                    ],
-                ],
-                'preFoundationSelfEmployment' => [
-                    'type' => 'select',
-                    'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.no',
-                            'RkwFeecalculator'
-                        ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.part_time',
-                            'RkwFeecalculator'
-                        ),
-                        3 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.full_time',
-                            'RkwFeecalculator'
-                        ),
-                        4 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.shareholder',
-                            'RkwFeecalculator'
-                        ),
-                    ],
-                ],
-            ],
-            'consulting' => [
-                'consulting' => [
-                    'type' => 'select',
-                    'width' => 'full',
-                    'options' => $this->consultingList,
-                    'optionValueField' => 'uid',
-                    'optionLabelField' => 'title'
-                ],
-                'consultingDays' => [
-                    'type' => 'select',
-                    'options' => (new PossibleDaysViewHelper())->render($this->supportProgramme),
-                ],
-                'consultingDateFrom' => [
-                    'type' => 'text',
-                    'width' => 'new',   //  force new line
-                ],
-                'consultingDateTo' => [
-                    'type' => 'text',
-                ],
-                'consultingContent' => [
-                    'type' => 'textarea',
-                    'width' => 'full',
-                ],
-            ],
-            'consultant' => [
-                'consultantType' => [
-                    'type' => 'select',
-                    'width' => 'full',
-                    'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.consultantType.1',
-                            'RkwFeecalculator'
-                        ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.consultantType.2',
-                            'RkwFeecalculator'
-                        ),
-                        3 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.consultantType.3',
-                            'RkwFeecalculator'
-                        ),
-                    ]
-                ],
-                'consultantCompany' => [
-                    'type' => 'text',
-                    'width' => 'full',
-                ],
-                'consultantName1' => [
-                    'type' => 'text',
-                ],
-                'consultant1AccreditationNumber' => [
-                    'type' => 'text',
-                ],
-                'consultantName2' => [
-                    'type' => 'text',
-                ],
-                'consultant2AccreditationNumber' => [
-                    'type' => 'text',
-                ],
-                'consultantPhone' => [
-                    'type' => 'text',
-                ],
-                'consultantFee' => [
-                    'type' => 'text',
-                ],
-                'consultantEmail' => [
-                    'type' => 'text',
-                ],
-            ],
-            'misc' => [
-                'prematureStart' => [
-                    'type' => 'radio',
-                    'width' => 'full',
-                    'options' => [
-                        [
-                            'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.1',
-                                'RkwFeecalculator'
-                            ),
-                        ],
-                        [
-                            'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.preTaxDeduction.99',
-                                'RkwFeecalculator'
-                            ),
-                        ]
-                    ],
-                    'hints' => [
-                        \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint1',
-                            'RkwFeecalculator',
-                            [$this->supportProgramme->getName()]
-                        ),
-                        \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint2',
-                            'RkwFeecalculator',
-                            [$this->supportProgramme->getName()]
-                        ),
-                    ]
-                ],
-                'bafaSupport' => [
-                    'type' => 'radio',
-                    'width' => 'full',
-                    'options' => [
-                        [
-                            'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport.1',
-                                'RkwFeecalculator'
-                            ),
-                        ],
-                        [
-                            'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.bafaSupport.99',
-                                'RkwFeecalculator'
-                            ),
-                        ]
-                    ],
-                    'hints' => []
-                ],
-                'deMinimis' => [
-                    'type' => 'radio',
-                    'width' => 'full',
-                    'options' => [
-                        [
-                            'value' => 1,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.deMinimis.1',
-                                'RkwFeecalculator'
-                            ),
-                        ],
-                        [
-                            'value' => 99,
-                            'label' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                                'tx_rkwfeecalculator_domain_model_supportrequest.deMinimis.99',
-                                'RkwFeecalculator'
-                            ),
-                        ]
-                    ],
-                    'hints' => []
-                ],
-                'sendDocuments' => [
-                    'type' => 'select',
-                    'width' => 'full',
-                    'options' => [
-                        1 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.1',
-                            'RkwFeecalculator'
-                        ),
-                        2 => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.2',
-                            'RkwFeecalculator'
-                        ),
-                    ],
-                    'hints' => []
-                ],
-            ]
-        ];
-    }
-
-    protected function filterFieldsets($fieldsets, $requestFieldsArray)
-    {
-        foreach ($fieldsets as $key => $fieldset) {
-            $fieldsets[$key] = array_filter($fieldset, function($item) use ($requestFieldsArray) {
-                return in_array($item, $requestFieldsArray, true);
-            },ARRAY_FILTER_USE_KEY);
-
-            //  sort array
-            $sortedFieldsets[$key] = array_merge(array_flip(array_intersect($requestFieldsArray, array_keys($fieldsets[$key]))), $fieldsets[$key]);
-        }
-
-        return $sortedFieldsets;
-    }
-
-    protected function getFieldsLayout($fieldsets)
-    {
-        foreach ($fieldsets as $key => $fieldset) {
-
-            foreach ($fieldset as $fieldKey => $field) {
-
-                if ($this->fieldWidth === 'full' || $this->fieldWidth === '2-2' || $field['width'] === 'new') {
-                    $field['width'] = (isset($field['width'])) ? $field['width'] : '1-2';
-                }
-
-                if ($this->fieldWidth === '1-2' && $field['width'] !== 'full' && $field['width'] !== 'new') {
-                    $field['width'] = '2-2';
-                }
-
-                if ($field['width'] === 'new') {
-                    $field['width'] = '1-2';
-                }
-
-                $this->fieldWidth = $field['width'];
-
-                $fieldsets[$key][$fieldKey] = $field;
-
-            }
-
-            $this->fieldWidth = 'full';
-
-        }
-
-        return $fieldsets;
-    }
 }

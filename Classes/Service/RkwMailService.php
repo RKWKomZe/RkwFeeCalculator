@@ -2,8 +2,8 @@
 
 namespace RKW\RkwFeecalculator\Service;
 
-use \RKW\RkwBasics\Helper\Common;
-use \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use RKW\RkwBasics\Helper\Common;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -22,12 +22,26 @@ use \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  * RkwMailService
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 {
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\PdfService
+     * @inject
+     */
+    protected $pdfService;
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\LayoutService
+     * @inject
+     */
+    protected $layoutService;
+
     /**
      * Sends an E-Mail to a Frontend-User
      *
@@ -50,6 +64,8 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
         if ($frontendUser->getEmail() && $settings['view']['templateRootPaths'][0]) {
 
+            $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
+
             /** @var \RKW\RkwMailer\Service\MailService $mailService */
             $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
 
@@ -57,15 +73,18 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $mailService->setTo($frontendUser, [
                 'marker' => [
                     'supportRequest' => $supportRequest,
+                    'supportProgramme' => $supportRequest->getSupportProgramme(),
                     'frontendUser' => $frontendUser,
                     'pageUid'      => intval($GLOBALS['TSFE']->id),
-                    'loginPid'     => intval($settingsDefault['loginPid']),
+                    'applicant' => $fieldsets['applicant'],
+                    'consulting' => $fieldsets['consulting'],
+                    'misc' => $fieldsets['misc'],
                 ],
             ]);
 
             $mailService->getQueueMail()->setSubject(
                 \RKW\RkwMailer\Helper\FrontendLocalization::translate(
-                    'rkwMailService.confirmationUser.subject',
+                    'tx_rkwfeecalculator_domain_model_supportrequest',
                     'rkw_feecalculator',
                     null,
                     ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
@@ -100,6 +119,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function adminMail($backendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
+
         // get settings
         $settings = $this->getSettings(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
         $settingsDefault = $this->getSettings();
@@ -113,6 +133,8 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
         if ($settings['view']['templateRootPaths'][0]) {
 
+            $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
+
             /** @var \RKW\RkwMailer\Service\MailService $mailService */
             $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
 
@@ -121,13 +143,17 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     ($recipient instanceof \RKW\RkwFeecalculator\Domain\Model\BackendUser)
                     && ($recipient->getEmail())
                 ) {
+
                     // send new user an email with token
                     $mailService->setTo($recipient, [
                         'marker'  => [
                             'supportRequest' => $supportRequest,
+                            'supportProgramme' => $supportRequest->getSupportProgramme(),
                             'backendUser'  => $recipient,
                             'pageUid'      => intval($GLOBALS['TSFE']->id),
-                            'loginPid'     => intval($settingsDefault['loginPid']),
+                            'applicant' => $fieldsets['applicant'],
+                            'consulting' => $fieldsets['consulting'],
+                            'misc' => $fieldsets['misc'],
                         ],
                         'subject' => \RKW\RkwMailer\Helper\FrontendLocalization::translate(
                             'rkwMailService.notifyAdmin.subject',
@@ -160,12 +186,29 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $mailService->getQueueMail()->setPlaintextTemplate('Email/NotifyAdmin');
             $mailService->getQueueMail()->setHtmlTemplate('Email/NotifyAdmin');
 
+            //  create pdf and attach it to email
+            if ($attachment = $this->pdfService->createPdf($supportRequest)) {
+
+                $fileName = \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                    'tx_rkwfeecalculator_domain_model_supportrequest',
+                    'rkw_feecalculator',
+                    null,
+                    'de'
+                );
+
+                $attachmentName = $fileName . '-' . date('Y-m-d-Hi') . '.pdf';
+
+                $mailService->getQueueMail()->setAttachment($attachment);
+                $mailService->getQueueMail()->setAttachmentType('application/pdf');
+                $mailService->getQueueMail()->setAttachmentName($attachmentName);
+
+            }
+
             if (count($mailService->getTo())) {
                 $mailService->send();
             }
         }
     }
-
 
     /**
      * Returns TYPO3 settings
