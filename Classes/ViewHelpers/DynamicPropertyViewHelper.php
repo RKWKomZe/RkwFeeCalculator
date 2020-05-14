@@ -15,6 +15,7 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -43,7 +44,19 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
         $getter = 'get' . ucfirst($prop);
 
         if (is_object($obj) && method_exists($obj, $getter)) {
-            return $obj->$getter();
+
+            if (is_object($obj->$getter())) {
+                $relatedObj = $obj->$getter();
+                $relatedGetter = method_exists($relatedObj, 'getTitle') ? 'getTitle' : 'getName';
+
+                return $obj->$getter()->$relatedGetter();
+            }
+
+            $localization = LocalizationUtility::translate(
+                'tx_rkwfeecalculator_domain_model_supportrequest.' . $prop . '.' . $obj->$getter(), 'rkw_feecalculator'
+            );
+
+            return $localization ? $localization : $obj->$getter();
         }
 
         if (is_array($obj) && array_key_exists($prop, $obj)) {
