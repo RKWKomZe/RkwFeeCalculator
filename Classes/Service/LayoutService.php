@@ -36,14 +36,30 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
     protected $fieldWidth = 'full';
 
     /**
+     * companyTypeRepository
+     *
+     * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
+     * @inject
+     */
+    protected $companyTypeRepository = null;
+
+    /**
      * @var \RKW\RkwFeecalculator\Domain\Model\Program
      */
     protected $supportProgramme;
+
+    protected $companyTypeList;
+
+    protected $consultingList;
 
     public function getFields(\RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme)
     {
 
         $this->supportProgramme = $supportProgramme;
+
+        $this->companyTypeList = $this->companyTypeRepository->findAll();
+
+        $this->consultingList = $this->supportProgramme->getConsulting();
 
         $requestFieldsArray = array_map(function($item) {
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
