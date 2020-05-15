@@ -1,19 +1,17 @@
 {namespace vh=RKW\RkwFeecalculator\ViewHelpers}
 <f:if condition="{field.type} != 'upload'">
+
     <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />:
-    <f:if condition="{field.type} == 'text'">
-        {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}
-    </f:if>
-    <f:if condition="{field.type} == 'textarea'">
-        {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}
-    </f:if>
+
     <f:if condition="{field.type} == 'date'">
-        <f:format.date format="d.m.Y">{vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}</f:format.date>
+        <f:then>
+            <f:if condition="<vh:dynamicProperty obj='supportRequest' prop='{fieldName}' /> > 0">
+                <f:format.date format="d.m.Y">{vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}</f:format.date>
+            </f:if>
+        </f:then>
+        <f:else>
+            {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}
+        </f:else>
     </f:if>
-    <f:if condition="{field.type} == 'select'">
-        <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}.{vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}" extensionName="RkwFeecalculator" />
-    </f:if>
-    <f:if condition="{field.type} == 'radio'">
-        <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}.{vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}" extensionName="RkwFeecalculator" />
-    </f:if>
+
 </f:if>
