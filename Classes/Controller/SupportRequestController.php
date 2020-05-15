@@ -231,8 +231,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $frontendUser = GeneralUtility::makeInstance(FrontendUser::class);
 
         $frontendUser->setEmail($supportRequest->getContactPersonEmail());
-        $frontendUser->setFirstName($supportRequest->getContactPersonName());
-        $frontendUser->setLastName($supportRequest->getContactPersonName());
+        $frontendUser->setName($supportRequest->getContactPersonName());
         $frontendUser->setTxRkwregistrationLanguageKey($GLOBALS['TSFE']->config['config']['language'] ? $GLOBALS['TSFE']->config['config']['language'] : 'de');
 
         /*
