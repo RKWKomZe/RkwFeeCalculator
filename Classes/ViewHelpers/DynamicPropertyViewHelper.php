@@ -15,6 +15,7 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use phpDocumentor\Reflection\Type;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
@@ -36,10 +37,11 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
      *
      * @param $obj  object Object
      * @param $prop string Property
+     * @param $type string FieldType
      *
      * @return mixed|null
      */
-    public function render($obj, $prop) {
+    public function render($obj, $prop, $type = 'text') {
 
         $getter = 'get' . ucfirst($prop);
 
@@ -52,11 +54,15 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
                 return $obj->$getter()->$relatedGetter();
             }
 
-            $localization = LocalizationUtility::translate(
-                'tx_rkwfeecalculator_domain_model_supportrequest.' . $prop . '.' . $obj->$getter(), 'rkw_feecalculator'
-            );
+            if (in_array($type, ['select', 'radio'])) {
+                return ($obj->$getter() > 0) ? LocalizationUtility::translate('tx_rkwfeecalculator_domain_model_supportrequest.' . $prop . '.' . $obj->$getter(), 'rkw_feecalculator') : '-';
+            }
 
-            return $localization ? $localization : $obj->$getter();
+            if ($type === 'date') {
+                return ($obj->$getter() > 0) ? date('d.m.Y', $obj->$getter()) : '-';
+            }
+
+            return $obj->$getter();
         }
 
         if (is_array($obj) && array_key_exists($prop, $obj)) {
