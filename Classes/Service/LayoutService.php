@@ -400,12 +400,12 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                     ],
                     'hints' => [
                         LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint1',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hints.0',
                             'RkwFeecalculator',
                             [$this->supportProgramme->getName()]
                         ),
                         LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint2',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hints.1',
                             'RkwFeecalculator',
                             [$this->supportProgramme->getName()]
                         ),
@@ -491,7 +491,13 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'file' => [
                     'type' => 'upload',
-                    'width' => 'full'
+                    'width' => 'full',
+                    'hints' => [
+                        LocalizationUtility::translate(
+                            'tx_rkwfeecalculator_domain_model_supportrequest.file.hints.0',
+                            'RkwFeecalculator'
+                        ),
+                    ],
                 ]
             ]
         ];

@@ -497,13 +497,13 @@
                 <source>Early Start Desired</source>
                 <target>Vorzeitiger Maßnahmebeginn erwünscht</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hints.0">
                 <source>It's possible to start prematurely. There is no legal claim.</source>
-                 <target>Für die %s kann ein vorzeitiger Maßnahmebeginn beantragt werden! Möchten Sie auf eigenes Risiko einen vorzeitigen Maßnahmebeginn beantragen? Wichtig: Das RKW teilt Ihnen Ihren Förderbeginn verbindlich mit.</target>
+                <target>Für die %s kann ein vorzeitiger Maßnahmebeginn beantragt werden! Möchten Sie auf eigenes Risiko einen vorzeitigen Maßnahmebeginn beantragen? Wichtig: Das RKW teilt Ihnen Ihren Förderbeginn verbindlich mit.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint2">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hints.1">
                 <source>You do this on your own risk.</source>
-                 <target>Mir ist bekannt, dass kein Rechtsanspruch auf eine Förderung besteht und dass die Maßnahme in Verbindung mit der Gewährung des vorzeitigen Maßnahmebeginns auf eigenes Risiko durchgeführt wird.</target>
+                <target>Mir ist bekannt, dass kein Rechtsanspruch auf eine Förderung besteht und dass die Maßnahme in Verbindung mit der Gewährung des vorzeitigen Maßnahmebeginns auf eigenes Risiko durchgeführt wird.</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.1">
                 <source>Yes</source>
@@ -560,6 +560,14 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.2">
                 <source>via post</source>
                 <target>Per Post</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.file">
+                <source>Upload</source>
+                <target>Dateien</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.file.hints.0">
+                <source>Hint</source>
+                <target>Bitte fügen Sie einen aktuelle Unternehmensnachweis bei, z. B. HRA, HRB, GewA, GenR, VerR, Nachweis über freiberufliche Tätigkeit.</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.support_programme">
                 <source>Support Programme</source>
