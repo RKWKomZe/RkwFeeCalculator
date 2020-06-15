@@ -1,13 +1,4 @@
 {namespace vh=RKW\RkwFeecalculator\ViewHelpers}
 <f:if condition="{field.type} != 'upload'">
-    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />:
-
-    <f:if condition="{field.type} == 'date'">
-        <f:then>
-            <f:format.date format="d.m.Y">{vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}')}</f:format.date>
-        </f:then>
-        <f:else>
-            {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}', type:'{field.type}')}
-        </f:else>
-    </f:if>
+    <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />: {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}', type:'{field.type}')}
 </f:if>

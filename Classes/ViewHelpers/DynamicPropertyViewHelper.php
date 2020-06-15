@@ -54,15 +54,8 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
             ) {
 
                 if ($obj->$getter() instanceof \TYPO3\CMS\Extbase\DomainObject\AbstractEntity) {
-                    $model = $obj->$getter();
 
-                    if (method_exists($model, 'getName')) {
-                        $result = $model->getName();
-                    } elseif (method_exists($model, 'getTitle')) {
-                        $result = $model->getTitle();
-                    } else {
-                        $result = $model;
-                    }
+                    $result = $this->getTitleOfRelation($getter, $obj);
 
                 } else {
 
@@ -72,6 +65,12 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
                     );
 
                 }
+
+            } elseif ($type === 'date') {
+
+                $date = $obj->$getter();
+
+                $result = ($date > 0) ? date('d.m.Y', $date) : '';
 
             } else {
 
@@ -83,6 +82,26 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
 
         if (is_array($obj) && array_key_exists($prop, $obj)) {
             $result = $obj[$prop];
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param $getter
+     * @param $obj
+     * @return mixed
+     */
+    protected function getTitleOfRelation($getter, $obj)
+    {
+        $model = $obj->$getter();
+
+        if (method_exists($model, 'getName')) {
+            $result = $model->getName();
+        } elseif (method_exists($model, 'getTitle')) {
+            $result = $model->getTitle();
+        } else {
+            $result = $model;
         }
 
         return $result;
