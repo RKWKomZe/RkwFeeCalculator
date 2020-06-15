@@ -309,7 +309,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.unemployed">
                 <source>Unemployed</source>
-                <target>arbeitslos</target>
+                <target>arbeitssuchend</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment">
 				<source>Start Up Independent Work</source>
