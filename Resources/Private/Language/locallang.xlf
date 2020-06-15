@@ -390,7 +390,7 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consulting">
                 <source>Consulting</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companyType">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companytype">
                 <source>Company type</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.privacy">
@@ -448,7 +448,7 @@
                 <source>Additional information</source>
             </trans-unit>
 
-            <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.chooseCompanyType">
+            <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.chooseCompanytype">
                 <source>Choose company type</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.chooseConsulting">
@@ -592,7 +592,7 @@
             <trans-unit id="form.error.newSupportRequest.consulting">
                 <source>Consulting</source>
             </trans-unit>
-            <trans-unit id="form.error.newSupportRequest.companyType">
+            <trans-unit id="form.error.newSupportRequest.companytype">
                 <source>Company type </source>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.privacy">

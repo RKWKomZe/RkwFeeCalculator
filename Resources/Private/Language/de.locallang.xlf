@@ -273,7 +273,7 @@
                 <source>Birthdate</source>
                 <target>Geburtsdatum</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companyType">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companytype">
                 <source>Company type</source>
                 <target>Rechtsform</target>
             </trans-unit>
@@ -634,7 +634,7 @@
                 <source>Additional information</source>
                 <target>Zusätzliche Angaben</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.chooseCompanyType">
+            <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.chooseCompanytype">
                 <source>Choose company type</source>
                 <target>Rechtsform wählen</target>
             </trans-unit>
@@ -693,7 +693,7 @@
                 <source>Intended location of foundation</source>
                 <target>Geplanter Ort der Gründung (PLZ, Ort)</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.companyType">
+            <trans-unit id="form.error.supportRequest.companytype">
                 <source>Company type</source>
                 <target>Rechtsform</target>
             </trans-unit>

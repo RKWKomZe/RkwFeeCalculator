@@ -15,6 +15,7 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -35,22 +36,56 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
      *
      * @param $obj  object Object
      * @param $prop string Property
+     * @param $type string Property
      *
      * @return mixed|null
      */
-    public function render($obj, $prop) {
+    public function render($obj, $prop, $type = '') {
 
         $getter = 'get' . ucfirst($prop);
 
+        $result = NULL;
+
         if (is_object($obj) && method_exists($obj, $getter)) {
-            return $obj->$getter();
+
+            if (
+                ($type === 'select')
+                || ($type === 'radio')
+            ) {
+
+                if ($obj->$getter() instanceof \TYPO3\CMS\Extbase\DomainObject\AbstractEntity) {
+                    $model = $obj->$getter();
+
+                    if (method_exists($model, 'getName')) {
+                        $result = $model->getName();
+                    } elseif (method_exists($model, 'getTitle')) {
+                        $result = $model->getTitle();
+                    } else {
+                        $result = $model;
+                    }
+
+                } else {
+
+                    $result = LocalizationUtility::translate(
+                        'tx_rkwfeecalculator_domain_model_supportrequest.' . $prop . '.' . $obj->$getter(),
+                        'RkwFeecalculator'
+                    );
+
+                }
+
+            } else {
+
+                $result = $obj->$getter();
+
+            }
+
         }
 
         if (is_array($obj) && array_key_exists($prop, $obj)) {
-            return $obj[$prop];
+            $result = $obj[$prop];
         }
 
-        return NULL;
+        return $result;
     }
 
 }

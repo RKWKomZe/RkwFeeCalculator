@@ -353,7 +353,7 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consulting">
 				<source>Consulting</source>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companyType">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companytype">
 				<source>Company type</source>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.privacy">

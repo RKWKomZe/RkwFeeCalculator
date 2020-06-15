@@ -72,14 +72,6 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     protected $supportProgramme = null;
 
     /**
-     * companyTypeRepository
-     *
-     * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
-     * @inject
-     */
-    protected $companyTypeRepository = null;
-
-    /**
      * supportRequestRepository
      *
      * @var \RKW\RkwFeecalculator\Domain\Repository\SupportRequestRepository
@@ -110,10 +102,6 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @inject
      */
     protected $persistenceManager;
-
-    protected $companyTypeList;
-
-    protected $consultingList;
 
     /**
      * Remove ErrorFlashMessage
@@ -168,17 +156,12 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
         }, explode(',', $this->supportProgramme->getRequestFields()));
 
-        $this->companyTypeList = $this->companyTypeRepository->findAll();
-        $this->consultingList = $this->supportProgramme->getConsulting();
-
         $fieldsets = $this->layoutService->getFields($supportProgramme);
 
         $this->view->assign('supportProgramme', $this->supportProgramme);
         $this->view->assign('applicant', $fieldsets['applicant']);
         $this->view->assign('consulting', $fieldsets['consulting']);
         $this->view->assign('misc', $fieldsets['misc']);
-        $this->view->assign('consultingList', $this->consultingList);
-        $this->view->assign('companyTypeList', $this->companyTypeList);
         $this->view->assign('mandatoryFields', $this->supportProgramme->getMandatoryFields());
     }
 

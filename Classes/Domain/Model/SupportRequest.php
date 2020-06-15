@@ -447,12 +447,12 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $consulting = 0;
 
     /**
-     * companyType
+     * companytype
      *
-     * @var \RKW\RkwBasics\Domain\Model\CompanyType
+     * @var \RKW\RkwBasics\Domain\Model\Companytype
      * @validateOnObject NotEmpty
      */
-    protected $companyType = null;
+    protected $companytype = null;
 
     /**
      * Initializes all ObjectStorage properties
@@ -1614,24 +1614,24 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the companyType
+     * Returns the companytype
      *
-     * @return \RKW\RkwBasics\Domain\Model\CompanyType $companyType
+     * @return \RKW\RkwBasics\Domain\Model\Companytype $companytype
      */
-    public function getCompanyType()
+    public function getCompanytype()
     {
-        return $this->companyType;
+        return $this->companytype;
     }
 
     /**
-     * Sets the companyType
+     * Sets the companytype
      *
-     * @param \RKW\RkwBasics\Domain\Model\CompanyType $companyType
+     * @param \RKW\RkwBasics\Domain\Model\Companytype $companytype
      * @return void
      */
-    public function setCompanyType($companyType)
+    public function setCompanytype($companytype)
     {
-        $this->companyType = $companyType;
+        $this->companytype = $companytype;
     }
 
     /**

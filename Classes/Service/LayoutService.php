@@ -3,6 +3,7 @@
 namespace RKW\RkwFeecalculator\Service;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 
@@ -40,10 +41,21 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
      */
     protected $supportProgramme;
 
+    /**
+     * companytypeRepository
+     *
+     * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
+     * @inject
+     */
+    protected $companytypeRepository = null;
+
+    protected $companytypeList;
+
     public function getFields(\RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme)
     {
 
         $this->supportProgramme = $supportProgramme;
+        $this->companytypeList = $this->companytypeRepository->findAll();
 
         $requestFieldsArray = array_map(function($item) {
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
@@ -118,9 +130,9 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 'intendedFoundationDate' => [
                     'type' => 'date',
                 ],
-                'companyType' => [
+                'companytype' => [
                     'type' => 'select',
-                    'options' => $this->companyTypeList,
+                    'options' => $this->companytypeList,
                     'optionValueField' => 'uid',
                     'optionLabelField' => 'name',
                 ],
@@ -303,7 +315,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 'consulting' => [
                     'type' => 'select',
                     'width' => 'full',
-                    'options' => $this->consultingList,
+                    'options' => $this->supportProgramme->getConsulting(),
                     'optionValueField' => 'uid',
                     'optionLabelField' => 'title'
                 ],
