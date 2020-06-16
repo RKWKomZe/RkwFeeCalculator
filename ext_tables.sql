@@ -164,7 +164,7 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_supportrequest (
 	citizenship varchar(255) DEFAULT '' NOT NULL,
     birthdate int(11) unsigned DEFAULT '0' NOT NULL,
 	foundation_location varchar(255) DEFAULT '' NOT NULL,
-	company_type int(11) unsigned DEFAULT '0',
+	companytype int(11) unsigned DEFAULT '0',
 	balance varchar(255) DEFAULT '' NOT NULL,
 	sales varchar(255) DEFAULT '' NOT NULL,
 	employees_count int(11) DEFAULT '0' NOT NULL,

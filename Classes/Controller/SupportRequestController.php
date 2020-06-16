@@ -156,7 +156,6 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
         }, explode(',', $this->supportProgramme->getRequestFields()));
 
-
         $fieldsets = $this->layoutService->getFields($supportProgramme);
 
         $this->view->assign('supportProgramme', $this->supportProgramme);

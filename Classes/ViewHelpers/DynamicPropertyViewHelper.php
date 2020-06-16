@@ -15,7 +15,6 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use phpDocumentor\Reflection\Type;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
@@ -45,31 +44,64 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
 
         $getter = 'get' . ucfirst($prop);
 
+        $result = NULL;
+
         if (is_object($obj) && method_exists($obj, $getter)) {
 
-            if (is_object($obj->$getter())) {
-                $relatedObj = $obj->$getter();
-                $relatedGetter = method_exists($relatedObj, 'getTitle') ? 'getTitle' : 'getName';
-
-                return $obj->$getter()->$relatedGetter();
-            }
-
             if (in_array($type, ['select', 'radio'])) {
-                return ($obj->$getter() > 0) ? LocalizationUtility::translate('tx_rkwfeecalculator_domain_model_supportrequest.' . $prop . '.' . $obj->$getter(), 'rkw_feecalculator') : '-';
+
+                if ($obj->$getter() instanceof \TYPO3\CMS\Extbase\DomainObject\AbstractEntity) {
+
+                    $result = $this->getTitleOfRelation($getter, $obj);
+
+                } else {
+
+                    $result = LocalizationUtility::translate(
+                        'tx_rkwfeecalculator_domain_model_supportrequest.' . $prop . '.' . $obj->$getter(),
+                        'RkwFeecalculator'
+                    );
+
+                }
+
+            } elseif ($type === 'date') {
+
+                $date = $obj->$getter();
+
+                $result = ($date > 0) ? date('d.m.Y', $date) : '-';
+
+            } else {
+
+                $result = $obj->$getter();
+
             }
 
-            if ($type === 'date') {
-                return ($obj->$getter() > 0) ? date('d.m.Y', $obj->$getter()) : '-';
-            }
-
-            return $obj->$getter();
         }
 
         if (is_array($obj) && array_key_exists($prop, $obj)) {
-            return $obj[$prop];
+            $result = $obj[$prop];
         }
 
-        return NULL;
+        return $result;
+    }
+
+    /**
+     * @param $getter
+     * @param $obj
+     * @return mixed
+     */
+    protected function getTitleOfRelation($getter, $obj)
+    {
+        $model = $obj->$getter();
+
+        if (method_exists($model, 'getName')) {
+            $result = $model->getName();
+        } elseif (method_exists($model, 'getTitle')) {
+            $result = $model->getTitle();
+        } else {
+            $result = $model;
+        }
+
+        return $result;
     }
 
 }

@@ -3,6 +3,7 @@
 namespace RKW\RkwFeecalculator\Service;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 
@@ -36,28 +37,31 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
     protected $fieldWidth = 'full';
 
     /**
-     * companyTypeRepository
+     * $companytypeRepository
      *
      * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
      * @inject
      */
-    protected $companyTypeRepository = null;
+    protected $companytypeRepository = null;
 
     /**
      * @var \RKW\RkwFeecalculator\Domain\Model\Program
      */
     protected $supportProgramme;
 
-    protected $companyTypeList;
-
     protected $consultingList;
 
+    protected $companytypeList;
+
+    /**
+     * @param \RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme
+     * @return mixed
+     */
     public function getFields(\RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme)
     {
 
         $this->supportProgramme = $supportProgramme;
-
-        $this->companyTypeList = $this->companyTypeRepository->findAll();
+        $this->companytypeList = $this->companytypeRepository->findAll();
 
         $this->consultingList = $this->supportProgramme->getConsulting();
 
@@ -134,9 +138,9 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 'intendedFoundationDate' => [
                     'type' => 'date',
                 ],
-                'companyType' => [
+                'companytype' => [
                     'type' => 'select',
-                    'options' => $this->companyTypeList,
+                    'options' => $this->companytypeList,
                     'optionValueField' => 'uid',
                     'optionLabelField' => 'name',
                 ],
@@ -404,12 +408,12 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                     ],
                     'hints' => [
                         LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint1',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hints.0',
                             'RkwFeecalculator',
                             [$this->supportProgramme->getName()]
                         ),
                         LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint2',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hints.1',
                             'RkwFeecalculator',
                             [$this->supportProgramme->getName()]
                         ),
@@ -495,7 +499,13 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'file' => [
                     'type' => 'upload',
-                    'width' => 'full'
+                    'width' => 'full',
+                    'hints' => [
+                        LocalizationUtility::translate(
+                            'tx_rkwfeecalculator_domain_model_supportrequest.file.hints.0',
+                            'RkwFeecalculator'
+                        ),
+                    ],
                 ]
             ]
         ];

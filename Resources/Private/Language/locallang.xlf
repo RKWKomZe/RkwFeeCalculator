@@ -360,10 +360,10 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart">
                 <source>Early Start Desired</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hints.0">
                 <source>It's possible to start prematurely. There is no legal claim.</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hint2">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.hints.1">
                 <source>You do this on your own risk.</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart.1">
@@ -375,14 +375,17 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments">
                 <source>Send Documents Allowed</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.file">
-                <source>Upload</source>
-            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.1">
                 <source>via E-Mail</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.2">
                 <source>via post</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.file">
+                <source>Upload</source>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.file.hints.0">
+                <source>Hint</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.support_programme">
                 <source>Support Programme</source>
@@ -390,7 +393,7 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consulting">
                 <source>Consulting</source>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companyType">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.companytype">
                 <source>Company type</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.privacy">
@@ -448,7 +451,7 @@
                 <source>Additional information</source>
             </trans-unit>
 
-            <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.chooseCompanyType">
+            <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.chooseCompanytype">
                 <source>Choose company type</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.chooseConsulting">
@@ -592,7 +595,7 @@
             <trans-unit id="form.error.newSupportRequest.consulting">
                 <source>Consulting</source>
             </trans-unit>
-            <trans-unit id="form.error.newSupportRequest.companyType">
+            <trans-unit id="form.error.newSupportRequest.companytype">
                 <source>Company type </source>
             </trans-unit>
             <trans-unit id="form.error.newSupportRequest.privacy">
