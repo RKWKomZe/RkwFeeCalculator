@@ -3,6 +3,7 @@
 namespace RKW\RkwFeecalculator\Service;
 
 use RKW\RkwBasics\Helper\Common;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /*
@@ -67,7 +68,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
 
             /** @var \RKW\RkwMailer\Service\MailService $mailService */
-            $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
+            $mailService = GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
 
             // send new user an email with token
             $mailService->setTo($frontendUser, [
@@ -136,7 +137,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
 
             /** @var \RKW\RkwMailer\Service\MailService $mailService */
-            $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
+            $mailService = GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
 
             foreach ($recipients as $recipient) {
                 if (
@@ -186,22 +187,31 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $mailService->getQueueMail()->setPlaintextTemplate('Email/NotifyAdmin');
             $mailService->getQueueMail()->setHtmlTemplate('Email/NotifyAdmin');
 
+            $attachments = [];
+
             //  create pdf and attach it to email
-            if ($attachment = $this->pdfService->createPdf($supportRequest)) {
+            if ($pdf = $this->pdfService->createPdf($supportRequest)) {
+                $attachments[] = $pdf;
+            }
 
-                $fileName = \RKW\RkwMailer\Helper\FrontendLocalization::translate(
-                    'tx_rkwfeecalculator_domain_model_supportrequest',
-                    'rkw_feecalculator',
-                    null,
-                    'de'
-                );
+            //  add uploads to mail
+            foreach ($supportRequest->getFile() as $fileReference) {
 
-                $attachmentName = $fileName . '-' . date('Y-m-d-Hi') . '.pdf';
+                $attachments[] = [
+                    'path' => GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/fileadmin/' . $fileReference->getOriginalResource()->getOriginalFile()->getName(),
+                    'type' => $fileReference->getOriginalResource()->getOriginalFile()->getMimeType(),
+                    'name' => $fileReference->getOriginalResource()->getOriginalFile()->getName(),
+                ];
 
-                $mailService->getQueueMail()->setAttachment($attachment);
-                $mailService->getQueueMail()->setAttachmentType('application/pdf');
-                $mailService->getQueueMail()->setAttachmentName($attachmentName);
+                /*
+                $mailService->getQueueMail()->setAttachment();
+                $mailService->getQueueMail()->setAttachmentType($fileReference->getOriginalResource()->getOriginalFile()->getMimeType());
+                $mailService->getQueueMail()->setAttachmentName($fileReference->getOriginalResource()->getOriginalFile()->getName());
+                */
+            }
 
+            if (! empty($attachments)) {
+                $mailService->getQueueMail()->setAttachment(json_encode($attachments));
             }
 
             if (count($mailService->getTo())) {

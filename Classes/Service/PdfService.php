@@ -92,7 +92,17 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
                 // Show for Ending "D", "F" or "S": https://github.com/spipu/html2pdf/blob/master/doc/output.md
                 // -> "D" - Forcing the download of PDF via web browser, with a specific name
                 //  $html2pdf->output($_SERVER['DOCUMENT_ROOT'] . $attachmentName, 'F');
-                return $html2pdf->output($attachmentName, 'S');
+                //  return $html2pdf->output($attachmentName, 'S');
+
+                $path = GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/fileadmin/' . $attachmentName;
+
+                $html2pdf->output($path, 'F');
+
+                return [
+                    'path' => $path,
+                    'type' => 'application/pdf',
+                    'name' => $attachmentName,
+                ];
 
                 // do not use "exit" here. Is making trouble (provides a unnamed "binary"-file instead a names pdf)
                 //  readfile($attachmentName);
