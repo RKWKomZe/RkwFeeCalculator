@@ -30,6 +30,13 @@ class CalculationViewHelper extends AbstractViewHelper
 {
 
     /**
+     * The output must not be escaped.
+     *
+     * @var bool
+     */
+    protected $escapeOutput = false;
+
+    /**
      * Calculates the fees
      *
      * @param Calculation $calculation
