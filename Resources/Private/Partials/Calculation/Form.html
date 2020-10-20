@@ -1,0 +1,67 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkwCalculation="http://typo3.org/ns/RKW/RkwFeecalculator/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <div class="form__field width100 break-after">
+        <label for="tx-rkwfeecalculator-selectedProgram">
+            <f:translate key="partials.calculation.form.selectedProgram" />
+        </label>
+        <f:form.select
+            class="select-field"
+            id="tx-rkwfeecalculator-selectedProgram"
+            property="selectedProgram"
+            options="{assignedPrograms}"
+            optionValueField="uid"
+            optionLabelField="name"
+            prependOptionLabel="{f:translate(key: 'tx_rkwfeecalculator_domain_model_program.form.select')}"
+            prependOptionValue=""
+            additionalAttributes="{onChange : 'this.form.submit();'}"
+        />
+    </div>
+
+
+    <f:if condition="{calculation.selectedProgram}">
+
+        <div class="form__field width50">
+            <label for="tx-rkwfeecalculator-day"><f:translate key="partials.calculation.form.days" /></label>
+            <f:if condition="<rkwCalculation:possibleDays program='{calculation.selectedProgram}'/>">
+                <f:then>
+                    <f:form.select
+                        class="select-field"
+                        id="tx-rkwfeecalculator-day"
+                        property="days"
+                        options="<rkwCalculation:possibleDays program='{calculation.selectedProgram}'/>"
+                        prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_program.form.select')}"
+                        prependOptionValue="0"
+                    />
+                </f:then>
+                <f:else>
+                    <f:form.textfield
+                        class="select-field"
+                        id="tx-rkwfeecalculator-days"
+                        property="days"
+                        additionalAttributes="{autocomplete:'days'}"
+                    />
+                </f:else>
+            </f:if>
+        </div>
+
+        <div class="form__field width50">
+            <label for="tx-rkwfeecalculator-consultantFeePerDay"><f:translate key="partials.calculation.form.consultantFeePerDay" /></label>
+            <f:form.textfield
+                property="consultantFeePerDay"
+                id="tx-rkwfeecalculator-consultantFeePerDay"
+                additionalAttributes="{autocomplete:'consultantFeePerDay'}"
+                placeholder="{f:translate(key: 'partials.calculation.form.consultantFeePerDay.placeholder')}"
+                value="<rkwCalculation:zeroPlaceholder value='{calculation.consultantFeePerDay}'/>"
+            />
+        </div>
+
+        <div class="form__field flex space-start full-width-narrow">
+            <button class="btn btn--primary full-width-narrow">
+                <f:translate key="partials.calculation.form.submit" />
+            </button>
+        </div>
+
+    </f:if>
+</html>

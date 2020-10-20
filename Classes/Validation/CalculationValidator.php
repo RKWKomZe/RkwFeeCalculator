@@ -80,8 +80,9 @@ class CalculationValidator extends AbstractValidator
         foreach ($requiredGetters as $getter) {
 
             $property = lcfirst(substr($getter, 3));
+
             $field = LocalizationUtility::translate(
-                'tx_rkwfeecalculator_domain_model_calculation.form.' . GeneralUtility::camelCaseToLowerCaseUnderscored($property),
+                'tx_rkwfeecalculator_domain_model_calculator.' . GeneralUtility::camelCaseToLowerCaseUnderscored($property),
                 'rkw_feecalculator'
             );
 
@@ -125,7 +126,6 @@ class CalculationValidator extends AbstractValidator
         }
 
         return $isValid;
-        //===
     }
 
 }

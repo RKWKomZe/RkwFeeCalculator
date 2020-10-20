@@ -3,6 +3,100 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-30T22:40:01Z" product-name="rkw_feecalculator">
 		<header/>
 		<body>
+
+            <!-- ===================================================== -->
+		    <!-- TEMPLATES -->
+            <!-- ===================================================== -->
+
+
+            <!-- ===================================================== -->
+		    <!-- PARTIALS -->
+		    <!-- ===================================================== -->
+		    <!-- Partials/Calculation/Form -->
+	        <trans-unit id="partials.calculation.form.selectedProgram">
+				<source>Selected Program</source>
+			</trans-unit>
+			<trans-unit id="partials.calculation.form.days">
+				<source>Days</source>
+			</trans-unit>
+			<trans-unit id="partials.calculation.form.consultantFeePerDay">
+				<source>Consultant Fee (net, in Euro)</source>
+			</trans-unit>
+			<trans-unit id="partials.calculation.form.consultantFeePerDay.placeholder">
+            	<source>e.g. 100</source>
+            </trans-unit>
+            <trans-unit id="partials.calculation.form.submit">
+                <source>Submit</source>
+            </trans-unit>
+
+
+            <trans-unit id="partials.calculation.table.result">
+                <source>Result</source>
+            </trans-unit>
+			<trans-unit id="partials.calculation.table.numberOfDays">
+				<source>Days</source>
+			</trans-unit>
+			<trans-unit id="partials.calculation.table.amount">
+				<source>Amount</source>
+			</trans-unit>
+			<trans-unit id="partials.calculation.table.fundingAmount">
+				<source>Fundable</source>
+			</trans-unit>
+			<trans-unit id="partials.calculation.table.consultantFeePerDay">
+				<source>Consultant Fee</source>
+			</trans-unit>
+			<trans-unit id="partials.calculation.table.consultantFee">
+				<source>Consultant fee</source>
+			</trans-unit>
+            <trans-unit id="partials.calculation.table.rkwFee">
+                <source>RKW fee</source>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.subtotal">
+                <source>Subtotal</source>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.total">
+                <source>Total</source>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.tax">
+                <source>Tax 19.00 %</source>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.funding">
+                <source>Funding</source>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.ownFundingNet">
+                <source>Own funding (net)</source>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.ownFundingGross">
+                <source>Own funding (gross)</source>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.overviewConditions">
+                <source>Overview conditions and content</source>
+            </trans-unit>
+
+
+            <!-- ===================================================== -->
+		    <!-- VALIDATOR -->
+		    <!-- ===================================================== -->
+            <trans-unit id="validator.notempty.empty">
+                <source>Please fill out the field '%s'.</source>
+            </trans-unit>
+            <trans-unit id="validator.selection.empty">
+                <source>Please fill out the field '%s'.</source>
+            </trans-unit>
+            <trans-unit id="validator.number.notvalid">
+                <source>The given subject was not a valid number.</source>
+            </trans-unit>
+            <trans-unit id="validator.datetime.notvalid">
+                <source>The given subject was not a valid date.</source>
+            </trans-unit>
+            <trans-unit id="validator.iban.notvalid">
+                <source>The given subject was not a iban.</source>
+            </trans-unit>
+
+
+            <!-- ===================================================== -->
+		    <!-- END OF REWORK -->
+		    <!-- ===================================================== -->
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator">
 				<source>FeeCalculator - Calculator</source>
 			</trans-unit>
@@ -36,6 +130,9 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.assigned_programs">
 				<source>Assigned Programs</source>
 			</trans-unit>
+
+
+
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program">
 				<source>RKW FeeCalculator: Program</source>
 			</trans-unit>
