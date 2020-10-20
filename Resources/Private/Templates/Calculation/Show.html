@@ -1,150 +1,34 @@
-{namespace rkwCalculation=RKW\RkwFeecalculator\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
 
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
+    <f:layout name="Default"/>
 
-This Template is responsible for displaying a single view for a domain object
+    <f:section name="main">
 
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Show.html: keep
+        <h2 id="tx-rkwcalulator-head">{calculation.calculator.name}</h2>
 
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+        <f:render partial="FormErrors" arguments="{object:Calculation}"/>
 
-<f:section name="main">
+        <div class="flex-container">
+            <f:form
+                class="flex flex-basis-8 full-width-medium space-between"
+                action="store"
+                name="calculation"
+                object="{calculation}"
+                section="{f:if(condition:'{calculation.selectedProgram}', then: 'tx-rkwcalculator-result', else: 'tx-rkwcalulator-head')}"
+            >
 
-  <f:render partial="FormErrors" arguments="{object:Calculation}" />
+                <f:form.hidden property="calculator" id="calculator"/>
+                <f:form.hidden property="previousSelectedProgram" id="previousSelectedProgram"/>
 
-  <f:form action="store" name="calculation" object="{calculation}" class="form-fields rkw-feecalculator">
-
-    <f:form.hidden property="calculator" id="calculator" />
-    <f:form.hidden property="previousSelectedProgram" id="previousSelectedProgram" />
-
-    <div class="v320">
-
-      <h2>{calculation.calculator.name}</h2>
-      <div class="v320-1">
-        <label class="form-label" for="selectedProgram">
-          <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.selected_program" />
-        </label>
-        <f:form.select id="selectedProgram" property="selectedProgram" options="{assignedPrograms}" optionValueField="uid" optionLabelField="name" prependOptionLabel="{f:translate(key: 'tx_rkwfeecalculator_domain_model_program.form.select')}" prependOptionValue="" additionalAttributes="{onChange : 'this.form.submit();'}"/>
-      </div>
-
-      <f:if condition="{calculation.selectedProgram}">
-
-        <h3>
-          <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.fee_calculation" />
-        </h3>
-
-        <div class="v320-1-of-2">
-          <div class="v320-1">
-            <label class="form-label" for="days">
-              <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.days" />
-            </label>
-            <f:if condition="<rkwCalculation:possibleDays program='{calculation.selectedProgram}'/>">
-              <f:then>
-                <f:form.select id="days" property="days" options="<rkwCalculation:possibleDays program='{calculation.selectedProgram}'/>" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_program.form.select')}" prependOptionValue="0"/>
-              </f:then>
-              <f:else>
-                <f:form.textfield id="days" property="days" additionalAttributes="{autocomplete:'days'}" class="text-right" />
-              </f:else>
-            </f:if>
-          </div>
+                <f:render partial="Calculation/Form" arguments="{_all}"/>
+            </f:form>
         </div>
 
-        <div class="v320-2-of-2">
-          <div class="v320-1">
-              <label class="form-label" for="consultantFeePerDay">
-              <f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" />
-            </label>
-            <f:form.textfield property="consultantFeePerDay" id="consultantFeePerDay" additionalAttributes="{autocomplete:'consultantFeePerDay'}" placeholder="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day.placeholder')}" value="<rkwCalculation:zeroPlaceholder value='{calculation.consultantFeePerDay}'/>" class="text-right"/>
-          </div>
-        </div>
 
-      </f:if>
+        <f:if condition="{calculation.showResults}">
+            <f:render partial="Calculation/Table" arguments="{_all}"/>
+        </f:if>
 
-      <div class="v320-1">
-        <button type="submit" class="button">
-          <span><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.submit" /></span>
-        </button>
-      </div>
-
-      <f:if condition="{calculation.showResults}">
-
-        <rkwCalculation:calculation calculation="{calculation}">
-
-          <f:for each="{calculationResult}" as="resultItem">
-
-            <div class="v320-1">
-              <table class="">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th scope="col" class="text-center"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days" /></th>
-                    <th></th>
-                    <th scope="col" class="text-center"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day" /></th>
-                    <th></th>
-                    <th scope="col" class="text-center"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.amount" /></th>
-                    <th scope="col" class="text-center"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount" /></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="collapsed--th"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee" /></td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.number_of_days')}">{calculation.days}</td>
-                    <td class="collapsed--hidden">x</td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{calculation.consultantFeePerDay}</f:format.number> Euro</td>
-                    <td class="collapsed--hidden">=</td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFee}</f:format.number> Euro</td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.funding_amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFeeSubvention}</f:format.number> Euro</td>
-                  </tr>
-                  <tr>
-                    <td class="collapsed--th"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.rkw_fee" /></td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.number_of_days')}">{calculation.days}</td>
-                    <td class="collapsed--hidden">x</td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeePerDay}</f:format.number> Euro</td>
-                    <td class="collapsed--hidden">=</td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFee}</f:format.number> Euro</td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.funding_amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeeSubvention}</f:format.number> Euro</td>
-                  </tr>
-                  <tr class="text-bold">
-                    <td colspan="5" class="collapsed--th"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.subtotal" /></td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.subtotal')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subtotal}</f:format.number> Euro</td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.funding_amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionTotal}</f:format.number> Euro</td>
-                  </tr>
-                  <tr>
-                    <td colspan="5" class="collapsed--th"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.funding" /></td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.funding}</f:format.number> Euro</td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.funding_amount')}"><f:format.number decimals="0" decimalSeparator=",">{resultItem.fundingPercentage}</f:format.number> %</td>
-                  </tr>
-                  <tr>
-                    <td colspan="5" class="collapsed--th"><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net" /></td>
-                    <td class="text-right" data-label="{f:translate(key: 'tx_rkwfeecalculator_domain_model_calculation.form.amount')}"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingNet}</f:format.number> Euro</td>
-                    <td class="collapsed--hidden"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="v320-1">
-
-              <h3><f:translate key="tx_rkwfeecalculator_domain_model_calculation.form.overview_condition_content" /></h3>
-
-              <f:format.html>{calculation.selectedProgram.content}</f:format.html>
-
-            </div>
-
-          </f:for>
-
-        </rkwCalculation:calculation>
-
-      </f:if>
-
-    </div>
-  </f:form>
-
-</f:section>
+    </f:section>
 </html>

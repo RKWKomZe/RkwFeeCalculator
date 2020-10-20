@@ -1,148 +1,197 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-30T22:40:01Z" product-name="rkw_feecalculator">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-05-30T22:40:01Z" product-name="rkw_feecalculator">
 		<header/>
 		<body>
-			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator">
-				<source>FeeCalculator - Calculator</source>
-				<target>Honorarkalkulator - Kalkulator</target>
-			</trans-unit>
-			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator.description">
-				<source></source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
-				<source>RKW FeeCalculator</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.days">
-				<source>Days</source>
-				<target></target>
-			</trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.name">
-				<source>Name</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day">
-				<source>Consultant Fee Per Day</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.assigned_programs">
-				<source>Assigned Programs</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator.selected_program">
-				<source>Selected Program</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.selected_program">
+
+            <!-- ===================================================== -->
+		    <!-- TEMPLATES -->
+            <!-- ===================================================== -->
+
+
+            <!-- ===================================================== -->
+		    <!-- PARTIALS -->
+		    <!-- ===================================================== -->
+		    <!-- Partials/Calculation/Form -->
+	        <trans-unit id="partials.calculation.form.selectedProgram">
 				<source>Selected Program</source>
 				<target>Auswahl Förderprogramm</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.fee_calculation">
-				<source>Fee calculation</source>
-				<target>Honorarberechnung</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.days">
+			<trans-unit id="partials.calculation.form.days">
 				<source>Days</source>
 				<target>Tagwerke</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day">
-				<source>Consultant Fee (net)</source>
-				<target>Honorar (netto)</target>
+			<trans-unit id="partials.calculation.form.consultantFeePerDay">
+				<source>Consultant Fee (net, in Euro)</source>
+				<target>Honorar (netto, in Euro)</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee_per_day.placeholder">
+			<trans-unit id="partials.calculation.form.consultantFeePerDay.placeholder">
             	<source>e.g. 100</source>
             	<target>z. B. 100</target>
             </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.number_of_days">
-				<source>Number of days</source>
-				<target>Anzahl Tagwerke</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.amount">
-				<source>Amount</source>
-				<target>Summe</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.funding_amount">
-				<source>Fundable</source>
-				<target>Zuschussfähig</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee">
-				<source>Consultant fee</source>
-				<target>Beraterhonorar</target>
-			</trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.rkw_fee">
-                <source>RKW fee</source>
-                <target>RKW Honorar</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.subtotal">
-                <source>Subtotal</source>
-                <target>Gesamthonorar (netto)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.total">
-                <source>Total</source>
-                <target>Gesamthonorar (Zahlbetrag)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.tax">
-                <source>Tax 19.00 %</source>
-                <target>MwSt. 19.00 %</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.funding">
-                <source>Funding</source>
-                <target>zu beantr. Fördermittel</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net">
-                <source>Own funding (net)</source>
-                <target>Eigenmittel des Antragstellers (netto)</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_gross">
-                <source>Own funding (gross)</source>
-                <target>Eigenmittel des Antragstellers inkl. MwSt. 19,00 %</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.overview_condition_content">
-                <source>Overview conditions and content</source>
-                <target>Übersicht Förderkonditionen und Inhalte</target>
-            </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.submit">
+            <trans-unit id="partials.calculation.form.submit">
                 <source>Submit</source>
                 <target>Jetzt berechnen</target>
             </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program">
-				<source>Program</source>
-				<target></target>
+            
+
+            <trans-unit id="partials.calculation.table.result">
+                <source>Result</source>
+                <target>Ergebnis</target>
+            </trans-unit>
+			<trans-unit id="partials.calculation.table.numberOfDays">
+				<source>Days</source>
+				<target>Tagwerke</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.name">
-				<source>Name</source>
-				<target></target>
+			<trans-unit id="partials.calculation.table.amount">
+				<source>Amount</source>
+				<target>Summe</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_min">
-				<source>Possible Days Min</source>
-				<target></target>
+			<trans-unit id="partials.calculation.table.fundingAmount">
+				<source>Fundable</source>
+				<target>Zuschussfähig</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_max">
-				<source>Possible Days Max</source>
-				<target></target>
+			<trans-unit id="partials.calculation.table.consultantFeePerDay">
+				<source>Consultant Fee</source>
+				<target>Honorar</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.content">
-				<source>Content</source>
-				<target></target>
+			<trans-unit id="partials.calculation.table.consultantFee">
+				<source>Consultant fee</source>
+				<target>Beraterhonorar</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day">
-				<source>Rkw Fee Per Day</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
-				<source>Consultant Fee Per Day Limit</source>
-				<target></target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
-				<source>Funding factor</source>
-				<target>Zuschussfaktor</target>
-			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.select">
-				<source>-- Please select --</source>
-				<target>-- Bitte wählen --</target>
-			</trans-unit>
+            <trans-unit id="partials.calculation.table.rkwFee">
+                <source>RKW fee</source>
+                <target>RKW Honorar</target>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.subtotal">
+                <source>Subtotal</source>
+                <target>Gesamthonorar (netto)</target>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.total">
+                <source>Total</source>
+                <target>Gesamthonorar (Zahlbetrag)</target>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.tax">
+                <source>Tax 19.00 %</source>
+                <target>MwSt. 19.00 %</target>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.funding">
+                <source>Funding</source>
+                <target>zu beantr. Fördermittel</target>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.ownFundingNet">
+                <source>Own funding (net)</source>
+                <target>Eigenmittel des Antragstellers (netto)</target>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.ownFundingGross">
+                <source>Own funding (gross)</source>
+                <target>Eigenmittel des Antragstellers inkl. MwSt. 19,00 %</target>
+            </trans-unit>
+            <trans-unit id="partials.calculation.table.overviewConditions">
+                <source>Overview conditions and content</source>
+                <target>Übersicht Förderkonditionen und Inhalte</target>
+            </trans-unit>
+
+
+            <!-- ===================================================== -->
+		    <!-- VALIDATOR -->
+		    <!-- ===================================================== -->
+            <trans-unit id="validator.notempty.empty">
+                <source>Please fill out the field '%s'.</source>
+                <target>Da fehlt noch was: Bitte füllen Sie das Feld '%s' aus.</target>
+            </trans-unit>
+            <trans-unit id="validator.selection.empty">
+                <source>Please fill out the field '%s'.</source>
+                <target>Da fehlt noch was: Bitte treffen Sie für '%s' eine Auswahl.</target>
+            </trans-unit>
+            <trans-unit id="validator.number.notvalid">
+                <source>The given subject was not a valid number.</source>
+                <target>Der angegebene Wert ist keine gültige Eingabe.</target>
+            </trans-unit>
+            <trans-unit id="validator.datetime.notvalid">
+                <source>The given subject was not a valid date.</source>
+                <target>Der angegebene Wert ist kein gültiges Datum.</target>
+            </trans-unit>
+            <trans-unit id="validator.iban.notvalid">
+                <source>The given subject was not a iban.</source>
+                <target>Der angegebene Wert ist keine gültige IBAN.</target>
+            </trans-unit>
+
+
+            <!-- ===================================================== -->
+		    <!-- END OF REWORK -->
+		    <!-- ===================================================== -->
+			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator">
+                <source>FeeCalculator - Calculator</source>
+                <target>Honorarkalkulator - Kalkulator</target>
+            </trans-unit>
+            <trans-unit id="tx_rkw_feecalculator_domain_model_calculator.description">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
+                <source>RKW FeeCalculator</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.days">
+                <source>Days</source>
+                <target>Tagewerke</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.name">
+                <source>Name</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day">
+                <source>Consultant Fee Per Day</source>
+                <target>Honorar</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.assigned_programs">
+                <source>Assigned Programs</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.selected_program">
+                <source>Selected Program</source>
+                <target>Auswahl Förderprogramm</target>
+
+
+
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program">
+                <source>Program</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.name">
+                <source>Name</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_min">
+                <source>Possible Days Min</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_max">
+                <source>Possible Days Max</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.content">
+                <source>Content</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day">
+                <source>Rkw Fee Per Day</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
+                <source>Consultant Fee Per Day Limit</source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
+                <source>Funding factor</source>
+                <target>Zuschussfaktor</target>
+            </trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.select">
+                <source>-- Please select --</source>
+                <target>-- Bitte wählen --</target>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.form.name">
                 <source>Name</source>
                 <target>Name des Förderprogramms</target>
@@ -172,28 +221,9 @@
                 <target>Name</target>
             </trans-unit>
 
-			<trans-unit id="validator.notempty.empty">
-				<source>Please fill out the field '%s'.</source>
-				<target>Da fehlt noch was: Bitte füllen Sie das Feld '%s' aus.</target>
-			</trans-unit>
-			<trans-unit id="validator.selection.empty">
-				<source>Please fill out the field '%s'.</source>
-				<target>Da fehlt noch was: Bitte treffen Sie für '%s' eine Auswahl.</target>
-			</trans-unit>
-			<trans-unit id="validator.number.notvalid">
-				<source>The given subject was not a valid number.</source>
-				<target>Der angegebene Wert ist keine gültige Eingabe.</target>
-			</trans-unit>
-			<trans-unit id="validator.datetime.notvalid">
-				<source>The given subject was not a valid date.</source>
-				<target>Der angegebene Wert ist kein gültiges Datum.</target>
-			</trans-unit>
-            <trans-unit id="validator.iban.notvalid">
-				<source>The given subject was not a iban.</source>
-				<target>Der angegebene Wert ist keine gültige IBAN.</target>
-			</trans-unit>
 
-			<trans-unit id="tx_rkw_feecalculator_domain_model_request">
+
+            <trans-unit id="tx_rkw_feecalculator_domain_model_request">
                 <source>RKW Feecalculator: Form</source>
                 <target>RKW Feecalculator: Antragsformular</target>
             </trans-unit>
@@ -225,7 +255,7 @@
                 <source>-- Please choose --</source>
                 <target>-- Bitte wählen --</target>
             </trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional">
                 <source>(optional)</source>
                 <target>(optional)</target>
             </trans-unit>
@@ -905,6 +935,6 @@
                 <source>a new support request arrived. Please show below for details.</source>
                 <target>über die Website wurde ein neuer Förderantrag gestellt. Bitte prüfen Sie den untenstehenden Antrag.</target>
             </trans-unit>
-		</body>
-	</file>
+        </body>
+    </file>
 </xliff>
