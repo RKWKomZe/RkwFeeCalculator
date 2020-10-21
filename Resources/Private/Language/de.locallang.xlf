@@ -197,9 +197,6 @@
             <!-- ===================================================== -->
 		    <!-- DEPRECATED END / END OF REWORK -->
 		    <!-- ===================================================== -->
-
-
-
 			<trans-unit id="tx_rkw_feecalculator_domain_model_calculator">
                 <source>FeeCalculator - Calculator</source>
                 <target>Honorarkalkulator - Kalkulator</target>
