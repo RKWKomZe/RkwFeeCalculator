@@ -15,17 +15,17 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'name, founderName, address, zip, city, foundation_date, intended_foundation_date, citizenship, birthdate, foundation_location, sales, balance, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, consulting_days, consulting_date_from, consulting_date_to, consulting_content, consultant_type, consultant_company, consultant_name1, consultant1_accreditation_number, consultant_name2, consultant2_accreditation_number, consultant_fee, consultant_phone, consultant_email, premature_start, file, send_documents, bafa_support, de_minimis, existenz_gruender_pass, support_programme, consulting, company_type',
+        'searchFields' => 'name, founderName, address, zip, city, foundation_date, intended_foundation_date, citizenship, birthdate, foundation_location, sales, balance, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, consulting_days, consulting_date_from, consulting_date_to, consulting_content, consultant_type, consultant_company, consultant_name1, consultant1_accreditation_number, consultant_name2, consultant2_accreditation_number, consultant_fee, consultant_phone, consultant_email, premature_start, file, send_documents, bafa_support, de_minimis, existenz_gruender_pass, support_programme, consulting, companytype',
         'iconfile' => 'EXT:rkw_feecalculator/Resources/Public/Icons/tx_rkwfeecalculator_domain_model_supportrequest.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, founderName, address, zip, city, foundation_date, intended_foundation_date, citizenship, birthdate, foundation_location, sales, balance, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, consulting_days, consulting_date_from, consulting_date_to, consulting_content, consultant_type, consultant_company, consultant_name1, consultant1_accreditation_number, consultant_name2, consultant2_accreditation_number, consultant_fee, consultant_phone, consultant_email, premature_start, file, send_documents, bafa_support, de_minimis, existenz_gruender_pass, support_programme, consulting, company_type',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, founderName, address, zip, city, foundation_date, intended_foundation_date, citizenship, birthdate, foundation_location, sales, balance, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, consulting_days, consulting_date_from, consulting_date_to, consulting_content, consultant_type, consultant_company, consultant_name1, consultant1_accreditation_number, consultant_name2, consultant2_accreditation_number, consultant_fee, consultant_phone, consultant_email, premature_start, file, send_documents, bafa_support, de_minimis, existenz_gruender_pass, support_programme, consulting, companytype',
     ],
     'types' => [
         '1' => [
             'showitem' => '
             sys_language_uid, l10n_parent, l10n_diffsource, hidden, 
-            support_programme, name, founderName, address, zip, city, foundation_date, intended_foundation_date, citizenship, birthdate, foundation_location, company_type, balance, sales, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, 
+            support_programme, name, founderName, address, zip, city, foundation_date, intended_foundation_date, citizenship, birthdate, foundation_location, companytype, balance, sales, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, 
             
              --div--;LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.tab.consultation,
             consulting, consulting_days, consulting_date_from, consulting_date_to, consulting_content, 
@@ -206,9 +206,9 @@ return [
                 'eval' => 'trim,required'
             ],
         ],
-        'company_type' => [
+        'companytype' => [
             'exclude' => false,
-            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.companyType',
+            'label' => 'LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.companytype',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

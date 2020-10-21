@@ -39,13 +39,16 @@
                 </f:for>
 
                 <f:if condition="{field.hints.1 != ''}">
-                    <p class="text-smaller hint">{field.hints.1}</p>
+                    <p class="text-smaller hint">{field.hints.0}</p>
                 </f:if>
             </f:if>
             <f:if condition="{field.type} == 'textarea'">
                 <f:form.textarea property="{fieldName}" cols="40" rows="5" />
             </f:if>
             <f:if condition="{field.type} == 'upload'">
+                <f:if condition="{field.hints.1 != ''}">
+                    <p class="text-smaller hint">{field.hints.0}</p>
+                </f:if>
                 <f:for each="{0:1, 1:2, 2:3, 3:4, 4:5}" as="file" iteration="fileIteration">
                     <f:if condition="{fileIteration.cycle} > <f:count>{consultant.file}</f:count>">
                         <f:form.upload class="jcf-real-element" style="position: absolute; opacity: 0;" property="fileUpload.{fileIteration.cycle}" name="fileUpload" additionalAttributes="<vh:uploadLabel />" />

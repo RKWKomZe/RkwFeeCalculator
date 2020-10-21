@@ -1,0 +1,69 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkwCalculation="http://typo3.org/ns/RKW/RkwFeecalculator/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+    <h3 id="tx-rkwcalculator-result"><f:translate key="partials.calculation.table.result" /></h3>
+    <rkwCalculation:calculation calculation="{calculation}">
+
+        <f:for each="{calculationResult}" as="resultItem">
+
+            <table class="responsive-table responsive-table--background font-reduction-smalldesk">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="align-center"><f:translate key="partials.calculation.table.numberOfDays" /></th>
+                        <th class="align-center"><f:translate key="partials.calculation.table.consultantFeePerDay" /></th>
+                        <th class="align-center"><f:translate key="partials.calculation.table.amount" /></th>
+                        <th class="align-center"><f:translate key="partials.calculation.table.fundingAmount" /></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><f:translate key="partials.calculation.table.consultantFee" /></th>
+                        <td class="align-right"><span class="label_after label_after--multiply">{calculation.days}</span></td>
+                        <td class="align-right no-wrap"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{calculation.consultantFeePerDay}</f:format.number> Euro</td>
+                        <td class="align-right no-wrap"><span class="label_before label_before--sum"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFee}</f:format.number> Euro</span></td>
+                        <td class="align-right no-wrap"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.consultantFeeSubvention}</f:format.number> Euro</td>
+                    </tr>
+                    <tr>
+                        <th><f:translate key="partials.calculation.table.rkwFee" /></th>
+                        <td class="align-right"><span class="label_after label_after--multiply">{calculation.days}</span></td>
+                        <td class="align-right no-wrap"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeePerDay}</f:format.number> Euro</td>
+                        <td class="align-right no-wrap"><span class="label_before label_before--sum"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFee}</f:format.number> Euro</span></td>
+                        <td class="align-right no-wrap"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.rkwFeeSubvention}</f:format.number> Euro</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3"><f:translate key="partials.calculation.table.subtotal" /></th>
+                        <td style="display:none;"></td>
+                        <td style="display:none;"></td>
+                        <td class="align-right no-wrap"><strong><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subtotal}</f:format.number> Euro</strong></td>
+                        <td class="align-right no-wrap"><strong><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.subventionTotal}</f:format.number> Euro</strong></td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" ><f:translate key="partials.calculation.table.funding" /></th>
+                        <td style="display:none;"></td>
+                        <td style="display:none;"></td>
+                        <td class="align-right no-wrap"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.funding}</f:format.number> Euro</td>
+                        <td class="align-right no-wrap"><f:format.number decimals="0" decimalSeparator=",">{resultItem.fundingPercentage}</f:format.number> %</td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" class="collapsed--th"><f:translate key="partials.calculation.table.ownFundingNet" /></th>
+                        <td style="display:none;"></td>
+                        <td style="display:none;"></td>
+                        <td class="align-right no-wrap"><f:format.number decimals="2" decimalSeparator="," thousandsSeparator=".">{resultItem.ownFundingNet}</f:format.number> Euro</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <h3><f:translate key="partials.calculation.table.overviewConditions" /></h3>
+            <f:format.html>{calculation.selectedProgram.content}</f:format.html>
+
+        </f:for>
+
+    </rkwCalculation:calculation>
+
+
+</html>
