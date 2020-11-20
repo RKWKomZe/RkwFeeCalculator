@@ -41,8 +41,7 @@ class CalculationValidator extends AbstractValidator
     public function isValid($objectSource)
     {
 
-        $this->result = new Result();
-
+        $this->result = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Error\Result::class);
         $mandatoryFields = ['selectedProgram', 'days', 'consultantFeePerDay'];
 
         $isValid = true;
