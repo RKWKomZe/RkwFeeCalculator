@@ -26,12 +26,6 @@ return [
     'types'     => [
         '1' => [
             'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1,name, possible_days_min, possible_days_max, content, rkw_fee_per_day, consultant_fee_per_day_limit, consultant_subvention_limit, rkw_fee_per_day_as_limit, funding_factor, consulting, request_fields, mandatory_fields, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime',
-            // add RTE
-            'columnsOverrides' => [
-                'content' => [
-                    'defaultExtras' => 'richtext:rte_transform[mode=ts_links]'
-                ],
-            ]
         ],
     ],
     'columns'   => [
@@ -93,21 +87,24 @@ return [
         ],
         'starttime'                    => [
             'exclude'   => true,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label'     => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config'    => [
                 'type'    => 'input',
+                'renderType' => 'inputDateTime',
                 'size'    => 13,
                 'eval'    => 'datetime',
                 'default' => 0,
             ],
+            'behaviour' => [
+                'allowLanguageSynchronization' => true
+            ]
         ],
         'endtime'                      => [
             'exclude'   => true,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label'     => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config'    => [
                 'type'    => 'input',
+                'renderType' => 'inputDateTime',
                 'size'    => 13,
                 'eval'    => 'datetime',
                 'default' => 0,
@@ -115,6 +112,9 @@ return [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038),
                 ],
             ],
+            'behaviour' => [
+                'allowLanguageSynchronization' => true
+            ]
         ],
         'name'                         => [
             'exclude' => false,
@@ -151,18 +151,12 @@ return [
                 'cols' => 40,
                 'rows' => 15,
                 'eval' => 'trim, required',
-                'wizards' => array(
-                    'RTE' => array(
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_rte.gif',
-                        'notNewRecords'=> 1,
-                        'RTEonly' => 1,
-                        'module' => array(
-                            'name' => 'wizard_rte',
-                        ),
-                        'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
-                        'type' => 'script'
-                    )
-                )
+                'fieldControl'  => [
+                    'fullScreenRichtext' => [
+                        'disabled' => false,
+                    ],
+                ],
+                'enableRichtext' => true,
             ),
         ],
         'rkw_fee_per_day'              => [
