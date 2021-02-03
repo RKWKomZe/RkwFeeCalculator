@@ -94,10 +94,10 @@ return [
                 'size'    => 13,
                 'eval'    => 'datetime',
                 'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
             ],
-            'behaviour' => [
-                'allowLanguageSynchronization' => true
-            ]
         ],
         'endtime'                      => [
             'exclude'   => true,
@@ -111,10 +111,10 @@ return [
                 'range'   => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038),
                 ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
             ],
-            'behaviour' => [
-                'allowLanguageSynchronization' => true
-            ]
         ],
         'name'                         => [
             'exclude' => false,
