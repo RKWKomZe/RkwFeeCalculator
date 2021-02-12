@@ -449,7 +449,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * companytype
      *
-     * @var \RKW\RkwBasics\Domain\Model\Companytype
+     * @var \RKW\RkwBasics\Domain\Model\CompanyType
      * @validateOnObject NotEmpty
      */
     protected $companytype = null;
@@ -1616,7 +1616,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the companytype
      *
-     * @return \RKW\RkwBasics\Domain\Model\Companytype $companytype
+     * @return \RKW\RkwBasics\Domain\Model\CompanyType $companytype
      */
     public function getCompanytype()
     {
@@ -1626,7 +1626,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the companytype
      *
-     * @param \RKW\RkwBasics\Domain\Model\Companytype $companytype
+     * @param \RKW\RkwBasics\Domain\Model\CompanyType $companytype
      * @return void
      */
     public function setCompanytype($companytype)
