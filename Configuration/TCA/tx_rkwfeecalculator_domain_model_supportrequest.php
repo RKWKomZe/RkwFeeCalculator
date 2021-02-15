@@ -389,10 +389,10 @@ return [
                 'default' => 0,
                 'items' => [
                     ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose', 0],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.employed', 1],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.unemployed', 2],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.in_education', 3],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.self_employed', 4],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.1', 1],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.2', 2],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.3', 3],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.4', 4],
                 ]
 			]
 	    ],
@@ -405,10 +405,10 @@ return [
                 'default' => 0,
                 'items' => [
                     ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose', 0],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.no', 1],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.part_time', 2],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.full_time', 3],
-                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.shareholder', 4],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.1', 1],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.2', 2],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.3', 3],
+                    ['LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.4', 4],
                 ]
 			]
 	    ],
