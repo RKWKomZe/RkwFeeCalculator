@@ -162,6 +162,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->view->assign('applicant', $fieldsets['applicant']);
         $this->view->assign('consulting', $fieldsets['consulting']);
         $this->view->assign('misc', $fieldsets['misc']);
+        $this->view->assign('privacy', 0);
         $this->view->assign('mandatoryFields', $this->supportProgramme->getMandatoryFields());
     }
 

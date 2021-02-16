@@ -43,7 +43,6 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
      */
     protected function isValid($supportRequest)
     {
-
         $isValid = true;
 
         $mandatoryFieldsArray = array_map(function($item) {
@@ -92,10 +91,9 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
         }
 
-        if (method_exists($supportRequest, 'getPrivacy') && !$supportRequest->getPrivacy()) {
+        if (method_exists($supportRequest, 'getPrivacy') && $supportRequest->getPrivacy() !== 1) {
 
-            $property = 'privacy';
-            $this->result->forProperty($property)
+            $this->result->forProperty('privacy')
                 ->addError(
                     new \TYPO3\CMS\Extbase\Error\Error(
                         $this->translateErrorMessage(
@@ -105,6 +103,7 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
                         ), 1238087674, $this->getTranslationArguments($property)
                     )
                 );
+
         }
 
         return $isValid;
