@@ -1,69 +1,84 @@
-{namespace vh=RKW\RkwFeecalculator\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:rkwFeecalculator="http://typo3.org/ns/RKW/RkwFeecalculator/ViewHelpers"
+    data-namespace-typo3-fluid="true">
 
-<f:if condition="{field.width} != '2-2'">
-    <div class="v320-1">
-</f:if>
-    <f:if condition="{field.width} == '1-2'">
-        <div class="v320-1-of-2">
+<div class="form__field {field.width}">
+    <f:if condition="{field.type} != 'radio'">
+        <label class="form-label" for="{fieldName}">
+            <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />
+            <f:if condition="<rkwFeecalculator:isMandatoryField fieldName='{fieldName}' mandatoryFields='{mandatoryFields}' /> == 0">
+                <span class="optional">&nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional" extensionName="RkwFeecalculator" /></span>
+            </f:if>
+        </label>
     </f:if>
-    <f:if condition="{field.width} == '2-2'">
-        <div class="v320-2-of-2">
+    <f:if condition="{field.type} == 'text'">
+        <f:form.textfield
+            property="{fieldName}"
+            id="{fieldName}"
+        />
     </f:if>
-            <label class="form-label" for="{fieldName}">
-                <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />
-                <f:if condition="<vh:isMandatoryField fieldName='{fieldName}' mandatoryFields='{mandatoryFields}' /> == 0">
-                    <span class="optional">&nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional" extensionName="RkwFeecalculator" /></span>
-                </f:if>
-            </label>
-            <f:if condition="{field.type} == 'text'">
-                <f:form.textfield property="{fieldName}" id="{fieldName}" />
+    <f:if condition="{field.type} == 'date'">
+        <f:form.textfield
+            property="{fieldName}"
+            id="{fieldName}"
+            value="{supportRequest.fieldName->f:format.date()}"
+            placeholder="DD.MM.YYYY"
+        />
+    </f:if>
+    <f:if condition="{field.type} == 'select'">
+        <f:form.select
+            class="select-field"
+            property="{fieldName}"
+            options="{field.options}"
+            optionValueField="{field.optionValueField}"
+            optionLabelField="{field.optionLabelField}"
+            prependOptionValue="0"
+            prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" />
+    </f:if>
+    <f:if condition="{field.type} == 'radio'">
+        <div class="form-label" for="{fieldName}">
+            <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />
+            <f:if condition="<rkwFeecalculator:isMandatoryField fieldName='{fieldName}' mandatoryFields='{mandatoryFields}' /> == 0">
+                <span class="optional">&nbsp;<f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.general.label.optional" extensionName="RkwFeecalculator" /></span>
             </f:if>
-            <f:if condition="{field.type} == 'date'">
-                <f:form.textfield property="{fieldName}" id="{fieldName}" value="{supportRequest.fieldName->f:format.date()}" placeholder="DD.MM.YYYY"/>
-            </f:if>
-            <f:if condition="{field.type} == 'select'">
-                <f:form.select property="{fieldName}" options="{field.options}" optionValueField="{field.optionValueField}" optionLabelField="{field.optionLabelField}" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_domain_model_supportrequest.general.pleaseChoose')}" />
-            </f:if>
-            <f:if condition="{field.type} == 'radio'">
-                <f:if condition="{field.hints.0 != ''}">
-                    <p class="text-smaller hint">{field.hints.0}</p>
-                </f:if>
-
-                <f:for each="{field.options}" as="option">
-                    <span class="radio">
-                        <label>
-                             <f:form.radio property="{fieldName}" value="{option.value}" />
-                            &nbsp;{option.label}
-                        </label>
-                    </span>
-                </f:for>
-
-                <f:if condition="{field.hints.1 != ''}">
-                    <p class="text-smaller hint">{field.hints.0}</p>
-                </f:if>
-            </f:if>
-            <f:if condition="{field.type} == 'textarea'">
-                <f:form.textarea property="{fieldName}" cols="40" rows="5" />
-            </f:if>
-            <f:if condition="{field.type} == 'upload'">
-                <f:if condition="{field.hints.1 != ''}">
-                    <p class="text-smaller hint">{field.hints.0}</p>
-                </f:if>
-                <f:for each="{0:1, 1:2, 2:3, 3:4, 4:5}" as="file" iteration="fileIteration">
-                    <f:if condition="{fileIteration.cycle} > <f:count>{consultant.file}</f:count>">
-                        <f:form.upload class="jcf-real-element" style="position: absolute; opacity: 0;" property="fileUpload.{fileIteration.cycle}" name="fileUpload" additionalAttributes="<vh:uploadLabel />" />
-                    </f:if>
-                </f:for>
-            </f:if>
-    <f:if condition="{field.width} == '1-2'">
         </div>
-    </f:if>
-    <f:if condition="{field.width} == '2-2'">
-        </div>
-    </f:if>
-<f:if condition="{field.width} != '1-2'">
-    </div>
-</f:if>
 
+        <f:if condition="{field.hints.0 != ''}">
+            <p class="text-smaller hint">{field.hints.0}</p>
+        </f:if>
+
+        <f:for each="{field.options}" as="option" iteration="iterOption">
+            <div class="form__field">
+                <f:form.radio
+                    id="{fieldName}{iterOption.cycle}"
+                    class="radio"
+                    name="{fieldName}"
+                    property="{fieldName}"
+                    value="{option.value}"
+                />
+                <label class="radio-label" for="{fieldName}{iterOption.cycle}">
+                    <span>{option.label}</span>
+                </label>
+            </div>
+        </f:for>
+
+        <f:if condition="{field.hints.1 != ''}">
+            <p class="text-smaller hint">{field.hints.0}</p>
+        </f:if>
+    </f:if>
+    <f:if condition="{field.type} == 'textarea'">
+        <f:form.textarea property="{fieldName}" cols="40" rows="5" />
+    </f:if>
+    <f:if condition="{field.type} == 'upload'">
+        <f:if condition="{field.hints.1 != ''}">
+            <p class="text-smaller hint">{field.hints.0}</p>
+        </f:if>
+        <f:for each="{0:1, 1:2, 2:3, 3:4, 4:5}" as="file" iteration="fileIteration">
+            <f:if condition="{fileIteration.cycle} > <f:count>{consultant.file}</f:count>">
+                <f:form.upload class="jcf-real-element" style="position: absolute; opacity: 0;" property="fileUpload.{fileIteration.cycle}" name="fileUpload" additionalAttributes="<rkwFeecalculator:uploadLabel />" />
+            </f:if>
+        </f:for>
+    </f:if>
+</div>
 
 

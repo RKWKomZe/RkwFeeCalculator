@@ -1,32 +1,36 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
 
-This template displays a NEW form for the current domain object.
+    <f:layout name="Default" />
 
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        New.html: keep
+    <f:section name="main">
 
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+        <f:render partial="FormErrors" arguments="{object:SupportRequest}" />
 
-<f:section name="main">
-    <f:flashMessages />
+        <div class="flex-container">
+            <f:form
+                class="flex flex-basis-8 full-width-medium space-between"
+                action="requestForm"
+                name="supportRequest"
+                object="{supportRequest}"
+            >
+                <div class="form__field width100 break-after">
+                    <label for="supportProgramme">
+                        <f:translate key="tx_rkwfeecalculator_domain_model_supportprogramme" />
+                    </label>
+                    <f:form.select
+                        class="select-field"
+                        name="supportProgramme"
+                        options="{supportProgrammeList}"
+                        optionValueField="uid"
+                        optionLabelField="name"
+                        prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_partials_supportrequest_formfields.chooseSupportProgramme')}"
+                        prependOptionValue="0"
+                        additionalAttributes="{onChange : 'this.form.submit();'}"
+                    />
+                </div>
+            </f:form>
+        </div>
 
-    <f:render partial="FormErrors" arguments="{object:SupportRequest}" />
-
-    <f:form class="form-fields" action="requestForm" name="supportRequest" object="{supportRequest}">
-        <label class="form-label" for="supportProgramme">
-            <f:translate key="tx_rkwfeecalculator_domain_model_supportprogramme" />
-        </label>
-        <f:form.select name="supportProgramme" options="{supportProgrammeList}" optionValueField="uid" optionLabelField="name" prependOptionValue="0" prependOptionLabel="{f:translate(key:'tx_rkwfeecalculator_partials_supportrequest_formfields.chooseSupportProgramme')}" additionalAttributes="{onChange : 'this.form.submit();'}"/>
-
-        <f:form.button class="button">
-            <f:translate key="tx_rkwfeecalculator_templates_new.choose" />
-        </f:form.button>
-    </f:form>
-
-</f:section>
+    </f:section>
 </html>
