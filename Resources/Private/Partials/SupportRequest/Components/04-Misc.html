@@ -2,33 +2,21 @@
     xmlns:rkwRegistration="http://typo3.org/ns/RKW/RkwRegistration/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-    <f:comment>
-        <fieldset>
-    </f:comment>
+    <f:for each="{misc}" as="field" key="fieldName">
+        <f:render partial="SupportRequest/Components/Fields/Field" arguments="{field: field, fieldName: fieldName, mandatoryFields: mandatoryFields}" />
+    </f:for>
 
-        <legend>
-            <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.additional" extensionName="RkwFeecalculator" />
-        </legend>
-
-        <f:for each="{misc}" as="field" key="fieldName">
-            <f:render partial="SupportRequest/Components/Fields/Field" arguments="{field: field, fieldName: fieldName, mandatoryFields: mandatoryFields}" />
-        </f:for>
-
-        <div class="form__field">
-            <f:form.checkbox
-                id="privacy"
-                class="checkbox"
-                name="privacy"
-                value="1"
-                checked="{privacy}"
-            />
-            <label for="privacy" class="checkbox-label">
-                <rkwRegistration:privacyText />
-            </label>
-        </div>
-
-    <f:comment>
-        <fieldset>
-    </f:comment>
+    <div class="form__field">
+        <f:form.checkbox
+            id="privacy"
+            class="checkbox"
+            name="privacy"
+            value="1"
+            checked="{privacy}"
+        />
+        <label for="privacy" class="checkbox-label">
+            <rkwRegistration:privacyText />
+        </label>
+    </div>
 
 </html>
