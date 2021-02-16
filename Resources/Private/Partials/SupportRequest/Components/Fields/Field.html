@@ -75,7 +75,14 @@
         </f:if>
         <f:for each="{0:1, 1:2, 2:3, 3:4, 4:5}" as="file" iteration="fileIteration">
             <f:if condition="{fileIteration.cycle} > <f:count>{consultant.file}</f:count>">
-                <f:form.upload class="jcf-real-element" style="position: absolute; opacity: 0;" property="fileUpload.{fileIteration.cycle}" name="fileUpload" additionalAttributes="<rkwFeecalculator:uploadLabel />" />
+                <div class="form__field">
+                    <f:form.upload
+                        class="btn btn--secondary btn--small btn--file"
+                        property="fileUpload.{fileIteration.cycle}"
+                        name="fileUpload"
+                        additionalAttributes="<rkwFeecalculator:uploadLabel />"
+                    />
+                </div>
             </f:if>
         </f:for>
     </f:if>

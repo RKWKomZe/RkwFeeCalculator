@@ -203,11 +203,6 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     'name' => $fileReference->getOriginalResource()->getOriginalFile()->getName(),
                 ];
 
-                /*
-                $mailService->getQueueMail()->setAttachment();
-                $mailService->getQueueMail()->setAttachmentType($fileReference->getOriginalResource()->getOriginalFile()->getMimeType());
-                $mailService->getQueueMail()->setAttachmentName($fileReference->getOriginalResource()->getOriginalFile()->getName());
-                */
             }
 
             if (! empty($attachments)) {
