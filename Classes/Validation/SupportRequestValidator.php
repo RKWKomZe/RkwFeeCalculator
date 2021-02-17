@@ -4,6 +4,7 @@ namespace RKW\RkwFeecalculator\Validation;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use RKW\RkwFeecalculator\Validation\Validator\IbanValidator;
+use RKW\RkwFeecalculator\Validation\Validator\SwiftBicValidator;
 use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
 
 /**
@@ -116,8 +117,11 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
      */
     protected function addErrors($property, $validator, $validation)
     {
-        if ($validator instanceof IbanValidator
-            || $validator instanceof CustomDateValidator) {
+        if (
+            $validator instanceof IbanValidator
+            || $validator instanceof SwiftBicValidator
+            || $validator instanceof CustomDateValidator
+        ) {
             $this->result->forProperty($property)
                 ->addError($validation->getFirstError());
         } else {

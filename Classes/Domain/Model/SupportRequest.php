@@ -196,7 +196,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * bic
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\SwiftBicValidator
      */
     protected $bic = '';
 
