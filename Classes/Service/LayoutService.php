@@ -3,7 +3,6 @@
 namespace RKW\RkwFeecalculator\Service;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 

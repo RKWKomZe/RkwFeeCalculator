@@ -104,7 +104,7 @@ class Misc implements SingletonInterface
      */
     public static function getSettings($which = ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS)
     {
-        return Common::getTyposcriptConfiguration('Rkwfeecalculator', $which);
+        return \RKW\RkwBasics\Utility\GeneralUtility::getTyposcriptConfiguration('RkwFeecalculator', $which);
         //===
     }
 

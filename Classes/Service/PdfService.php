@@ -3,10 +3,10 @@
 namespace RKW\RkwFeecalculator\Service;
 
 use Spipu\Html2Pdf\Html2Pdf;
-use RKW\RkwBasics\Helper\Common;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use RKW\RkwBasics\Utility\GeneralUtility;
 use Spipu\Html2Pdf\Exception\Html2PdfException;
 use Spipu\Html2Pdf\Exception\ExceptionFormatter;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
@@ -51,7 +51,7 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
 
         try {
 
-            $settingsFramework = Common::getTyposcriptConfiguration($this->extensionName, ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+            $settingsFramework = GeneralUtility::getTyposcriptConfiguration($this->extensionName, ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 
             if ($settingsFramework) {
 
@@ -80,11 +80,9 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
                 $html2pdf->parsingCss;
                 $html2pdf->writeHTML($content);
 
-                $fileName = \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                $fileName = LocalizationUtility::translate(
                     'tx_rkwfeecalculator_domain_model_supportrequest',
-                    'rkw_feecalculator',
-                    null,
-                    'de'
+                    'RkwFeecalculator'
                 );
 
                 $attachmentName = $fileName . '-' . date('Y-m-d-Hi') . '.pdf';

@@ -4,7 +4,6 @@ namespace RKW\RkwFeecalculator\Service;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use RKW\RkwBasics\Domain\Model\CompanyType;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use RKW\RkwFeecalculator\Domain\Model\Consulting;
 use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 
@@ -42,12 +41,9 @@ class CsvService implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function createCsv(SupportRequest $supportRequest)
     {
-
-        $fileName = \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+        $fileName = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
             'tx_rkwfeecalculator_domain_model_supportrequest',
-            'rkw_feecalculator',
-            null,
-            'de'
+            'RkwFeecalculator'
         );
 
         $attachmentName = $fileName . '-' . date('Y-m-d-Hi') . '.csv';

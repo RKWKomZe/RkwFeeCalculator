@@ -142,7 +142,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
             $this->addFlashMessage(
                 LocalizationUtility::translate(
-                    'tx_rkwfeecalculator_controller_supportrequest.error.choose_support_programme', 'rkw_feecalculator'
+                    'tx_rkwfeecalculator_controller_supportrequest.error.choose_support_programme', 'RkwFeecalculator'
                 ),
                 '',
                 AbstractMessage::ERROR
@@ -212,7 +212,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
         $this->addFlashMessage(
             LocalizationUtility::translate(
-                'tx_rkwfeecalculator_controller_supportrequest.success.requestCreated', 'rkw_feecalculator'
+                'tx_rkwfeecalculator_controller_supportrequest.success.requestCreated', 'RkwFeecalculator'
             )
         );
 

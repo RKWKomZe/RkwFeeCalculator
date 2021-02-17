@@ -2,8 +2,9 @@
 
 namespace RKW\RkwFeecalculator\Service;
 
-use RKW\RkwBasics\Helper\Common;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use RKW\RkwMailer\Utility\FrontendLocalizationUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /*
@@ -90,9 +91,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             ]);
 
             $mailService->getQueueMail()->setSubject(
-                \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                FrontendLocalizationUtility::translate(
                     'tx_rkwfeecalculator_domain_model_supportrequest',
-                    'rkw_feecalculator',
+                    'RkwFeecalculator',
                     null,
                     ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
                 )
@@ -162,9 +163,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                             'consulting' => $fieldsets['consulting'],
                             'misc' => $fieldsets['misc'],
                         ],
-                        'subject' => \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                        'subject' => FrontendLocalizationUtility::translate(
                             'rkwMailService.notifyAdmin.subject',
-                            'rkw_feecalculator',
+                            'RkwFeecalculator',
                             null,
                             $recipient->getLang()
                         ),
@@ -179,11 +180,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             }
 
             $mailService->getQueueMail()->setSubject(
-                \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                LocalizationUtility::translate(
                     'rkwMailService.notifyAdmin.subject',
-                    'rkw_feecalculator',
-                    null,
-                    'de'
+                    'RkwFeecalculator'
                 )
             );
 
@@ -237,7 +236,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
     protected function getSettings($which = ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS)
     {
 
-        return Common::getTyposcriptConfiguration('Rkwfeecalculator', $which);
+        return \RKW\RkwBasics\Utility\GeneralUtility::getTyposcriptConfiguration('RkwFeecalculator', $which);
         //===
     }
 }
