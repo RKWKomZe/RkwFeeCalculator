@@ -184,6 +184,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      */
     public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
+
         //  transform dates from string to timestamp
         $supportRequest->transformDates();
         $supportRequest->setPid((int)($this->settings['storagePid']));
