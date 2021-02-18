@@ -4,6 +4,7 @@ namespace RKW\RkwFeecalculator\Validation;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use RKW\RkwFeecalculator\Validation\Validator\IbanValidator;
+use RKW\RkwFeecalculator\Validation\Validator\SwiftBicValidator;
 use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
 
 /**
@@ -43,7 +44,6 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
      */
     protected function isValid($supportRequest)
     {
-
         $isValid = true;
 
         $mandatoryFieldsArray = array_map(function($item) {
@@ -92,10 +92,9 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
         }
 
-        if (method_exists($supportRequest, 'getPrivacy') && !$supportRequest->getPrivacy()) {
+        if (method_exists($supportRequest, 'getPrivacy') && $supportRequest->getPrivacy() !== 1) {
 
-            $property = 'privacy';
-            $this->result->forProperty($property)
+            $this->result->forProperty('privacy')
                 ->addError(
                     new \TYPO3\CMS\Extbase\Error\Error(
                         $this->translateErrorMessage(
@@ -105,6 +104,7 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
                         ), 1238087674, $this->getTranslationArguments($property)
                     )
                 );
+
         }
 
         return $isValid;
@@ -117,8 +117,11 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
      */
     protected function addErrors($property, $validator, $validation)
     {
-        if ($validator instanceof IbanValidator
-            || $validator instanceof CustomDateValidator) {
+        if (
+            $validator instanceof IbanValidator
+            || $validator instanceof SwiftBicValidator
+            || $validator instanceof CustomDateValidator
+        ) {
             $this->result->forProperty($property)
                 ->addError($validation->getFirstError());
         } else {

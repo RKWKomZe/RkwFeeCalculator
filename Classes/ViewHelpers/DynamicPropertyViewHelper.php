@@ -16,6 +16,7 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  */
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -32,15 +33,17 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
     /**
      * Returns dynamically set property from object
      *
-     * @todo: This ViewHelper might not be necessary in TYPO3 8 anymore.
-     *
-     * @param $obj  object Object
-     * @param $prop string Property
-     * @param $type string FieldType
+     * @param SupportRequest $obj
+     * @param                $prop string Property
+     * @param                $type string FieldType
+     * @param                $raw bool Raw
      *
      * @return mixed|null
+     * @todo: This ViewHelper might not be necessary in TYPO3 8 anymore.
+     *
      */
-    public function render($obj, $prop, $type = 'text') {
+    public function render(SupportRequest $obj, string $prop, $type = 'text', $raw = false)
+    {
 
         $getter = 'get' . ucfirst($prop);
 
@@ -56,10 +59,14 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
 
                 } else {
 
-                    $result = LocalizationUtility::translate(
-                        'tx_rkwfeecalculator_domain_model_supportrequest.' . $prop . '.' . $obj->$getter(),
-                        'RkwFeecalculator'
-                    );
+                    if ($raw) {
+                        $result = $obj->$getter();
+                    } else {
+                        $result = LocalizationUtility::translate(
+                            'tx_rkwfeecalculator_domain_model_supportrequest.' . $prop . '.' . $obj->$getter(),
+                            'RkwFeecalculator'
+                        );
+                    }
 
                 }
 
