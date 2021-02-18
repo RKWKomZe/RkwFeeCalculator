@@ -1,27 +1,58 @@
-<f:comment>
-    <f:flashMessages />
-</f:comment>
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
 
-<f:render partial="FormErrors" arguments="{object:SupportRequest}" />
-
-<f:form class="form-fields" action="create" name="supportRequest" object="{supportRequest}"  enctype="multipart/form-data">
-
-    <f:form.hidden property="supportProgramme" value="{supportProgramme}" />
-
-    <h3>
+    <h3 class="no-hide">
         <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.headline" arguments="{0 : supportProgramme.name}" />
     </h3>
 
-    <f:render partial="SupportRequest/Components/01-Applicant" arguments="{_all}" />
+    <f:render partial="FormErrors" arguments="{object:SupportRequest}" />
 
-    <f:render partial="SupportRequest/Components/02-Consulting" arguments="{_all}" />
+    <f:form
+        action="create"
+        name="supportRequest"
+        object="{supportRequest}"
+        enctype="multipart/form-data"
+    >
 
-    <f:render partial="SupportRequest/Components/04-Misc" arguments="{_all}" />
+        <div class="flex-container">
 
-    <f:form.button class="button">
-        <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.send" />
-    </f:form.button>
+            <div class="form flex flex-basis-8 full-width-medium space-between">
 
-    <!-- Override typeNum for AJAX -->
-    <input type="hidden" name="type" value="{settingsArray.ajaxTypeNum}">
-</f:form>
+                <f:form.hidden property="supportProgramme" value="{supportProgramme}" />
+
+                <h4>
+                    <f:translate
+                        key="tx_rkwfeecalculator_partials_supportrequest_requestForm.applicant"
+                        extensionName="RkwFeecalculator"
+                    />
+                </h4>
+                <f:render partial="SupportRequest/Components/01-Applicant" arguments="{_all}" />
+
+                <h4>
+                    <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.consulting" extensionName="RkwFeecalculator" />
+                </h4>
+                <f:render partial="SupportRequest/Components/02-Consulting" arguments="{_all}" />
+
+                <h4>
+                    <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.additional" extensionName="RkwFeecalculator" />
+                </h4>
+                <f:render partial="SupportRequest/Components/04-Misc" arguments="{_all}" />
+
+                <div class="form__field flex space-start full-width-narrow">
+                    <f:form.button class="btn btn--primary full-width-narrow">
+                        <f:translate
+                            key="tx_rkwfeecalculator_partials_supportrequest_requestForm.send"
+                        />
+                    </f:form.button>
+                </div>
+
+                <!-- Override typeNum for AJAX -->
+                <input type="hidden" name="type" value="{settingsArray.ajaxTypeNum}">
+
+            </div>
+
+        </div>
+
+    </f:form>
+
+</html>

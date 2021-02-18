@@ -103,6 +103,3 @@ plugin.tx_rkwfeecalculator_request {
 }
 
 plugin.tk_rkwfeecalculator_request < plugin.tx_rkwfeecalculator_request
-
-// @deprecated since 20-11-2020
-// page.includeCSS.txRkwFeecalculator = EXT:rkw_feecalculator/Resources/Public/Css/Feecalculator.css

@@ -1,3 +1,14 @@
-<f:comment><!-- this is a fallback template for non-ajax-requests --></f:comment>
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
 
-<f:render partial="SupportRequest/Form" arguments="{_all}" />
+    <f:comment><!-- this is a fallback template for non-ajax-requests --></f:comment>
+
+    <f:layout name="Default"/>
+
+    <f:section name="main">
+
+        <f:render partial="SupportRequest/Form" arguments="{_all}" />
+
+    </f:section>
+
+</html>

@@ -16,6 +16,7 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  */
 
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class UploadLabelViewHelper
@@ -37,11 +38,11 @@ class UploadLabelViewHelper extends AbstractViewHelper
     {
         return [
             'data-jcf' => json_encode([
-                'buttonText' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                'buttonText' => LocalizationUtility::translate(
                     'tx_rkwfeecalculator_domain_model_supportrequest.general.upload.button.label',
                     'RkwFeecalculator'
                 ),
-                'placeholderText' => \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
+                'placeholderText' => LocalizationUtility::translate(
                     'tx_rkwfeecalculator_domain_model_supportrequest.general.upload.placeholder',
                     'RkwFeecalculator'
                 ),

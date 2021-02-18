@@ -14,18 +14,18 @@ namespace RKW\RkwFeecalculator\Validation\Validator;
  * The TYPO3 project - inspiring people to share!
  */
 
-use IsoCodes\Iban;
+use IsoCodes\SwiftBic;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
- * Validator for Iban strings.
+ * Validator for Bic strings.
  *
  * @api
  */
-class IbanValidator extends AbstractValidator
+class SwiftBicValidator extends AbstractValidator
 {
     /**
-     * Checks if the given value is a valid Iban string. If this is not
+     * Checks if the given value is a valid Bic string. If this is not
      * the case, the function adds an error.
      *
      * @param mixed $value The value that should be validated
@@ -34,11 +34,11 @@ class IbanValidator extends AbstractValidator
     public function isValid($value)
     {
 
-        if (! Iban::validate($value)) {
+        if (! SwiftBic::validate($value)) {
 
             $this->addError(
                 $this->translateErrorMessage(
-                    'validator.iban.notvalid',
+                    'validator.bic.notvalid',
                     'RkwFeecalculator',
                     [
                         gettype($value),
