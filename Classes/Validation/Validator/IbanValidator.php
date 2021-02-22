@@ -34,7 +34,7 @@ class IbanValidator extends AbstractValidator
     public function isValid($value)
     {
 
-        if (! Iban::validate($value)) {
+        if (! Iban::validate(str_replace(' ', '', $value))) {
 
             $this->addError(
                 $this->translateErrorMessage(

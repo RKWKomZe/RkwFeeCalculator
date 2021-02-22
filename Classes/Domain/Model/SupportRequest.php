@@ -955,7 +955,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setIban($iban)
     {
-        $this->iban = $iban;
+        $this->iban = str_replace(' ', '', $iban);
     }
 
     /**
