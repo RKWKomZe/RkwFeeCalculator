@@ -37,17 +37,18 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
      * @param                $prop string Property
      * @param                $type string FieldType
      * @param                $raw bool Raw
+     * @param                $format string Format
      *
      * @return mixed|null
      * @todo: This ViewHelper might not be necessary in TYPO3 8 anymore.
      *
      */
-    public function render(SupportRequest $obj, string $prop, $type = 'text', $raw = false)
+    public function render(SupportRequest $obj, string $prop, $type = 'text', $raw = false, $format = null)
     {
 
         $getter = 'get' . ucfirst($prop);
 
-        $result = NULL;
+        $result = null;
 
         if (is_object($obj) && method_exists($obj, $getter)) {
 
@@ -70,11 +71,15 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
 
                 }
 
-            } elseif ($type === 'date') {
+            } else if ($type === 'date') {
 
                 $date = $obj->$getter();
 
                 $result = ($date > 0) ? date('d.m.Y', $date) : '-';
+
+            } else if ($format === 'currency') {
+
+                $result = number_format($obj->$getter(),0,",",".");
 
             } else {
 

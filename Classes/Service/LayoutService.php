@@ -146,9 +146,11 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'balance' => [
                     'type' => 'text',
+                    'format' => 'currency',
                 ],
                 'sales' => [
                     'type' => 'text',
+                    'format' => 'currency',
                 ],
                 'employeesCount' => [
                     'type' => 'text',
