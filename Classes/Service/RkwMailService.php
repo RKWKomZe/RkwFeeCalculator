@@ -92,9 +92,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $mailService->getQueueMail()->setSubject(
                 FrontendLocalizationUtility::translate(
-                    'tx_rkwfeecalculator_domain_model_supportrequest',
+                    'templates_email_confirmationUser.subject',
                     'RkwFeecalculator',
-                    null,
+                    [$settings['settings']['websiteName']],
                     ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
                 )
             );
@@ -152,7 +152,6 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     && ($recipient->getEmail())
                 ) {
 
-                    // send new user an email with token
                     $mailService->setTo($recipient, [
                         'marker'  => [
                             'supportRequest' => $supportRequest,
@@ -170,6 +169,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                             $recipient->getLang()
                         ),
                     ]);
+
                 }
             }
 
@@ -180,7 +180,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             }
 
             $mailService->getQueueMail()->setSubject(
-                LocalizationUtility::translate(
+                FrontendLocalizationUtility::translate(
                     'rkwMailService.notifyAdmin.subject',
                     'RkwFeecalculator'
                 )

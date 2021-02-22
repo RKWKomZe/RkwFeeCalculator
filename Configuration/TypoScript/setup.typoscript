@@ -74,7 +74,7 @@ plugin.tx_rkwfeecalculator_calculator {
   }
 }
 
-plugin.rkwfeecalculator_calculator.settings < module.rkwfeecalculator_calculator.settings
+plugin.tx_rkwfeecalculator_calculator.settings < module.tx_rkwfeecalculator_calculator.settings
 
 plugin.tx_rkwfeecalculator_request {
     view {
@@ -99,7 +99,8 @@ plugin.tx_rkwfeecalculator_request {
         sysFileStorageUid = 1
         storagePid = {$plugin.tx_rkwfeecalculator_request.persistence.storagePid}
         programStoragePid = {$plugin.tx_rkwfeecalculator_calculator.persistence.storagePid}
+        websiteName = {$plugin.tx_rkwfeecalculator_request.settings.websiteName}
     }
 }
 
-plugin.tk_rkwfeecalculator_request < plugin.tx_rkwfeecalculator_request
+plugin.tx_rkwfeecalculator_request < plugin.tx_rkwfeecalculator_request

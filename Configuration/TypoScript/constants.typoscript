@@ -35,6 +35,7 @@ plugin.tx_rkwfeecalculator_request {
     settings {
         # cat=plugin.tx_rkwfeecalculator_request//a; type=integer; label=Ajax type num
         ajaxTypeNum = 1563872060
+        websiteName = {$plugin.tx_rkwtemplate_themeconfig.website.name}
     }
 }
 
