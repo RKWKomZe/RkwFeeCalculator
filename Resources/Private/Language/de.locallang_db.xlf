@@ -153,7 +153,7 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.address">
 				<source>Address</source>
-				<target>Straße, Nr.</target>
+				<target>Strasse, Nr.</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.zip">
 				<source>Zip</source>
@@ -185,11 +185,11 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sales">
 				<source>Sales</source>
-				<target>(geplanter) Umsatz in T€</target>
+				<target>(geplanter) Umsatz in TEUR</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.balance">
 				<source>Balance</source>
-				<target>Bilanzsumme in T€</target>
+				<target>Bilanzsumme in TEUR</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount">
 				<source>Number Of Employees</source>

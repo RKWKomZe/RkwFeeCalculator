@@ -180,7 +180,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             }
 
             $mailService->getQueueMail()->setSubject(
-                LocalizationUtility::translate(
+                FrontendLocalizationUtility::translate(
                     'rkwMailService.notifyAdmin.subject',
                     'RkwFeecalculator'
                 )

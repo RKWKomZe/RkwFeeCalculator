@@ -605,6 +605,9 @@
             <!-- EMAIL -->
 
             <!-- Templates/Email/ConfirmationUser.html -->
+            <trans-unit id="templates_email_confirmationUser.subject">
+                <source>Your support request to %s</source>
+            </trans-unit>
             <trans-unit id="templates_email_confirmationUser.headline">
                 <source>Hello %s,</source>
             </trans-unit>
