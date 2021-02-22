@@ -2,7 +2,7 @@
     xmlns:rkwFeecalculator="http://typo3.org/ns/RKW/RkwFeecalculator/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-<div class="form__field {field.width}">
+<div class="form__field {field.width} {field.class}">
     <f:if condition="{field.type} != 'radio'">
         <label class="form-label" for="{fieldName}">
             <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />
@@ -44,7 +44,7 @@
         </div>
 
         <f:if condition="{field.hints.0 != ''}">
-            <p class="text-smaller hint">{field.hints.0}</p>
+            <p class="text-small">{field.hints.0}</p>
         </f:if>
 
         <f:for each="{field.options}" as="option" iteration="iterOption">
@@ -63,7 +63,7 @@
         </f:for>
 
         <f:if condition="{field.hints.1 != ''}">
-            <p class="text-smaller hint">{field.hints.0}</p>
+            <p class="text-small">{field.hints.1}</p>
         </f:if>
     </f:if>
     <f:if condition="{field.type} == 'textarea'">
@@ -71,7 +71,7 @@
     </f:if>
     <f:if condition="{field.type} == 'upload'">
         <f:if condition="{field.hints.1 != ''}">
-            <p class="text-smaller hint">{field.hints.0}</p>
+            <p class="text-small">{field.hints.0}</p>
         </f:if>
         <f:for each="{0:1, 1:2, 2:3, 3:4, 4:5}" as="file" iteration="fileIteration">
             <f:if condition="{fileIteration.cycle} > <f:count>{consultant.file}</f:count>">

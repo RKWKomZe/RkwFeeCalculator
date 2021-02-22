@@ -384,6 +384,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 'prematureStart' => [
                     'type' => 'radio',
                     'width' => 'width100',
+                    'class' => 'text-highlight',
                     'options' => [
                         [
                             'value' => 1,
