@@ -3,8 +3,8 @@
 namespace RKW\RkwFeecalculator\Validation;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use RKW\RkwFeecalculator\Validation\Validator\IbanValidator;
-use RKW\RkwFeecalculator\Validation\Validator\SwiftBicValidator;
+use RKW\RkwBasics\Validation\Validator\IbanValidator;
+use RKW\RkwBasics\Validation\Validator\SwiftBicValidator;
 use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
 
 /**
