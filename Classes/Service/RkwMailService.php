@@ -195,16 +195,16 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $attachments = [];
 
             //  create pdf and attach it to email
-            /*
             if ($pdf = $this->pdfService->createPdf($supportRequest)) {
                 $attachments[] = $pdf;
             }
-            */
 
             //  create csv and attach it to mail
+            /*
             if ($csv = $this->csvService->createCsv($supportRequest)) {
                 $attachments[] = $csv;
             }
+            */
 
             //  add uploads to mail
             foreach ($supportRequest->getFile() as $fileReference) {
