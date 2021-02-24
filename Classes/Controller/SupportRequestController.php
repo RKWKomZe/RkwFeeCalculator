@@ -309,7 +309,9 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             }
         }
 
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $supportRequest]);
+        $attachmentTypes = explode(',', $this->settings['mail']['attachment']['types']);
+
+        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $supportRequest, $attachmentTypes]);
     }
 
 }
