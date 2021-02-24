@@ -468,6 +468,15 @@
             <trans-unit id="flexform.select.beuser">
                 <source>Backend User to mail (only shown if email is set)</source>
             </trans-unit>
+            <trans-unit id="flexform.select.attachment.types">
+                <source>Type of mail attachment to be generated</source>
+            </trans-unit>
+            <trans-unit id="flexform.select.attachment.types.pdf">
+                <source>PDF</source>
+            </trans-unit>
+            <trans-unit id="flexform.select.attachment.types.csv">
+                <source>CSV</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

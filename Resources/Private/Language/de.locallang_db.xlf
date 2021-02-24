@@ -153,7 +153,7 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.address">
 				<source>Address</source>
-				<target>Straße, Nr.</target>
+				<target>Strasse, Nr.</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.zip">
 				<source>Zip</source>
@@ -185,11 +185,11 @@
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sales">
 				<source>Sales</source>
-				<target>(geplanter) Umsatz in T€</target>
+				<target>(geplanter) Umsatz in TEUR</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.balance">
 				<source>Balance</source>
-				<target>Bilanzsumme in T€</target>
+				<target>Bilanzsumme in TEUR</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount">
 				<source>Number Of Employees</source>
@@ -484,6 +484,18 @@
             <trans-unit id="flexform.select.beuser">
                 <source>Backend User to mail (only shown if email is set)</source>
                 <target>Backend User für Antrag-Email</target>
+            </trans-unit>
+            <trans-unit id="flexform.select.attachment.types">
+                <source>Types of mail attachment to be generated</source>
+                <target>Art des E-Mail-Anhangs</target>
+            </trans-unit>
+            <trans-unit id="flexform.select.attachment.types.pdf">
+                <source>PDF</source>
+                <target>PDF</target>
+            </trans-unit>
+            <trans-unit id="flexform.select.attachment.types.csv">
+                <source>CSV</source>
+                <target>CSV</target>
             </trans-unit>
 		</body>
 	</file>

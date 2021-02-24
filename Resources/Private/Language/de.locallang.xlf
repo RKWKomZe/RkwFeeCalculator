@@ -357,7 +357,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.address">
                 <source>Address</source>
-                <target>Straße, Nr.</target>
+                <target>Strasse, Nr.</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.zip">
                 <source>Zip</source>
@@ -393,11 +393,11 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sales">
                 <source>Sales</source>
-                <target>(geplanter) Umsatz in T€</target>
+                <target>(geplanter) Umsatz in TEUR</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.balance">
                 <source>Balance</source>
-                <target>Bilanzsumme T€</target>
+                <target>Bilanzsumme in TEUR</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount">
                 <source>Number Of Employees</source>
@@ -781,7 +781,7 @@
             </trans-unit>
             <trans-unit id="form.error.supportRequest.address">
                 <source>Address</source>
-                <target>Straße, Nr.</target>
+                <target>Strasse, Nr.</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.zip">
                 <source>Zip</source>
@@ -817,11 +817,11 @@
             </trans-unit>
             <trans-unit id="form.error.supportRequest.sales">
                 <source>Sales</source>
-                <target>(geplanter) Umsatz in T€</target>
+                <target>(geplanter) Umsatz in TEUR</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.balance">
                 <source>Balance</source>
-                <target>Bilanzsumme in T€</target>
+                <target>Bilanzsumme in TEUR</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.employeesCount">
                 <source>Number Of Employees</source>
@@ -983,6 +983,10 @@
             <!-- EMAIL -->
 
             <!-- Templates/Email/ConfirmationUser.html -->
+            <trans-unit id="templates_email_confirmationUser.subject">
+                <source>Your support request to %s</source>
+                <target>Ihre Beratungsanfrage an das %s</target>
+            </trans-unit>
             <trans-unit id="templates_email_confirmationUser.headline">
                 <source>Hello %s,</source>
                 <target>Hallo %s,</target>

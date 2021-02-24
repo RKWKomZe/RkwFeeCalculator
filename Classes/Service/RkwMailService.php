@@ -92,9 +92,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $mailService->getQueueMail()->setSubject(
                 FrontendLocalizationUtility::translate(
-                    'tx_rkwfeecalculator_domain_model_supportrequest',
+                    'templates_email_confirmationUser.subject',
                     'RkwFeecalculator',
-                    null,
+                    [$settings['settings']['websiteName']],
                     ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
                 )
             );
@@ -116,6 +116,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\BackendUser|array $backendUser
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
+     * @param array $attachmentTypes
      *
      * @throws \RKW\RkwMailer\Service\MailException
      * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
@@ -125,7 +126,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException
      */
-    public function adminMail($backendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
+    public function adminMail($backendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest, $attachmentTypes)
     {
 
         // get settings
@@ -152,7 +153,6 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     && ($recipient->getEmail())
                 ) {
 
-                    // send new user an email with token
                     $mailService->setTo($recipient, [
                         'marker'  => [
                             'supportRequest' => $supportRequest,
@@ -170,6 +170,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                             $recipient->getLang()
                         ),
                     ]);
+
                 }
             }
 
@@ -180,7 +181,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             }
 
             $mailService->getQueueMail()->setSubject(
-                LocalizationUtility::translate(
+                FrontendLocalizationUtility::translate(
                     'rkwMailService.notifyAdmin.subject',
                     'RkwFeecalculator'
                 )
@@ -194,16 +195,19 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $attachments = [];
 
-            //  create pdf and attach it to email
-            /*
-            if ($pdf = $this->pdfService->createPdf($supportRequest)) {
-                $attachments[] = $pdf;
+            if (in_array('pdf', $attachmentTypes)) {
+                //  create pdf and attach it to email
+                if ($pdf = $this->pdfService->createPdf($supportRequest)) {
+                    $attachments[] = $pdf;
+                }
             }
-            */
 
-            //  create csv and attach it to mail
-            if ($csv = $this->csvService->createCsv($supportRequest)) {
-                $attachments[] = $csv;
+            if (in_array('csv', $attachmentTypes)) {
+                //  create csv and attach it to mail
+                if ($csv = $this->csvService->createCsv($supportRequest)) {
+                    $attachments[] = $csv;
+                }
+
             }
 
             //  add uploads to mail

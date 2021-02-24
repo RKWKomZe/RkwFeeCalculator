@@ -146,9 +146,11 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'balance' => [
                     'type' => 'text',
+                    'format' => 'currency',
                 ],
                 'sales' => [
                     'type' => 'text',
+                    'format' => 'currency',
                 ],
                 'employeesCount' => [
                     'type' => 'text',
@@ -382,6 +384,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 'prematureStart' => [
                     'type' => 'radio',
                     'width' => 'width100',
+                    'class' => 'text-primary',
                     'options' => [
                         [
                             'value' => 1,

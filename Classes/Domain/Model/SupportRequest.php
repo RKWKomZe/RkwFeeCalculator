@@ -196,7 +196,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * bic
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\SwiftBicValidator
+     * @validateOnObject NotEmpty, \RKW\RkwBasics\Validation\Validator\SwiftBicValidator
      */
     protected $bic = '';
 
@@ -204,7 +204,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * iban
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\IbanValidator
+     * @validateOnObject NotEmpty, \RKW\RkwBasics\Validation\Validator\IbanValidator
      */
     protected $iban = '';
 
@@ -955,7 +955,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setIban($iban)
     {
-        $this->iban = $iban;
+        $this->iban = str_replace(' ', '', $iban);
     }
 
     /**

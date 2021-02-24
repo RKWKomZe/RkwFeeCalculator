@@ -21,6 +21,29 @@
                             </config>
                         </TCEforms>
                     </settings.mail.backendUser>
+                    <settings.mail.attachment.types>
+                        <TCEforms>
+                            <label>LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:flexform.select.attachment.types</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectMultipleSideBySide</renderType>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:flexform.select.attachment.types.pdf</numIndex>
+                                        <numIndex index="1">pdf</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:flexform.select.attachment.types.csv</numIndex>
+                                        <numIndex index="1">csv</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">LLL:EXT:rkw_feecalculator/Resources/Private/Language/locallang_db.xlf:flexform.select.attachment.types.all</numIndex>
+                                        <numIndex index="1">all</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.mail.attachment.types>
                 </el>
             </ROOT>
         </sDEF>
