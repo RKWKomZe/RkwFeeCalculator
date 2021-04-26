@@ -87,14 +87,6 @@ class UploadHelper implements SingletonInterface
     {
         $settingsDefault = $this->getSettings();
 
-//
-//        /** @var \TYPO3\CMS\Core\Resource\ResourceStorage $storage */
-//        $storage = $storageRepository->findByUid($settingsDefault['sysFileStorageUid']);
-//
-//        if ($storage) {
-
-        //  $conflictMode = $configuration->getConfigurationValue(self::class, self::CONFIGURATION_UPLOAD_CONFLICT_MODE) ?: $this->defaultConflictMode;
-
         $uploadFolder = $this->resourceFactory->retrieveFileOrFolderObject($this->defaultUploadFolder);
         $uploadedFile = $uploadFolder->addUploadedFile($file, $this->defaultConflictMode);  //  second parameter $conflict mode
 
