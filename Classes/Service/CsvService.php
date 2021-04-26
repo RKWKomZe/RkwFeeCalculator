@@ -21,16 +21,15 @@ use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
  */
 
 /**
- * PdfService
+ * CsvService
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright Rkw Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class CsvService implements \TYPO3\CMS\Core\SingletonInterface
+class CsvService extends DocumentService
 {
-
     /**
      * action csv
      * because extbase makes some trouble if some survey has a starttime in future, ist disabled or something, just give the uid
@@ -48,7 +47,7 @@ class CsvService implements \TYPO3\CMS\Core\SingletonInterface
 
         $attachmentName = $fileName . '-' . date('Y-m-d-Hi') . '.csv';
 
-        $path = GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/fileadmin/' . $attachmentName;
+        $path = $this->getOutputPath($attachmentName);
 
         $separator = ';';
         $csv = fopen($path, 'w');

@@ -14,8 +14,8 @@ namespace RKW\RkwFeecalculator\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwFeecalculator\Helper\Misc;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use RKW\RkwFeecalculator\Helper\UploadHelper;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use RKW\RkwRegistration\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -192,8 +192,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->supportRequestRepository->add($supportRequest);
         $this->persistenceManager->persistAll();
 
-        /** @var \RKW\RkwFeecalculator\Helper\Misc $miscHelper */
-        $miscHelper = GeneralUtility::makeInstance(Misc::class);
+        /** @var \RKW\RkwFeecalculator\Helper\UploadHelper $uploadHelper */
+        $uploadHelper = GeneralUtility::makeInstance(UploadHelper::class);
 
         // save file(s)
         foreach ($supportRequest->getFileUpload() as $file) {
@@ -203,7 +203,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 //===
             }
 
-            $miscHelper->createFileReference($file, 'file', $supportRequest);
+            $supportRequest->addFile($uploadHelper->importUploadedResource($file));
+
         }
 
         $this->supportRequestRepository->update($supportRequest);

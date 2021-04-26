@@ -24,6 +24,12 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
     protected $reflectionService;
 
+    protected $allowedMimeTypes = [
+        'image/jpeg',
+        'image/png',
+        'application/pdf'
+    ];
+
     public function __construct(array $options = [])
     {
         parent::__construct($options);
@@ -104,6 +110,30 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
                         ), 1238087674, $this->getTranslationArguments($property)
                     )
                 );
+
+        }
+
+        $uploads = array_filter($supportRequest->getFileUpload(), function ($upload) {
+            return strlen($upload['name']) > 0;
+        });
+
+        foreach ($uploads as $upload) {
+
+            if (! in_array($upload['type'], $this->allowedMimeTypes)) {
+
+                $property = 'file';
+
+                $this->result->forProperty('file')
+                    ->addError(
+                        new \TYPO3\CMS\Extbase\Error\Error(
+                            $this->translateErrorMessage(
+                                'form.error.supportRequest.file.mime',
+                                'RkwFeecalculator'
+                            ), 1238087674, $this->getTranslationArguments($property)
+                        )
+                    );
+
+            }
 
         }
 

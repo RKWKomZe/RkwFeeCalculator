@@ -967,6 +967,10 @@
                 <source>Already got an "Existenzgründerpass"?</source>
                 <target>Haben Sie bereits einen Existenzgründerpass?</target>
             </trans-unit>
+            <trans-unit id="form.error.supportRequest.file.mime">
+                <source>Please do upload only files of type .jpg, .gif or .pdf.</source>
+                <target>Bitte laden Sie nur Dateien im Format .jpg, .png oder .pdf hoch.</target>
+            </trans-unit>
             <trans-unit id="form.error.supportRequest.supportProgramme">
                 <source>Support Programme</source>
                 <target>Förderprogramm</target>

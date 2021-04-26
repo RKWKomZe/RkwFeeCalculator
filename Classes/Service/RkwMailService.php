@@ -3,7 +3,6 @@
 namespace RKW\RkwFeecalculator\Service;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use RKW\RkwMailer\Utility\FrontendLocalizationUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
@@ -214,7 +213,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             foreach ($supportRequest->getFile() as $fileReference) {
 
                 $attachments[] = [
-                    'path' => GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/fileadmin/' . $fileReference->getOriginalResource()->getOriginalFile()->getName(),
+                    'path' => GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/fileadmin/user_upload/tx_rkwfeecalculator/' . $fileReference->getOriginalResource()->getOriginalFile()->getName(),
                     'type' => $fileReference->getOriginalResource()->getOriginalFile()->getMimeType(),
                     'name' => $fileReference->getOriginalResource()->getOriginalFile()->getName(),
                 ];
