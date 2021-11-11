@@ -14,10 +14,9 @@ namespace RKW\RkwFeecalculator\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use RKW\RkwFeecalculator\Helper\Misc;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use RKW\RkwFeecalculator\Helper\UploadHelper;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use RKW\RkwRegistration\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
@@ -138,14 +137,17 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      */
     public function requestFormAction(\RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme = null)
     {
+
         if (!$supportProgramme) {
+
             $this->addFlashMessage(
                 LocalizationUtility::translate(
-                    'tx_rkwfeecalculator_controller_supportrequest.error.choose_support_programme', 'rkw_feecalculator'
+                    'tx_rkwfeecalculator_controller_supportrequest.error.choose_support_programme', 'RkwFeecalculator'
                 ),
                 '',
                 AbstractMessage::ERROR
             );
+
             $this->forward('new');
             //===
         }
@@ -162,6 +164,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->view->assign('applicant', $fieldsets['applicant']);
         $this->view->assign('consulting', $fieldsets['consulting']);
         $this->view->assign('misc', $fieldsets['misc']);
+        $this->view->assign('privacy', 0);
         $this->view->assign('mandatoryFields', $this->supportProgramme->getMandatoryFields());
     }
 
@@ -181,6 +184,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      */
     public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
+
         //  transform dates from string to timestamp
         $supportRequest->transformDates();
         $supportRequest->setPid((int)($this->settings['storagePid']));
@@ -188,8 +192,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         $this->supportRequestRepository->add($supportRequest);
         $this->persistenceManager->persistAll();
 
-        /** @var \RKW\RkwFeecalculator\Helper\Misc $miscHelper */
-        $miscHelper = GeneralUtility::makeInstance(Misc::class);
+        /** @var \RKW\RkwFeecalculator\Helper\UploadHelper $uploadHelper */
+        $uploadHelper = GeneralUtility::makeInstance(UploadHelper::class);
 
         // save file(s)
         foreach ($supportRequest->getFileUpload() as $file) {
@@ -199,7 +203,8 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
                 //===
             }
 
-            $miscHelper->createFileReference($file, 'file', $supportRequest);
+            $supportRequest->addFile($uploadHelper->importUploadedResource($file));
+
         }
 
         $this->supportRequestRepository->update($supportRequest);
@@ -208,7 +213,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
         $this->addFlashMessage(
             LocalizationUtility::translate(
-                'tx_rkwfeecalculator_controller_supportrequest.success.requestCreated', 'rkw_feecalculator'
+                'tx_rkwfeecalculator_controller_supportrequest.success.requestCreated', 'RkwFeecalculator'
             )
         );
 
@@ -305,7 +310,9 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
             }
         }
 
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $supportRequest]);
+        $attachmentTypes = explode(',', $this->settings['mail']['attachment']['types']);
+
+        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_AFTER_REQUEST_CREATED_ADMIN, [$backendUsers, $supportRequest, $attachmentTypes]);
     }
 
 }

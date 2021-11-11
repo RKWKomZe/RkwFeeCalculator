@@ -196,7 +196,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * bic
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @validateOnObject NotEmpty, \RKW\RkwBasics\Validation\Validator\SwiftBicValidator
      */
     protected $bic = '';
 
@@ -204,7 +204,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * iban
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\IbanValidator
+     * @validateOnObject NotEmpty, \RKW\RkwBasics\Validation\Validator\IbanValidator
      */
     protected $iban = '';
 
@@ -379,7 +379,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * file
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\FileReference>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $file = '';
 
@@ -449,7 +449,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * companytype
      *
-     * @var \RKW\RkwBasics\Domain\Model\Companytype
+     * @var \RKW\RkwBasics\Domain\Model\CompanyType
      * @validateOnObject NotEmpty
      */
     protected $companytype = null;
@@ -955,7 +955,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setIban($iban)
     {
-        $this->iban = $iban;
+        $this->iban = str_replace(' ', '', $iban);
     }
 
     /**
@@ -1402,7 +1402,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the file
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\FileReference> file
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> file
      */
     public function getFile()
     {
@@ -1413,7 +1413,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the file
      *
      * @param string $file
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\FileReference> file
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> file
      */
     public function setFile($file)
     {
@@ -1423,10 +1423,10 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Adds a file
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\FileReference $file
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
      * @return void
      */
-    public function addFile(\RKW\RkwFeecalculator\Domain\Model\FileReference $file)
+    public function addFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
     {
         $this->file->attach($file);
     }
@@ -1434,11 +1434,11 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Removes a file
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\FileReference $file
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
      * @return void
      * @api
      */
-    public function removeFile(\RKW\RkwFeecalculator\Domain\Model\FileReference $file)
+    public function removeFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
     {
         $this->file->detach($file);
     }
@@ -1616,7 +1616,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the companytype
      *
-     * @return \RKW\RkwBasics\Domain\Model\Companytype $companytype
+     * @return \RKW\RkwBasics\Domain\Model\CompanyType $companytype
      */
     public function getCompanytype()
     {
@@ -1626,7 +1626,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the companytype
      *
-     * @param \RKW\RkwBasics\Domain\Model\Companytype $companytype
+     * @param \RKW\RkwBasics\Domain\Model\CompanyType $companytype
      * @return void
      */
     public function setCompanytype($companytype)

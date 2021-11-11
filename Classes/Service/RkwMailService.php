@@ -2,8 +2,8 @@
 
 namespace RKW\RkwFeecalculator\Service;
 
-use RKW\RkwBasics\Helper\Common;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use RKW\RkwMailer\Utility\FrontendLocalizationUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /*
@@ -36,6 +36,12 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * @inject
      */
     protected $pdfService;
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\CsvService
+     * @inject
+     */
+    protected $csvService;
 
     /**
      * @var \RKW\RkwFeecalculator\Service\LayoutService
@@ -84,10 +90,10 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             ]);
 
             $mailService->getQueueMail()->setSubject(
-                \RKW\RkwMailer\Helper\FrontendLocalization::translate(
-                    'tx_rkwfeecalculator_domain_model_supportrequest',
-                    'rkw_feecalculator',
-                    null,
+                FrontendLocalizationUtility::translate(
+                    'templates_email_confirmationUser.subject',
+                    'RkwFeecalculator',
+                    [$settings['settings']['websiteName']],
                     ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
                 )
             );
@@ -109,6 +115,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\BackendUser|array $backendUser
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
+     * @param array $attachmentTypes
      *
      * @throws \RKW\RkwMailer\Service\MailException
      * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
@@ -118,7 +125,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException
      */
-    public function adminMail($backendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
+    public function adminMail($backendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest, $attachmentTypes)
     {
 
         // get settings
@@ -145,7 +152,6 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     && ($recipient->getEmail())
                 ) {
 
-                    // send new user an email with token
                     $mailService->setTo($recipient, [
                         'marker'  => [
                             'supportRequest' => $supportRequest,
@@ -156,13 +162,14 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                             'consulting' => $fieldsets['consulting'],
                             'misc' => $fieldsets['misc'],
                         ],
-                        'subject' => \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                        'subject' => FrontendLocalizationUtility::translate(
                             'rkwMailService.notifyAdmin.subject',
-                            'rkw_feecalculator',
+                            'RkwFeecalculator',
                             null,
                             $recipient->getLang()
                         ),
                     ]);
+
                 }
             }
 
@@ -173,11 +180,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             }
 
             $mailService->getQueueMail()->setSubject(
-                \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                FrontendLocalizationUtility::translate(
                     'rkwMailService.notifyAdmin.subject',
-                    'rkw_feecalculator',
-                    null,
-                    'de'
+                    'RkwFeecalculator'
                 )
             );
 
@@ -189,25 +194,30 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $attachments = [];
 
-            //  create pdf and attach it to email
-            if ($pdf = $this->pdfService->createPdf($supportRequest)) {
-                $attachments[] = $pdf;
+            if (in_array('pdf', $attachmentTypes)) {
+                //  create pdf and attach it to email
+                if ($pdf = $this->pdfService->createPdf($supportRequest)) {
+                    $attachments[] = $pdf;
+                }
+            }
+
+            if (in_array('csv', $attachmentTypes)) {
+                //  create csv and attach it to mail
+                if ($csv = $this->csvService->createCsv($supportRequest)) {
+                    $attachments[] = $csv;
+                }
+
             }
 
             //  add uploads to mail
             foreach ($supportRequest->getFile() as $fileReference) {
 
                 $attachments[] = [
-                    'path' => GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/fileadmin/' . $fileReference->getOriginalResource()->getOriginalFile()->getName(),
+                    'path' => GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/fileadmin/user_upload/tx_rkwfeecalculator/' . $fileReference->getOriginalResource()->getOriginalFile()->getName(),
                     'type' => $fileReference->getOriginalResource()->getOriginalFile()->getMimeType(),
                     'name' => $fileReference->getOriginalResource()->getOriginalFile()->getName(),
                 ];
 
-                /*
-                $mailService->getQueueMail()->setAttachment();
-                $mailService->getQueueMail()->setAttachmentType($fileReference->getOriginalResource()->getOriginalFile()->getMimeType());
-                $mailService->getQueueMail()->setAttachmentName($fileReference->getOriginalResource()->getOriginalFile()->getName());
-                */
             }
 
             if (! empty($attachments)) {
@@ -229,7 +239,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
     protected function getSettings($which = ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS)
     {
 
-        return Common::getTyposcriptConfiguration('Rkwfeecalculator', $which);
+        return \RKW\RkwBasics\Utility\GeneralUtility::getTyposcriptConfiguration('RkwFeecalculator', $which);
         //===
     }
 }

@@ -3,10 +3,12 @@
 namespace RKW\RkwFeecalculator\Service;
 
 use Spipu\Html2Pdf\Html2Pdf;
-use RKW\RkwBasics\Helper\Common;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use RKW\RkwBasics\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Core\Resource\ResourceFactory;
 use Spipu\Html2Pdf\Exception\Html2PdfException;
 use Spipu\Html2Pdf\Exception\ExceptionFormatter;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
@@ -31,7 +33,7 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class PdfService implements \TYPO3\CMS\Core\SingletonInterface
+class PdfService extends DocumentService
 {
 
     /**
@@ -51,7 +53,7 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
 
         try {
 
-            $settingsFramework = Common::getTyposcriptConfiguration($this->extensionName, ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+            $settingsFramework = GeneralUtility::getTyposcriptConfiguration($this->extensionName, ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 
             if ($settingsFramework) {
 
@@ -80,11 +82,9 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
                 $html2pdf->parsingCss;
                 $html2pdf->writeHTML($content);
 
-                $fileName = \RKW\RkwMailer\Helper\FrontendLocalization::translate(
+                $fileName = LocalizationUtility::translate(
                     'tx_rkwfeecalculator_domain_model_supportrequest',
-                    'rkw_feecalculator',
-                    null,
-                    'de'
+                    'RkwFeecalculator'
                 );
 
                 $attachmentName = $fileName . '-' . date('Y-m-d-Hi') . '.pdf';
@@ -93,13 +93,12 @@ class PdfService implements \TYPO3\CMS\Core\SingletonInterface
                 // -> "D" - Forcing the download of PDF via web browser, with a specific name
                 //  $html2pdf->output($_SERVER['DOCUMENT_ROOT'] . $attachmentName, 'F');
                 //  return $html2pdf->output($attachmentName, 'S');
+                $outputPath = $this->getOutputPath($attachmentName);
 
-                $path = GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/fileadmin/' . $attachmentName;
-
-                $html2pdf->output($path, 'F');
+                $html2pdf->output($outputPath, 'F');
 
                 return [
-                    'path' => $path,
+                    'path' => $outputPath,
                     'type' => 'application/pdf',
                     'name' => $attachmentName,
                 ];
