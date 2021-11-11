@@ -3,7 +3,8 @@
 namespace RKW\RkwFeecalculator\Validation;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use RKW\RkwFeecalculator\Validation\Validator\IbanValidator;
+use RKW\RkwBasics\Validation\Validator\IbanValidator;
+use RKW\RkwBasics\Validation\Validator\SwiftBicValidator;
 use RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator;
 
 /**
@@ -22,6 +23,12 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
     protected $validatorResolver;
 
     protected $reflectionService;
+
+    protected $allowedMimeTypes = [
+        'image/jpeg',
+        'image/png',
+        'application/pdf'
+    ];
 
     public function __construct(array $options = [])
     {
@@ -43,7 +50,6 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
      */
     protected function isValid($supportRequest)
     {
-
         $isValid = true;
 
         $mandatoryFieldsArray = array_map(function($item) {
@@ -92,10 +98,9 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
 
         }
 
-        if (method_exists($supportRequest, 'getPrivacy') && !$supportRequest->getPrivacy()) {
+        if (method_exists($supportRequest, 'getPrivacy') && $supportRequest->getPrivacy() !== 1) {
 
-            $property = 'privacy';
-            $this->result->forProperty($property)
+            $this->result->forProperty('privacy')
                 ->addError(
                     new \TYPO3\CMS\Extbase\Error\Error(
                         $this->translateErrorMessage(
@@ -105,6 +110,31 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
                         ), 1238087674, $this->getTranslationArguments($property)
                     )
                 );
+
+        }
+
+        $uploads = array_filter($supportRequest->getFileUpload(), function ($upload) {
+            return strlen($upload['name']) > 0;
+        });
+
+        foreach ($uploads as $upload) {
+
+            if (! in_array($upload['type'], $this->allowedMimeTypes)) {
+
+                $property = 'file';
+
+                $this->result->forProperty('file')
+                    ->addError(
+                        new \TYPO3\CMS\Extbase\Error\Error(
+                            $this->translateErrorMessage(
+                                'form.error.supportRequest.file.mime',
+                                'RkwFeecalculator'
+                            ), 1238087674, $this->getTranslationArguments($property)
+                        )
+                    );
+
+            }
+
         }
 
         return $isValid;
@@ -117,8 +147,11 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
      */
     protected function addErrors($property, $validator, $validation)
     {
-        if ($validator instanceof IbanValidator
-            || $validator instanceof CustomDateValidator) {
+        if (
+            $validator instanceof IbanValidator
+            || $validator instanceof SwiftBicValidator
+            || $validator instanceof CustomDateValidator
+        ) {
             $this->result->forProperty($property)
                 ->addError($validation->getFirstError());
         } else {

@@ -1,20 +1,11 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
 
-This template displays a NEW form for the current domain object.
+    <f:layout name="Default" />
 
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Pdf.html: keep
+    <f:section name="main">
 
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+        <f:render partial="Pdf/SupportRequest" arguments="{supportRequest: supportRequest, supportProgramme: supportProgramme, applicant: applicant, consulting: consulting, misc: misc, frontendUser: frontendUser, language: frontendUser.txRkwregistrationLanguageKey}"/>
 
-<f:section name="main">
-
-    <f:render partial="Pdf/SupportRequest" arguments="{supportRequest: supportRequest, supportProgramme: supportProgramme, applicant: applicant, consulting: consulting, misc: misc, frontendUser: frontendUser, language: frontendUser.txRkwregistrationLanguageKey}"/>
-
-</f:section>
+    </f:section>
 </html>

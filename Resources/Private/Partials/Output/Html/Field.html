@@ -2,7 +2,10 @@
 
 <f:if condition="{field.type} != 'upload'">
     <p>
-        <f:translate key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}" extensionName="RkwFeecalculator" />: {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}', type:'{field.type}')}
+        <f:translate
+            key="tx_rkwfeecalculator_domain_model_supportrequest.{fieldName}"
+            extensionName="RkwFeecalculator"
+        />: {vh:dynamicProperty(obj: supportRequest, prop:'{fieldName}', type:'{field.type}', raw:'{field.raw}', format:'{field.format}')}
     </p>
 </f:if>
 

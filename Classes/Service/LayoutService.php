@@ -3,7 +3,6 @@
 namespace RKW\RkwFeecalculator\Service;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 
@@ -32,11 +31,6 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
 {
 
     /**
-     * @var string
-     */
-    protected $fieldWidth = 'full';
-
-    /**
      * $companytypeRepository
      *
      * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
@@ -62,7 +56,6 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
 
         $this->supportProgramme = $supportProgramme;
         $this->companytypeList = $this->companytypeRepository->findAll();
-
         $this->consultingList = $this->supportProgramme->getConsulting();
 
         $requestFieldsArray = array_map(function($item) {
@@ -86,31 +79,29 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
     {
         foreach ($fieldsets as $key => $fieldset) {
 
+            $counter = 0;
+
             foreach ($fieldset as $fieldKey => $field) {
 
-                if ($this->fieldWidth === 'full' || $this->fieldWidth === '2-2' || $field['width'] === 'new') {
-                    $field['width'] = (isset($field['width'])) ? $field['width'] : '1-2';
-                }
-
-                if ($this->fieldWidth === '1-2' && $field['width'] !== 'full' && $field['width'] !== 'new') {
-                    $field['width'] = '2-2';
-                }
+                $index = array_keys($fieldset);
 
                 if ($field['width'] === 'new') {
-                    $field['width'] = '1-2';
+                    $fieldsets[$key][$index[$counter - 1]]['width'] .= ' break-after';
+                    $field['width'] = 'width50';
                 }
 
-                $this->fieldWidth = $field['width'];
+                $field['width'] = $field['width'] ?? 'width50';
 
                 $fieldsets[$key][$fieldKey] = $field;
 
-            }
+                $counter++;
 
-            $this->fieldWidth = 'full';
+            }
 
         }
 
         return $fieldsets;
+
     }
 
     protected function getFieldsConfig()
@@ -155,16 +146,18 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'balance' => [
                     'type' => 'text',
+                    'format' => 'currency',
                 ],
                 'sales' => [
                     'type' => 'text',
+                    'format' => 'currency',
                 ],
                 'employeesCount' => [
                     'type' => 'text',
                 ],
                 'manager' => [
                     'type' => 'text',
-                    'width' => 'full',
+                    'width' => 'width100',
                 ],
                 'singleRepresentative' => [
                     'type' => 'radio',
@@ -206,11 +199,11 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'businessPurpose' => [
                     'type' => 'textarea',
-                    'width' => 'full',
+                    'width' => 'width100',
                 ],
                 'insolvencyProceedings' => [
                     'type' => 'radio',
-                    'width' => 'full',
+                    'width' => 'width100',
                     'options' => [
                         [
                             'value' => 1,
@@ -230,7 +223,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'chamber' => [
                     'type' => 'select',
-                    'width' => 'full',
+                    'width' => 'width100',
                     'options' => [
                         1 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.chamber.1',
@@ -248,11 +241,11 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'companyShares' => [
                     'type' => 'textarea',
-                    'width' => 'full',
+                    'width' => 'width100',
                 ],
                 'principalBank' => [
                     'type' => 'text',
-                    'width' => 'full',
+                    'width' => 'width100',
                 ],
                 'bic' => [
                     'type' => 'text',
@@ -262,7 +255,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'contactPersonName' => [
                     'type' => 'text',
-                    'width' => 'full',
+                    'width' => 'width100',
                 ],
                 'contactPersonPhone' => [
                     'type' => 'text',
@@ -280,19 +273,19 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                     'type' => 'select',
                     'options' => [
                         1 => LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.employed',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.1',
                             'RkwFeecalculator'
                         ),
                         2 => LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.self_employed',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.2',
                             'RkwFeecalculator'
                         ),
                         3 => LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.in_education',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.3',
                             'RkwFeecalculator'
                         ),
                         4 => LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.unemployed',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.4',
                             'RkwFeecalculator'
                         ),
                     ],
@@ -301,19 +294,19 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                     'type' => 'select',
                     'options' => [
                         1 => LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.no',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.1',
                             'RkwFeecalculator'
                         ),
                         2 => LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.part_time',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.2',
                             'RkwFeecalculator'
                         ),
                         3 => LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.full_time',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.3',
                             'RkwFeecalculator'
                         ),
                         4 => LocalizationUtility::translate(
-                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.shareholder',
+                            'tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.4',
                             'RkwFeecalculator'
                         ),
                     ],
@@ -322,7 +315,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
             'consulting' => [
                 'consulting' => [
                     'type' => 'select',
-                    'width' => 'full',
+                    'width' => 'width100',
                     'options' => $this->consultingList,
                     'optionValueField' => 'uid',
                     'optionLabelField' => 'title'
@@ -330,6 +323,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 'consultingDays' => [
                     'type' => 'select',
                     'options' => (new PossibleDaysViewHelper())->render($this->supportProgramme),
+                    'raw' => true,
                 ],
                 'consultingDateFrom' => [
                     'type' => 'text',
@@ -340,11 +334,11 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'consultingContent' => [
                     'type' => 'textarea',
-                    'width' => 'full',
+                    'width' => 'width100',
                 ],
                 'consultantType' => [
                     'type' => 'select',
-                    'width' => 'full',
+                    'width' => 'width100',
                     'options' => [
                         1 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.consultantType.1',
@@ -362,7 +356,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'consultantCompany' => [
                     'type' => 'text',
-                    'width' => 'full',
+                    'width' => 'width100',
                 ],
                 'consultantName1' => [
                     'type' => 'text',
@@ -389,7 +383,8 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
             'misc' => [
                 'prematureStart' => [
                     'type' => 'radio',
-                    'width' => 'full',
+                    'width' => 'width100',
+                    'class' => 'text-primary',
                     'options' => [
                         [
                             'value' => 1,
@@ -421,7 +416,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'bafaSupport' => [
                     'type' => 'radio',
-                    'width' => 'full',
+                    'width' => 'width100',
                     'options' => [
                         [
                             'value' => 1,
@@ -442,7 +437,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'deMinimis' => [
                     'type' => 'radio',
-                    'width' => 'full',
+                    'width' => 'width100',
                     'options' => [
                         [
                             'value' => 1,
@@ -463,7 +458,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'existenzGruenderPass' => [
                     'type' => 'radio',
-                    'width' => 'full',
+                    'width' => 'width100',
                     'options' => [
                         [
                             'value' => 1,
@@ -484,7 +479,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'sendDocuments' => [
                     'type' => 'select',
-                    'width' => 'full',
+                    'width' => 'width100',
                     'options' => [
                         1 => LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.sendDocuments.1',
@@ -499,7 +494,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 ],
                 'file' => [
                     'type' => 'upload',
-                    'width' => 'full',
+                    'width' => 'width100',
                     'hints' => [
                         LocalizationUtility::translate(
                             'tx_rkwfeecalculator_domain_model_supportrequest.file.hints.0',

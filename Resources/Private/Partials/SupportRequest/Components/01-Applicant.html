@@ -1,11 +1,18 @@
 {namespace vh=RKW\RkwFeecalculator\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true">
 
-<fieldset>
-    <legend>
-        <f:translate key="tx_rkwfeecalculator_partials_supportrequest_requestForm.applicant" extensionName="RkwFeecalculator" />
-    </legend>
+    <f:for
+        each="{applicant}"
+        as="field"
+        key="fieldName"
+    >
 
-    <f:for each="{applicant}" as="field" key="fieldName">
-        <f:render partial="SupportRequest/Components/Fields/Field" arguments="{field: field, fieldName: fieldName, mandatoryFields: mandatoryFields}" />
+        <f:render
+            partial="SupportRequest/Components/Fields/Field"
+            arguments="{field: field, fieldName: fieldName, mandatoryFields: mandatoryFields}"
+        />
+
     </f:for>
-</fieldset>
+
+</html>

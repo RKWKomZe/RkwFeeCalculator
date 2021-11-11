@@ -82,7 +82,7 @@ class CalculationValidator extends AbstractValidator
 
             $field = LocalizationUtility::translate(
                 'tx_rkwfeecalculator_domain_model_calculator.' . GeneralUtility::camelCaseToLowerCaseUnderscored($property),
-                'rkw_feecalculator'
+                'RkwFeecalculator'
             );
 
             if ($getter === 'getConsultantFeePerDay') {
@@ -94,7 +94,7 @@ class CalculationValidator extends AbstractValidator
                     new Error(
                         LocalizationUtility::translate(
                             'validator.notempty.empty',
-                            'rkw_feecalculator',
+                            'RkwFeecalculator',
                             [$field]
                         ), 1449314603
                     )
@@ -110,7 +110,7 @@ class CalculationValidator extends AbstractValidator
                     new Error(
                         LocalizationUtility::translate(
                             'validator.number.notvalid',
-                            'rkw_feecalculator',
+                            'RkwFeecalculator',
                             [$field]
                         ), 1449314604
                     )

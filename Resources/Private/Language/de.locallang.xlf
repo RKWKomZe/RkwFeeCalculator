@@ -112,8 +112,12 @@
                 <source>The given subject was not a valid date.</source>
                 <target>Der angegebene Wert ist kein gültiges Datum.</target>
             </trans-unit>
+            <trans-unit id="validator.bic.notvalid">
+                <source>The given subject was no valid BIC/SWIFT code.</source>
+                <target>Der angegebene Wert ist keine gültige BIC.</target>
+            </trans-unit>
             <trans-unit id="validator.iban.notvalid">
-                <source>The given subject was not a iban.</source>
+                <source>The given subject was no valid iban.</source>
                 <target>Der angegebene Wert ist keine gültige IBAN.</target>
             </trans-unit>
 
@@ -353,7 +357,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.address">
                 <source>Address</source>
-                <target>Straße, Nr.</target>
+                <target>Strasse, Nr.</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.zip">
                 <source>Zip</source>
@@ -389,11 +393,11 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.sales">
                 <source>Sales</source>
-                <target>(geplanter) Umsatz in T€</target>
+                <target>(geplanter) Umsatz in TEUR</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.balance">
                 <source>Balance</source>
-                <target>Bilanzsumme T€</target>
+                <target>Bilanzsumme in TEUR</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount">
                 <source>Number Of Employees</source>
@@ -499,19 +503,19 @@
                 <source>Start Up Employment Status Before</source>
                 <target>Erwerbsstatus vor Gründung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.employed">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.1">
                 <source>Employed</source>
                 <target>angestellt</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.self_employed">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.2">
                 <source>Self-employed</source>
                 <target>selbstständig</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.in_education">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.3">
                 <source>In education</source>
                 <target>in Ausbildung/im Studium</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.unemployed">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationEmployment.4">
                 <source>Unemployed</source>
                 <target>arbeitssuchend</target>
             </trans-unit>
@@ -519,19 +523,19 @@
                 <source>Start Up Independent Work</source>
                 <target>Liegt bereits eine selbstständige Tätigkeit vor?</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.no">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.1">
                 <source>No</source>
                 <target>Nein</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.part_time">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.2">
                 <source>Part-time</source>
                 <target>Ja, im Nebenerwerb</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.full_time">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.3">
                 <source>Full-time</source>
                 <target>Ja, im Vollerwerb</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.shareholder">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.preFoundationSelfEmployment.4">
                 <source>Shareholder</source>
                 <target>Ja, Anteile an bestehenden Unternehmen</target>
             </trans-unit>
@@ -777,7 +781,7 @@
             </trans-unit>
             <trans-unit id="form.error.supportRequest.address">
                 <source>Address</source>
-                <target>Straße, Nr.</target>
+                <target>Strasse, Nr.</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.zip">
                 <source>Zip</source>
@@ -813,11 +817,11 @@
             </trans-unit>
             <trans-unit id="form.error.supportRequest.sales">
                 <source>Sales</source>
-                <target>(geplanter) Umsatz in T€</target>
+                <target>(geplanter) Umsatz in TEUR</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.balance">
                 <source>Balance</source>
-                <target>Bilanzsumme in T€</target>
+                <target>Bilanzsumme in TEUR</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.employeesCount">
                 <source>Number Of Employees</source>
@@ -963,6 +967,10 @@
                 <source>Already got an "Existenzgründerpass"?</source>
                 <target>Haben Sie bereits einen Existenzgründerpass?</target>
             </trans-unit>
+            <trans-unit id="form.error.supportRequest.file.mime">
+                <source>Please do upload only files of type .jpg, .gif or .pdf.</source>
+                <target>Bitte laden Sie nur Dateien im Format .jpg, .png oder .pdf hoch.</target>
+            </trans-unit>
             <trans-unit id="form.error.supportRequest.supportProgramme">
                 <source>Support Programme</source>
                 <target>Förderprogramm</target>
@@ -979,6 +987,10 @@
             <!-- EMAIL -->
 
             <!-- Templates/Email/ConfirmationUser.html -->
+            <trans-unit id="templates_email_confirmationUser.subject">
+                <source>Your support request to %s</source>
+                <target>Ihre Beratungsanfrage an das %s</target>
+            </trans-unit>
             <trans-unit id="templates_email_confirmationUser.headline">
                 <source>Hello %s,</source>
                 <target>Hallo %s,</target>
