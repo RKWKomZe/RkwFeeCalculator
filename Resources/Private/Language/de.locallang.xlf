@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-05-30T22:40:01Z" product-name="rkw_feecalculator">
-		<header/>
+	<file original="messages" target-language="de" date="2019-05-30T22:40:01Z" product-name="rkw_feecalculator" source-language="en" datatype="plaintext">
+		<header>
+      <phase-group>
+        <phase process-name="approval" date="2022-02-15" phase-name="approval-1" contact-email="berberich@rkw.de" tool-id="lokalize-22.03.70" contact-name="Melanie"/>
+      </phase-group>
+      <tool tool-id="lokalize-22.03.70" tool-name="Lokalize" tool-version="22.03.70"/>
+    </header>
 		<body>
 
             <!-- ===================================================== -->
@@ -79,13 +84,13 @@
                 <source>Funding</source>
                 <target>zu beantr. Fördermittel</target>
             </trans-unit>
-            <trans-unit id="partials.calculation.table.ownFundingNet">
+            <trans-unit id="partials.calculation.table.ownFundingNet" approved="no">
                 <source>Own funding (net)</source>
-                <target>Eigenmittel des Antragstellers (netto)</target>
+                <target phase-name="approval-1" state="final">Eigenmittel des Antragstellenden (netto)</target>
             </trans-unit>
-            <trans-unit id="partials.calculation.table.ownFundingGross">
+            <trans-unit id="partials.calculation.table.ownFundingGross" approved="no">
                 <source>Own funding (gross)</source>
-                <target>Eigenmittel des Antragstellers inkl. MwSt. 19,00 %</target>
+                <target phase-name="approval-1" state="final">Eigenmittel des Antragstellenden inkl. MwSt. 19,00 %</target>
             </trans-unit>
             <trans-unit id="partials.calculation.table.overviewConditions">
                 <source>Overview conditions and content</source>
@@ -157,9 +162,9 @@
 				<source>Fundable</source>
 				<target>Zuschussfähig</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee">
+			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.consultant_fee" approved="no">
 				<source>Consultant fee</source>
-				<target>Beraterhonorar</target>
+				<target phase-name="approval-1" state="final">Beratendenhonorar</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.rkw_fee">
                 <source>RKW fee</source>
@@ -181,13 +186,13 @@
                 <source>Funding</source>
                 <target>zu beantr. Fördermittel</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_net" approved="no">
                 <source>Own funding (net)</source>
-                <target>Eigenmittel des Antragstellers (netto)</target>
+                <target phase-name="approval-1" state="final">Eigenmittel des Antragstellenden (netto)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_gross">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.own_funding_gross" approved="no">
                 <source>Own funding (gross)</source>
-                <target>Eigenmittel des Antragstellers inkl. MwSt. 19,00 %</target>
+                <target phase-name="approval-1" state="final">Eigenmittel des Antragstellenden inkl. MwSt. 19,00 %</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculation.form.overview_condition_content">
                 <source>Overview conditions and content</source>
@@ -351,9 +356,9 @@
                 <source>Name</source>
                 <target>Name des Unternehmens</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.founderName">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.founderName" approved="yes">
                 <source>Name of the Founder</source>
-                <target>Name des Gründers/der Gründerin</target>
+                <target phase-name="approval-1" state="signed-off">Name des Gründers/der Gründerin</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.address">
                 <source>Address</source>
@@ -399,13 +404,13 @@
                 <source>Balance</source>
                 <target>Bilanzsumme in TEUR</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount" approved="no">
                 <source>Number Of Employees</source>
-                <target>Mitarbeiterzahl</target>
+                <target phase-name="approval-1" state="final">Mitarbeitendenzahl</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.manager">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.manager" approved="no">
                 <source>Manager Name</source>
-                <target>Geschäftsführer / Inhaber</target>
+                <target phase-name="approval-1" state="final">Geschäftsführende / Inhabende</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative">
                 <source>Single Representative</source>
@@ -479,9 +484,9 @@
                 <source>IBAN</source>
                 <target>IBAN</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonName">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonName" approved="no">
                 <source>Contact Person Name</source>
-                <target>Ansprechpartner für RKW</target>
+                <target phase-name="approval-1" state="final">Ansprechperson für RKW</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonPhone">
                 <source>Contact Person Phone</source>
@@ -559,29 +564,29 @@
                 <source>Consultant Type</source>
                 <target>Beraterauswahl</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.1" approved="no">
                 <source>I need a RKW recommendation</source>
-                <target>Ich wünsche eine Berater-Empfehlung aus dem RKW-Beraterpool.</target>
+                <target phase-name="approval-1" state="final">Ich wünsche eine Beratenden-Empfehlung aus dem RKW-Beratendenpool.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.2">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.2" approved="no">
                 <source>I've decided for a special onsultant</source>
-                <target>Ich habe mich bereits für einen akkreditierten Berater entschieden.</target>
+                <target phase-name="approval-1" state="final">Ich habe mich bereits für einen akkreditierten Berater / eine Beraterin entschieden.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.3">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.3" approved="no">
                 <source>I've NOT decided for a special consultant</source>
-                <target>Ich habe mich bereits für einen NOCH NICHT akkreditierten Berater entschieden.</target>
+                <target phase-name="approval-1" state="final">Ich habe mich bereits für einen NOCH NICHT akkreditierten Berater / eine Beraterin entschieden.</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantCompany">
                 <source>Consultant Company</source>
                 <target>Beratungsfirma</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName1">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName1" approved="yes">
                 <source>Consultant Name1</source>
-                <target>Name, Vorname (Berater)</target>
+                <target phase-name="approval-1" state="signed-off">Name, Vorname (Berater / Beraterin)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName2">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName2" approved="no">
                 <source>Consultant Name2</source>
-                <target>Name, Vorname (2. Berater)</target>
+                <target phase-name="approval-1" state="final">Name, Vorname (2. Berater/ Beraterin)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant1AccreditationNumber">
                 <source>Consultant1 Accreditation Number</source>
@@ -599,9 +604,9 @@
                 <source>Consultant Phone</source>
                 <target>Telefon (Berater)</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantEmail">
+            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantEmail" approved="no">
                 <source>Consultant Email</source>
-                <target>E-Mail-Adresse (Berater)</target>
+                <target phase-name="approval-1" state="final">E-Mail-Adresse (Berater/Beraterin)</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart">
                 <source>Early Start Desired</source>
@@ -744,9 +749,9 @@
                 <source>Consulting</source>
                 <target>Beratung und Berater</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.consultant">
+            <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.consultant" approved="no">
                 <source>Consultant</source>
-                <target>Berater</target>
+                <target phase-name="approval-1" state="final">Berater / Beraterin</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_partials_supportrequest_requestForm.additional">
                 <source>Additional information</source>
@@ -823,13 +828,13 @@
                 <source>Balance</source>
                 <target>Bilanzsumme in TEUR</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.employeesCount">
+            <trans-unit id="form.error.supportRequest.employeesCount" approved="no">
                 <source>Number Of Employees</source>
-                <target>Mitarbeiteranzahl</target>
+                <target phase-name="approval-1" state="final">Mitarbeitendenanzahl</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.manager">
+            <trans-unit id="form.error.supportRequest.manager" approved="no">
                 <source>Manager Name</source>
-                <target>Geschäftsführer / Inhaber</target>
+                <target phase-name="approval-1" state="final">Geschäftsführende / Inhabende</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.singleRepresentative">
                 <source>Single Representative</source>
@@ -867,21 +872,21 @@
                 <source>IBAN</source>
                 <target>IBAN</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.contactPersonName">
+            <trans-unit id="form.error.supportRequest.contactPersonName" approved="no">
                 <source>Contact Person Name</source>
-                <target>Ansprechpartner</target>
+                <target phase-name="approval-1" state="final">Ansprechperson</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.contactPersonPhone">
+            <trans-unit id="form.error.supportRequest.contactPersonPhone" approved="no">
                 <source>Contact Person Phone</source>
-                <target>Ansprechpartner (Telefon)</target>
+                <target phase-name="approval-1" state="final">Ansprechperson (Telefon)</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.contactPersonFax">
+            <trans-unit id="form.error.supportRequest.contactPersonFax" approved="no">
                 <source>Contact Person Fax</source>
-                <target>Ansprechpartner (Fax)</target>
+                <target phase-name="approval-1" state="final">Ansprechperson (Fax)</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.contactPersonMobile">
+            <trans-unit id="form.error.supportRequest.contactPersonMobile" approved="no">
                 <source>Contact Person Mobile</source>
-                <target>Ansprechpartner (Mobil)</target>
+                <target phase-name="approval-1" state="final">Ansprechperson (Mobil)</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.contactPersonEmail">
                 <source>Contact Person Email</source>
@@ -919,13 +924,13 @@
                 <source>Consultant Company</source>
                 <target>Name der Beratungsfirma</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.consultantName1">
+            <trans-unit id="form.error.supportRequest.consultantName1" approved="no">
                 <source>Consultant Name1</source>
-                <target>Name, Vorname (Berater)</target>
+                <target phase-name="approval-1" state="final">Name, Vorname (Berater/Beraterin)</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.consultantName2">
+            <trans-unit id="form.error.supportRequest.consultantName2" approved="no">
                 <source>Consultant Name2</source>
-                <target>Name, Vorname (2. Berater)</target>
+                <target phase-name="approval-1" state="final">Name, Vorname (2. Berater/Beraterin)</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.consultant1AccreditationNumber">
                 <source>Consultant1 Accreditation Number</source>
@@ -939,13 +944,13 @@
                 <source>Consultant Fee</source>
                 <target>Honorar je Tagwerk in Euro (netto)</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.consultantPhone">
+            <trans-unit id="form.error.supportRequest.consultantPhone" approved="no">
                 <source>Consultant Phone</source>
-                <target>Telefon (Berater)</target>
+                <target phase-name="approval-1" state="final">Telefon (Berater/Beraterin)</target>
             </trans-unit>
-            <trans-unit id="form.error.supportRequest.consultantEmail">
+            <trans-unit id="form.error.supportRequest.consultantEmail" approved="no">
                 <source>Consultant Email</source>
-                <target>E-Mail-Adresse (Berater)</target>
+                <target phase-name="approval-1" state="final">E-Mail-Adresse (Berater/Beraterin)</target>
             </trans-unit>
             <trans-unit id="form.error.supportRequest.prematureStart">
                 <source>Early Start Desired</source>
