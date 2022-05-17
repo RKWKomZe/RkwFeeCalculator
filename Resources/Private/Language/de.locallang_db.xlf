@@ -63,19 +63,23 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
 				<source>Consultant Fee Per Day Limit</source>
-				<target>maximaler Betrag für Beraterhonorar je Tagwerk</target>
+				<target>maximaler Betrag für Beraterhonorar je Tagwerk (entfällt)</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_subvention_limit">
 				<source>Consultant Subvention Limit</source>
-				<target>maximaler Zuschuss zum Beraterhonorar</target>
+				<target>maximaler Zuschuss zum Beraterhonorar (entfällt)</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day_as_limit">
 				<source>Rkw Fee Per Day As Limit</source>
-				<target>RKW Honorar je Tagwerk als Maximalzuschuss berücksichtigen</target>
+				<target>RKW Honorar je Tagwerk als Maximalzuschuss berücksichtigen (entfällt)</target>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.standard_unit_costs">
+                <source>Standard unit costs</source>
+                <target>Standardeinheitskostensatz</target>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
-                <source>Funding factor</source>
-                <target>Faktor für zu beantragende Fördermittel</target>
+                <source>Grant rate</source>
+                <target>Zuschussquote</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consulting">
 				<source>Consulting</source>

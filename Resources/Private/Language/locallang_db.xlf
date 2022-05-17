@@ -163,8 +163,11 @@
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day_as_limit">
 				<source>Rkw Fee Per Day As Limit</source>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.standard_unit_costs">
+                <source>Standard unit costs</source>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
-                <source>Funding factor</source>
+                <source>Grant rate</source>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.request_fields">
                 <source>Fields to be present in corresponding support request</source>

@@ -92,9 +92,11 @@ class CalculationViewHelper extends AbstractViewHelper
 
         $result['rkwFeeSubvention'] = $result['rkwFee'];
         $result['subventionSubtotal'] = $result['consultantFeeSubvention'] + $result['rkwFeeSubvention'];
-        $result['subventionTotal'] = $result['subventionSubtotal'];
 
-        $result['funding'] = $result['subventionTotal'] * $selectedProgram->getFundingFactor();
+        $result['subventionTotal'] = ($days * $selectedProgram->getStandardUnitCosts() > $result['subtotal']) ? $result['subtotal'] : $days * $selectedProgram->getStandardUnitCosts();
+
+        $result['funding'] = $days * $selectedProgram->getStandardUnitCosts() * $selectedProgram->getFundingFactor();
+
         $result['ownFundingNet'] = $result['subtotal'] - $result['funding'];
         $result['ownFundingGross'] = $result['ownFundingNet'] + $result['tax'];
         $result['fundingPercentage'] = ($result['funding'] / ($result['subtotal'] * 0.01));
