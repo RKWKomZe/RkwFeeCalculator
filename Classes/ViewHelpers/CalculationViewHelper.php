@@ -105,5 +105,4 @@ class CalculationViewHelper extends AbstractViewHelper
 
     }
 
-
 }
