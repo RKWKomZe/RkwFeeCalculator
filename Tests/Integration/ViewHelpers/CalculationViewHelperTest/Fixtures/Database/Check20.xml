@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+
+    <tx_rkwfeecalculator_domain_model_calculator>
+        <uid>1</uid>
+        <pid>0</pid>
+        <name>Calculator</name>
+        <assigned_programs>1</assigned_programs>
+    </tx_rkwfeecalculator_domain_model_calculator>
+
+    <tx_rkwfeecalculator_domain_model_program>
+        <uid>1</uid>
+        <pid>0</pid>
+        <name>Program</name>
+        <rkw_fee_per_day>120</rkw_fee_per_day>
+        <funding_factor>0.5</funding_factor>
+        <standard_unit_costs>950</standard_unit_costs>
+    </tx_rkwfeecalculator_domain_model_program>
+
+</dataset>
