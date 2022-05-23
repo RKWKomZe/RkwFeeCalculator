@@ -30,7 +30,7 @@
 			</trans-unit>
             <trans-unit id="tx_rkw_feecalculator_domain_model_calculation.consultant_fee_per_day">
                 <source>Consultant fee per day</source>
-                <target>Beraterhonorar pro Tag</target>
+                <target>Beratendenhonorar pro Tag</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
 				<source>RKW FeeCalculator: Calculator</source>
@@ -68,19 +68,23 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
 				<source>Consultant Fee Per Day Limit</source>
-				<target>maximaler Betrag für Beraterhonorar je Tagwerk</target>
+				<target>maximaler Betrag für Beratendenhonorar je Tagwerk (entfällt)</target>
 			</trans-unit>
             <trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_program.consultant_subvention_limit">
 				<source>Consultant Subvention Limit</source>
-				<target phase-name="approval-1" state="final">maximaler Zuschuss zum Beratendenhonorar</target>
+				<target phase-name="approval-1" state="final">maximaler Zuschuss zum Beratendenhonorar (entfällt)</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day_as_limit">
 				<source>Rkw Fee Per Day As Limit</source>
-				<target>RKW Honorar je Tagwerk als Maximalzuschuss berücksichtigen</target>
+				<target>RKW Honorar je Tagwerk als Maximalzuschuss berücksichtigen (entfällt)</target>
 			</trans-unit>
+            <trans-unit id="tx_rkwfeecalculator_domain_model_program.standard_unit_costs">
+                <source>Standard unit costs</source>
+                <target>Standardeinheitskostensatz</target>
+            </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
-                <source>Funding factor</source>
-                <target>Faktor für zu beantragende Fördermittel</target>
+                <source>Grant rate</source>
+                <target>Zuschussquote</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consulting">
 				<source>Consulting</source>

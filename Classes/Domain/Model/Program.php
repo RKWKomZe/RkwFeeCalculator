@@ -89,6 +89,14 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $fundingFactor = 1.00;
 
     /**
+     * standardUnitCosts
+     *
+     * @var double
+     * @validate Float
+     */
+    protected $standardUnitCosts = 0.00;
+
+    /**
      * consulting
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Consulting>
@@ -274,6 +282,27 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setFundingFactor($fundingFactor)
     {
         $this->fundingFactor = $fundingFactor;
+    }
+
+    /**
+     * Returns the standardUnitCosts
+     *
+     * @return float $standardUnitCosts
+     */
+    public function getStandardUnitCosts()
+    {
+        return $this->standardUnitCosts;
+    }
+
+    /**
+     * Sets the standardUnitCosts
+     *
+     * @param float $standardUnitCosts
+     * @return void
+     */
+    public function setStandardUnitCosts($standardUnitCosts)
+    {
+        $this->standardUnitCosts = $standardUnitCosts;
     }
 
     /**

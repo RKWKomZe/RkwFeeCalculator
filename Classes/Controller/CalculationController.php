@@ -2,22 +2,29 @@
 
 namespace RKW\RkwFeecalculator\Controller;
 
-use RKW\RkwFeecalculator\Domain\Model\Calculation;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW FeeCalculator" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2019 Christian Dilger <c.dilger@addorange.de>
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * CalculationController
+ *
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright Rkw Kompetenzzentrum
+ * @package RKW_RkwFeecalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
@@ -32,11 +39,12 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action show
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation
+     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation|null $calculation
      * @return void
      */
-    public function showAction(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
-    {
+    public function showAction(
+        \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null
+    ): void {
 
         if (!$calculation) {
             $calculation = GeneralUtility::makeInstance(\RKW\RkwFeecalculator\Domain\Model\Calculation::class);
@@ -54,12 +62,14 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * action store
      *
      * @validate $calculation \RKW\RkwFeecalculator\Validation\CalculationValidator
-     * @param Calculation|null $calculation
+     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation|null $calculation
+     * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      */
-    public function storeAction(\RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null)
-    {
+    public function storeAction(
+        \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null
+    ): void {
         if ($calculation === null) {
             $this->redirect('show');
         }
