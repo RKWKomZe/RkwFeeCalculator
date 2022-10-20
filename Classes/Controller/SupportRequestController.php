@@ -50,7 +50,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
     /**
      * @var \RKW\RkwFeecalculator\Service\LayoutService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $layoutService;
 
@@ -58,7 +58,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * supportProgrammeRepository
      *
      * @var \RKW\RkwFeecalculator\Domain\Repository\ProgramRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $supportProgrammeRepository = null;
 
@@ -66,7 +66,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * supportProgramme
      *
      * @var \RKW\RkwFeecalculator\Domain\Model\Program
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $supportProgramme = null;
 
@@ -74,7 +74,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * supportRequestRepository
      *
      * @var \RKW\RkwFeecalculator\Domain\Repository\SupportRequestRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $supportRequestRepository = null;
 
@@ -82,7 +82,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * FrontendUserRepository
      *
      * @var \RKW\RkwFeecalculator\Domain\Repository\FrontendUserRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $frontendUserRepository;
 
@@ -90,7 +90,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * BackendUserRepository
      *
      * @var \RKW\RkwFeecalculator\Domain\Repository\BackendUserRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $backendUserRepository;
 
@@ -98,7 +98,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * Persistence Manager
      *
      * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $persistenceManager;
 
@@ -171,16 +171,14 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * action create
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
-     * @validate $supportRequest \RKW\RkwFeecalculator\Validation\SupportRequestValidator
-     *
+     * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest     *
+     * @return void
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\SupportRequestValidator", param="supportRequest")
      * @throws InvalidSlotException
      * @throws InvalidSlotReturnException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     *
-     * @return void
      */
     public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
     {
@@ -242,7 +240,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         // currently we do not use real privacy-entries
         if ($this->settings['includeRkwRegistrationPrivacy']) {
             // add privacy info
-            \RKW\RkwRegistration\Tools\Privacy::addPrivacyData($this->request, $frontendUser, $supportRequest, 'new support request');
+            \RKW\RkwRegistration\DataProtection\PrivacyHandler::addPrivacyData($this->request, $frontendUser, $supportRequest, 'new support request');
         }
         */
 

@@ -38,7 +38,7 @@ class PdfService extends DocumentService
 
     /**
      * @var \RKW\RkwFeecalculator\Service\LayoutService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $layoutService;
 

@@ -17,7 +17,7 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Class DynamicPropertyViewHelper
@@ -40,7 +40,7 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
      * @param                $format string Format
      *
      * @return mixed|null
-     * @todo: This ViewHelper might not be necessary in TYPO3 8 anymore.
+     * @todo This ViewHelper might not be necessary in TYPO3 8 anymore.
      *
      */
     public function render(SupportRequest $obj, string $prop, $type = 'text', $raw = false, $format = null)

@@ -33,7 +33,7 @@ class Calculator extends AbstractEntity
      * assignedPrograms
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Program>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $assignedPrograms;
 

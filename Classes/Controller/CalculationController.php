@@ -32,7 +32,7 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * calculatorRepository
      *
      * @var \RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $calculatorRepository;
 
@@ -61,9 +61,9 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action store
      *
-     * @validate $calculation \RKW\RkwFeecalculator\Validation\CalculationValidator
      * @param \RKW\RkwFeecalculator\Domain\Model\Calculation|null $calculation
      * @return void
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\CalculationValidator", param="calculation")
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      */

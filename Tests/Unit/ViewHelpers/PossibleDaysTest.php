@@ -23,7 +23,7 @@ class PossibleDaysTest extends TestCase
      */
     protected $program;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->subject = new PossibleDaysViewHelper();

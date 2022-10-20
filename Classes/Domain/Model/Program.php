@@ -22,7 +22,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name
      *
      * @var string
-     * @validate StringLength(minimum=3, maximum=100)
+     * @TYPO3\CMS\Extbase\Annotation\Validate("StringLength", options={"minimum": 3, "maximum": 100})
      */
     protected $name = '';
 
@@ -30,7 +30,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * possibleDaysMin
      *
      * @var int
-     * @validate Integer
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
     protected $possibleDaysMin = 0;
 
@@ -38,7 +38,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * possibleDaysMax
      *
      * @var int
-     * @validate Integer
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
     protected $possibleDaysMax = 0;
 
@@ -46,7 +46,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * content
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $content = '';
 
@@ -54,7 +54,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * rkwFeePerDay
      *
      * @var double
-     * @validate Float
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Float")
      */
     protected $rkwFeePerDay = 0.00;
 
@@ -62,7 +62,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantFeePerDayLimit
      *
      * @var double
-     * @validate Float
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Float")
      */
     protected $consultantFeePerDayLimit = 0.00;
 
@@ -70,7 +70,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantSubventionLimit
      *
      * @var double
-     * @validate Float
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Float")
      */
     protected $consultantSubventionLimit = 0.00;
 
@@ -84,7 +84,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * fundingFactor
      *
      * @var double
-     * @validate Float
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Float")
      */
     protected $fundingFactor = 1.00;
 
@@ -92,7 +92,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * standardUnitCosts
      *
      * @var double
-     * @validate Float
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Float")
      */
     protected $standardUnitCosts = 0.00;
 

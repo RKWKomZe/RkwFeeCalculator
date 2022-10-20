@@ -34,7 +34,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
      * $companytypeRepository
      *
      * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $companytypeRepository = null;
 

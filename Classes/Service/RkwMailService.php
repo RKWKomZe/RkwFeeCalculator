@@ -33,19 +33,19 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * @var \RKW\RkwFeecalculator\Service\PdfService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $pdfService;
 
     /**
      * @var \RKW\RkwFeecalculator\Service\CsvService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $csvService;
 
     /**
      * @var \RKW\RkwFeecalculator\Service\LayoutService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $layoutService;
 

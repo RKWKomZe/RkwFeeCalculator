@@ -30,7 +30,7 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * days
      *
      * @var integer
-     * @validate Integer
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
     protected $days = 0;
 
@@ -38,7 +38,7 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantFeePerDay
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $consultantFeePerDay = '0';
 

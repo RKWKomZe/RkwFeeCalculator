@@ -28,7 +28,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $name = '';
 
@@ -36,7 +37,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name of the founder
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $founderName = '';
 
@@ -44,7 +46,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * address
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $address = '';
 
@@ -52,7 +55,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * zip
      *
      * @var int
-     * @validateOnObject NotEmpty, Integer
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
     protected $zip = 0;
 
@@ -60,7 +64,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * city
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $city = '';
 
@@ -68,7 +73,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * foundationDate
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator")
      */
     protected $foundationDate = 0;
 
@@ -76,7 +82,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * intendedFoundationDate
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator")
      */
     protected $intendedFoundationDate = 0;
 
@@ -84,7 +91,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * citizenship
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $citizenship = '';
 
@@ -92,7 +100,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * birthdate
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator")
      */
     protected $birthdate = 0;
 
@@ -100,7 +109,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * foundationLocation
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $foundationLocation = '';
 
@@ -108,7 +118,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * sales
      *
      * @var int
-     * @validateOnObject NotEmpty, Integer
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
     protected $sales = '';
 
@@ -116,7 +127,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * balance
      *
      * @var int
-     * @validateOnObject NotEmpty, Integer
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
     protected $balance = '';
 
@@ -124,7 +136,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * employeesCount
      *
      * @var int
-     * @validateOnObject NotEmpty, Integer
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
     protected $employeesCount = 0;
 
@@ -132,7 +145,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * manager
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $manager = '';
 
@@ -140,7 +154,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * singleRepresentative
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $singleRepresentative;
 
@@ -148,7 +162,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * preTaxDeduction
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $preTaxDeduction;
 
@@ -156,7 +170,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * businessPurpose
      *
      * @var string
-     * @validateOnObject NotEmpty, Text
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $businessPurpose = '';
 
@@ -164,7 +179,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * insolvencyProceedings
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
     protected $insolvencyProceedings;
 
@@ -172,7 +188,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * chamber
      *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
     protected $chamber = 0;
 
@@ -180,7 +197,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * companyShares
      *
      * @var string
-     * @validateOnObject NotEmpty, Text
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $companyShares = '';
 
@@ -188,7 +206,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * principalBank
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $principalBank = '';
 
@@ -196,7 +215,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * bic
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwBasics\Validation\Validator\SwiftBicValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwBasics\Validation\Validator\SwiftBicValidator")
      */
     protected $bic = '';
 
@@ -204,7 +224,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * iban
      *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwBasics\Validation\Validator\IbanValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwBasics\Validation\Validator\IbanValidator")
      */
     protected $iban = '';
 
@@ -212,7 +233,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contactPersonName
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $contactPersonName = '';
 
@@ -220,7 +242,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contactPersonPhone
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $contactPersonPhone = '';
 
@@ -228,7 +250,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contactPersonFax
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $contactPersonFax = '';
 
@@ -236,7 +258,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contactPersonMobile
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $contactPersonMobile = '';
 
@@ -244,7 +266,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contactPersonEmail
      *
      * @var string
-     * @validateOnObject NotEmpty, EmailAddress
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("EmailAddress")
      */
     protected $contactPersonEmail = '';
 
@@ -252,7 +275,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * preFoundationEmployment
      *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
     protected $preFoundationEmployment = 0;
 
@@ -260,7 +284,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * preFoundationSelfEmployment
      *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
     protected $preFoundationSelfEmployment = 0;
 
@@ -268,7 +293,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingDays
      *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
     protected $consultingDays = 0;
 
@@ -276,7 +302,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingDateFrom
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $consultingDateFrom = '';
 
@@ -284,7 +311,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingDateTo
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $consultingDateTo = '';
 
@@ -292,7 +320,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultingContent
      *
      * @var string
-     * @validateOnObject NotEmpty, Text
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $consultingContent = '';
 
@@ -300,7 +329,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantType
      *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     *@TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
     protected $consultantType = 0;
 
@@ -308,7 +338,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantCompany
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $consultantCompany = '';
 
@@ -316,7 +347,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantName1
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $consultantName1 = '';
 
@@ -324,7 +356,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantName2
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $consultantName2 = '';
 
@@ -332,7 +365,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultant1AccreditationNumber
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $consultant1AccreditationNumber = '';
 
@@ -340,7 +373,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultant2AccreditationNumber
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $consultant2AccreditationNumber = '';
 
@@ -348,7 +381,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantFee
      *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
     protected $consultantFee = '';
 
@@ -356,7 +390,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantPhone
      *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $consultantPhone = '';
 
@@ -364,7 +398,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consultantEmail
      *
      * @var string
-     * @validateOnObject NotEmpty, EmailAddress
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("EmailAddress")
      */
     protected $consultantEmail = '';
 
@@ -372,7 +407,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * prematureStart
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $prematureStart;
 
@@ -395,7 +430,8 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * sendDocuments
      *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
     protected $sendDocuments = 0;
 
@@ -403,7 +439,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * bafaSupport
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $bafaSupport;
 
@@ -411,7 +447,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * deMinimis
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $deMinimis;
 
@@ -419,7 +455,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * existenzGruenderPass
      *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $existenzGruenderPass;
 
@@ -427,7 +463,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * privacy
      *
      * @var int
-     * @validateOnObject Boolean
+     * @TYPO3\CMS\Extbase\Annotation\Validate("int")
      */
     protected $privacy = 0;
 
@@ -442,7 +478,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * consulting
      *
      * @var \RKW\RkwFeecalculator\Domain\Model\Consulting
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $consulting = 0;
 
@@ -450,7 +486,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * companytype
      *
      * @var \RKW\RkwBasics\Domain\Model\CompanyType
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $companytype = null;
 

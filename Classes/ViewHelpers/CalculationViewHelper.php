@@ -16,7 +16,7 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  */
 
 use RKW\RkwFeecalculator\Domain\Model\Calculation;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Class CalculationViewHelper
