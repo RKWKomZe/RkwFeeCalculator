@@ -20,7 +20,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  * Class IsMandatoryFieldViewHelper
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -28,7 +28,7 @@ class IsMandatoryFieldViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\Abstr
 {
 
     /**
-     * return TRUE, if the given fieldName is CONTAINED IN given mandatoryFields
+     * return true, if the given fieldName is CONTAINED IN given mandatoryFields
      *
      * @param string $fieldName
      * @param string $mandatoryFields

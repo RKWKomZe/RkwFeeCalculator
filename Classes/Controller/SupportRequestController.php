@@ -27,7 +27,7 @@ use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -240,7 +240,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
         // currently we do not use real privacy-entries
         if ($this->settings['includeRkwRegistrationPrivacy']) {
             // add privacy info
-            \RKW\RkwRegistration\DataProtection\PrivacyHandler::addPrivacyData($this->request, $frontendUser, $supportRequest, 'new support request');
+            \RKW\RkwRegistration\DataProtection\ConsentHandler::add($this->request, $frontendUser, $supportRequest, 'new support request');
         }
         */
 
