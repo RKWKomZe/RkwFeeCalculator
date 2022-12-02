@@ -3,7 +3,7 @@
 namespace RKW\RkwFeecalculator\Service;
 
 use Spipu\Html2Pdf\Html2Pdf;
-use RKW\RkwBasics\Utility\GeneralUtility;
+use Madj2k\CoreExtended\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use Spipu\Html2Pdf\Exception\Html2PdfException;
@@ -53,7 +53,7 @@ class PdfService extends DocumentService
 
         try {
 
-            $settingsFramework = GeneralUtility::getTyposcriptConfiguration($this->extensionName, ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+            $settingsFramework = GeneralUtility::getTypoScriptConfiguration($this->extensionName, ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 
             if ($settingsFramework) {
 

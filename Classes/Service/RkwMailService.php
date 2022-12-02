@@ -239,7 +239,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
     protected function getSettings($which = ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS)
     {
 
-        return \RKW\RkwBasics\Utility\GeneralUtility::getTyposcriptConfiguration('RkwFeecalculator', $which);
+        return \Madj2k\CoreExtended\Utility\GeneralUtility::getTypoScriptConfiguration('RkwFeecalculator', $which);
         //===
     }
 }
