@@ -1,8 +1,5 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Service;
-
-use TYPO3\CMS\Core\Resource\ResourceFactory;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -17,11 +14,14 @@ use TYPO3\CMS\Core\Resource\ResourceFactory;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Resource\ResourceFactory;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * DocumentService
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -31,28 +31,40 @@ class DocumentService implements \TYPO3\CMS\Core\SingletonInterface
     /**
      * @var string
      */
-    protected $defaultUploadFolder = '1:/user_upload/tx_rkwfeecalculator';
+    protected string $defaultUploadFolder = '1:/user_upload/tx_rkwfeecalculator';
+
 
     /**
-     * @var \TYPO3\CMS\Core\Resource\ResourceFactory
+     * @var \TYPO3\CMS\Core\Resource\ResourceFactory|null
      */
-    protected $resourceFactory;
+    protected ?ResourceFactory $resourceFactory = null;
+
 
     /**
      * @var string
      */
-    protected $outputPath;
+    protected string $outputPath = '';
 
+
+    /**
+     * @return void
+     */
     public function __construct()
     {
         /** @var \TYPO3\CMS\Core\Resource\ResourceFactory $resourceFactory */
-        $this->resourceFactory = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ResourceFactory::class);
+        $this->resourceFactory = GeneralUtility::makeInstance(ResourceFactory::class);
     }
 
-    protected function getOutputPath(string $fileName)
+
+    /**
+     * @param string $fileName
+     * @return string
+     *  @todo this is not the right way. To get the main storage folder, please use the storages used in BE
+     */
+    protected function getOutputPath(string $fileName): string
     {
         $uploadFolder = $this->resourceFactory->retrieveFileOrFolderObject($this->defaultUploadFolder);
-        $fileAdminPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName('fileadmin');
+        $fileAdminPath = GeneralUtility::getFileAbsFileName('fileadmin');
 
         return $fileAdminPath . $uploadFolder->getReadablePath() . '/' . $fileName;
     }

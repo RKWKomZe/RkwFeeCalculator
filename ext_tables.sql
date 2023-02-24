@@ -101,7 +101,6 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_consulting (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	title varchar(255) DEFAULT '' NOT NULL,
-
 	support_programme int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,

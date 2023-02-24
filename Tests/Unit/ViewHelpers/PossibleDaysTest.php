@@ -1,35 +1,60 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Tests\Unit\ViewHelpers;
+
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use RKW\RkwFeecalculator\Tests\Unit\TestCase;
 use RKW\RkwFeecalculator\Domain\Model\Program;
 use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 
 /**
- * Test case.
+ * Class PossibleDaysTest
  *
  * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeecalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @todo there are no scenarios defined. See coding guidelines!
  */
 class PossibleDaysTest extends TestCase
 {
-    /**
-     * @var PossibleDaysViewHelper
-     */
-    protected $subject;
 
     /**
-     * @var Program
+     * @var \RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper|null
      */
-    protected $program;
+    protected ?PossibleDaysViewHelper $subject = null;
 
-    protected function setUp()
+
+    /**
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program|null
+     */
+    protected ?Program $program = null;
+
+
+    /**
+     * @return void
+     */
+    protected function setUp(): void
     {
         parent::setUp();
         $this->subject = new PossibleDaysViewHelper();
         $this->program = new Program();
 
     }
+
+    #==========================================================================
+
 
     /**
      * @test
@@ -50,10 +75,17 @@ class PossibleDaysTest extends TestCase
 
         $result = $this->subject->render($this->program);
 
-        self::assertEquals(
-            $expectedPossibleDays,
-            $result
-        );
+        self::assertEquals($expectedPossibleDays, $result);
     }
 
+
+    #==========================================================================
+
+    /**
+     * @return void
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+    }
 }

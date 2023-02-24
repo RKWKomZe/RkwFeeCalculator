@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwFeecalculator\ViewHelpers;
 
 /*
@@ -15,13 +14,13 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Class ZeroPlaceholderViewHelper
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -29,18 +28,30 @@ class ZeroPlaceholderViewHelper extends AbstractViewHelper
 {
 
     /**
-     * Show zero value as empty
+     * Initialize arguments.
      *
+     * @return void
+     * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
+     */
+    public function initializeArguments(): void
+    {
+        parent::initializeArguments();
+        $this->registerArgument('value ', 'string', 'The value to format.', false,  '0');
+    }
+
+
+    /**
+     * Show zero value as empty
      * due to https://fluidtypo3.org/viewhelpers/fluid/master/Form/TextfieldViewHelper.html commit 967b86239e2459ce60938dbe42f0a66129942e1d
      *
-     * @param float $value
      * @return string
      */
-    public function render($value = '0')
+    public function render(): string
     {
-        $value = ($value == '0') ? '' : $value;
+        /** @var string $value */
+        $value = $this->arguments['value'];
 
-        return $value;
+        return ($value == '0') ? '' : $value;
 
     }
 

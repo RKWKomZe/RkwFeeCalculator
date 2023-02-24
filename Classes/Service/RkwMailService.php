@@ -1,10 +1,5 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Service;
-
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use RKW\RkwMailer\Utility\FrontendLocalizationUtility;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,12 +14,19 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
+use RKW\RkwMailer\Service\MailService;
+use RKW\RkwRegistration\Domain\Model\FrontendUser;
+use Madj2k\CoreExtended\Utility\GeneralUtility;
+use RKW\RkwMailer\Utility\FrontendLocalizationUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+
 /**
  * RkwMailService
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -33,37 +35,39 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
     /**
      * @var \RKW\RkwFeecalculator\Service\PdfService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $pdfService;
+    protected PdfService $pdfService;
+
 
     /**
      * @var \RKW\RkwFeecalculator\Service\CsvService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $csvService;
+    protected CsvService $csvService;
+
 
     /**
      * @var \RKW\RkwFeecalculator\Service\LayoutService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $layoutService;
+    protected LayoutService $layoutService;
+
 
     /**
      * Sends an E-Mail to a Frontend-User
      *
      * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
-     *
-     * @throws \RKW\RkwMailer\Service\MailException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
+     * @return void
+     * @throws \RKW\RkwMailer\Exception
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3Fluid\Fluid\View\Exception\InvalidTemplateResourceException
-     * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException
+     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
-    public function userMail(\RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest)
+    public function userMail(FrontendUser $frontendUser, SupportRequest $supportRequest): void
     {
         // get settings
         $settings = $this->getSettings(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
@@ -74,7 +78,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
 
             /** @var \RKW\RkwMailer\Service\MailService $mailService */
-            $mailService = GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
+            $mailService = GeneralUtility::makeInstance(MailService::class);
 
             // send new user an email with token
             $mailService->setTo($frontendUser, [
@@ -94,7 +98,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     'templates_email_confirmationUser.subject',
                     'RkwFeecalculator',
                     [$settings['settings']['websiteName']],
-                    ($frontendUser->getTxRkwregistrationLanguageKey()) ? $frontendUser->getTxRkwregistrationLanguageKey() : 'de'
+                    ($frontendUser->getTxRkwregistrationLanguageKey()) ?: 'de'
                 )
             );
 
@@ -106,7 +110,6 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $mailService->send();
         }
-
     }
 
 
@@ -116,17 +119,22 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * @param \RKW\RkwFeecalculator\Domain\Model\BackendUser|array $backendUser
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      * @param array $attachmentTypes
-     *
-     * @throws \RKW\RkwMailer\Service\MailException
+     * @return void
+     * @throws \RKW\RkwMailer\Exception
      * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3Fluid\Fluid\View\Exception\InvalidTemplateResourceException
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException
+     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function adminMail($backendUser, \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest, $attachmentTypes)
-    {
+    public function adminMail(
+        $backendUser,
+        \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest,
+        array $attachmentTypes
+    ): void {
 
         // get settings
         $settings = $this->getSettings(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
@@ -144,7 +152,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
 
             /** @var \RKW\RkwMailer\Service\MailService $mailService */
-            $mailService = GeneralUtility::makeInstance('RKW\\RkwMailer\\Service\\MailService');
+            $mailService = GeneralUtility::makeInstance(MailService::class);
 
             foreach ($recipients as $recipient) {
                 if (
@@ -173,10 +181,8 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                 }
             }
 
-            if (
-                ($supportRequest->getContactPersonEmail())
-            ) {
-                $mailService->getQueueMail()->setReplyAddress($supportRequest->getContactPersonEmail());
+            if ($supportRequest->getContactPersonEmail()) {
+                $mailService->getQueueMail()->setReplyToAddress($supportRequest->getContactPersonEmail());
             }
 
             $mailService->getQueueMail()->setSubject(
@@ -213,7 +219,9 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
             foreach ($supportRequest->getFile() as $fileReference) {
 
                 $attachments[] = [
-                    'path' => GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT') . '/fileadmin/user_upload/tx_rkwfeecalculator/' . $fileReference->getOriginalResource()->getOriginalFile()->getName(),
+                    'path' => GeneralUtility::getIndpEnv('TYPO3_DOCUMENT_ROOT')
+                        . '/fileadmin/user_upload/tx_rkwfeecalculator/'
+                        . $fileReference->getOriginalResource()->getOriginalFile()->getName(),
                     'type' => $fileReference->getOriginalResource()->getOriginalFile()->getMimeType(),
                     'name' => $fileReference->getOriginalResource()->getOriginalFile()->getName(),
                 ];
@@ -230,16 +238,16 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
         }
     }
 
+
     /**
      * Returns TYPO3 settings
      *
      * @param string $which Which type of settings will be loaded
      * @return array
+     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
-    protected function getSettings($which = ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS)
+    protected function getSettings(string $which = ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS): array
     {
-
-        return \RKW\RkwBasics\Utility\GeneralUtility::getTyposcriptConfiguration('RkwFeecalculator', $which);
-        //===
+        return GeneralUtility::getTypoScriptConfiguration('RkwFeecalculator', $which);
     }
 }

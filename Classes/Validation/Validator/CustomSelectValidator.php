@@ -17,9 +17,12 @@ namespace RKW\RkwFeecalculator\Validation\Validator;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
- * Validator for empty/zero selections.
+ * Class CustomSelectValidator
  *
- * @api
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeeCalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CustomSelectValidator extends AbstractValidator
 {
@@ -30,7 +33,7 @@ class CustomSelectValidator extends AbstractValidator
      * @param mixed $value The value that should be validated
      * @return void
      */
-    public function isValid($value)
+    public function isValid($value): void
     {
 
         if ($value > 0) {

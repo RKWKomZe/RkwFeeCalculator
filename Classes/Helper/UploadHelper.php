@@ -1,17 +1,5 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Helper;
-
-use TYPO3\CMS\Core\Log\Logger;
-use TYPO3\CMS\Core\Log\LogManager;
-use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Resource\File as File;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Core\Resource\ResourceFactory;
-use TYPO3\CMS\Core\Resource\FileReference as CoreFileReference;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Domain\Model\FileReference as ExtbaseFileReference;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -26,13 +14,25 @@ use TYPO3\CMS\Extbase\Domain\Model\FileReference as ExtbaseFileReference;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Log\Logger;
+use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Resource\File;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Core\Resource\ResourceFactory;
+use TYPO3\CMS\Core\Resource\FileReference as CoreFileReference;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference as ExtbaseFileReference;
+use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+
 /**
- * Misc
+ * Class UploadHelper
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @author Steffen Kroggel <developer@steffenkroggel.de>
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -40,32 +40,44 @@ class UploadHelper implements SingletonInterface
 {
 
     /**
-     * @var Logger
+     * @var \TYPO3\CMS\Core\Log\Logger|null
      */
-    protected $logger;
+    protected ?Logger $logger = null;
+
 
     /**
-     * @var \TYPO3\CMS\Core\Resource\ResourceFactory
+     * @var \TYPO3\CMS\Core\Resource\ResourceFactory|null
      */
-    protected $resourceFactory;
+    protected ?ResourceFactory $resourceFactory = null;
 
     /**
      * @var string
      */
-    protected $defaultUploadFolder = '1:/user_upload/tx_rkwfeecalculator';
+    protected string $defaultUploadFolder = '1:/user_upload/tx_rkwfeecalculator';
+
 
     /**
      * One of 'cancel', 'replace', 'rename'
      *
      * @var string
      */
-    protected $defaultConflictMode = 'rename';
+    protected string $defaultConflictMode = 'rename';
+
 
     /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface|null
      */
-    protected $objectManager;
+    protected ?ObjectManagerInterface $objectManager = null;
 
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager|null
+     */
+    protected ?PersistenceManager $persistenceManager = null;
+
+    /**
+     * @return void
+     */
     public function __construct()
     {
         /** @var \TYPO3\CMS\Core\Resource\ResourceFactory $resourceFactory */
@@ -73,17 +85,21 @@ class UploadHelper implements SingletonInterface
 
         /** @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager */
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+
+        /** @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager $persistenceManager */
+        $this->persistenceManager = $this->objectManager->get(PersistenceManager::class);
+
     }
 
+
     /**
-     * createFileReference
+     * importUploadedResource
      *
      * @param array $file
-     * @return ExtbaseFileReference
-     * @throws \TYPO3\CMS\Core\Resource\Exception\ExistingTargetFileNameException
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
-    public function importUploadedResource($file)
+    public function importUploadedResource(array $file): ExtbaseFileReference
     {
         $settingsDefault = $this->getSettings();
 
@@ -107,15 +123,17 @@ class UploadHelper implements SingletonInterface
 
     }
 
+
     /**
-     * @param File $file
-     * @param int $resourcePointer
-     * @return ExtbaseFileReference
+     * @param \TYPO3\CMS\Core\Resource\File $file
+     * @param int|null $resourcePointer
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected function createFileReferenceFromFalFileObject(
         File $file,
         int $resourcePointer = null
     ): ExtbaseFileReference {
+
         $fileReference = $this->resourceFactory->createFileReferenceObject(
             [
                 'uid_local' => $file->getUid(),
@@ -127,23 +145,29 @@ class UploadHelper implements SingletonInterface
         return $this->createFileReferenceFromFalFileReferenceObject($fileReference, $resourcePointer);
     }
 
+
     /**
      * In case no $resourcePointer is given a new file reference domain object
      * will be returned. Otherwise the file reference is reconstituted from
      * storage and will be updated(!) with the provided $falFileReference.
      *
-     * @param CoreFileReference $falFileReference
-     * @param int $resourcePointer
-     * @return ExtbaseFileReference
+     * @param \TYPO3\CMS\Core\Resource\FileReference $falFileReference
+     * @param int|null $resourcePointer
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected function createFileReferenceFromFalFileReferenceObject(
         CoreFileReference $falFileReference,
         int $resourcePointer = null
     ): ExtbaseFileReference {
+
         if ($resourcePointer === null) {
             $fileReference = $this->objectManager->get(ExtbaseFileReference::class);
         } else {
-            $fileReference = $this->persistenceManager->getObjectByIdentifier($resourcePointer, ExtbaseFileReference::class, false);
+            $fileReference = $this->persistenceManager->getObjectByIdentifier(
+                $resourcePointer,
+                ExtbaseFileReference::class,
+                false
+            );
         }
 
         $fileReference->setOriginalResource($falFileReference);
@@ -158,10 +182,9 @@ class UploadHelper implements SingletonInterface
      * @return array
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
      */
-    public static function getSettings($which = ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS)
+    public static function getSettings(string $which = ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS): array
     {
-        return \RKW\RkwBasics\Utility\GeneralUtility::getTyposcriptConfiguration('RkwFeecalculator', $which);
-        //===
+        return \Madj2k\CoreExtended\Utility\GeneralUtility::getTypoScriptConfiguration('RkwFeecalculator', $which);
     }
 
 
@@ -170,14 +193,13 @@ class UploadHelper implements SingletonInterface
      *
      * @return Logger
      */
-    protected function getLogger()
+    protected function getLogger(): Logger
     {
         if (!$this->logger instanceof Logger) {
             $this->logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
         }
 
         return $this->logger;
-        //===
     }
 
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwFeecalculator\ViewHelpers;
 
 /*
@@ -15,47 +14,74 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Class DynamicPropertyViewHelper
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @deprecated
  */
 class DynamicPropertyViewHelper extends AbstractViewHelper
 {
 
     /**
+     * Initialize arguments.
+     *
+     * @return void
+     * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
+     */
+    public function initializeArguments(): void
+    {
+        parent::initializeArguments();
+        $this->registerArgument('obj', SupportRequest::class, 'The object to use.', true);
+        $this->registerArgument('prop', 'string', 'The property to get from the given object.', true);
+        $this->registerArgument('type', 'string', 'The field type ("select", "radio" or "date").', false, 'text');
+        $this->registerArgument('raw', 'bool', 'Return raw values or translated values?', false, false);
+        $this->registerArgument('format', 'string', 'The format-type ("currency").', false, '');
+
+    }
+
+
+    /**
      * Returns dynamically set property from object
      *
-     * @param SupportRequest $obj
-     * @param                $prop string Property
-     * @param                $type string FieldType
-     * @param                $raw bool Raw
-     * @param                $format string Format
-     *
      * @return mixed|null
-     * @todo: This ViewHelper might not be necessary in TYPO3 8 anymore.
+     * @todo This ViewHelper might not be necessary in TYPO3 8 anymore.
      *
      */
-    public function render(SupportRequest $obj, string $prop, $type = 'text', $raw = false, $format = null)
+    public function render()
     {
 
-        $getter = 'get' . ucfirst($prop);
+        /** @var \RKW\RkwFeecalculator\Domain\Model\SupportRequest $obj */
+        $obj = $this->arguments['obj'];
 
+        /** @var string $prop */
+        $prop = $this->arguments['prop'];
+
+        /** @var string $type */
+        $type = $this->arguments['type'];
+
+        /** @var bool $raw */
+        $raw = $this->arguments['raw'];
+
+        /** @var string $format */
+        $format = $this->arguments['format'];
+
+        $getter = 'get' . ucfirst($prop);
         $result = null;
 
-        if (is_object($obj) && method_exists($obj, $getter)) {
+        if (method_exists($obj, $getter)) {
 
             if (in_array($type, ['select', 'radio'])) {
-
                 if ($obj->$getter() instanceof \TYPO3\CMS\Extbase\DomainObject\AbstractEntity) {
-
                     $result = $this->getTitleOfRelation($getter, $obj);
 
                 } else {
@@ -72,21 +98,15 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
                 }
 
             } else if ($type === 'date') {
-
                 $date = $obj->$getter();
-
                 $result = ($date > 0) ? date('d.m.Y', $date) : '-';
 
             } else if ($format === 'currency') {
-
                 $result = number_format($obj->$getter(),0,",",".");
 
             } else {
-
                 $result = $obj->$getter();
-
             }
-
         }
 
         if (is_array($obj) && array_key_exists($prop, $obj)) {
@@ -96,12 +116,13 @@ class DynamicPropertyViewHelper extends AbstractViewHelper
         return $result;
     }
 
+
     /**
-     * @param $getter
-     * @param $obj
+     * @param string $getter
+     * @param \TYPO3\CMS\Extbase\DomainObject\AbstractEntity $obj
      * @return mixed
      */
-    protected function getTitleOfRelation($getter, $obj)
+    protected function getTitleOfRelation(string $getter, AbstractEntity $obj)
     {
         $model = $obj->$getter();
 

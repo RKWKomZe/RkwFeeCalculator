@@ -1,33 +1,59 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Tests\Unit\Controller;
 
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use RKW\RkwFeecalculator\Controller\CalculationController;
 use RKW\RkwFeecalculator\Domain\Model\Calculation;
 use RKW\RkwFeecalculator\Domain\Model\Calculator;
 use RKW\RkwFeecalculator\Domain\Model\Program;
 use RKW\RkwFeecalculator\Tests\Unit\TestCase;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * Test case.
+ * Class CalculationControllerTest
  *
  * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeecalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @todo there are no scenarios defined. See coding guidelines!
  */
 class CalculationControllerTest extends TestCase
 {
     /**
-     * @var \RKW\RkwFeecalculator\Controller\CalculationController
+     * @var \RKW\RkwFeecalculator\Controller\CalculationController|null
      */
-    protected $subject;
+    protected ?CalculationController $subject= null;
 
-    protected function setUp()
+
+    /**
+     * @return void
+     */
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = $this->getMockBuilder(\RKW\RkwFeecalculator\Controller\CalculationController::class)
+
+        /** @var \RKW\RkwFeecalculator\Controller\CalculationController subject */
+        $this->subject = $this->getMockBuilder(CalculationController::class)
             ->setMethods(['redirect', 'forward', 'addFlashMessage'])
             ->disableOriginalConstructor()
             ->getMock();
     }
+
+    #==========================================================================
 
     /**
      * @test
@@ -35,16 +61,20 @@ class CalculationControllerTest extends TestCase
     public function showActionAssignsTheGivenCalculatorToView()
     {
 
-        $calculator = new Calculator();
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator */
+        $calculator = GeneralUtility::makeInstance(Calculator::class);
 
-        $assignableProgram = new Program();
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program program */
+        $assignableProgram = GeneralUtility::makeInstance(Program::class);
 
-        $objectStorage = new ObjectStorage();
+        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $objectStorage */
+        $objectStorage = GeneralUtility::makeInstance(ObjectStorage::class);
         $objectStorage->attach($assignableProgram);
 
         $calculator->setAssignedPrograms($objectStorage);
 
-        $calculation = new Calculation();
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation */
+        $calculation = GeneralUtility::makeInstance(Calculation::class);
         $calculation->setCalculator($calculator);
         $calculation->setSelectedProgram($assignableProgram);
 
@@ -58,4 +88,13 @@ class CalculationControllerTest extends TestCase
         $this->subject->showAction($calculation);
     }
 
+    #==========================================================================
+
+    /**
+     * @return void
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+    }
 }

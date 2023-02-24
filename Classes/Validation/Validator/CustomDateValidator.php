@@ -17,9 +17,12 @@ namespace RKW\RkwFeecalculator\Validation\Validator;
 use TYPO3\CMS\Extbase\Validation\Validator\DateTimeValidator;
 
 /**
- * Validator for DateTime objects.
+ * Class CustomDateValidator
  *
- * @api
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeeCalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CustomDateValidator extends DateTimeValidator
 {
@@ -30,7 +33,7 @@ class CustomDateValidator extends DateTimeValidator
      * @param mixed $value The value that should be validated
      * @return void
      */
-    public function isValid($value)
+    public function isValid($value): void
     {
 
         $date = \DateTime::createFromFormat('d.m.Y', $value);
