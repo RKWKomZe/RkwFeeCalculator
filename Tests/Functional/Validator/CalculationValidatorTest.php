@@ -1,16 +1,33 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Tests\Functional\Domain\Validator;
+
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use RKW\RkwFeecalculator\Domain\Model\Calculation;
 use RKW\RkwFeecalculator\Domain\Model\Calculator;
 use RKW\RkwFeecalculator\Tests\Functional\TestCase;
 use RKW\RkwFeecalculator\Validation\CalculationValidator;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Test case.
+ * Class CalculationValidatorTest
  *
  * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeecalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @todo there are no scenarios defined. See coding guidelines!
  */
 class CalculationValidatorTest extends TestCase
 {
@@ -22,28 +39,40 @@ class CalculationValidatorTest extends TestCase
         'typo3conf/ext/rkw_basics',
     ];
 
-    /**
-     * @var CalculationValidator
-     */
-    protected $subject;
 
     /**
-     * @var Calculation
+     * @var \RKW\RkwFeecalculator\Validation\CalculationValidator|null
      */
-    protected $calculation;
+    protected ?CalculationValidator $subject = null;
+
 
     /**
-     * @var Calculator
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation|null
      */
-    protected $calculator;
+    protected ?Calculation $calculation = null;
 
+
+    /**
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculator|null
+     */
+    protected ?Calculator $calculator = null;
+
+
+    /**
+     * @return void
+     */
     protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new CalculationValidator();
-        $this->calculation = new Calculation();
+
+        /** @var \RKW\RkwFeecalculator\Validation\CalculationValidator subject */
+        $this->subject = GeneralUtility::makeInstance(CalculationValidator::class);
+
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Calculation calculation */
+        $this->calculation = GeneralUtility::makeInstance(Calculation::class);
         $this->calculator = new Calculator();
 
+        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $objectStorageHoldingAssignedPrograms */
         $objectStorageHoldingAssignedPrograms = $this->assignPrograms();
 
         $this->calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
@@ -51,12 +80,15 @@ class CalculationValidatorTest extends TestCase
 
     }
 
+    #==========================================================================
+
     /**
      * @test
      */
     public function givenSelectedProgramHasPossibleDaysMinLessDaysAreNotValid()
     {
 
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
@@ -67,11 +99,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertFalse($this->subject->isValid($this->calculation));
     }
 
+
     /**
      * @test
      */
     public function givenSelectedProgramHasPossibleDaysMinEqualDaysAreValid()
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
@@ -85,11 +119,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertTrue($this->subject->isValid($this->calculation));
     }
 
+
     /**
      * @test
      */
     public function givenSelectedProgramHasPossibleDaysMinMoreDaysAreValid()
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
@@ -103,11 +139,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertTrue($this->subject->isValid($this->calculation));
     }
 
+
     /**
      * @test
      */
     public function givenSelectedProgramHasPossibleDaysMaxMoreDaysAreNotValid()
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
@@ -121,11 +159,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertFalse($this->subject->isValid($this->calculation));
     }
 
+
     /**
      * @test
      */
     public function givenSelectedProgramHasPossibleDaysMaxEqualDaysAreValid()
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
@@ -139,11 +179,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertTrue($this->subject->isValid($this->calculation));
     }
 
+
     /**
      * @test
      */
     public function givenSelectedProgramHasPossibleDaysMaxLessDaysAreValid()
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
@@ -157,11 +199,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertTrue($this->subject->isValid($this->calculation));
     }
 
+
     /**
      * @test
      */
     public function givenSelectedProgramHasPossibleDaysSetToZeroAnyDaysValueGreaterZeroIsValid()
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(0);
@@ -175,11 +219,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertTrue($this->subject->isValid($this->calculation));
     }
 
+
     /**
      * @test
      */
     public function givenSelectedProgramDaysIsRequired()
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
@@ -190,11 +236,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertFalse($this->subject->isValid($this->calculation));
     }
 
+
     /**
      * @test
      */
     public function givenSelectedProgramConsultantFeePerDayIsRequired()
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
@@ -205,11 +253,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertFalse($this->subject->isValid($this->calculation));
     }
 
+
     /**
      * @test
      */
     public function submittingAMoneyValueWithLettersIsNotValid()
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
         $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
@@ -221,4 +271,13 @@ class CalculationValidatorTest extends TestCase
         $this->assertFalse($this->subject->isValid($this->calculation));
     }
 
+    #==========================================================================
+
+    /**
+     * @return void
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+    }
 }

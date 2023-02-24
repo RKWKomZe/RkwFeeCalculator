@@ -1,11 +1,5 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Service;
-
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use RKW\RkwBasics\Domain\Model\CompanyType;
-use RKW\RkwFeecalculator\Domain\Model\Consulting;
-use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,6 +13,11 @@ use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use RKW\RkwBasics\Domain\Model\CompanyType;
+use RKW\RkwFeecalculator\Domain\Model\Consulting;
+use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
 
 /**
  * CsvService
@@ -35,10 +34,10 @@ class CsvService extends DocumentService
      * because extbase makes some trouble if some survey has a starttime in future, ist disabled or something, just give the uid
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
-     * @return void
+     * @return array
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function createCsv(SupportRequest $supportRequest)
+    public function createCsv(SupportRequest $supportRequest): array
     {
         $fileName = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate(
             'tx_rkwfeecalculator_domain_model_supportrequest',
@@ -46,7 +45,6 @@ class CsvService extends DocumentService
         );
 
         $attachmentName = $fileName . '-' . date('Y-m-d-Hi') . '.csv';
-
         $path = $this->getOutputPath($attachmentName);
 
         $separator = ';';
@@ -102,8 +100,6 @@ class CsvService extends DocumentService
             'type' => 'text/csv',
             'name' => $attachmentName,
         ];
-
-        //===
     }
 
 }

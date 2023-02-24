@@ -32,9 +32,9 @@ class UploadLabelViewHelper extends AbstractViewHelper
     /**
      * Return labels for file upload field
      *
-     * return array
+     * @return array
      */
-    public function render()
+    public function render(): array
     {
         return [
             'data-jcf' => json_encode([

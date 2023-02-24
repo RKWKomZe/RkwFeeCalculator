@@ -1,6 +1,6 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Domain\Model;
+
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -17,9 +17,9 @@ namespace RKW\RkwFeecalculator\Domain\Model;
 /**
  * Class FrontendUser
  *
- * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright RKW Kompetenzzentrum
- * @package RKW_RkwOrder
+ * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class FrontendUser extends \RKW\RkwRegistration\Domain\Model\FrontendUser

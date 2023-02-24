@@ -1,20 +1,35 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Tests\Integration\ViewHelpers;
+
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use RKW\RkwFeecalculator\Domain\Model\Calculation;
 use Nimut\TestingFramework\TestCase\FunctionalTestCase;
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
 use RKW\RkwFeecalculator\ViewHelpers\CalculationViewHelper;
 use RKW\RkwFeecalculator\Domain\Repository\ProgramRepository;
 use RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository;
 
 /**
- * Test case.
+ * Class CalculationViewHelperTest
  *
  * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeecalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CalculationViewHelperTest extends FunctionalTestCase
 {
@@ -24,6 +39,7 @@ class CalculationViewHelperTest extends FunctionalTestCase
      */
     const FIXTURE_PATH = __DIR__ . '/CalculationViewHelperTest/Fixtures';
 
+
     /**
      * @var string[]
      */
@@ -31,40 +47,48 @@ class CalculationViewHelperTest extends FunctionalTestCase
         'typo3conf/ext/rkw_feecalculator'
     ];
 
+
     /**
      * @var string[]
      */
     protected $coreExtensionsToLoad = [];
 
-    /**
-     * @var \RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository
-     */
-    private $calculatorRepository;
 
     /**
-     * @var \RKW\RkwFeecalculator\Domain\Repository\ProgramRepository
+     * @var \RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository|null
      */
-    private $programRepository;
+    private ?CalculatorRepository $calculatorRepository = null;
+
 
     /**
-     * @var \TYPO3\CMS\Fluid\View\StandaloneView
+     * @var \RKW\RkwFeecalculator\Domain\Repository\ProgramRepository|null
      */
-    private $standAloneViewHelper;
+    private ?ProgramRepository $programRepository = null;
+
 
     /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @var \TYPO3\CMS\Fluid\View\StandaloneView|null
      */
-    private $objectManager;
+    private ?StandaloneView $standAloneViewHelper = null;
+
 
     /**
-     * @var Calculation
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager|null
      */
-    protected $calculation;
+    private ?ObjectManager $objectManager = null;
+
 
     /**
-     * @var CalculationViewHelper
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation|null
      */
-    protected $calculationViewHelper;
+    protected ?Calculation $calculation = null;
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\ViewHelpers\CalculationViewHelper|null
+     */
+    protected ?CalculationViewHelper $calculationViewHelper = null;
+
 
     /**
      * Setup
@@ -103,13 +127,13 @@ class CalculationViewHelperTest extends FunctionalTestCase
         );
 
         $this->calculationViewHelper = new CalculationViewHelper();
-
     }
+
+    #==========================================================================
 
     /**
      * @test
      * @throws \Exception
-     * @throws \TYPO3\CMS\Fluid\View\Exception\InvalidTemplateResourceException
      */
     public function itReturnsCorrectCalculationLessStandardUnitCostsThreshold()
     {
@@ -132,10 +156,12 @@ class CalculationViewHelperTest extends FunctionalTestCase
 
         /** @var \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator */
         $calculator = $this->calculatorRepository->findByUid(1);
+
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $program */
         $selectedProgram = $this->programRepository->findByUid(1);
 
-        $this->calculation = new Calculation();
+        /** @var  \RKW\RkwFeecalculator\Domain\Model\Calculation calculation */
+        $this->calculation = GeneralUtility::makeInstance(Calculation::class);
         $this->calculation->setCalculator($calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
@@ -146,7 +172,6 @@ class CalculationViewHelperTest extends FunctionalTestCase
         $result = $this->calculationViewHelper->calculate($this->calculation);
 
         self::assertEquals(4920, $result['subventionTotal']);
-
         self::assertEquals(720, $result['rkwFee']);
         self::assertEquals(4200, $result['consultantFee']);
         self::assertEquals(820, $result['subtotalPerDay']);
@@ -163,10 +188,10 @@ class CalculationViewHelperTest extends FunctionalTestCase
 
     }
 
+
     /**
      * @test
      * @throws \Exception
-     * @throws \TYPO3\CMS\Fluid\View\Exception\InvalidTemplateResourceException
      */
     public function itReturnsCorrectCalculationGreaterStandardUnitCostsThreshold()
     {
@@ -189,10 +214,12 @@ class CalculationViewHelperTest extends FunctionalTestCase
 
         /** @var \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator */
         $calculator = $this->calculatorRepository->findByUid(1);
+
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $program */
         $selectedProgram = $this->programRepository->findByUid(1);
 
-        $this->calculation = new Calculation();
+        /** @var  \RKW\RkwFeecalculator\Domain\Model\Calculation calculation */
+        $this->calculation = GeneralUtility::makeInstance(Calculation::class);
         $this->calculation->setCalculator($calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
@@ -203,7 +230,6 @@ class CalculationViewHelperTest extends FunctionalTestCase
         $result = $this->calculationViewHelper->calculate($this->calculation);
 
         self::assertEquals(5700, $result['subventionTotal']);
-
         self::assertEquals(720, $result['rkwFee']);
         self::assertEquals(6000, $result['consultantFee']);
         self::assertEquals(1120, $result['subtotalPerDay']);
@@ -218,6 +244,16 @@ class CalculationViewHelperTest extends FunctionalTestCase
         self::assertEquals(5146.8, $result['ownFundingGross']);
         self::assertEquals(42.410714285714, $result['fundingPercentage']);
 
+    }
+
+    #==========================================================================
+
+    /**
+     * @return void
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
     }
 
 }

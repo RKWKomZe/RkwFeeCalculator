@@ -13,11 +13,13 @@ namespace RKW\RkwFeecalculator\Utilities;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwFeecalculator\Domain\Repository\ProgramRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
- * TCA
+ * Class TCA
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright RKW Kompetenzzentrum
@@ -27,16 +29,19 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 class TCA
 {
 
-    public function supportRequestTitle(&$parameters)
+    /**
+     * @param array $parameters
+     * @return void
+     */
+    public function supportRequestTitle(array &$parameters): void
     {
         $record = BackendUtility::getRecord($parameters['table'], $parameters['row']['uid']);
         $newTitle = ($record['name'] !== '') ? $record['name'] : $record['founder_name'];
 
-        $objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-        $supportProgrammeRepository = $objectManager->get('RKW\\RkwFeecalculator\\Domain\\Repository\\ProgramRepository');
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $supportProgrammeRepository = $objectManager->get(ProgramRepository::class);
 
         $requestedProgram = $supportProgrammeRepository->findByUid($record['support_programme']);
-
         if ($requestedProgram) {
             $newTitle = $newTitle . ' [' . $requestedProgram->getName() . ']';
         }

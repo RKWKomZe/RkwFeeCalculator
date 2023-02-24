@@ -1,16 +1,5 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Service;
-
-use Spipu\Html2Pdf\Html2Pdf;
-use Madj2k\CoreExtended\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Core\Resource\ResourceFactory;
-use Spipu\Html2Pdf\Exception\Html2PdfException;
-use Spipu\Html2Pdf\Exception\ExceptionFormatter;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -24,6 +13,14 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use Spipu\Html2Pdf\Html2Pdf;
+use Madj2k\CoreExtended\Utility\GeneralUtility;
+use Spipu\Html2Pdf\Exception\Html2PdfException;
+use Spipu\Html2Pdf\Exception\ExceptionFormatter;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /**
  * PdfService
@@ -40,20 +37,24 @@ class PdfService extends DocumentService
      * @var \RKW\RkwFeecalculator\Service\LayoutService
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $layoutService;
+    protected LayoutService $layoutService;
+
 
     /**
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
-     *
+     * @return array
      * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
-     * @throws \TYPO3\CMS\Fluid\View\Exception\InvalidTemplateResourceException
+     * @todo rework return types. Array and void in combination is not appropriate
      */
-    public function createPdf(SupportRequest $supportRequest)
+    public function createPdf(SupportRequest $supportRequest): array
     {
 
         try {
 
-            $settingsFramework = GeneralUtility::getTypoScriptConfiguration($this->extensionName, ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+            $settingsFramework = GeneralUtility::getTypoScriptConfiguration(
+                'RkwFeecalculator',
+                ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
+            );
 
             if ($settingsFramework) {
 
@@ -119,6 +120,8 @@ class PdfService extends DocumentService
             $formatter = new ExceptionFormatter($e);
             echo $formatter->getHtmlMessage();
         }
+
+        return [];
     }
 
 }

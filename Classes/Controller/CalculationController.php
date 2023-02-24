@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Controller;
 
 /*
@@ -16,10 +15,11 @@ namespace RKW\RkwFeecalculator\Controller;
  */
 
 use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * CalculationController
+ * Class CalculationController
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright RKW Kompetenzzentrum
@@ -29,12 +29,11 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
-     * calculatorRepository
-     *
      * @var \RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $calculatorRepository;
+    protected CalculatorRepository $calculatorRepository;
+
 
     /**
      * action show
@@ -42,12 +41,10 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @param \RKW\RkwFeecalculator\Domain\Model\Calculation|null $calculation
      * @return void
      */
-    public function showAction(
-        \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null
-    ): void {
+    public function showAction(Calculation $calculation = null): void {
 
         if (!$calculation) {
-            $calculation = GeneralUtility::makeInstance(\RKW\RkwFeecalculator\Domain\Model\Calculation::class);
+            $calculation = GeneralUtility::makeInstance(Calculation::class);
             $calculation->setCalculator($this->calculatorRepository->findByUid($this->settings['calculator']));
         }
 
@@ -58,23 +55,22 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
 
     }
 
+
     /**
      * action store
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\Calculation|null $calculation
      * @return void
-     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\CalculationValidator", param="calculation")
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\CalculationValidator", param="calculation")
      */
-    public function storeAction(
-        \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation = null
-    ): void {
+    public function storeAction(Calculation $calculation = null): void {
+
         if ($calculation === null) {
             $this->redirect('show');
         }
 
-        $this->forward('show', null, null, array('calculation' => $calculation));
-
+        $this->forward('show', null, null, ['calculation' => $calculation]);
     }
 }

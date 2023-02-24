@@ -1,5 +1,6 @@
 <?php
 namespace RKW\RkwFeecalculator\ViewHelpers;
+
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -14,7 +15,6 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class IsMandatoryFieldViewHelper
@@ -28,26 +28,41 @@ class IsMandatoryFieldViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\Abstr
 {
 
     /**
+     * Initialize arguments.
+     *
+     * @return void
+     * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
+     */
+    public function initializeArguments(): void
+    {
+        parent::initializeArguments();
+        $this->registerArgument('fieldName', 'string', 'The current field name.', true);
+        $this->registerArgument('mandatoryFields', 'string', 'The list of mandatory fields.', true);
+    }
+
+
+    /**
      * return true, if the given fieldName is CONTAINED IN given mandatoryFields
      *
-     * @param string $fieldName
-     * @param string $mandatoryFields
      * @return bool
      */
-    public function render($fieldName, $mandatoryFields)
+    public function render(): bool
     {
+        /** @var string $fieldName */
+        $fieldName = $this->arguments['fieldName'];
+
+        /** @var string $mandatoryFields */
+        $mandatoryFields = $this->arguments['mandatoryFields'];
+
         $mandatoryFieldsArray = array_map(function($item) {
             return lcfirst(GeneralUtility::underscoredToUpperCamelCase(trim($item)));
         }, explode(',', $mandatoryFields));
 
         if (in_array($fieldName, $mandatoryFieldsArray, true)) {
-
             return true;
-            //===
         }
 
         return false;
-        //===
     }
 
 
