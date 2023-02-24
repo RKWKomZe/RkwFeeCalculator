@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Validation;
 
 /*
@@ -17,7 +16,6 @@ namespace RKW\RkwFeecalculator\Validation;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Error\Error;
-use TYPO3\CMS\Extbase\Error\Result;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
@@ -25,7 +23,7 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
  * Class CalculationValidator
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -38,7 +36,7 @@ class CalculationValidator extends AbstractValidator
      * @return boolean
      * @var \RKW\RkwFeecalculator\Domain\Model\Calculation $objectSource
      */
-    public function isValid($objectSource)
+    public function isValid($objectSource): bool
     {
 
         $this->result = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Error\Result::class);
@@ -46,7 +44,10 @@ class CalculationValidator extends AbstractValidator
 
         $isValid = true;
 
-        if (!$objectSource->getSelectedProgram() || $objectSource->getSelectedProgram() !== $objectSource->getPreviousSelectedProgram()) {
+        if (
+            !$objectSource->getSelectedProgram()
+            || $objectSource->getSelectedProgram() !== $objectSource->getPreviousSelectedProgram()
+        ) {
             $objectSource->setPreviousSelectedProgram($objectSource->getSelectedProgram());
             $mandatoryFields = ['selectedProgram'];
         }

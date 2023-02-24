@@ -15,14 +15,14 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class UploadLabelViewHelper
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -32,9 +32,9 @@ class UploadLabelViewHelper extends AbstractViewHelper
     /**
      * Return labels for file upload field
      *
-     * return array
+     * @return array
      */
-    public function render()
+    public function render(): array
     {
         return [
             'data-jcf' => json_encode([

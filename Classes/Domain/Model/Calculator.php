@@ -1,41 +1,45 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Domain\Model;
 
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW FeeCalculator" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2019 Christian Dilger <c.dilger@addorange.de>
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * Calculator
+ * Class Calculator
+ *
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeecalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Calculator extends AbstractEntity
 {
 
     /**
-     * name
-     *
      * @var string
      */
-    protected $name = '';
+    protected string $name = '';
+
 
     /**
-     * assignedPrograms
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Program>
-     * @cascade remove
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Program>|null
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
-    protected $assignedPrograms;
+    protected ?ObjectStorage $assignedPrograms = null;
+
 
     /**
      * __construct
@@ -45,6 +49,7 @@ class Calculator extends AbstractEntity
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
+
 
     /**
      * Initializes all ObjectStorage properties
@@ -59,15 +64,17 @@ class Calculator extends AbstractEntity
         $this->assignedPrograms = new ObjectStorage();
     }
 
+
     /**
      * Returns the name
      *
      * @return string $name
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
+
 
     /**
      * Sets the name
@@ -75,10 +82,11 @@ class Calculator extends AbstractEntity
      * @param string $name
      * @return void
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
+
 
     /**
      * Adds a Program
@@ -86,10 +94,11 @@ class Calculator extends AbstractEntity
      * @param Program $assignedProgram
      * @return void
      */
-    public function addAssignedProgram(Program $assignedProgram)
+    public function addAssignedProgram(Program $assignedProgram): void
     {
         $this->assignedPrograms->attach($assignedProgram);
     }
+
 
     /**
      * Removes a Program
@@ -97,20 +106,22 @@ class Calculator extends AbstractEntity
      * @param Program $assignedProgramToRemove
      * @return void
      */
-    public function removeAssignedProgram(Program $assignedProgramToRemove)
+    public function removeAssignedProgram(Program $assignedProgramToRemove): void
     {
         $this->assignedPrograms->detach($assignedProgramToRemove);
     }
 
+
     /**
      * Returns the assignedPrograms
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Program> assignedPrograms
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Program>
      */
-    public function getAssignedPrograms()
+    public function getAssignedPrograms(): ObjectStorage
     {
         return $this->assignedPrograms;
     }
+
 
     /**
      * Sets the assignedPrograms
@@ -118,7 +129,7 @@ class Calculator extends AbstractEntity
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Program> $assignedPrograms
      * @return void
      */
-    public function setAssignedPrograms(ObjectStorage $assignedPrograms)
+    public function setAssignedPrograms(ObjectStorage $assignedPrograms): void
     {
         $this->assignedPrograms = $assignedPrograms;
     }

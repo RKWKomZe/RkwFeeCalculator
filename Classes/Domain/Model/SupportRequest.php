@@ -13,11 +13,14 @@ namespace RKW\RkwFeecalculator\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwBasics\Domain\Model\CompanyType;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /**
  * SupportRequest
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -25,434 +28,427 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * name
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $name = '';
+    protected string $name = '';
+
 
     /**
-     * name of the founder
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $founderName = '';
+    protected string $founderName = '';
+
 
     /**
-     * address
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $address = '';
+    protected string $address = '';
+
 
     /**
-     * zip
-     *
      * @var int
-     * @validateOnObject NotEmpty, Integer
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
-    protected $zip = 0;
+    protected int $zip = 0;
+
 
     /**
-     * city
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $city = '';
+    protected string $city = '';
+
 
     /**
-     * foundationDate
-     *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator")
      */
-    protected $foundationDate = 0;
+    protected string $foundationDate = '';
+
 
     /**
-     * intendedFoundationDate
-     *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator")
      */
-    protected $intendedFoundationDate = 0;
+    protected string $intendedFoundationDate = '';
+
 
     /**
-     * citizenship
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $citizenship = '';
+    protected string $citizenship = '';
+
 
     /**
-     * birthdate
-     *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomDateValidator")
      */
-    protected $birthdate = 0;
+    protected string $birthdate = '';
+
 
     /**
-     * foundationLocation
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $foundationLocation = '';
+    protected string $foundationLocation = '';
+
 
     /**
-     * sales
-     *
+     * @var string
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+     *  @todo you handle it as string (in model as in database) but validate it as integer - and it seems to be a float. Makes no sense IMO.
+     */
+    protected string $sales = '';
+
+
+    /**
+     * @var string
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+     *  @todo you handle it as string (in model as in database) but validate it as integer - and it seems to be a float. Makes no sense IMO.
+     */
+    protected string $balance = '';
+
+
+    /**
      * @var int
-     * @validateOnObject NotEmpty, Integer
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
-    protected $sales = '';
+    protected int $employeesCount = 0;
+
 
     /**
-     * balance
-     *
-     * @var int
-     * @validateOnObject NotEmpty, Integer
-     */
-    protected $balance = '';
-
-    /**
-     * employeesCount
-     *
-     * @var int
-     * @validateOnObject NotEmpty, Integer
-     */
-    protected $employeesCount = 0;
-
-    /**
-     * manager
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $manager = '';
+    protected string $manager = '';
+
 
     /**
-     * singleRepresentative
-     *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     *  @todo Shouldn't this be a boolean?
      */
-    protected $singleRepresentative;
+    protected int $singleRepresentative = 0;
+
 
     /**
-     * preTaxDeduction
-     *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     *  @todo Shouldn't this be a boolean?
      */
-    protected $preTaxDeduction;
+    protected int $preTaxDeduction = 0;
+
 
     /**
-     * businessPurpose
-     *
      * @var string
-     * @validateOnObject NotEmpty, Text
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $businessPurpose = '';
+    protected string $businessPurpose = '';
+
 
     /**
-     * insolvencyProceedings
-     *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+     *  @todo Shouldn't this be a boolean?
      */
-    protected $insolvencyProceedings;
+    protected int $insolvencyProceedings = 0;
+
 
     /**
-     * chamber
-     *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
-    protected $chamber = 0;
+    protected int $chamber = 0;
+
 
     /**
      * companyShares
      *
      * @var string
-     * @validateOnObject NotEmpty, Text
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
+     *  @todo you handle it as string (in model as in database) - and it seems to be a float. Makes no sense IMO.
      */
-    protected $companyShares = '';
+    protected string $companyShares = '';
+
 
     /**
-     * principalBank
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $principalBank = '';
+    protected string $principalBank = '';
+
 
     /**
-     * bic
-     *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwBasics\Validation\Validator\SwiftBicValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwBasics\Validation\Validator\SwiftBicValidator")
      */
-    protected $bic = '';
+    protected string $bic = '';
+
 
     /**
-     * iban
-     *
      * @var string
-     * @validateOnObject NotEmpty, \RKW\RkwBasics\Validation\Validator\IbanValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwBasics\Validation\Validator\IbanValidator")
      */
-    protected $iban = '';
+    protected string $iban = '';
+
 
     /**
-     * contactPersonName
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $contactPersonName = '';
+    protected string $contactPersonName = '';
+
 
     /**
-     * contactPersonPhone
-     *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $contactPersonPhone = '';
+    protected string $contactPersonPhone = '';
+
 
     /**
-     * contactPersonFax
-     *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $contactPersonFax = '';
+    protected string $contactPersonFax = '';
+
 
     /**
-     * contactPersonMobile
-     *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $contactPersonMobile = '';
+    protected string $contactPersonMobile = '';
+
 
     /**
-     * contactPersonEmail
-     *
      * @var string
-     * @validateOnObject NotEmpty, EmailAddress
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("EmailAddress")
      */
-    protected $contactPersonEmail = '';
+    protected string $contactPersonEmail = '';
+
 
     /**
-     * preFoundationEmployment
-     *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
-    protected $preFoundationEmployment = 0;
+    protected int $preFoundationEmployment = 0;
+
 
     /**
-     * preFoundationSelfEmployment
-     *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
-    protected $preFoundationSelfEmployment = 0;
+    protected int $preFoundationSelfEmployment = 0;
+
 
     /**
-     * consultingDays
-     *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
-    protected $consultingDays = 0;
+    protected int $consultingDays = 0;
+
 
     /**
-     * consultingDateFrom
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $consultingDateFrom = '';
+    protected string $consultingDateFrom = '';
+
 
     /**
-     * consultingDateTo
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $consultingDateTo = '';
+    protected string $consultingDateTo = '';
+
 
     /**
-     * consultingContent
-     *
      * @var string
-     * @validateOnObject NotEmpty, Text
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $consultingContent = '';
+    protected string $consultingContent = '';
+
 
     /**
-     * consultantType
-     *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     *@TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
-    protected $consultantType = 0;
+    protected int $consultantType = 0;
+
 
     /**
-     * consultantCompany
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $consultantCompany = '';
+    protected string $consultantCompany = '';
+
 
     /**
-     * consultantName1
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $consultantName1 = '';
+    protected string $consultantName1 = '';
+
 
     /**
-     * consultantName2
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $consultantName2 = '';
+    protected string $consultantName2 = '';
+
 
     /**
-     * consultant1AccreditationNumber
-     *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $consultant1AccreditationNumber = '';
+    protected string $consultant1AccreditationNumber = '';
+
 
     /**
-     * consultant2AccreditationNumber
-     *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $consultant2AccreditationNumber = '';
+    protected string $consultant2AccreditationNumber = '';
+
 
     /**
-     * consultantFee
-     *
      * @var string
-     * @validateOnObject NotEmpty, String
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("String")
      */
-    protected $consultantFee = '';
+    protected string $consultantFee = '';
+
 
     /**
-     * consultantPhone
-     *
      * @var string
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $consultantPhone = '';
+    protected string $consultantPhone = '';
+
 
     /**
-     * consultantEmail
-     *
      * @var string
-     * @validateOnObject NotEmpty, EmailAddress
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("EmailAddress")
      */
-    protected $consultantEmail = '';
+    protected string $consultantEmail = '';
+
 
     /**
-     * prematureStart
-     *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     *  @todo isn't this a boolean?
      */
-    protected $prematureStart;
+    protected int $prematureStart;
+
 
     /**
-     * file
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>|null
      */
-    protected $file = '';
+    protected ?ObjectStorage $file = null;
+
 
     /**
-     * fileUpload
-     * Array store for form file upload
-     *
      * @var array
      */
-    protected $fileUpload = [];
+    protected array $fileUpload = [];
 
     /**
-     * sendDocuments
-     *
      * @var int
-     * @validateOnObject NotEmpty, \RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\Validator\CustomSelectValidator")
      */
-    protected $sendDocuments = 0;
+    protected int $sendDocuments = 0;
+
 
     /**
-     * bafaSupport
-     *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     *  @todo isn't this a boolean?
      */
-    protected $bafaSupport;
+    protected int $bafaSupport;
+
 
     /**
-     * deMinimis
-     *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     *  @todo isn't this a boolean?
      */
-    protected $deMinimis;
+    protected int $deMinimis = 0;
+
 
     /**
-     * existenzGruenderPass
-     *
      * @var int
-     * @validateOnObject NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     *  @todo isn't this a boolean?
      */
-    protected $existenzGruenderPass;
+    protected int $existenzGruenderPass = 0;
+
 
     /**
-     * privacy
-     *
      * @var int
-     * @validateOnObject Boolean
+     * @TYPO3\CMS\Extbase\Annotation\Validate("int")
+     *  @todo isn't this a boolean?
      */
-    protected $privacy = 0;
+    protected int $privacy = 0;
+
 
     /**
-     * supportProgramme
-     *
-     * @var \RKW\RkwFeecalculator\Domain\Model\Program
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program|null
      */
-    protected $supportProgramme = null;
+    protected ?Program $supportProgramme = null;
+
 
     /**
-     * consulting
-     *
-     * @var \RKW\RkwFeecalculator\Domain\Model\Consulting
-     * @validateOnObject NotEmpty
+     * @var \RKW\RkwFeecalculator\Domain\Model\Consulting|null
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $consulting = 0;
+    protected ?Consulting $consulting = null;
+
 
     /**
-     * companytype
-     *
-     * @var \RKW\RkwBasics\Domain\Model\CompanyType
-     * @validateOnObject NotEmpty
+     * @var \RKW\RkwBasics\Domain\Model\CompanyType|null
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
-    protected $companytype = null;
+    protected ?CompanyType $companytype = null;
+
 
     /**
      * Initializes all ObjectStorage properties
@@ -467,6 +463,7 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->file = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
+
     /**
      * Constructor
      */
@@ -475,15 +472,17 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->initStorageObjects();
     }
 
+
     /**
      * Returns the name
      *
      * @return string $name
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
+
 
     /**
      * Sets the name
@@ -491,20 +490,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $name
      * @return void
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
+
 
     /**
      * Returns the name of the founder
      *
      * @return string $founderName
      */
-    public function getFounderName()
+    public function getFounderName(): string
     {
         return $this->founderName;
     }
+
 
     /**
      * Sets the founderName
@@ -512,20 +513,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $founderName
      * @return void
      */
-    public function setFounderName($founderName)
+    public function setFounderName(string $founderName): void
     {
         $this->founderName = $founderName;
     }
 
+
     /**
      * Returns the address
      *
-     * @return string $address
+     * @return string
      */
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->address;
     }
+
 
     /**
      * Sets the address
@@ -533,20 +536,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $address
      * @return void
      */
-    public function setAddress($address)
+    public function setAddress(string $address): void
     {
         $this->address = $address;
     }
+
 
     /**
      * Returns the zip
      *
      * @return int $zip
      */
-    public function getZip()
+    public function getZip(): int
     {
         return $this->zip;
     }
+
 
     /**
      * Sets the zip
@@ -554,20 +559,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $zip
      * @return void
      */
-    public function setZip($zip)
+    public function setZip(int $zip): void
     {
         $this->zip = $zip;
     }
+
 
     /**
      * Returns the city
      *
      * @return string $city
      */
-    public function getCity()
+    public function getCity(): string
     {
         return $this->city;
     }
+
 
     /**
      * Sets the city
@@ -575,62 +582,68 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $city
      * @return void
      */
-    public function setCity($city)
+    public function setCity(string $city): void
     {
         $this->city = $city;
     }
 
+
     /**
      * Returns the foundationDate
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getFoundationDate()
+    public function getFoundationDate(): string
     {
         return $this->foundationDate;
     }
 
+
     /**
      * Sets the foundationDate
      *
-     * @param \DateTime $foundationDate
+     * @param string $foundationDate
      * @return void
      */
-    public function setFoundationDate($foundationDate)
+    public function setFoundationDate(string $foundationDate): void
     {
         $this->foundationDate = $foundationDate;
     }
 
+
     /**
      * Returns the intendedFoundationDate
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getIntendedFoundationDate()
+    public function getIntendedFoundationDate(): string
     {
         return $this->intendedFoundationDate;
     }
 
+
     /**
      * Sets the intendedFoundationDate
      *
-     * @param \DateTime $intendedFoundationDate
+     * @param string $intendedFoundationDate
      * @return void
      */
-    public function setIntendedFoundationDate($intendedFoundationDate)
+    public function setIntendedFoundationDate(string $intendedFoundationDate): void
     {
         $this->intendedFoundationDate = $intendedFoundationDate;
     }
+
 
     /**
      * Returns the citizenship
      *
      * @return string $citizenship
      */
-    public function getCitizenship()
+    public function getCitizenship(): string
     {
         return $this->citizenship;
     }
+
 
     /**
      * Sets the citizenship
@@ -638,38 +651,41 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $citizenship
      * @return void
      */
-    public function setCitizenship($citizenship)
+    public function setCitizenship(string $citizenship): void
     {
         $this->citizenship = $citizenship;
     }
 
+
     /**
      * Returns the birthdate
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getBirthdate()
+    public function getBirthdate(): string
     {
         return $this->birthdate;
     }
 
+
     /**
      * Sets the birthdate
      *
-     * @param \DateTime $birthdate
+     * @param string $birthdate
      * @return void
      */
-    public function setBirthdate($birthdate)
+    public function setBirthdate(string $birthdate): void
     {
         $this->birthdate = $birthdate;
     }
 
+
     /**
      * Returns the foundationLocation
      *
-     * @return string $foundationLocation
+     * @return string
      */
-    public function getFoundationLocation()
+    public function getFoundationLocation(): string
     {
         return $this->foundationLocation;
     }
@@ -680,20 +696,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $foundationLocation
      * @return void
      */
-    public function setFoundationLocation($foundationLocation)
+    public function setFoundationLocation(string $foundationLocation): void
     {
         $this->foundationLocation = $foundationLocation;
     }
 
+
     /**
      * Returns the sales
      *
-     * @return string $sales
+     * @return string
      */
-    public function getSales()
+    public function getSales(): string
     {
         return $this->sales;
     }
+
 
     /**
      * Sets the sales
@@ -701,20 +719,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $sales
      * @return void
      */
-    public function setSales($sales)
+    public function setSales(string $sales): void
     {
         $this->sales = $sales;
     }
 
+
     /**
      * Returns the balance
      *
-     * @return string $balance
+     * @return string
      */
-    public function getBalance()
+    public function getBalance(): string
     {
         return $this->balance;
     }
+
 
     /**
      * Sets the balance
@@ -722,20 +742,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $balance
      * @return void
      */
-    public function setBalance($balance)
+    public function setBalance(string $balance): void
     {
         $this->balance = $balance;
     }
 
+
     /**
      * Returns the employeesCount
      *
-     * @return int $employeesCount
+     * @return int
      */
-    public function getEmployeesCount()
+    public function getEmployeesCount(): int
     {
         return $this->employeesCount;
     }
+
 
     /**
      * Sets the employeesCount
@@ -743,20 +765,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $employeesCount
      * @return void
      */
-    public function setEmployeesCount($employeesCount)
+    public function setEmployeesCount(int $employeesCount): void
     {
         $this->employeesCount = $employeesCount;
     }
 
+
     /**
      * Returns the manager
      *
-     * @return string $manager
+     * @return string
      */
-    public function getManager()
+    public function getManager(): string
     {
         return $this->manager;
     }
+
 
     /**
      * Sets the manager
@@ -764,41 +788,48 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $manager
      * @return void
      */
-    public function setManager($manager)
+    public function setManager(string $manager): void
     {
         $this->manager = $manager;
     }
 
+
     /**
      * Returns the singleRepresentative
      *
-     * @return int $singleRepresentative
+     * @return int
+     *  @todo isn't this a boolean?
      */
-    public function getSingleRepresentative()
+    public function getSingleRepresentative(): int
     {
         return $this->singleRepresentative;
     }
+
 
     /**
      * Sets the singleRepresentative
      *
      * @param int $singleRepresentative
      * @return void
+     *  @todo isn't this a boolean?
      */
-    public function setSingleRepresentative($singleRepresentative)
+    public function setSingleRepresentative(int $singleRepresentative): void
     {
         $this->singleRepresentative = $singleRepresentative;
     }
 
+
     /**
      * Returns the preTaxDeduction
      *
-     * @return int $preTaxDeduction
+     * @return int
+     *  @todo isn't this a boolean?
      */
-    public function getPreTaxDeduction()
+    public function getPreTaxDeduction(): int
     {
         return $this->preTaxDeduction;
     }
+
 
     /**
      * Sets the preTaxDeduction
@@ -806,20 +837,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $preTaxDeduction
      * @return void
      */
-    public function setPreTaxDeduction($preTaxDeduction)
+    public function setPreTaxDeduction(bool $preTaxDeduction): void
     {
         $this->preTaxDeduction = $preTaxDeduction;
     }
+
 
     /**
      * Returns the businessPurpose
      *
      * @return string $businessPurpose
      */
-    public function getBusinessPurpose()
+    public function getBusinessPurpose(): string
     {
         return $this->businessPurpose;
     }
+
 
     /**
      * Sets the businessPurpose
@@ -827,41 +860,47 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $businessPurpose
      * @return void
      */
-    public function setBusinessPurpose($businessPurpose)
+    public function setBusinessPurpose(string $businessPurpose): void
     {
         $this->businessPurpose = $businessPurpose;
     }
 
+
     /**
      * Returns the insolvencyProceedings
      *
-     * @return int $insolvencyProceedings
+     * @return int
+     *  @todo isn't this a boolean?
      */
-    public function getInsolvencyProceedings()
+    public function getInsolvencyProceedings(): int
     {
         return $this->insolvencyProceedings;
     }
+
 
     /**
      * Sets the insolvencyProceedings
      *
      * @param int $insolvencyProceedings
      * @return void
+     *  @todo isn't this a boolean?
      */
-    public function setInsolvencyProceedings($insolvencyProceedings)
+    public function setInsolvencyProceedings(int $insolvencyProceedings): void
     {
         $this->insolvencyProceedings = $insolvencyProceedings;
     }
 
+
     /**
      * Returns the chamber
      *
-     * @return int $chamber
+     * @return int
      */
-    public function getChamber()
+    public function getChamber(): int
     {
         return $this->chamber;
     }
+
 
     /**
      * Sets the chamber
@@ -869,20 +908,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $chamber
      * @return void
      */
-    public function setChamber($chamber)
+    public function setChamber(int $chamber): void
     {
         $this->chamber = $chamber;
     }
 
+
     /**
      * Returns the companyShares
      *
-     * @return string $companyShares
+     * @return string
      */
-    public function getCompanyShares()
+    public function getCompanyShares(): string
     {
         return $this->companyShares;
     }
+
 
     /**
      * Sets the companyShares
@@ -890,20 +931,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $companyShares
      * @return void
      */
-    public function setCompanyShares($companyShares)
+    public function setCompanyShares(string $companyShares): void
     {
         $this->companyShares = $companyShares;
     }
 
+
     /**
      * Returns the principalBank
      *
-     * @return string $principalBank
+     * @return string
      */
-    public function getPrincipalBank()
+    public function getPrincipalBank(): string
     {
         return $this->principalBank;
     }
+
 
     /**
      * Sets the principalBank
@@ -911,20 +954,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $principalBank
      * @return void
      */
-    public function setPrincipalBank($principalBank)
+    public function setPrincipalBank(string $principalBank): void
     {
         $this->principalBank = $principalBank;
     }
+
 
     /**
      * Returns the bic
      *
      * @return string $bic
      */
-    public function getBic()
+    public function getBic(): string
     {
         return $this->bic;
     }
+
 
     /**
      * Sets the bic
@@ -932,20 +977,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $bic
      * @return void
      */
-    public function setBic($bic)
+    public function setBic(string $bic): void
     {
         $this->bic = $bic;
     }
+
 
     /**
      * Returns the iban
      *
      * @return string $iban
      */
-    public function getIban()
+    public function getIban(): string
     {
         return $this->iban;
     }
+
 
     /**
      * Sets the iban
@@ -953,20 +1000,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $iban
      * @return void
      */
-    public function setIban($iban)
+    public function setIban(string $iban): void
     {
         $this->iban = str_replace(' ', '', $iban);
     }
 
+
     /**
      * Returns the contactPersonName
      *
-     * @return string $contactPersonName
+     * @return string
      */
-    public function getContactPersonName()
+    public function getContactPersonName(): string
     {
         return $this->contactPersonName;
     }
+
 
     /**
      * Sets the contactPersonName
@@ -974,20 +1023,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $contactPersonName
      * @return void
      */
-    public function setContactPersonName($contactPersonName)
+    public function setContactPersonName(string $contactPersonName): void
     {
         $this->contactPersonName = $contactPersonName;
     }
 
+
     /**
      * Returns the contactPersonPhone
      *
-     * @return string $contactPersonPhone
+     * @return string
      */
-    public function getContactPersonPhone()
+    public function getContactPersonPhone(): string
     {
         return $this->contactPersonPhone;
     }
+
 
     /**
      * Sets the contactPersonPhone
@@ -995,20 +1046,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $contactPersonPhone
      * @return void
      */
-    public function setContactPersonPhone($contactPersonPhone)
+    public function setContactPersonPhone(string $contactPersonPhone): void
     {
         $this->contactPersonPhone = $contactPersonPhone;
     }
 
+
     /**
      * Returns the contactPersonFax
      *
-     * @return string $contactPersonFax
+     * @return string
      */
-    public function getContactPersonFax()
+    public function getContactPersonFax(): string
     {
         return $this->contactPersonFax;
     }
+
 
     /**
      * Sets the contactPersonFax
@@ -1016,20 +1069,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $contactPersonFax
      * @return void
      */
-    public function setContactPersonFax($contactPersonFax)
+    public function setContactPersonFax(string $contactPersonFax): void
     {
         $this->contactPersonFax = $contactPersonFax;
     }
 
+
     /**
      * Returns the contactPersonMobile
      *
-     * @return string $contactPersonMobile
+     * @return string
      */
-    public function getContactPersonMobile()
+    public function getContactPersonMobile(): string
     {
         return $this->contactPersonMobile;
     }
+
 
     /**
      * Sets the contactPersonMobile
@@ -1037,20 +1092,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $contactPersonMobile
      * @return void
      */
-    public function setContactPersonMobile($contactPersonMobile)
+    public function setContactPersonMobile(string $contactPersonMobile): void
     {
         $this->contactPersonMobile = $contactPersonMobile;
     }
 
+
     /**
      * Returns the contactPersonEmail
      *
-     * @return string $contactPersonEmail
+     * @return string
      */
-    public function getContactPersonEmail()
+    public function getContactPersonEmail(): string
     {
         return $this->contactPersonEmail;
     }
+
 
     /**
      * Sets the contactPersonEmail
@@ -1058,17 +1115,18 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $contactPersonEmail
      * @return void
      */
-    public function setContactPersonEmail($contactPersonEmail)
+    public function setContactPersonEmail(string $contactPersonEmail): void
     {
         $this->contactPersonEmail = $contactPersonEmail;
     }
 
+
     /**
      * Returns the preFoundationEmployment
      *
-     * @return int $preFoundationEmployment
+     * @return int
      */
-    public function getPreFoundationEmployment()
+    public function getPreFoundationEmployment(): int
     {
         return $this->preFoundationEmployment;
     }
@@ -1079,20 +1137,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $preFoundationEmployment
      * @return void
      */
-    public function setPreFoundationEmployment($preFoundationEmployment)
+    public function setPreFoundationEmployment(int $preFoundationEmployment): void
     {
         $this->preFoundationEmployment = $preFoundationEmployment;
     }
 
+
     /**
      * Returns the preFoundationSelfEmployment
      *
-     * @return int $preFoundationSelfEmployment
+     * @return int
      */
-    public function getPreFoundationSelfEmployment()
+    public function getPreFoundationSelfEmployment(): int
     {
         return $this->preFoundationSelfEmployment;
     }
+
 
     /**
      * Sets the preFoundationSelfEmployment
@@ -1100,17 +1160,18 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $preFoundationSelfEmployment
      * @return void
      */
-    public function setPreFoundationSelfEmployment($preFoundationSelfEmployment)
+    public function setPreFoundationSelfEmployment(int $preFoundationSelfEmployment): void
     {
         $this->preFoundationSelfEmployment = $preFoundationSelfEmployment;
     }
 
+
     /**
      * Returns the consultingDays
      *
-     * @return int $consultingDays
+     * @return int
      */
-    public function getConsultingDays()
+    public function getConsultingDays(): int
     {
         return $this->consultingDays;
     }
@@ -1121,20 +1182,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $consultingDays
      * @return void
      */
-    public function setConsultingDays($consultingDays)
+    public function setConsultingDays(int $consultingDays): void
     {
         $this->consultingDays = $consultingDays;
     }
 
+
     /**
      * Returns the consultingDateFrom
      *
-     * @return string $consultingDateFrom
+     * @return string
      */
-    public function getConsultingDateFrom()
+    public function getConsultingDateFrom(): string
     {
         return $this->consultingDateFrom;
     }
+
 
     /**
      * Sets the consultingDateFrom
@@ -1142,17 +1205,18 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultingDateFrom
      * @return void
      */
-    public function setConsultingDateFrom($consultingDateFrom)
+    public function setConsultingDateFrom(string $consultingDateFrom): void
     {
         $this->consultingDateFrom = $consultingDateFrom;
     }
 
+
     /**
      * Returns the consultingDateTo
      *
-     * @return string $consultingDateTo
+     * @return string
      */
-    public function getConsultingDateTo()
+    public function getConsultingDateTo(): string
     {
         return $this->consultingDateTo;
     }
@@ -1163,20 +1227,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultingDateTo
      * @return void
      */
-    public function setConsultingDateTo($consultingDateTo)
+    public function setConsultingDateTo(string $consultingDateTo): void
     {
         $this->consultingDateTo = $consultingDateTo;
     }
+
 
     /**
      * Returns the consultingContent
      *
      * @return string $consultingContent
      */
-    public function getConsultingContent()
+    public function getConsultingContent(): string
     {
         return $this->consultingContent;
     }
+
 
     /**
      * Sets the consultingContent
@@ -1184,20 +1250,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultingContent
      * @return void
      */
-    public function setConsultingContent($consultingContent)
+    public function setConsultingContent(string $consultingContent): void
     {
         $this->consultingContent = $consultingContent;
     }
 
+
     /**
      * Returns the consultantType
      *
-     * @return int $consultantType
+     * @return int
      */
-    public function getConsultantType()
+    public function getConsultantType(): int
     {
         return $this->consultantType;
     }
+
 
     /**
      * Sets the consultantType
@@ -1205,20 +1273,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $consultantType
      * @return void
      */
-    public function setConsultantType($consultantType)
+    public function setConsultantType(int $consultantType): void
     {
         $this->consultantType = $consultantType;
     }
+
 
     /**
      * Returns the consultantCompany
      *
      * @return string $consultantCompany
      */
-    public function getConsultantCompany()
+    public function getConsultantCompany(): string
     {
         return $this->consultantCompany;
     }
+
 
     /**
      * Sets the consultantCompany
@@ -1226,20 +1296,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultantCompany
      * @return void
      */
-    public function setConsultantCompany($consultantCompany)
+    public function setConsultantCompany(string $consultantCompany): void
     {
         $this->consultantCompany = $consultantCompany;
     }
 
+
     /**
      * Returns the consultantName1
      *
-     * @return string $consultantName1
+     * @return string
      */
-    public function getConsultantName1()
+    public function getConsultantName1(): string
     {
         return $this->consultantName1;
     }
+
 
     /**
      * Sets the consultantName1
@@ -1247,20 +1319,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultantName1
      * @return void
      */
-    public function setConsultantName1($consultantName1)
+    public function setConsultantName1(string $consultantName1): void
     {
         $this->consultantName1 = $consultantName1;
     }
 
+
     /**
      * Returns the consultantName2
      *
-     * @return string $consultantName2
+     * @return string
      */
-    public function getConsultantName2()
+    public function getConsultantName2(): string
     {
         return $this->consultantName2;
     }
+
 
     /**
      * Sets the consultantName2
@@ -1268,20 +1342,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultantName2
      * @return void
      */
-    public function setConsultantName2($consultantName2)
+    public function setConsultantName2(string $consultantName2): void
     {
         $this->consultantName2 = $consultantName2;
     }
 
+
     /**
      * Returns the consultant1AccreditationNumber
      *
-     * @return string $consultant1AccreditationNumber
+     * @return string
      */
-    public function getConsultant1AccreditationNumber()
+    public function getConsultant1AccreditationNumber(): string
     {
         return $this->consultant1AccreditationNumber;
     }
+
 
     /**
      * Sets the consultant1AccreditationNumber
@@ -1289,20 +1365,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultant1AccreditationNumber
      * @return void
      */
-    public function setConsultant1AccreditationNumber($consultant1AccreditationNumber)
+    public function setConsultant1AccreditationNumber(string $consultant1AccreditationNumber): void
     {
         $this->consultant1AccreditationNumber = $consultant1AccreditationNumber;
     }
 
+
     /**
      * Returns the consultant2AccreditationNumber
      *
-     * @return string $consultant2AccreditationNumber
+     * @return string
      */
-    public function getConsultant2AccreditationNumber()
+    public function getConsultant2AccreditationNumber(): string
     {
         return $this->consultant2AccreditationNumber;
     }
+
 
     /**
      * Sets the consultant2AccreditationNumber
@@ -1310,20 +1388,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultant2AccreditationNumber
      * @return void
      */
-    public function setConsultant2AccreditationNumber($consultant2AccreditationNumber)
+    public function setConsultant2AccreditationNumber(string $consultant2AccreditationNumber): void
     {
         $this->consultant2AccreditationNumber = $consultant2AccreditationNumber;
     }
 
+
     /**
      * Returns the consultantFee
      *
-     * @return string $consultantFee
+     * @return string
      */
-    public function getConsultantFee()
+    public function getConsultantFee(): string
     {
         return $this->consultantFee;
     }
+
 
     /**
      * Sets the consultantFee
@@ -1331,20 +1411,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultantFee
      * @return void
      */
-    public function setConsultantFee($consultantFee)
+    public function setConsultantFee(string $consultantFee): void
     {
         $this->consultantFee = $consultantFee;
     }
 
+
     /**
      * Returns the consultantPhone
      *
-     * @return string $consultantPhone
+     * @return string
      */
-    public function getConsultantPhone()
+    public function getConsultantPhone(): string
     {
         return $this->consultantPhone;
     }
+
 
     /**
      * Sets the consultantPhone
@@ -1352,20 +1434,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultantPhone
      * @return void
      */
-    public function setConsultantPhone($consultantPhone)
+    public function setConsultantPhone(string $consultantPhone): void
     {
         $this->consultantPhone = $consultantPhone;
     }
 
+
     /**
      * Returns the consultantEmail
      *
-     * @return string $consultantEmail
+     * @return string
      */
-    public function getConsultantEmail()
+    public function getConsultantEmail(): string
     {
         return $this->consultantEmail;
     }
+
 
     /**
      * Sets the consultantEmail
@@ -1373,52 +1457,59 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $consultantEmail
      * @return void
      */
-    public function setConsultantEmail($consultantEmail)
+    public function setConsultantEmail(string $consultantEmail): void
     {
         $this->consultantEmail = $consultantEmail;
     }
+
 
     /**
      * Returns the prematureStart
      *
      * @return int $prematureStart
+     *  @todo isn't this a boolean?
      */
-    public function getPrematureStart()
+    public function getPrematureStart(): int
     {
         return $this->prematureStart;
     }
+
 
     /**
      * Sets the prematureStart
      *
      * @param int $prematureStart
      * @return void
+     *  @todo isn't this a boolean?
      */
-    public function setPrematureStart($prematureStart)
+    public function setPrematureStart(int $prematureStart): void
     {
         $this->prematureStart = $prematureStart;
     }
 
+
     /**
      * Returns the file
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> file
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
-    public function getFile()
+    public function getFile(): ObjectStorage
     {
         return $this->file;
     }
 
+
     /**
      * Sets the file
      *
-     * @param string $file
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> file
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $file
+     * @return void
      */
-    public function setFile($file)
+    public function setFile(ObjectStorage $file): void
     {
         $this->file = $file;
     }
+
 
     /**
      * Adds a file
@@ -1426,10 +1517,11 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
      * @return void
      */
-    public function addFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
+    public function addFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file): void
     {
         $this->file->attach($file);
     }
+
 
     /**
      * Removes a file
@@ -1438,10 +1530,11 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return void
      * @api
      */
-    public function removeFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file)
+    public function removeFile(\TYPO3\CMS\Extbase\Domain\Model\FileReference $file): void
     {
         $this->file->detach($file);
     }
+
 
     /**
      * Returns the fileUpload
@@ -1449,10 +1542,11 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return array $fileUpload
      */
-    public function getFileUpload()
+    public function getFileUpload(): array
     {
         return $this->fileUpload;
     }
+
 
     /**
      * Sets the fileUpload
@@ -1461,20 +1555,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param array $fileUpload
      * @return void
      */
-    public function setFileUpload($fileUpload)
+    public function setFileUpload(array $fileUpload): void
     {
         $this->fileUpload = $fileUpload;
     }
 
+
     /**
      * Returns the sendDocuments
      *
-     * @return int $sendDocuments
+     * @return int
      */
-    public function getSendDocuments()
+    public function getSendDocuments(): int
     {
         return $this->sendDocuments;
     }
+
 
     /**
      * Sets the sendDocuments
@@ -1482,104 +1578,122 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $sendDocuments
      * @return void
      */
-    public function setSendDocuments($sendDocuments)
+    public function setSendDocuments(int $sendDocuments): void
     {
         $this->sendDocuments = $sendDocuments;
     }
 
+
     /**
      * Returns the bafaSupport
      *
-     * @return int $bafaSupport
+     * @return int
+     *  @todo isn't this a boolean?
      */
-    public function getBafaSupport()
+    public function getBafaSupport(): int
     {
         return $this->bafaSupport;
     }
+
 
     /**
      * Sets the bafaSupport
      *
      * @param int $bafaSupport
      * @return void
+     *  @todo isn't this a boolean?
      */
-    public function setBafaSupport($bafaSupport)
+    public function setBafaSupport(int $bafaSupport): void
     {
         $this->bafaSupport = $bafaSupport;
     }
 
+
     /**
      * Returns the deMinimis
      *
-     * @return int $deMinimis
+     * @return int
+     *  @todo isn't this a boolean?
      */
-    public function getDeMinimis()
+    public function getDeMinimis(): int
     {
         return $this->deMinimis;
     }
+
 
     /**
      * Sets the deMinimis
      *
      * @param int $deMinimis
      * @return void
+     *  @todo isn't this a boolean?
      */
-    public function setDeMinimis($deMinimis)
+    public function setDeMinimis(int $deMinimis): void
     {
         $this->deMinimis = $deMinimis;
     }
 
+
     /**
      * Returns the existenzGruenderPass
      *
-     * @return int $existenzGruenderPass
+     * @return int
+     *  @todo isn't this a boolean?
      */
-    public function getExistenzGruenderPass()
+    public function getExistenzGruenderPass(): int
     {
         return $this->existenzGruenderPass;
     }
+
 
     /**
      * Sets the existenzGruenderPass
      *
      * @param int $existenzGruenderPass
      * @return void
+     *  @todo isn't this a boolean?
      */
-    public function setExistenzGruenderPass($existenzGruenderPass)
+    public function setExistenzGruenderPass(int $existenzGruenderPass): void
     {
         $this->existenzGruenderPass = $existenzGruenderPass;
     }
+
 
     /**
      * Returns the privacy
      *
      * @return int $privacy
+     *  @todo isn't this a boolean?
      */
-    public function getPrivacy()
+    public function getPrivacy(): int
     {
         return $this->privacy;
     }
+
 
     /**
      * Sets the privacy
      *
      * @param int $privacy
      * @return void
+     *  @todo isn't this a boolean?
      */
-    public function setPrivacy($privacy)
+    public function setPrivacy(int $privacy): void
     {
         $this->privacy = $privacy;
     }
 
+
     /**
      * Returns the supportProgramme
      *
-     * @return \RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme
+     * @return \RKW\RkwFeecalculator\Domain\Model\Program
      */
-    public function getSupportProgramme()
+    public function getSupportProgramme():? Program
     {
         return $this->supportProgramme;
     }
+
 
     /**
      * Sets the supportProgramme
@@ -1587,20 +1701,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme
      * @return void
      */
-    public function setSupportProgramme($supportProgramme)
+    public function setSupportProgramme(Program $supportProgramme): void
     {
         $this->supportProgramme = $supportProgramme;
     }
+
 
     /**
      * Returns the consulting
      *
      * @return \RKW\RkwFeecalculator\Domain\Model\Consulting $consulting
      */
-    public function getConsulting()
+    public function getConsulting():? Consulting
     {
         return $this->consulting;
     }
+
 
     /**
      * Sets the consulting
@@ -1608,20 +1724,22 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \RKW\RkwFeecalculator\Domain\Model\Consulting $consulting
      * @return void
      */
-    public function setConsulting($consulting)
+    public function setConsulting(Consulting $consulting): void
     {
         $this->consulting = $consulting;
     }
 
+
     /**
      * Returns the companytype
      *
-     * @return \RKW\RkwBasics\Domain\Model\CompanyType $companytype
+     * @return \RKW\RkwBasics\Domain\Model\CompanyType
      */
-    public function getCompanytype()
+    public function getCompanytype():? CompanyType
     {
         return $this->companytype;
     }
+
 
     /**
      * Sets the companytype
@@ -1629,30 +1747,32 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \RKW\RkwBasics\Domain\Model\CompanyType $companytype
      * @return void
      */
-    public function setCompanytype($companytype)
+    public function setCompanytype(CompanyType $companytype): void
     {
         $this->companytype = $companytype;
     }
+
 
     /**
      * Transforms date strings to DateTime object
      *
      * @return void
      */
-    public function transformDates()
+    public function transformDates(): void
     {
         $this->foundationDate = $this->transformDate($this->foundationDate);
         $this->intendedFoundationDate = $this->transformDate($this->intendedFoundationDate);
         $this->birthdate = $this->transformDate($this->birthdate);
     }
 
+
     /**
-     * Transforms date string to DateTime object
+     * Transforms date string to timestamp
      *
      * @param string $dateString
-     * @return \DateTime
+     * @return int
      */
-    protected function transformDate($dateString)
+    protected function transformDate(string $dateString): int
     {
         if ($dateTime = \DateTime::createFromFormat('d.m.Y', $dateString)) {
             return $dateTime->getTimestamp();
@@ -1660,6 +1780,5 @@ class SupportRequest extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
         return $dateString;
     }
-
 
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwFeecalculator\ViewHelpers;
 
 /*
@@ -16,13 +15,13 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  */
 
 use RKW\RkwFeecalculator\Domain\Model\Program;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Class PossibleDaysViewHelper
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -30,13 +29,29 @@ class PossibleDaysViewHelper extends AbstractViewHelper
 {
 
     /**
+     * Initialize arguments.
+     *
+     * @return void
+     * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
+     */
+    public function initializeArguments(): void
+    {
+        parent::initializeArguments();
+        $this->registerArgument('program', Program::class, 'The program class.', false,  null);
+    }
+
+
+    /**
      * Get the possible days
      *
-     * @param Program|null $program
+     * @param \RKW\RkwFeecalculator\Domain\Model\Program|null $program
      * @return array
      */
-    public function render(Program $program = null)
+    public function render(Program $program = null): array
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program $program */
+        $program = $this->arguments['program'];
+
         return $program ? $program->getPossibleDays() : [];
     }
 

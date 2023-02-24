@@ -1,10 +1,5 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Service;
-
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,41 +14,56 @@ use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
  * The TYPO3 project - inspiring people to share!
  */
 
+use RKW\RkwBasics\Domain\Repository\CompanyTypeRepository;
+use RKW\RkwFeecalculator\Domain\Model\Program;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
+
 /**
  * LayoutService
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
 {
 
-    /**
-     * $companytypeRepository
-     *
+    /***
      * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected $companytypeRepository = null;
+    protected CompanyTypeRepository $companytypeRepository;
+
 
     /**
-     * @var \RKW\RkwFeecalculator\Domain\Model\Program
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program|null
      */
-    protected $supportProgramme;
+    protected ?Program $supportProgramme = null;
 
-    protected $consultingList;
 
-    protected $companytypeList;
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\RKW\RkwFeecalculator\Domain\Model\Consulting>|null
+     */
+    protected ?ObjectStorage $consultingList = null;
+
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\RKW\RkwBasics\Domain\Model\CompanyType>|null
+     */
+    protected ?QueryResultInterface $companytypeList = null;
+
 
     /**
      * @param \RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme
-     * @return mixed
+     * @return array
      */
-    public function getFields(\RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme)
+    public function getFields(Program $supportProgramme): array
     {
-
         $this->supportProgramme = $supportProgramme;
         $this->companytypeList = $this->companytypeRepository->findAll();
         $this->consultingList = $this->supportProgramme->getConsulting();
@@ -63,24 +73,21 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
         }, explode(',', $supportProgramme->getRequestFields()));
 
         $fieldsets = $this->getFieldsConfig();
-
         return $this->getFieldsLayout($this->filterFieldsets($fieldsets, $requestFieldsArray));
-
     }
+
 
     /**
      * Provide fields layout helpers
      *
-     * @param $fieldsets
-     *
-     * @return mixed
+     * @param array $fieldsets
+     * @return array
      */
-    protected function getFieldsLayout($fieldsets)
+    protected function getFieldsLayout(array $fieldsets): array
     {
         foreach ($fieldsets as $key => $fieldset) {
 
             $counter = 0;
-
             foreach ($fieldset as $fieldKey => $field) {
 
                 $index = array_keys($fieldset);
@@ -91,20 +98,20 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
                 }
 
                 $field['width'] = $field['width'] ?? 'width50';
-
                 $fieldsets[$key][$fieldKey] = $field;
-
                 $counter++;
-
             }
 
         }
 
         return $fieldsets;
-
     }
 
-    protected function getFieldsConfig()
+
+    /**
+     * @return array
+     */
+    protected function getFieldsConfig(): array
     {
         return [
             'applicant' => [
@@ -506,23 +513,32 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
         ];
     }
 
+
     /**
      * Provide fieldsets
      *
-     * @param $fieldsets
-     * @param $requestFieldsArray
-     *
-     * @return mixed
+     * @param array $fieldsets
+     * @param array $requestFieldsArray
+     * @return array
      */
-    protected function filterFieldsets($fieldsets, $requestFieldsArray)
+    protected function filterFieldsets(array $fieldsets, array $requestFieldsArray): array
     {
+        $sortedFieldsets = [];
         foreach ($fieldsets as $key => $fieldset) {
             $fieldsets[$key] = array_filter($fieldset, function($item) use ($requestFieldsArray) {
                 return in_array($item, $requestFieldsArray, true);
             },ARRAY_FILTER_USE_KEY);
 
             //  sort array
-            $sortedFieldsets[$key] = array_merge(array_flip(array_intersect($requestFieldsArray, array_keys($fieldsets[$key]))), $fieldsets[$key]);
+            $sortedFieldsets[$key] = array_merge(
+                array_flip(
+                    array_intersect(
+                        $requestFieldsArray,
+                        array_keys($fieldsets[$key])
+                    )
+                ),
+                $fieldsets[$key]
+            );
         }
 
         return $sortedFieldsets;

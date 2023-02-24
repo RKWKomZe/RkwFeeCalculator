@@ -18,9 +18,9 @@ namespace RKW\RkwFeecalculator\Domain\Repository;
 /**
  * Class FrontendUserRepository
  *
- * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @copyright Rkw Kompetenzzentrum
- * @package RKW_RkwOrder
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class FrontendUserRepository extends \RKW\RkwRegistration\Domain\Repository\FrontendUserRepository

@@ -1,39 +1,64 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
 
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use RKW\RkwFeecalculator\Domain\Model\Consulting;
 use RKW\RkwFeecalculator\Domain\Model\Program;
 use RKW\RkwFeecalculator\Tests\Unit\TestCase;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * Test case.
+ * Class ProgramTest
  *
  * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeecalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @todo there are no scenarios defined. See coding guidelines!
  */
 class ProgramTest extends TestCase
 {
     /**
-     * @var Program
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program|null
      */
-    protected $subject;
+    protected ?Program $subject = null;
 
-    protected function setUp()
+
+    /**
+     * @return void
+     */
+    protected function setUp(): void
     {
         parent::setUp();
-        $this->subject = new Program();
+
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Program subject */
+        $this->subject = GeneralUtility::makeInstance(Program::class);
     }
+
+    #==========================================================================
+
 
     /**
      * @test
      */
     public function getNameReturnsInitialValueForString()
     {
-        self::assertSame(
-            '',
-            $this->subject->getName()
-        );
-
+        self::assertSame('', $this->subject->getName());
     }
+
 
     /**
      * @test
@@ -42,24 +67,21 @@ class ProgramTest extends TestCase
     {
         $this->subject->setName('Conceived at T3CON10');
 
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'name',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->getName());
 
     }
+
+    #==========================================================================
+
 
     /**
      * @test
      */
     public function getPossibleDaysMinReturnsInitialValueForInt()
     {
-        self::assertSame(
-            0,
-            $this->subject->getPossibleDaysMin()
-        );
+        self::assertSame(0, $this->subject->getPossibleDaysMin());
     }
+
 
     /**
      * @test
@@ -67,24 +89,19 @@ class ProgramTest extends TestCase
     public function setPossibleDaysMinForIntSetsPossibleDaysMin()
     {
         $this->subject->setPossibleDaysMin(5);
-
-        self::assertAttributeEquals(
-            5,
-            'possibleDaysMin',
-            $this->subject
-        );
+        self::assertEquals(5, $this->subject->getPossibleDaysMin());
     }
+
+    #==========================================================================
 
     /**
      * @test
      */
     public function getPossibleDaysMaxReturnsInitialValueForInt()
     {
-        self::assertSame(
-            0,
-            $this->subject->getPossibleDaysMax()
-        );
+        self::assertSame(0, $this->subject->getPossibleDaysMax());
     }
+
 
     /**
      * @test
@@ -92,25 +109,19 @@ class ProgramTest extends TestCase
     public function setPossibleDaysMaxForIntSetsPossibleDaysMax()
     {
         $this->subject->setPossibleDaysMax(10);
-
-        self::assertAttributeEquals(
-            10,
-            'possibleDaysMax',
-            $this->subject
-        );
+        self::assertEquals(10, $this->subject->getPossibleDaysMax());
     }
+
+    #==========================================================================
 
     /**
      * @test
      */
     public function getContentReturnsInitialValueForString()
     {
-        self::assertSame(
-            '',
-            $this->subject->getContent()
-        );
-
+        self::assertSame('', $this->subject->getContent());
     }
+
 
     /**
      * @test
@@ -118,25 +129,20 @@ class ProgramTest extends TestCase
     public function setContentForStringSetsContent()
     {
         $this->subject->setContent('Conceived at T3CON10');
-
-        self::assertAttributeEquals(
-            'Conceived at T3CON10',
-            'content',
-            $this->subject
-        );
+        self::assertEquals('Conceived at T3CON10', $this->subject->getContent());
 
     }
+
+    #==========================================================================
 
     /**
      * @test
      */
     public function getRkwFeePerDayReturnsInitialValueForDouble()
     {
-        self::assertSame(
-            0.00,
-            $this->subject->getRkwFeePerDay()
-        );
+        self::assertSame(0.00, $this->subject->getRkwFeePerDay());
     }
+
 
     /**
      * @test
@@ -144,24 +150,29 @@ class ProgramTest extends TestCase
     public function setRkwFeePerDayForDoubleSetsRkwFeePerDay()
     {
         $this->subject->setRkwFeePerDay(100.87);
-
-        self::assertAttributeEquals(
-            100.87,
-            'rkwFeePerDay',
-            $this->subject
-        );
+        self::assertEquals(100.87, $this->subject->getRkwFeePerDay());
     }
+
+
+    /**
+     * @test
+     */
+    public function setRkwFeePerDayIsSetAsADotValue()
+    {
+        $this->subject->setRkwFeePerDay('100,46');
+        self::assertEquals(100.46, $this->subject->getRkwFeePerDay());
+    }
+
+    #==========================================================================
 
     /**
      * @test
      */
     public function getConsultantFeePerDayLimitReturnsInitialValueForDouble()
     {
-        self::assertSame(
-            0.00,
-            $this->subject->getConsultantFeePerDayLimit()
-        );
+        self::assertSame(0.00, $this->subject->getConsultantFeePerDayLimit());
     }
+
 
     /**
      * @test
@@ -169,23 +180,27 @@ class ProgramTest extends TestCase
     public function setConsultantFeePerDayLimitForDoubleSetsConsultantFeePerDayLimit()
     {
         $this->subject->setConsultantFeePerDayLimit(800);
-
-        self::assertAttributeEquals(
-            800,
-            'consultantFeePerDayLimit',
-            $this->subject
-        );
+        self::assertEquals(800, $this->subject->getConsultantFeePerDayLimit());
     }
+
+    /**
+     * @test
+     */
+    public function setConsultantFeePerDayLimitIsSetAsADotValue()
+    {
+
+        $this->subject->setConsultantFeePerDayLimit('1000,46');
+        self::assertEquals(1000.46, $this->subject->getConsultantFeePerDayLimit());
+    }
+
+    #==========================================================================
 
     /**
      * @test
      */
     public function getConsultantSubventionLimitReturnsInitialValueForDouble()
     {
-        self::assertSame(
-            0.00,
-            $this->subject->getConsultantSubventionLimit()
-        );
+        self::assertSame(0.00, $this->subject->getConsultantSubventionLimit());
     }
 
     /**
@@ -194,23 +209,19 @@ class ProgramTest extends TestCase
     public function setConsultantSubventionLimitForDoubleSetsConsultantSubventionLimit()
     {
         $this->subject->setConsultantSubventionLimit(3550);
-
-        self::assertAttributeEquals(
-            3550,
-            'consultantSubventionLimit',
-            $this->subject
-        );
+        self::assertEquals(3550, $this->subject->getConsultantSubventionLimit());
     }
+
+    #==========================================================================
 
     /**
      * @test
      */
     public function getRkwFeePerDayAsLimitReturnsInitialValueForBoolean()
     {
-        self::assertFalse(
-            $this->subject->getRkwFeePerDayAsLimit()
-        );
+        self::assertFalse($this->subject->getRkwFeePerDayAsLimit());
     }
+
 
     /**
      * @test
@@ -218,23 +229,18 @@ class ProgramTest extends TestCase
     public function setRkwFeePerDayAsLimitForBooleanSetsConsultantSubventionLimit()
     {
         $this->subject->setRkwFeePerDayAsLimit(true);
+        self::assertEquals(true, $this->subject->getRkwFeePerDayAsLimit());
 
-        self::assertAttributeEquals(
-            true,
-            'rkwFeePerDayAsLimit',
-            $this->subject
-        );
     }
+
+    #==========================================================================
 
     /**
      * @test
      */
     public function getFundingFactorReturnsInitialValueForFloat()
     {
-        self::assertSame(
-            1.0,
-            $this->subject->getFundingFactor()
-        );
+        self::assertSame(1.0, $this->subject->getFundingFactor());
     }
 
     /**
@@ -243,35 +249,10 @@ class ProgramTest extends TestCase
     public function setFundingFactor()
     {
         $this->subject->setFundingFactor(0.8);
-
-        self::assertAttributeEquals(
-            0.8,
-            'fundingFactor',
-            $this->subject
-        );
+        self::assertEquals(0.8, $this->subject->getFundingFactor());
     }
 
-    /**
-     * @test
-     */
-    public function aCommaRkwFeePerDayValueIsSetAsADotValue()
-    {
-        $this->subject->setRkwFeePerDay('100,46');
-
-        self::assertAttributeEquals(
-            100.46,
-            'rkwFeePerDay',
-            $this->subject
-        );
-
-        $this->subject->setConsultantFeePerDayLimit('1000,46');
-
-        self::assertAttributeEquals(
-            1000.46,
-            'consultantFeePerDayLimit',
-            $this->subject
-        );
-    }
+    #==========================================================================
 
     /**
      * @test
@@ -294,6 +275,7 @@ class ProgramTest extends TestCase
         );
     }
 
+
     /**
      * @test
      */
@@ -302,23 +284,20 @@ class ProgramTest extends TestCase
         $this->subject->setPossibleDaysMin(0);
         $this->subject->setPossibleDaysMax(0);
 
-        self::assertSame(
-            [],
-            $this->subject->getPossibleDays()
-        );
+        self::assertSame([], $this->subject->getPossibleDays());
     }
+
+    #==========================================================================
 
     /**
      * @test
      */
     public function getConsultingReturnsInitialValueForConsulting()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getConsulting()
-        );
+        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $newObjectStorage  */
+        $newObjectStorage = GeneralUtility::makeInstance(ObjectStorage::class);
 
+        self::assertEquals($newObjectStorage, $this->subject->getConsulting());
     }
 
     /**
@@ -326,26 +305,29 @@ class ProgramTest extends TestCase
      */
     public function setConsultingForObjectStorageContainingConsultingSetsConsulting()
     {
-        $consulting = new \RKW\RkwFeecalculator\Domain\Model\Consulting();
-        $objectStorageHoldingExactlyOneConsulting = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Consulting $consulting */
+        $consulting = GeneralUtility::makeInstance(Consulting::class);
+
+        /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $objectStorageHoldingExactlyOneConsulting  */
+        $objectStorageHoldingExactlyOneConsulting = GeneralUtility::makeInstance(ObjectStorage::class);
         $objectStorageHoldingExactlyOneConsulting->attach($consulting);
         $this->subject->setConsulting($objectStorageHoldingExactlyOneConsulting);
 
-        self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneConsulting,
-            'consulting',
-            $this->subject
-        );
+        self::assertEquals($objectStorageHoldingExactlyOneConsulting, $this->subject->getConsulting());
 
     }
+
 
     /**
      * @test
      */
     public function addConsultingToObjectStorageHoldingConsulting()
     {
-        $consulting = new \RKW\RkwFeecalculator\Domain\Model\Consulting();
-        $consultingObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Consulting $consulting */
+        $consulting = GeneralUtility::makeInstance(Consulting::class);
+
+        /** @var \PHPUnit\Framework\MockObject\MockObject $consultingObjectStorageMock */
+        $consultingObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['attach'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -356,13 +338,17 @@ class ProgramTest extends TestCase
         $this->subject->addConsulting($consulting);
     }
 
+
     /**
      * @test
      */
     public function removeConsultingFromObjectStorageHoldingConsulting()
     {
-        $consulting = new \RKW\RkwFeecalculator\Domain\Model\Consulting();
-        $consultingObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Consulting $consulting */
+        $consulting = GeneralUtility::makeInstance(Consulting::class);
+
+        /** @var \PHPUnit\Framework\MockObject\MockObject $consultingObjectStorageMock */
+        $consultingObjectStorageMock = $this->getMockBuilder(ObjectStorage::class)
             ->setMethods(['detach'])
             ->disableOriginalConstructor()
             ->getMock();
@@ -372,6 +358,16 @@ class ProgramTest extends TestCase
 
         $this->subject->removeConsulting($consulting);
 
+    }
+
+    #==========================================================================
+
+    /**
+     * @return void
+     */
+    protected function tearDown(): void
+    {
+        parent::tearDown();
     }
 
 }

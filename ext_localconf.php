@@ -32,29 +32,24 @@ call_user_func(
         );
 
         //=================================================================
-        // Register CommandController
-        //=================================================================
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'RKW\\RkwFeecalculator\\Controller\\SupportRequestCommandController';
-
-        //=================================================================
         // Register SignalSlots
         //=================================================================
         /**
          * @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher $signalSlotDispatcher
          */
-        $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
+        $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
 
         $signalSlotDispatcher->connect(
-            'RKW\\RkwFeecalculator\\Controller\\SupportRequestController',
+            RKW\RkwFeecalculator\Controller\SupportRequestController::class,
             \RKW\RkwFeecalculator\Controller\SupportRequestController::SIGNAL_AFTER_REQUEST_CREATED_USER,
-            'RKW\\RkwFeecalculator\\Service\\RkwMailService',
+            RKW\RkwFeecalculator\Service\RkwMailService::class,
             'userMail'
         );
 
         $signalSlotDispatcher->connect(
-            'RKW\\RkwFeecalculator\\Controller\\SupportRequestController',
+            RKW\RkwFeecalculator\Controller\SupportRequestController::class,
             \RKW\RkwFeecalculator\Controller\SupportRequestController::SIGNAL_AFTER_REQUEST_CREATED_ADMIN,
-            'RKW\\RkwFeecalculator\\Service\\RkwMailService',
+            RKW\RkwFeecalculator\Service\RkwMailService::class,
             'adminMail'
         );
     },

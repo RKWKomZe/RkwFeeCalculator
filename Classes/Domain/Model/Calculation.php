@@ -1,182 +1,172 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Domain\Model;
 
-/***
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * This file is part of the "RKW FeeCalculator" Extension for TYPO3 CMS.
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2019 Christian Dilger <c.dilger@addorange.de>
- *
- ***/
+ * The TYPO3 project - inspiring people to share!
+ */
 
 /**
- * Calculation
+ * Class Calculation
+ *
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwFeecalculator
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
-     * showResults
-     *
      * @var bool
      */
-    protected $showResults = false;
+    protected bool $showResults = false;
+
 
     /**
-     * days
-     *
-     * @var integer
-     * @validate Integer
+     * @var int
+     * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
      */
-    protected $days = 0;
+    protected int $days = 0;
+
 
     /**
-     * consultantFeePerDay
-     *
      * @var string
-     * @validate NotEmpty
      */
-    protected $consultantFeePerDay = '0';
+    protected string $consultantFeePerDay = '0';
+
 
     /**
-     * calculator
-     *
-     * @var \RKW\RkwFeecalculator\Domain\Model\Calculator
+     * @var \RKW\RkwFeecalculator\Domain\Model\Calculator|null
      */
-    protected $calculator;
+    protected ?Calculator $calculator = null;
+
 
     /**
-     * selectedProgram
-     *
-     * @var \RKW\RkwFeecalculator\Domain\Model\Program
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program|null
      */
-    protected $selectedProgram;
+    protected ?Program $selectedProgram = null;
+
 
     /**
-     * previousSelectedProgram
-     *
-     * @var \RKW\RkwFeecalculator\Domain\Model\Program
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program|null
      */
-    protected $previousSelectedProgram;
+    protected ?Program $previousSelectedProgram = null;
+
 
     /**
-     * rkwFeeSubvention
-     *
      * @var int
      */
-    protected $rkwFeeSubvention;
+    protected int $rkwFeeSubvention = 0;
+
 
     /**
-     * consultantFeeSubvention
-     *
      * @var int
      */
-    protected $consultantFeeSubvention;
+    protected int $consultantFeeSubvention = 0;
+
 
     /**
-     * subventionSubtotal
-     *
      * @var int
      */
-    protected $subventionSubtotal;
+    protected int $subventionSubtotal = 0;
+
 
     /**
-     * subtotal
-     *
      * @var int
      */
-    protected $subtotal;
+    protected int $subtotal = 0;
+
 
     /**
-     * subtotalPerDay
-     *
      * @var int
      */
-    protected $subtotalPerDay;
+    protected int $subtotalPerDay = 0;
+
 
     /**
-     * tax
-     *
      * @var int
      */
-    protected $tax;
+    protected int $tax = 0;
+
 
     /**
-     * total
-     *
      * @var int
      */
-    protected $total;
+    protected int $total = 0;
+
 
     /**
-     * subventionTotal
-     *
      * @var int
      */
-    protected $subventionTotal;
+    protected int $subventionTotal = 0;
+
 
     /**
-     * funding
-     *
      * @var int
      */
-    protected $funding;
+    protected int $funding = 0;
+
 
     /**
-     * ownFundingNet
-     *
      * @var int
      */
-    protected $ownFundingNet;
+    protected int $ownFundingNet = 0;
+
 
     /**
-     * ownFundingGross
-     *
      * @var int
      */
-    protected $ownFundingGross;
+    protected int $ownFundingGross = 0;
+
 
     /**
-     * fundingPercentage
-     *
      * @var int
      */
-    protected $fundingPercentage;
+    protected int $fundingPercentage = 0;
+
 
     /**
      * Returns the showResults
      *
-     * @return int $showResults
+     * @return bool
      */
-    public function getShowResults()
+    public function getShowResults(): bool
     {
         return $this->showResults;
     }
 
+
     /**
      * Sets the showResults
      *
-     * @param int $showResults
+     * @param bool $showResults
      * @return void
      */
-    public function setShowResults($showResults)
+    public function setShowResults(bool $showResults): void
     {
         $this->showResults = $showResults;
     }
 
+
     /**
      * Returns the days
      *
-     * @return int $days
+     * @return int
      */
-    public function getDays()
+    public function getDays(): int
     {
         return $this->days;
     }
+
 
     /**
      * Sets the days
@@ -184,20 +174,22 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $days
      * @return void
      */
-    public function setDays($days)
+    public function setDays(int $days): void
     {
         $this->days = $days;
     }
 
+
     /**
      * Returns the calculator
      *
-     * @return \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator
+     * @return \RKW\RkwFeecalculator\Domain\Model\Calculator
      */
-    public function getCalculator()
+    public function getCalculator():? Calculator
     {
         return $this->calculator;
     }
+
 
     /**
      * Sets the calculator
@@ -205,61 +197,66 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator
      * @return void
      */
-    public function setCalculator(\RKW\RkwFeecalculator\Domain\Model\Calculator $calculator)
+    public function setCalculator(Calculator $calculator): void
     {
         $this->calculator = $calculator;
     }
 
+
     /**
      * Returns the selectedProgram
      *
-     * @return \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram
+     * @return \RKW\RkwFeecalculator\Domain\Model\Program
      */
-    public function getSelectedProgram()
+    public function getSelectedProgram():? Program
     {
         return $this->selectedProgram;
     }
 
+
     /**
      * Sets the selectedProgram
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram
+     * @param \RKW\RkwFeecalculator\Domain\Model\Program|null $selectedProgram
      * @return void
      */
-    public function setSelectedProgram(\RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram = null)
+    public function setSelectedProgram(Program $selectedProgram = null): void
     {
         if ($this->getCalculator()->getAssignedPrograms()->contains($selectedProgram)) {
             $this->selectedProgram = $selectedProgram;
         }
     }
 
+
     /**
      * Returns the previousSelectedProgram
      *
-     * @return \RKW\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram
+     * @return \RKW\RkwFeecalculator\Domain\Model\Program
      */
-    public function getPreviousSelectedProgram()
+    public function getPreviousSelectedProgram():? Program
     {
         return $this->previousSelectedProgram;
     }
 
+
     /**
      * Sets the previousSelectedProgram
      *
-     * @param \RKW\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram
+     * @param \RKW\RkwFeecalculator\Domain\Model\Program|null $previousSelectedProgram
      * @return void
      */
-    public function setPreviousSelectedProgram(\RKW\RkwFeecalculator\Domain\Model\Program $previousSelectedProgram = null)
+    public function setPreviousSelectedProgram(Program $previousSelectedProgram = null): void
     {
         $this->previousSelectedProgram = $previousSelectedProgram;
     }
 
+
     /**
      * Returns the consultantFeePerDay
      *
-     * @return float consultantFeePerDay
+     * @return float
      */
-    public function getConsultantFeePerDay()
+    public function getConsultantFeePerDay(): float
     {
         $val = str_replace(',', '.', $this->consultantFeePerDay);
         $val = preg_replace('/\.(?=.*\.)/', '', $val);
@@ -267,275 +264,301 @@ class Calculation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return (float)$val;
     }
 
+
     /**
      * Returns the untouched consultantFeePerDay for validation
      *
-     * @return float consultantFeePerDay
+     * @return string
      */
-    public function getRawConsultantFeePerDay()
+    public function getRawConsultantFeePerDay(): string
     {
         return $this->consultantFeePerDay;
     }
 
+
     /**
      * Sets the consultantFeePerDay
      *
-     * @param int $consultantFeePerDay
+     * @param string $consultantFeePerDay
      * @return void
      */
-    public function setConsultantFeePerDay($consultantFeePerDay)
+    public function setConsultantFeePerDay(string $consultantFeePerDay): void
     {
         $this->consultantFeePerDay = $consultantFeePerDay;
     }
 
+
     /**
      * Sets the consultantFeeSubvention
      *
-     * @param $consultantFeeSubvention
-     * @return void;
+     * @param int $consultantFeeSubvention
+     * @return void
      */
-    public function setConsultantFeeSubvention($consultantFeeSubvention)
+    public function setConsultantFeeSubvention(int $consultantFeeSubvention): void
     {
         $this->consultantFeeSubvention = $consultantFeeSubvention;
     }
 
+
     /**
      * Returns the consultantFeeSubvention
      *
-     * @return int consultantFeeSubvention
+     * @return int
      */
-    public function getConsultantFeeSubvention()
+    public function getConsultantFeeSubvention(): int
     {
         return $this->consultantFeeSubvention;
     }
+
 
     /**
      * Sets the rkwFeeSubvention
      *
      * @param $rkwFeeSubvention
-     * @return void;
+     * @return void
      */
-    public function setRkwFeeSubvention($rkwFeeSubvention)
+    public function setRkwFeeSubvention(int $rkwFeeSubvention): void
     {
         $this->rkwFeeSubvention = $rkwFeeSubvention;
     }
 
+
     /**
      * Returns the rkwFeeSubvention
      *
-     * @return int rkwFeeSubvention
+     * @return int
      */
-    public function getRkwFeeSubvention()
+    public function getRkwFeeSubvention(): int
     {
         return $this->rkwFeeSubvention;
     }
+
 
     /**
      * Sets the subventionSubtotal
      *
      * @param $subventionSubtotal
-     * @return void;
+     * @return void
      */
-    public function setSubventionSubtotal($subventionSubtotal)
+    public function setSubventionSubtotal(int $subventionSubtotal): void
     {
         $this->subventionSubtotal = $subventionSubtotal;
     }
 
+
     /**
      * Returns the subventionSubtotal
      *
-     * @return int subventionSubtotal
+     * @return int
      */
-    public function getSubventionSubtotal()
+    public function getSubventionSubtotal(): int
     {
         return $this->subventionSubtotal;
     }
 
+
     /**
      * Sets the subtotal
      *
-     * @param $subtotal
-     * @return void;
+     * @param int $subtotal
+     * @return void
      */
-    public function setSubtotal($subtotal)
+    public function setSubtotal(int $subtotal): void
     {
         $this->subtotal = $subtotal;
     }
 
+
     /**
      * Returns the subtotal
      *
-     * @return int subtotal
+     * @return int
      */
-    public function getSubtotal()
+    public function getSubtotal(): int
     {
         return $this->subtotal;
     }
 
+
     /**
      * Sets the subtotalPerDay
      *
-     * @param $subtotalPerDay
-     * @return void;
+     * @param int $subtotalPerDay
+     * @return void
      */
-    public function setSubtotalPerDay($subtotalPerDay)
+    public function setSubtotalPerDay(int $subtotalPerDay): void
     {
         $this->subtotalPerDay = $subtotalPerDay;
     }
 
+
     /**
      * Returns the subtotalPerDay
      *
-     * @return int subtotalPerDay
+     * @return int
      */
-    public function getSubtotalPerDay()
+    public function getSubtotalPerDay(): int
     {
         return $this->subtotalPerDay;
     }
 
+
     /**
      * Sets the tax
      *
-     * @param $tax
-     * @return void;
+     * @param int $tax
+     * @return void
      */
-    public function setTax($tax)
+    public function setTax(int $tax): void
     {
         $this->tax = $tax;
     }
 
+
     /**
      * Returns the tax
      *
-     * @return int tax
+     * @return int
      */
-    public function getTax()
+    public function getTax(): int
     {
         return $this->tax;
     }
 
+
     /**
      * Sets the total
      *
-     * @param $total
-     * @return void;
+     * @param int $total
+     * @return void
      */
-    public function setTotal($total)
+    public function setTotal(int $total): void
     {
         $this->total = $total;
     }
 
+
     /**
      * Returns the total
      *
-     * @return int total
+     * @return int
      */
-    public function getTotal()
+    public function getTotal(): int
     {
         return $this->total;
     }
 
+
     /**
      * Sets the subventionTotal
      *
-     * @param $subventionTotal
-     * @return void;
+     * @param int $subventionTotal
+     * @return void
      */
-    public function setSubventionTotal($subventionTotal)
+    public function setSubventionTotal(int $subventionTotal): void
     {
         $this->subventionTotal = $subventionTotal;
     }
 
+
     /**
      * Returns the subventionTotal
      *
-     * @return int subventionTotal
+     * @return int
      */
-    public function getSubventionTotal()
+    public function getSubventionTotal(): int
     {
         return $this->subventionTotal;
     }
 
+
     /**
      * Sets the funding
      *
-     * @param $funding
-     * @return void;
+     * @param int $funding
+     * @return void
      */
-    public function setFunding($funding)
+    public function setFunding(int $funding): void
     {
         $this->funding = $funding;
     }
+
 
     /**
      * Returns the funding
      *
      * @return int funding
      */
-    public function getFunding()
+    public function getFunding(): int
     {
         return $this->funding;
     }
 
+
     /**
      * Sets the ownFundingNet
      *
-     * @param $ownFundingNet
-     * @return void;
+     * @param int $ownFundingNet
+     * @return void
      */
-    public function setOwnFundingNet($ownFundingNet)
+    public function setOwnFundingNet(int $ownFundingNet): void
     {
         $this->ownFundingNet = $ownFundingNet;
     }
 
+
     /**
      * Returns the ownFundingNet
      *
-     * @return int ownFundingNet
+     * @return int
      */
-    public function getOwnFundingNet()
+    public function getOwnFundingNet(): int
     {
         return $this->ownFundingNet;
     }
 
+
     /**
      * Sets the ownFundingGross
      *
-     * @param $ownFundingGross
-     * @return void;
+     * @param int $ownFundingGross
+     * @return void
      */
-    public function setOwnFundingGross($ownFundingGross)
+    public function setOwnFundingGross(int $ownFundingGross): void
     {
         $this->ownFundingGross = $ownFundingGross;
     }
+
 
     /**
      * Returns the ownFundingGross
      *
      * @return int ownFundingGross
      */
-    public function getOwnFundingGross()
+    public function getOwnFundingGross(): int
     {
         return $this->ownFundingGross;
     }
 
+
     /**
      * Sets the fundingPercentage
      *
-     * @param $fundingPercentage
-     * @return void;
+     * @param int $fundingPercentage
+     * @return void
      */
-    public function setFundingPercentage($fundingPercentage)
+    public function setFundingPercentage(int $fundingPercentage): void
     {
         $this->fundingPercentage = $fundingPercentage;
     }
 
+
     /**
      * Returns the fundingPercentage
      *
-     * @return int fundingPercentage
+     * @return int
      */
-    public function getFundingPercentage()
+    public function getFundingPercentage(): int
     {
         return $this->fundingPercentage;
     }

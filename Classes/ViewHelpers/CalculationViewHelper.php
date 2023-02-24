@@ -1,5 +1,4 @@
 <?php
-
 namespace RKW\RkwFeecalculator\ViewHelpers;
 
 /*
@@ -16,13 +15,14 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  */
 
 use RKW\RkwFeecalculator\Domain\Model\Calculation;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use RKW\RkwSurvey\Domain\Model\Question;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Class CalculationViewHelper
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Rkw Kompetenzzentrum
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeeCalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -30,21 +30,35 @@ class CalculationViewHelper extends AbstractViewHelper
 {
 
     /**
-     * The output must not be escaped.
-     *
      * @var bool
      */
     protected $escapeOutput = false;
 
+
+    /**
+     * Initialize arguments.
+     *
+     * @return void
+     * @throws \TYPO3Fluid\Fluid\Core\ViewHelper\Exception
+     */
+    public function initializeArguments(): void
+    {
+        parent::initializeArguments();
+        $this->registerArgument('calculation', Calculation::class, 'The calculation class.', true);
+    }
+
+
     /**
      * Calculates the fees
      *
-     * @param Calculation $calculation
-     * @return mixed
+     * @return string
      * @throws \TYPO3Fluid\Fluid\Core\Exception
      */
-    public function render(Calculation $calculation = null)
+    public function render(): string
     {
+        /** @var \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation */
+        $calculation = $this->arguments['calculation'];
+
         $result[] = $this->calculate($calculation);
 
         $this->templateVariableContainer->add('calculationResult', $result);
@@ -54,11 +68,12 @@ class CalculationViewHelper extends AbstractViewHelper
         return $output;
     }
 
+
     /**
-     * @param Calculation $calculation
+     * @param \RKW\RkwFeecalculator\Domain\Model\Calculation $calculation
      * @return array
      */
-    public function calculate(Calculation $calculation)
+    public function calculate(Calculation $calculation): array
     {
 
         $result = [];
@@ -93,7 +108,9 @@ class CalculationViewHelper extends AbstractViewHelper
         $result['rkwFeeSubvention'] = $result['rkwFee'];
         $result['subventionSubtotal'] = $result['consultantFeeSubvention'] + $result['rkwFeeSubvention'];
 
-        $result['subventionTotal'] = ($days * $selectedProgram->getStandardUnitCosts() > $result['subtotal']) ? $result['subtotal'] : $days * $selectedProgram->getStandardUnitCosts();
+        $result['subventionTotal'] = ($days * $selectedProgram->getStandardUnitCosts() > $result['subtotal'])
+            ? $result['subtotal']
+            : $days * $selectedProgram->getStandardUnitCosts();
 
         $result['funding'] = $days * $selectedProgram->getStandardUnitCosts() * $selectedProgram->getFundingFactor();
 

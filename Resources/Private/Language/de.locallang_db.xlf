@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-30T22:40:01Z" product-name="rkw_feecalculator">
-		<header/>
+	<file original="messages" target-language="de-DE" product-name="rkw_feecalculator" source-language="en" datatype="plaintext" date="2019-05-30T22:40:01Z">
+		<header>
+      <phase-group>
+        <phase phase-name="approval-1" tool-id="lokalize-22.03.70" process-name="approval" date="2022-02-17" contact-email="berberich@rkw.de" contact-name="Melanie"/>
+      </phase-group>
+      <tool tool-version="22.03.70" tool-id="lokalize-22.03.70" tool-name="Lokalize"/>
+    </header>
 		<body>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculation">
 				<source>RKW FeeCalculator: Calculation</source>
@@ -25,7 +30,7 @@
 			</trans-unit>
             <trans-unit id="tx_rkw_feecalculator_domain_model_calculation.consultant_fee_per_day">
                 <source>Consultant fee per day</source>
-                <target>Beraterhonorar pro Tag</target>
+                <target>Beratendenhonorar pro Tag</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
 				<source>RKW FeeCalculator: Calculator</source>
@@ -63,11 +68,11 @@
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
 				<source>Consultant Fee Per Day Limit</source>
-				<target>maximaler Betrag für Beraterhonorar je Tagwerk (entfällt)</target>
+				<target>maximaler Betrag für Beratendenhonorar je Tagwerk (entfällt)</target>
 			</trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_subvention_limit">
+            <trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_program.consultant_subvention_limit">
 				<source>Consultant Subvention Limit</source>
-				<target>maximaler Zuschuss zum Beraterhonorar (entfällt)</target>
+				<target phase-name="approval-1" state="final">maximaler Zuschuss zum Beratendenhonorar (entfällt)</target>
 			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day_as_limit">
 				<source>Rkw Fee Per Day As Limit</source>
@@ -123,9 +128,9 @@
                 <source>Consultation</source>
                 <target>Beratung</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.tab.consultant">
+            <trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.tab.consultant">
                 <source>Consultant</source>
-                <target>Berater</target>
+                <target phase-name="approval-1" state="final">Berater / Beraterin</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.tab.misc">
                 <source>Misc</source>
@@ -195,13 +200,13 @@
 				<source>Balance</source>
 				<target>Bilanzsumme in TEUR</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.employeesCount">
 				<source>Number Of Employees</source>
-				<target>Mitarbeiterzahl</target>
+				<target phase-name="approval-1" state="final">Mitarbeitendenzahl</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.manager">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.manager">
 				<source>Manager Name</source>
-				<target>Geschäftsführer / Inhaber</target>
+				<target phase-name="approval-1" state="final">Geschäftsführende / Inhabende</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.singleRepresentative">
 				<source>Single Representative</source>
@@ -231,9 +236,9 @@
 				<source>Business Purpose</source>
 				<target>Unternehmensgegenstand/Gründungsidee</target>
 			</trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings">
+            <trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings">
                 <source>Insolvency Proceedings</source>
-                <target>Ist für das Unternehmen, einen der Gesellschafter oder einen der Geschäftsführer ein Insolvenzverfahren anhängig oder eröffnet?</target>
+                <target phase-name="approval-1" state="final">Ist für das Unternehmen, einen der Gesellschaftenden oder einen der Geschäftsführenden ein Insolvenzverfahren anhängig oder eröffnet?</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.insolvencyProceedings.1">
                 <source>Yes</source>
@@ -275,9 +280,9 @@
 				<source>IBAN</source>
 				<target>IBAN</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonName">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonName">
 				<source>Contact Person Name</source>
-				<target>Ansprechpartner für RKW</target>
+				<target phase-name="approval-1" state="final">Ansprechperson für RKW</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.contactPersonPhone">
 				<source>Contact Person Phone</source>
@@ -351,37 +356,37 @@
 				<source>Consulting Description</source>
 				<target>Beratungsinhalte</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType">
 				<source>Consultant Type</source>
-				<target>Beraterauswahl</target>
+				<target phase-name="approval-1" state="final">Beratendenauswahl</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.1">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.1">
                 <source>I need a RKW recommendation</source>
-                <target>Ich wünsche eine Berater-Empfehlung aus dem RKW-Beraterpool.</target>
+                <target phase-name="approval-1" state="final">Ich wünsche eine Beratenden-Empfehlung aus dem RKW-Beratendenpool.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.2">
+            <trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.2">
                 <source>I've decided for a special onsultant</source>
-                <target>Ich habe mich bereits für einen akkreditierten Berater entschieden.</target>
+                <target phase-name="approval-1" state="final">Ich habe mich bereits für einen akkreditierten Beratenden entschieden.</target>
             </trans-unit>
-            <trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.3">
+            <trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.consultantType.3">
                 <source>I've NOT decided for a special consultant</source>
-                <target>Ich habe mich bereits für einen NOCH NICHT akkreditierten Berater entschieden.</target>
+                <target phase-name="approval-1" state="final">Ich habe mich bereits für einen NOCH NICHT akkreditierten Beratenden entschieden.</target>
             </trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantCompany">
 				<source>Consultant Company</source>
 				<target>Beratungsfirma</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName1">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName1">
 				<source>Consultant Name1</source>
-				<target>Name, Vorname (Berater)</target>
+				<target phase-name="approval-1" state="final">Name, Vorname (Berater/Beraterin)</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName2">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.consultantName2">
 				<source>Consultant Name2</source>
-				<target>Name, Vorname (2. Berater)</target>
+				<target phase-name="approval-1" state="final">Name, Vorname (2. Berater/Beraterin)</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant1AccreditationNumber">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.consultant1AccreditationNumber">
 				<source>Consultant1 Accreditation Number</source>
-				<target>Berater (Akkr.-Nr.</target>
+				<target phase-name="approval-1" state="final">Berater / Beraterin (Akkr.-Nr.</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultant2AccreditationNumber">
 				<source>Consultant2 Accreditation Number</source>
@@ -391,13 +396,13 @@
 				<source>Consultant Fee</source>
 				<target>Honorar je Tagwerk in Euro (netto)</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantPhone">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.consultantPhone">
 				<source>Consultant Phone</source>
-				<target>Telefon (Berater)</target>
+				<target phase-name="approval-1" state="final">Telefon (Berater/Beraterin)</target>
 			</trans-unit>
-			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.consultantEmail">
+			<trans-unit approved="no" id="tx_rkwfeecalculator_domain_model_supportrequest.consultantEmail">
 				<source>Consultant Email</source>
-				<target>E-Mail-Adresse (Berater)</target>
+				<target phase-name="approval-1" state="final">E-Mail-Adresse (Berater/Beraterin)</target>
 			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_supportrequest.prematureStart">
 				<source>Early Start Desired</source>

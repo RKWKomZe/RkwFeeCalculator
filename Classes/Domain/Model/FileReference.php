@@ -1,6 +1,6 @@
 <?php
-
 namespace RKW\RkwFeecalculator\Domain\Model;
+
 /*
  * This file is part of the TYPO3 CMS project.
  *
@@ -17,9 +17,8 @@ namespace RKW\RkwFeecalculator\Domain\Model;
 /**
  * Class FileReference
  *
- * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @author Steffen Kroggel <developer@steffenkroggel.de>
- * @copyright Rkw Kompetenzzentrum
+ * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
@@ -29,76 +28,78 @@ class FileReference extends \TYPO3\CMS\Extbase\Domain\Model\FileReference
     /**
      * @var string
      */
-    protected $fieldname = '';
+    protected string $fieldname = '';
+
 
     /**
-     * @var integer
+     * @var \RKW\RkwFeecalculator\Domain\Model\File|null
      */
-    protected $uidLocal = 0;
+    protected ?File $file = null;
 
-    /**
-     * @var \RKW\RkwFeecalculator\Domain\Model\File
-     */
-    protected $file;
 
     /**
      * Returns the fieldname
      *
-     * @return integer $fieldname
+     * @return string
      */
-    public function getFieldname()
+    public function getFieldname(): string
     {
         return $this->fieldname;
     }
 
+
     /**
      * Sets the fieldname
      *
-     * @param integer $fieldname
+     * @param string $fieldname
      * @return void
      */
-    public function setFieldname($fieldname)
+    public function setFieldname(string $fieldname): void
     {
         $this->fieldname = $fieldname;
     }
 
+
     /**
      * Returns the uidLocal
      *
-     * @return integer $uidLocal
+     * @return int
      */
-    public function getUidLocal()
+    public function getUidLocal(): int
     {
         return $this->uidLocal;
     }
 
+
     /**
      * Sets the uidLocal
      *
-     * @param integer $uidLocal
+     * @param int $uidLocal
      * @return void
      */
-    public function setUidLocal($uidLocal)
+    public function setUidLocal(int $uidLocal): void
     {
         $this->uidLocal = $uidLocal;
     }
+
 
     /**
      * Set file
      *
      * @param \RKW\RkwFeecalculator\Domain\Model\File $file
      */
-    public function setFile($file)
+    public function setFile(File $file): void
     {
         $this->file = $file;
     }
+
 
     /**
      * Get file
      *
      * @return \RKW\RkwFeecalculator\Domain\Model\File
      */
-    public function getFile()
+    public function getFile():? File
     {
         return $this->file;
     }
