@@ -24,9 +24,9 @@ use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Class SendCommand
+ * Class SecurityCommand
  *
- * Execute on CLI with: 'vendor/bin/typo3 rkw_feecalculator:cleanup'
+ * Execute on CLI with: 'vendor/bin/typo3 rkw_feecalculator:security'
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright RKW Kompetenzzentrum
@@ -93,6 +93,35 @@ class SecurityCommand extends Command
 
             $filePathArray = [$this->defaultUploadFolder . '/'];
             foreach ($filePathArray as $filePath) {
+
+                // Yes: Remove ":" AND "/" (the slash comes back through $GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir']
+                $filePathSplit = GeneralUtility::trimExplode(':/', $filePath);
+                $filePath = GeneralUtility::getFileAbsFileName(
+                    $GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir']
+                    . $filePathSplit[1]
+                );
+
+                // ERROR Check if path does not exists
+                if (!is_dir($filePath)) {
+                    $message = sprintf('Given file path does not exist=%s.', $filePath);
+
+                    $io->error($message);
+                    $this->getLogger()->log(LogLevel::ERROR, $message);
+                    continue;
+                }
+
+                // WARNING Disallow ALL paths without string "tx_rkwfeecalculator" in it! Just for secure. Anything could be defined via
+                // the ExtForm-Yaml file
+                if (strpos($filePath, 'tx_rkwfeecalculator') === false) {
+
+                    $message = sprintf(
+                        'Rejected: The given path does not contains the string "tx_rkwfeecalculator": %s.',
+                        $filePath
+                    );
+                    $io->warning($message);
+                    $this->getLogger()->log(LogLevel::WARNING, $message);
+                    continue;
+                }
 
                 if ($this->securityCheck($filePath)) {
 

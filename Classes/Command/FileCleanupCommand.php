@@ -25,22 +25,23 @@ use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Class SendCommand
+ * Class FileCleanupCommand
  *
- * Execute on CLI with: 'vendor/bin/typo3 rkw_feecalculator:cleanup'
+ * Execute on CLI with: 'vendor/bin/typo3 rkw_feecalculator:fileCleanup'
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class CleanupCommand extends Command
+class FileCleanupCommand extends Command
 {
 
     /**
      * @var string
      */
     protected string $defaultUploadFolder = '1:/user_upload/tx_rkwfeecalculator';
+
 
     /**
      * @var \TYPO3\CMS\Core\Log\Logger|null
@@ -53,7 +54,7 @@ class CleanupCommand extends Command
      */
     protected function configure(): void
     {
-        $this->setDescription('Cleanup requests folder.')
+        $this->setDescription('Cleanup upload folder.')
             ->addOption(
                 'daysFromNow',
                 'd',
@@ -124,12 +125,12 @@ class CleanupCommand extends Command
                     continue;
                 }
 
-                // WARNING Disallow ALL paths without string "tx_rkwform" in it! Just for secure. Anything could be defined via
+                // WARNING Disallow ALL paths without string "tx_rkwfeecalculator" in it! Just for secure. Anything could be defined via
                 // the ExtForm-Yaml file
                 if (strpos($filePath, 'tx_rkwfeecalculator') === false) {
 
                     $message = sprintf(
-                        'Rejected: The given path does not contains the string "tx_rkwform"=%s.',
+                        'Rejected: The given path does not contains the string "tx_rkwfeecalculator": %s.',
                         $filePath
                     );
                     $io->warning($message);
@@ -158,7 +159,7 @@ class CleanupCommand extends Command
 
                 // Message with x files were deleted
                 $message = sprintf(
-                    'Cleanup command runs successfully. A total of %s files were deleted from %s.',
+                    'Cleanup command successful. A total of %s files were deleted from %s.',
                     $counter,
                     $filePath
                 );
