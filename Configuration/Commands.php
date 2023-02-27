@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'rkw_feecalculator:send' => [
-        'class' => \RKW\RkwFeecalculator\Command\CleanupCommand::class,
+    'rkw_feecalculator:fileCleanup' => [
+        'class' => \RKW\RkwFeecalculator\Command\FileCleanupCommand::class,
         'schedulable' => true,
     ],
     'rkw_feecalculator:security' => [
