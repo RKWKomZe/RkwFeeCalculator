@@ -4,7 +4,7 @@ config.tx_extbase.persistence {
 
         #===============================================
 
-        RKW\RkwRegistration\Domain\Model\FrontendUser {
+        Madj2k\FeRegister\Domain\Model\FrontendUser {
             subclasses {
                 Tx_RkwFeecalculator_FrontendUser = RKW\RkwFeecalculator\Domain\Model\FrontendUser
             }
@@ -13,7 +13,7 @@ config.tx_extbase.persistence {
         RKW\RkwFeecalculator\Domain\Model\FrontendUser {
 
             // storage for new records in cross-extension-context
-            newRecordStoragePid = {$plugin.tx_rkwregistration.persistence.storagePid}
+            newRecordStoragePid = {$plugin.tx_feregister.persistence.storagePid}
 
             mapping {
                 tableName = fe_users
@@ -23,7 +23,7 @@ config.tx_extbase.persistence {
 
         #===============================================
 
-        RKW\RkwRegistration\Domain\Model\BackendUser {
+        Madj2k\FeRegister\Domain\Model\BackendUser {
             subclasses {
                 Tx_RkwFeecalculator_BackendUser = RKW\RkwFeecalculator\Domain\Model\BackendUser
             }

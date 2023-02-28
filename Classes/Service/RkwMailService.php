@@ -15,10 +15,10 @@ namespace RKW\RkwFeecalculator\Service;
  */
 
 use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
-use RKW\RkwMailer\Service\MailService;
-use RKW\RkwRegistration\Domain\Model\FrontendUser;
+use Madj2k\Postmaster\Service\MailService;
+use Madj2k\FeRegister\Domain\Model\FrontendUser;
 use Madj2k\CoreExtended\Utility\GeneralUtility;
-use RKW\RkwMailer\Utility\FrontendLocalizationUtility;
+use Madj2k\Postmaster\Utility\FrontendLocalizationUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /**
@@ -57,10 +57,10 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
     /**
      * Sends an E-Mail to a Frontend-User
      *
-     * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
+     * @param \Madj2k\FeRegister\Domain\Model\FrontendUser $frontendUser
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      * @return void
-     * @throws \RKW\RkwMailer\Exception
+     * @throws \Madj2k\Postmaster\Exception
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3Fluid\Fluid\View\Exception\InvalidTemplateResourceException
@@ -77,7 +77,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
 
-            /** @var \RKW\RkwMailer\Service\MailService $mailService */
+            /** @var \Madj2k\Postmaster\Service\MailService $mailService */
             $mailService = GeneralUtility::makeInstance(MailService::class);
 
             // send new user an email with token
@@ -98,7 +98,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
                     'templates_email_confirmationUser.subject',
                     'RkwFeecalculator',
                     [$settings['settings']['websiteName']],
-                    ($frontendUser->getTxRkwregistrationLanguageKey()) ?: 'de'
+                    ($frontendUser->getTxFeregisterLanguageKey()) ?: 'de'
                 )
             );
 
@@ -120,7 +120,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      * @param array $attachmentTypes
      * @return void
-     * @throws \RKW\RkwMailer\Exception
+     * @throws \Madj2k\Postmaster\Exception
      * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
@@ -151,7 +151,7 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
 
-            /** @var \RKW\RkwMailer\Service\MailService $mailService */
+            /** @var \Madj2k\Postmaster\Service\MailService $mailService */
             $mailService = GeneralUtility::makeInstance(MailService::class);
 
             foreach ($recipients as $recipient) {

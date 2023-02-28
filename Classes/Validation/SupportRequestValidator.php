@@ -132,7 +132,7 @@ class SupportRequestValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Ab
                     new \TYPO3\CMS\Extbase\Error\Error(
                         $this->translateErrorMessage(
                             'registrationController.error.accept_privacy',
-                            'RkwRegistration',
+                            'FeRegister',
                             $this->getTranslationArguments($property)
                         ), 1238087674, $this->getTranslationArguments($property)
                     )
