@@ -22,7 +22,7 @@ use RKW\RkwFeecalculator\Domain\Repository\ProgramRepository;
 use RKW\RkwFeecalculator\Domain\Repository\SupportRequestRepository;
 use RKW\RkwFeecalculator\Helper\UploadHelper;
 use RKW\RkwFeecalculator\Service\LayoutService;
-use RKW\RkwRegistration\Domain\Model\FrontendUser;
+use Madj2k\FeRegister\Domain\Model\FrontendUser;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
@@ -237,13 +237,13 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 
         $frontendUser->setEmail($supportRequest->getContactPersonEmail());
         $frontendUser->setName($supportRequest->getContactPersonName());
-        $frontendUser->setTxRkwregistrationLanguageKey($GLOBALS['TSFE']->config['config']['language'] ?: 'de');
+        $frontendUser->setTxFeregisterLanguageKey($GLOBALS['TSFE']->config['config']['language'] ?: 'de');
 
         /*
         // currently we do not use real privacy-entries
-        if ($this->settings['includeRkwRegistrationPrivacy']) {
+        if ($this->settings['includeFeRegisterPrivacy']) {
             // add privacy info
-            \RKW\RkwRegistration\DataProtection\ConsentHandler::add($this->request, $frontendUser, $supportRequest, 'new support request');
+            \Madj2k\FeRegister\DataProtection\ConsentHandler::add($this->request, $frontendUser, $supportRequest, 'new support request');
         }
         */
 
@@ -264,7 +264,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
     /**
      * Sends confirmation mail to frontenduser.
      *
-     * @param \RKW\RkwRegistration\Domain\Model\FrontendUser $frontendUser
+     * @param \Madj2k\FeRegister\Domain\Model\FrontendUser $frontendUser
      * @param \RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest
      * @throws InvalidSlotException
      * @throws InvalidSlotReturnException

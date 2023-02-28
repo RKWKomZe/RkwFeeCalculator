@@ -33,7 +33,7 @@ use RKW\RkwFeecalculator\ViewHelpers\PossibleDaysViewHelper;
 class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
 {
 
-    /***
+    /**
      * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
