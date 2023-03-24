@@ -2,6 +2,25 @@
     xmlns:rkwCalculation="http://typo3.org/ns/RKW/RkwFeecalculator/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
-    <rkwCalculation:calculation calculation="{calculation}" />
+    <rkwCalculation:calculation calculation="{calculation}" >
 
+        <f:for each="{calculationResult}" as="resultItem">
+
+            subventionTotal: {resultItem.subventionTotal}
+            rkwFee: {resultItem.rkwFee}
+            consultantFee: {resultItem.consultantFee}
+            subtotalPerDay: {resultItem.subtotalPerDay}
+            subtotal: {resultItem.subtotal}
+            tax: {resultItem.tax}
+            total: {resultItem.total}
+            consultantFeeSubvention: {resultItem.consultantFeeSubvention}
+            rkwFeeSubvention: {resultItem.rkwFeeSubvention}
+            subventionSubtotal: {resultItem.subventionSubtotal}
+            funding: {resultItem.funding}
+            ownFundingNet: {resultItem.ownFundingNet}
+            ownFundingGross: {resultItem.ownFundingGross}
+            fundingPercentage: {resultItem.fundingPercentage}
+            
+        </f:for>
+    </rkwCalculation:calculation>
 </html>

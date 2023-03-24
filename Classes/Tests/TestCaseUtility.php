@@ -1,5 +1,5 @@
 <?php
-namespace RKW\RkwFeecalculator\Tests\Unit;
+namespace RKW\RkwFeecalculator\Tests;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -14,26 +14,28 @@ namespace RKW\RkwFeecalculator\Tests\Unit;
  * The TYPO3 project - inspiring people to share!
  */
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use RKW\RkwFeecalculator\Domain\Model\Calculator;
 use RKW\RkwFeecalculator\Domain\Model\Program;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
- * Class TestCase
+ * Class TestCaseUtility
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright RKW Kompetenzzentrum
  * @package RKW_RkwFeecalculator
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class TestCase extends UnitTestCase {
+class TestCaseUtility  {
+
+
 
     /**
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
      */
-    public function assignPrograms(): ObjectStorage
+    public static function assignPrograms(): ObjectStorage
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $assignedProgram1 */
         $assignedProgram1 = GeneralUtility::makeInstance(Program::class);
@@ -53,19 +55,21 @@ class TestCase extends UnitTestCase {
 
 
     /**
-     * @param Calculator $calculator
+     * @param \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator
      * @return \RKW\RkwFeecalculator\Domain\Model\Program
      */
-    public function getFirstAssignedProgram(Calculator $calculator):? Program
+    public static function getFirstAssignedProgram(Calculator $calculator):? Program
     {
         $selectedProgram = null;
         $counter = 0;
+
         foreach ($calculator->getAssignedPrograms() as $assignedProgram) {
             if ($counter === 0) {
                 $selectedProgram = $assignedProgram;
             }
             $counter++;
         }
+
         return $selectedProgram;
     }
 

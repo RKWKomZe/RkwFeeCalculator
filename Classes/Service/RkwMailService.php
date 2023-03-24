@@ -14,8 +14,9 @@ namespace RKW\RkwFeecalculator\Service;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Madj2k\Postmaster\Mail\MailMessage;
 use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
-use Madj2k\Postmaster\Service\MailService;
+use Madj2k\Postmaster\Mail\MailMassage;
 use Madj2k\FeRegister\Domain\Model\FrontendUser;
 use Madj2k\CoreExtended\Utility\GeneralUtility;
 use Madj2k\Postmaster\Utility\FrontendLocalizationUtility;
@@ -77,8 +78,8 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
 
-            /** @var \Madj2k\Postmaster\Service\MailService $mailService */
-            $mailService = GeneralUtility::makeInstance(MailService::class);
+            /** @var \Madj2k\Postmaster\Mail\MailMessage $mailService */
+            $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(MailMessage::class);
 
             // send new user an email with token
             $mailService->setTo($frontendUser, [
@@ -151,8 +152,8 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
 
             $fieldsets = $this->layoutService->getFields($supportRequest->getSupportProgramme());
 
-            /** @var \Madj2k\Postmaster\Service\MailService $mailService */
-            $mailService = GeneralUtility::makeInstance(MailService::class);
+            /** @var \Madj2k\Postmaster\Mail\MailMessage $mailService */
+            $mailService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(MailMessage::class);
 
             foreach ($recipients as $recipient) {
                 if (

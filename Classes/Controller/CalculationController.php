@@ -63,7 +63,7 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
-     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\CalculationValidator", param="calculation")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("RKW\RkwFeecalculator\Validation\CalculationValidator", param="calculation")
      */
     public function storeAction(Calculation $calculation = null): void {
 

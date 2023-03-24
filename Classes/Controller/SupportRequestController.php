@@ -186,7 +186,7 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
-     * @TYPO3\CMS\Extbase\Annotation\Validate("\RKW\RkwFeecalculator\Validation\SupportRequestValidator", param="supportRequest")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("RKW\RkwFeecalculator\Validation\SupportRequestValidator", param="supportRequest")
      */
     public function createAction(\RKW\RkwFeecalculator\Domain\Model\SupportRequest $supportRequest): void
     {

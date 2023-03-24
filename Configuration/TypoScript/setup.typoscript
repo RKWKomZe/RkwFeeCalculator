@@ -56,12 +56,19 @@ config.tx_extbase.persistence {
 
 plugin.tx_rkwfeecalculator_calculator {
   view {
-    templateRootPaths.0 = EXT:rkw_feecalculator/Resources/Private/Templates/
-    templateRootPaths.1 = {$plugin.tx_rkwfeecalculator_calculator.view.templateRootPath}
-    partialRootPaths.0 = EXT:rkw_feecalculator/Resources/Private/Partials/
-    partialRootPaths.1 = {$plugin.tx_rkwfeecalculator_calculator.view.partialRootPath}
-    layoutRootPaths.0 = EXT:rkw_feecalculator/Resources/Private/Layouts/
-    layoutRootPaths.1 = {$plugin.tx_rkwfeecalculator_calculator.view.layoutRootPath}
+    layoutRootPaths {
+        0 = EXT:rkw_feecalculator/Resources/Private/Layouts/
+        1 = {$plugin.tx_rkwfeecalculator.view.layoutRootPath}
+    }
+    templateRootPaths {
+        0 = EXT:rkw_feecalculator/Resources/Private/Templates/
+        1 = {$plugin.tx_rkwfeecalculator.view.templateRootPath}
+    }
+    partialRootPaths {
+        0 = EXT:rkw_feecalculator/Resources/Private/Partials/
+        1 = {$plugin.tx_rkwfeecalculator.view.partialRootPath}
+        2 = {$plugin.tx_coreextended.view.partialRootPath}
+    }
   }
   persistence {
     storagePid = {$plugin.tx_rkwfeecalculator_calculator.persistence.storagePid}

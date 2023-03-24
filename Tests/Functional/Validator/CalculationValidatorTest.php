@@ -14,10 +14,11 @@ namespace RKW\RkwFeecalculator\Tests\Functional\Domain\Validator;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use RKW\RkwFeecalculator\Domain\Model\Calculation;
 use RKW\RkwFeecalculator\Domain\Model\Calculator;
-use RKW\RkwFeecalculator\Tests\Functional\TestCase;
 use RKW\RkwFeecalculator\Validation\CalculationValidator;
+use RKW\RkwFeecalculator\Tests\TestCaseUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -29,7 +30,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @todo there are no scenarios defined. See coding guidelines!
  */
-class CalculationValidatorTest extends TestCase
+class CalculationValidatorTest extends FunctionalTestCase
 {
 
     /**
@@ -73,7 +74,7 @@ class CalculationValidatorTest extends TestCase
         $this->calculator = new Calculator();
 
         /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage $objectStorageHoldingAssignedPrograms */
-        $objectStorageHoldingAssignedPrograms = $this->assignPrograms();
+        $objectStorageHoldingAssignedPrograms = TestCaseUtility::assignPrograms();
 
         $this->calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
         $this->calculation->setCalculator($this->calculator);
@@ -89,7 +90,7 @@ class CalculationValidatorTest extends TestCase
     {
 
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
 
@@ -106,7 +107,7 @@ class CalculationValidatorTest extends TestCase
     public function givenSelectedProgramHasPossibleDaysMinEqualDaysAreValid()
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
@@ -126,7 +127,7 @@ class CalculationValidatorTest extends TestCase
     public function givenSelectedProgramHasPossibleDaysMinMoreDaysAreValid()
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
@@ -146,7 +147,7 @@ class CalculationValidatorTest extends TestCase
     public function givenSelectedProgramHasPossibleDaysMaxMoreDaysAreNotValid()
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
@@ -166,7 +167,7 @@ class CalculationValidatorTest extends TestCase
     public function givenSelectedProgramHasPossibleDaysMaxEqualDaysAreValid()
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
@@ -186,7 +187,7 @@ class CalculationValidatorTest extends TestCase
     public function givenSelectedProgramHasPossibleDaysMaxLessDaysAreValid()
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(5);
         $selectedProgram->setPossibleDaysMax(10);
@@ -206,7 +207,7 @@ class CalculationValidatorTest extends TestCase
     public function givenSelectedProgramHasPossibleDaysSetToZeroAnyDaysValueGreaterZeroIsValid()
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
 
         $selectedProgram->setPossibleDaysMin(0);
         $selectedProgram->setPossibleDaysMax(0);
@@ -226,7 +227,7 @@ class CalculationValidatorTest extends TestCase
     public function givenSelectedProgramDaysIsRequired()
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
         $this->calculation->setPreviousSelectedProgram($selectedProgram);
@@ -243,7 +244,7 @@ class CalculationValidatorTest extends TestCase
     public function givenSelectedProgramConsultantFeePerDayIsRequired()
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
         $this->calculation->setPreviousSelectedProgram($selectedProgram);
@@ -260,7 +261,7 @@ class CalculationValidatorTest extends TestCase
     public function submittingAMoneyValueWithLettersIsNotValid()
     {
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($this->calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($this->calculator);
 
         $this->calculation->setSelectedProgram($selectedProgram);
         $this->calculation->setPreviousSelectedProgram($selectedProgram);
