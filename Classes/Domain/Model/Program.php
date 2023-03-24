@@ -364,9 +364,9 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the consultantFeePerDayLimit
      *
-     * @return int
+     * @return float
      */
-    public function getConsultantFeePerDayLimit(): int
+    public function getConsultantFeePerDayLimit(): float
     {
         return $this->consultantFeePerDayLimit;
     }

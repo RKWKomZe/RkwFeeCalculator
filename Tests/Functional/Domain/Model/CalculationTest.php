@@ -14,10 +14,11 @@ namespace RKW\RkwFeecalculator\Tests\Functional\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use RKW\RkwFeecalculator\Domain\Model\Calculation;
 use RKW\RkwFeecalculator\Domain\Model\Calculator;
 use RKW\RkwFeecalculator\Domain\Model\Program;
-use RKW\RkwFeecalculator\Tests\Functional\TestCase;
+use RKW\RkwFeecalculator\Tests\TestCaseUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -29,7 +30,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @todo there are no scenarios defined. See coding guidelines!
  */
-class CalculationTest extends TestCase
+class CalculationTest extends FunctionalTestCase
 {
     /**
      * @var \RKW\RkwFeecalculator\Domain\Model\Calculation|null
@@ -58,13 +59,13 @@ class CalculationTest extends TestCase
 
         /** @var \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator */
         $calculator = GeneralUtility::makeInstance(Calculator::class);
-        $objectStorageHoldingAssignedPrograms = $this->assignPrograms();
+        $objectStorageHoldingAssignedPrograms = TestCaseUtility::assignPrograms();
 
         $calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
         $this->subject->setCalculator($calculator);
 
         /** @var \RKW\RkwFeecalculator\Domain\Model\Program $selectedProgram */
-        $selectedProgram = $this->getFirstAssignedProgram($calculator);
+        $selectedProgram = TestCaseUtility::getFirstAssignedProgram($calculator);
 
         $this->subject->setSelectedProgram($selectedProgram);
 
@@ -80,7 +81,7 @@ class CalculationTest extends TestCase
     public function aSelectedProgramNotContainedInAssignedProgramsMustNotBeSelected()
     {
 
-        $objectStorageHoldingAssignedPrograms = $this->assignPrograms();
+        $objectStorageHoldingAssignedPrograms = TestCaseUtility::assignPrograms();
 
         /** @var \RKW\RkwFeecalculator\Domain\Model\Calculator $calculator */
         $calculator = GeneralUtility::makeInstance(Calculator::class);

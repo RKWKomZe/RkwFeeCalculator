@@ -14,6 +14,7 @@ namespace RKW\RkwFeecalculator\Tests\Unit\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 use RKW\RkwFeecalculator\Domain\Model\Calculator;
 use RKW\RkwFeecalculator\Domain\Model\Program;
 use RKW\RkwFeecalculator\Tests\Unit\TestCase;
@@ -29,7 +30,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @todo there are no scenarios defined. See coding guidelines!
  */
-class CalculatorTest extends TestCase
+class CalculatorTest extends UnitTestCase
 {
     /**
      * @var \RKW\RkwFeecalculator\Domain\Model\Calculator|null

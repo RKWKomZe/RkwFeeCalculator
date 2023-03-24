@@ -79,18 +79,6 @@ class CalculationViewHelperTest extends FunctionalTestCase
 
 
     /**
-     * @var \RKW\RkwFeecalculator\Domain\Model\Calculation|null
-     */
-    protected ?Calculation $calculation = null;
-
-
-    /**
-     * @var \RKW\RkwFeecalculator\ViewHelpers\CalculationViewHelper|null
-     */
-    protected ?CalculationViewHelper $calculationViewHelper = null;
-
-
-    /**
      * Setup
      *
      * @throws \Exception
@@ -126,7 +114,6 @@ class CalculationViewHelperTest extends FunctionalTestCase
             ]
         );
 
-        $this->calculationViewHelper = new CalculationViewHelper();
     }
 
     #==========================================================================
@@ -161,30 +148,32 @@ class CalculationViewHelperTest extends FunctionalTestCase
         $selectedProgram = $this->programRepository->findByUid(1);
 
         /** @var  \RKW\RkwFeecalculator\Domain\Model\Calculation calculation */
-        $this->calculation = GeneralUtility::makeInstance(Calculation::class);
-        $this->calculation->setCalculator($calculator);
+        $calculation = GeneralUtility::makeInstance(Calculation::class);
+        $calculation->setCalculator($calculator);
 
-        $this->calculation->setSelectedProgram($selectedProgram);
+        $calculation->setSelectedProgram($selectedProgram);
 
-        $this->calculation->setDays(6);
-        $this->calculation->setConsultantFeePerDay(700);
+        $calculation->setDays(6);
+        $calculation->setConsultantFeePerDay(700);
 
-        $result = $this->calculationViewHelper->calculate($this->calculation);
+        $this->standAloneViewHelper->setTemplate('Check10.html');
+        $this->standAloneViewHelper->assign('calculation', $calculation);
+        $result = $this->standAloneViewHelper->render();
 
-        self::assertEquals(4920, $result['subventionTotal']);
-        self::assertEquals(720, $result['rkwFee']);
-        self::assertEquals(4200, $result['consultantFee']);
-        self::assertEquals(820, $result['subtotalPerDay']);
-        self::assertEquals(4920, $result['subtotal']);
-        self::assertEquals(934.8, $result['tax']);
-        self::assertEquals(5854.8, $result['total']);
-        self::assertEquals(4200, $result['consultantFeeSubvention']);
-        self::assertEquals(720, $result['rkwFeeSubvention']);
-        self::assertEquals(4920, $result['subventionSubtotal']);
-        self::assertEquals(2850, $result['funding']);
-        self::assertEquals(2070, $result['ownFundingNet']);
-        self::assertEquals(3004.8, $result['ownFundingGross']);
-        self::assertEquals(57.926829268293, $result['fundingPercentage']);
+        self::assertStringContainsString('subventionTotal: 4920', $result);
+        self::assertStringContainsString('rkwFee: 720', $result);
+        self::assertStringContainsString('consultantFee: 4200', $result);
+        self::assertStringContainsString('subtotalPerDay: 820', $result);
+        self::assertStringContainsString('subtotal: 4920', $result);
+        self::assertStringContainsString('tax: 934.8', $result);
+        self::assertStringContainsString('total: 5854.8', $result);
+        self::assertStringContainsString('consultantFeeSubvention: 4200', $result);
+        self::assertStringContainsString('rkwFeeSubvention: 720', $result);
+        self::assertStringContainsString('subventionSubtotal: 4920', $result);
+        self::assertStringContainsString('funding: 2850', $result);
+        self::assertStringContainsString('ownFundingNet: 2070', $result);
+        self::assertStringContainsString('ownFundingGross: 3004.8', $result);
+        self::assertStringContainsString('fundingPercentage: 57.926829268293', $result);
 
     }
 
@@ -219,30 +208,32 @@ class CalculationViewHelperTest extends FunctionalTestCase
         $selectedProgram = $this->programRepository->findByUid(1);
 
         /** @var  \RKW\RkwFeecalculator\Domain\Model\Calculation calculation */
-        $this->calculation = GeneralUtility::makeInstance(Calculation::class);
-        $this->calculation->setCalculator($calculator);
+        $calculation = GeneralUtility::makeInstance(Calculation::class);
+        $calculation->setCalculator($calculator);
 
-        $this->calculation->setSelectedProgram($selectedProgram);
+        $calculation->setSelectedProgram($selectedProgram);
 
-        $this->calculation->setDays(6);
-        $this->calculation->setConsultantFeePerDay(1000);
+        $calculation->setDays(6);
+        $calculation->setConsultantFeePerDay(1000);
 
-        $result = $this->calculationViewHelper->calculate($this->calculation);
+        $this->standAloneViewHelper->setTemplate('Check10.html');
+        $this->standAloneViewHelper->assign('calculation', $calculation);
+        $result = $this->standAloneViewHelper->render();
 
-        self::assertEquals(5700, $result['subventionTotal']);
-        self::assertEquals(720, $result['rkwFee']);
-        self::assertEquals(6000, $result['consultantFee']);
-        self::assertEquals(1120, $result['subtotalPerDay']);
-        self::assertEquals(6720, $result['subtotal']);
-        self::assertEquals(1276.8, $result['tax']);
-        self::assertEquals(7996.8, $result['total']);
-        self::assertEquals(6000, $result['consultantFeeSubvention']);
-        self::assertEquals(720, $result['rkwFeeSubvention']);
-        self::assertEquals(6720, $result['subventionSubtotal']);
-        self::assertEquals(2850, $result['funding']);
-        self::assertEquals(3870, $result['ownFundingNet']);
-        self::assertEquals(5146.8, $result['ownFundingGross']);
-        self::assertEquals(42.410714285714, $result['fundingPercentage']);
+        self::assertStringContainsString('subventionTotal: 5700', $result);
+        self::assertStringContainsString('rkwFee: 720', $result);
+        self::assertStringContainsString('consultantFee: 6000', $result);
+        self::assertStringContainsString('subtotalPerDay: 1120', $result);
+        self::assertStringContainsString('subtotal: 6720', $result);
+        self::assertStringContainsString('tax: 1276.8', $result);
+        self::assertStringContainsString('total: 7996.8', $result);
+        self::assertStringContainsString('consultantFeeSubvention: 6000', $result);
+        self::assertStringContainsString('rkwFeeSubvention: 720', $result);
+        self::assertStringContainsString('subventionSubtotal: 6720', $result);
+        self::assertStringContainsString('funding: 2850', $result);
+        self::assertStringContainsString('ownFundingNet: 3870', $result);
+        self::assertStringContainsString('ownFundingGross: 5146.8', $result);
+        self::assertStringContainsString('fundingPercentage: 42.410714285714', $result);
 
     }
 
