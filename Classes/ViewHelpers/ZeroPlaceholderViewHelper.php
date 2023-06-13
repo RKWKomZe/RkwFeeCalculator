@@ -15,6 +15,7 @@ namespace RKW\RkwFeecalculator\ViewHelpers;
  */
 
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithContentArgumentAndRenderStatic;
 
 /**
  * Class ZeroPlaceholderViewHelper
@@ -36,7 +37,7 @@ class ZeroPlaceholderViewHelper extends AbstractViewHelper
     public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('value ', 'string', 'The value to format.', false,  '0');
+        $this->registerArgument('value', 'string', 'The value to format.', false,  '0');
     }
 
 
