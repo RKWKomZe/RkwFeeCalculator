@@ -230,6 +230,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getContent(): string
     {
+        // @extensionScannerIgnoreLine
         return $this->content;
     }
 
@@ -242,6 +243,7 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setContent(string $content): void
     {
+        // @extensionScannerIgnoreLine
         $this->content = $content;
     }
 
