@@ -84,7 +84,7 @@ class CalculationValidator extends AbstractValidator
             $field = LocalizationUtility::translate(
                 'tx_rkwfeecalculator_domain_model_calculator.' . GeneralUtility::camelCaseToLowerCaseUnderscored($property),
                 'RkwFeecalculator'
-            );
+            ) ?: '';
 
             if ($getter === 'getConsultantFeePerDay') {
                 $getter = 'getRawConsultantFeePerDay';

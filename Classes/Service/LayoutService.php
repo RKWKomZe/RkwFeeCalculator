@@ -37,7 +37,7 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
      * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected CompanyTypeRepository $companytypeRepository;
+    protected ?CompanyTypeRepository $companytypeRepository = null;
 
 
     /**
@@ -57,6 +57,14 @@ class LayoutService implements \TYPO3\CMS\Core\SingletonInterface
      */
     protected ?QueryResultInterface $companytypeList = null;
 
+
+    /**
+     * @var \RKW\RkwBasics\Domain\Repository\CompanyTypeRepository
+     */
+    public function injectCompanyTypeRepository(CompanyTypeRepository $companytypeRepository)
+    {
+        $this->companytypeRepository = $companytypeRepository;
+    }
 
     /**
      * @param \RKW\RkwFeecalculator\Domain\Model\Program $supportProgramme

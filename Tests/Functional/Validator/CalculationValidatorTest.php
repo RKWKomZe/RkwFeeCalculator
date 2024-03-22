@@ -19,6 +19,7 @@ use RKW\RkwFeecalculator\Domain\Model\Calculation;
 use RKW\RkwFeecalculator\Domain\Model\Calculator;
 use RKW\RkwFeecalculator\Validation\CalculationValidator;
 use RKW\RkwFeecalculator\Tests\TestCaseUtility;
+use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -78,6 +79,10 @@ class CalculationValidatorTest extends FunctionalTestCase
 
         $this->calculator->setAssignedPrograms($objectStorageHoldingAssignedPrograms);
         $this->calculation->setCalculator($this->calculator);
+
+        /** @var \TYPO3\CMS\Core\Localization\LanguageService $languageService */
+        $languageService = GeneralUtility::makeInstance(LanguageService::class);
+        $GLOBALS['LANG'] = $languageService;
 
     }
 

@@ -52,6 +52,37 @@ call_user_func(
             RKW\RkwFeecalculator\Service\RkwMailService::class,
             'adminMail'
         );
+
+        //=================================================================
+        // Add XClasses for extending existing classes
+        // ATTENTION: deactivated due to faulty mapping in TYPO3 9.5
+        //=================================================================
+        /*
+        // for TYPO3 12+
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\Madj2k\FeRegister\Domain\Model\FrontendUser::class] = [
+            'className' => \RKW\RkwFeecalculator\Domain\Model\FrontendUser::class
+        ];
+
+        // for TYPO3 9.5 - 11.5 only, not required for TYPO3 12
+        \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
+            ->registerImplementation(
+                \Madj2k\FeRegister\Domain\Model\FrontendUser::class,
+                \RKW\RkwFeecalculator\Domain\Model\FrontendUser::class
+            );
+
+        // for TYPO3 12+
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\Madj2k\FeRegister\Domain\Model\BackendUser::class] = [
+            'className' => \RKW\RkwFeecalculator\Domain\Model\BackendUser::class
+        ];
+
+        // for TYPO3 9.5 - 11.5 only, not required for TYPO3 12
+        \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
+            ->registerImplementation(
+                \Madj2k\FeRegister\Domain\Model\BackendUser::class,
+                \RKW\RkwFeecalculator\Domain\Model\BackendUser::class
+            );
+        */
+
     },
-    $_EXTKEY
+    'rkw_feecalculator'
 );

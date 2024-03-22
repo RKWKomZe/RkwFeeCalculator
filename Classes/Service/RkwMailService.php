@@ -16,7 +16,6 @@ namespace RKW\RkwFeecalculator\Service;
 
 use Madj2k\Postmaster\Mail\MailMessage;
 use RKW\RkwFeecalculator\Domain\Model\SupportRequest;
-use Madj2k\Postmaster\Mail\MailMassage;
 use Madj2k\FeRegister\Domain\Model\FrontendUser;
 use Madj2k\CoreExtended\Utility\GeneralUtility;
 use Madj2k\Postmaster\Utility\FrontendLocalizationUtility;
@@ -38,21 +37,48 @@ class RkwMailService implements \TYPO3\CMS\Core\SingletonInterface
      * @var \RKW\RkwFeecalculator\Service\PdfService
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected PdfService $pdfService;
+    protected ?PdfService $pdfService = null;
 
 
     /**
      * @var \RKW\RkwFeecalculator\Service\CsvService
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected CsvService $csvService;
+    protected ?CsvService $csvService = null;
 
 
     /**
      * @var \RKW\RkwFeecalculator\Service\LayoutService
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected LayoutService $layoutService;
+    protected ?LayoutService $layoutService = null;
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\PdfService
+     */
+    public function injectPdfService(PdfService $pdfService)
+    {
+        $this->pdfService = $pdfService;
+    }
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\CsvService
+     */
+    public function injectCsvService(CsvService $csvService)
+    {
+        $this->csvService = $csvService;
+    }
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\LayoutService
+     */
+    public function injectLayoutService(LayoutService $layoutService)
+    {
+        $this->layoutService = $layoutService;
+    }
 
 
     /**

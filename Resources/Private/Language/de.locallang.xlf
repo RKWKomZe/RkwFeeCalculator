@@ -38,7 +38,7 @@
                 <source>Submit</source>
                 <target>Jetzt berechnen</target>
             </trans-unit>
-            
+
 
             <trans-unit id="partials.calculation.table.result">
                 <source>Result</source>
@@ -216,7 +216,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator">
                 <source>RKW FeeCalculator</source>
-                <target></target>
+                <target>RKW FeeCalculator</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.days">
                 <source>Days</source>
@@ -224,7 +224,7 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.name">
                 <source>Name</source>
-                <target></target>
+                <target>Name</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.consultant_fee_per_day">
                 <source>Consultant Fee Per Day</source>
@@ -232,42 +232,39 @@
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.assigned_programs">
                 <source>Assigned Programs</source>
-                <target></target>
+                <target>Zugeordnete Programme</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_calculator.selected_program">
                 <source>Selected Program</source>
                 <target>Auswahl Förderprogramm</target>
-
-
-
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program">
                 <source>Program</source>
-                <target></target>
+                <target>Porgramm</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.name">
                 <source>Name</source>
-                <target></target>
+                <target>Name</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_min">
                 <source>Possible Days Min</source>
-                <target></target>
+                <target>Minimale mögliche Tage</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.possible_days_max">
                 <source>Possible Days Max</source>
-                <target></target>
+                <target>Maximale mögliche Tage</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.content">
                 <source>Content</source>
-                <target></target>
+                <target>Inhalt</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day">
-                <source>Rkw Fee Per Day</source>
-                <target></target>
+                <source>RKW Fee Per Day</source>
+                <target>RKW Honorar pro Tag</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.consultant_fee_per_day_limit">
                 <source>Consultant Fee Per Day Limit</source>
-                <target></target>
+                <target>Höchstbetrag für Beraterhonorar pro Tag</target>
             </trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.funding_factor">
                 <source>Funding factor</source>
