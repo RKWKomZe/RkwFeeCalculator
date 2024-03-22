@@ -4,14 +4,6 @@ defined('TYPO3_MODE') || die('Access denied.');
 call_user_func(
     function ($extKey) {
 
-
-
-
-
-
-
-
-
         //=================================================================
         // Add tables
         //=================================================================
@@ -32,9 +24,6 @@ call_user_func(
             'tx_rkwfeecalculator_domain_model_supportrequest'
         );
 
-
-
-
     },
-    $_EXTKEY
+    'rkw_feecalculator'
 );

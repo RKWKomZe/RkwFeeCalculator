@@ -75,8 +75,10 @@ class UploadHelper implements SingletonInterface
      */
     protected ?PersistenceManager $persistenceManager = null;
 
+
     /**
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Object\Exception
      */
     public function __construct()
     {

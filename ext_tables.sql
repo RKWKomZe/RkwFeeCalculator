@@ -18,7 +18,6 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_calculator (
 	endtime int(11) unsigned DEFAULT '0' NOT NULL,
 
 	t3ver_oid int(11) DEFAULT '0' NOT NULL,
-	t3ver_id int(11) DEFAULT '0' NOT NULL,
 	t3ver_wsid int(11) DEFAULT '0' NOT NULL,
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	t3ver_state tinyint(4) DEFAULT '0' NOT NULL,
@@ -71,7 +70,6 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_program (
 	endtime int(11) unsigned DEFAULT '0' NOT NULL,
 
 	t3ver_oid int(11) DEFAULT '0' NOT NULL,
-	t3ver_id int(11) DEFAULT '0' NOT NULL,
 	t3ver_wsid int(11) DEFAULT '0' NOT NULL,
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	t3ver_state tinyint(4) DEFAULT '0' NOT NULL,
@@ -110,7 +108,6 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_consulting (
 	hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	t3ver_oid int(11) DEFAULT '0' NOT NULL,
-	t3ver_id int(11) DEFAULT '0' NOT NULL,
 	t3ver_wsid int(11) DEFAULT '0' NOT NULL,
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	t3ver_state tinyint(4) DEFAULT '0' NOT NULL,
@@ -219,7 +216,6 @@ CREATE TABLE tx_rkwfeecalculator_domain_model_supportrequest (
 	hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
 	t3ver_oid int(11) DEFAULT '0' NOT NULL,
-	t3ver_id int(11) DEFAULT '0' NOT NULL,
 	t3ver_wsid int(11) DEFAULT '0' NOT NULL,
 	t3ver_label varchar(255) DEFAULT '' NOT NULL,
 	t3ver_state tinyint(4) DEFAULT '0' NOT NULL,

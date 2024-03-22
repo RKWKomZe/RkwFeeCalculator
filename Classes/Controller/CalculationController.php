@@ -32,7 +32,16 @@ class CalculationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @var \RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected CalculatorRepository $calculatorRepository;
+    protected ?CalculatorRepository $calculatorRepository = null;
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository
+     */
+    public function injectCheckupRepository(CalculatorRepository $calculatorRepository)
+    {
+        $this->calculatorRepository = $calculatorRepository;
+    }
 
 
     /**

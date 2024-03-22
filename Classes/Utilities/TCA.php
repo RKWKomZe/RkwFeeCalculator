@@ -32,6 +32,7 @@ class TCA
     /**
      * @param array $parameters
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Object\Exception
      */
     public function supportRequestTitle(array &$parameters): void
     {

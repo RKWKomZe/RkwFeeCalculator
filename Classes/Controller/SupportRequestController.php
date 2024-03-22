@@ -62,49 +62,112 @@ class SupportRequestController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
      * @var \RKW\RkwFeecalculator\Service\LayoutService
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected LayoutService $layoutService;
+    protected ?LayoutService $layoutService = null;
 
 
     /**
      * @var \RKW\RkwFeecalculator\Domain\Repository\ProgramRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected ProgramRepository $supportProgrammeRepository;
+    protected ?ProgramRepository $supportProgrammeRepository = null;
 
 
     /**
      * @var \RKW\RkwFeecalculator\Domain\Model\Program
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected Program $supportProgramme;
+    protected ?Program $supportProgramme = null;
 
 
     /**
      * @var \RKW\RkwFeecalculator\Domain\Repository\SupportRequestRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected SupportRequestRepository $supportRequestRepository;
+    protected ?SupportRequestRepository $supportRequestRepository = null;
 
 
     /**
      * @var \RKW\RkwFeecalculator\Domain\Repository\FrontendUserRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected FrontendUserRepository $frontendUserRepository;
+    protected ?FrontendUserRepository $frontendUserRepository = null;
 
 
     /**
      * @var \RKW\RkwFeecalculator\Domain\Repository\BackendUserRepository
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected BackendUserRepository $backendUserRepository;
+    protected ?BackendUserRepository $backendUserRepository = null;
 
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected PersistenceManager $persistenceManager;
+    protected ?PersistenceManager $persistenceManager = null;
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\LayoutService
+     */
+    public function injectCheckupRepository(LayoutService $layoutService)
+    {
+        $this->layoutService = $layoutService;
+    }
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Domain\Repository\ProgramRepository
+     */
+    public function injectProgramRepository(ProgramRepository $supportProgrammeRepository)
+    {
+        $this->supportProgrammeRepository = $supportProgrammeRepository;
+    }
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Domain\Model\Program
+     */
+    public function injectProgram(Program $supportProgramme)
+    {
+        $this->supportProgramme = $supportProgramme;
+    }
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Domain\Repository\SupportRequestRepository
+     */
+    public function injectSupportRequestRepository(SupportRequestRepository $supportRequestRepository)
+    {
+        $this->supportRequestRepository = $supportRequestRepository;
+    }
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Domain\Repository\FrontendUserRepository
+     */
+    public function injectFrontendUserRepository(FrontendUserRepository $frontendUserRepository)
+    {
+        $this->frontendUserRepository = $frontendUserRepository;
+    }
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Domain\Repository\BackendUserRepository
+     */
+    public function injectBackendUserRepository(BackendUserRepository $backendUserRepository)
+    {
+        $this->backendUserRepository = $backendUserRepository;
+    }
+
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+     */
+    public function injectPersistenceManager(PersistenceManager $persistenceManager)
+    {
+        $this->persistenceManager = $persistenceManager;
+    }
 
 
     /**

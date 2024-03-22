@@ -37,7 +37,16 @@ class PdfService extends DocumentService
      * @var \RKW\RkwFeecalculator\Service\LayoutService
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    protected LayoutService $layoutService;
+    protected ?LayoutService $layoutService = null;
+
+
+    /**
+     * @var \RKW\RkwFeecalculator\Service\LayoutService
+     */
+    public function injectLayoutService(LayoutService $layoutService)
+    {
+        $this->layoutService = $layoutService;
+    }
 
 
     /**

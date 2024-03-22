@@ -41,6 +41,7 @@ class SecurityCommand extends Command
      */
     protected string $defaultUploadFolder = '1:/user_upload/tx_rkwfeecalculator';
 
+
     /**
      * @var \TYPO3\CMS\Core\Log\Logger|null
      */
