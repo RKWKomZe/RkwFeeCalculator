@@ -18,9 +18,6 @@ return [
         'searchFields' => 'name, founderName, address, zip, city, foundation_date, intended_foundation_date, citizenship, birthdate, foundation_location, sales, balance, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, consulting_days, consulting_date_from, consulting_date_to, consulting_content, consultant_type, consultant_company, consultant_name1, consultant1_accreditation_number, consultant_name2, consultant2_accreditation_number, consultant_fee, consultant_phone, consultant_email, premature_start, file, send_documents, bafa_support, de_minimis, existenz_gruender_pass, support_programme, consulting, companytype',
         'iconfile' => 'EXT:rkw_feecalculator/Resources/Public/Icons/tx_rkwfeecalculator_domain_model_supportrequest.gif'
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, founderName, address, zip, city, foundation_date, intended_foundation_date, citizenship, birthdate, foundation_location, sales, balance, employees_count, manager, single_representative, pre_tax_deduction, business_purpose, insolvency_proceedings, chamber, company_shares, principal_bank, bic, iban, contact_person_name, contact_person_phone, contact_person_fax, contact_person_mobile, contact_person_email, pre_foundation_employment, pre_foundation_self_employment, consulting_days, consulting_date_from, consulting_date_to, consulting_content, consultant_type, consultant_company, consultant_name1, consultant1_accreditation_number, consultant_name2, consultant2_accreditation_number, consultant_fee, consultant_phone, consultant_email, premature_start, file, send_documents, bafa_support, de_minimis, existenz_gruender_pass, support_programme, consulting, companytype',
-    ],
     'types' => [
         '1' => [
             'showitem' => '
@@ -58,7 +55,6 @@ return [
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
