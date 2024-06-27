@@ -12,6 +12,9 @@
         <uid>1</uid>
         <pid>0</pid>
         <name>Program</name>
+        <content>Content</content>
+        <request_fields>RequestFields</request_fields>
+        <mandatory_fields>MandatoryFields</mandatory_fields>
         <rkw_fee_per_day>120</rkw_fee_per_day>
         <funding_factor>0.5</funding_factor>
         <standard_unit_costs>950</standard_unit_costs>
