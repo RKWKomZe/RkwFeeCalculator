@@ -14,11 +14,11 @@ namespace RKW\RkwFeecalculator\Tests\Integration\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use RKW\RkwFeecalculator\Domain\Model\Program;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
  * Class PossibleDaysTest
@@ -43,7 +43,8 @@ class PossibleDaysViewHelperTest extends FunctionalTestCase
      * @var string[]
      */
     protected $testExtensionsToLoad = [
-        'typo3conf/ext/rkw_feecalculator'
+        'typo3conf/ext/rkw_basics',
+        'typo3conf/ext/rkw_feecalculator',
     ];
 
 

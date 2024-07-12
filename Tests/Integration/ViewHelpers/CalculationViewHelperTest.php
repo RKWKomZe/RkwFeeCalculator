@@ -14,14 +14,13 @@ namespace RKW\RkwFeecalculator\Tests\Integration\ViewHelpers;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Fluid\View\StandaloneView;
+use RKW\RkwFeecalculator\Domain\Model\Calculation;
+use RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository;
+use RKW\RkwFeecalculator\Domain\Repository\ProgramRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
-use RKW\RkwFeecalculator\Domain\Model\Calculation;
-use RKW\RkwFeecalculator\ViewHelpers\CalculationViewHelper;
-use RKW\RkwFeecalculator\Domain\Repository\ProgramRepository;
-use RKW\RkwFeecalculator\Domain\Repository\CalculatorRepository;
+use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
  * Class CalculationViewHelperTest
@@ -44,7 +43,8 @@ class CalculationViewHelperTest extends FunctionalTestCase
      * @var string[]
      */
     protected $testExtensionsToLoad = [
-        'typo3conf/ext/rkw_feecalculator'
+        'typo3conf/ext/rkw_basics',
+        'typo3conf/ext/rkw_feecalculator',
     ];
 
 

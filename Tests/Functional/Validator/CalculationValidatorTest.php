@@ -14,13 +14,13 @@ namespace RKW\RkwFeecalculator\Tests\Functional\Domain\Validator;
  * The TYPO3 project - inspiring people to share!
  */
 
-use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use RKW\RkwFeecalculator\Domain\Model\Calculation;
 use RKW\RkwFeecalculator\Domain\Model\Calculator;
-use RKW\RkwFeecalculator\Validation\CalculationValidator;
 use RKW\RkwFeecalculator\Tests\TestCaseUtility;
+use RKW\RkwFeecalculator\Validation\CalculationValidator;
 use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 /**
  * Class CalculationValidatorTest
@@ -39,6 +39,7 @@ class CalculationValidatorTest extends FunctionalTestCase
      */
     protected $testExtensionsToLoad = [
         'typo3conf/ext/rkw_basics',
+        'typo3conf/ext/rkw_feecalculator',
     ];
 
 
@@ -86,7 +87,9 @@ class CalculationValidatorTest extends FunctionalTestCase
 
     }
 
+
     #==========================================================================
+
 
     /**
      * @test
@@ -102,9 +105,9 @@ class CalculationValidatorTest extends FunctionalTestCase
         $this->calculation->setSelectedProgram($selectedProgram);
         $this->calculation->setDays(2);
 
+
         $this->assertFalse($this->subject->isValid($this->calculation));
     }
-
 
     /**
      * @test
@@ -124,7 +127,6 @@ class CalculationValidatorTest extends FunctionalTestCase
 
         $this->assertTrue($this->subject->isValid($this->calculation));
     }
-
 
     /**
      * @test
@@ -278,6 +280,7 @@ class CalculationValidatorTest extends FunctionalTestCase
     }
 
     #==========================================================================
+
 
     /**
      * @return void
