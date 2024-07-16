@@ -13,7 +13,7 @@ defined('TYPO3_MODE') || die('Access denied.');
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'RKW.RkwFeecalculator',
     'Request',
-    'Rkw FeeCalculator: Antragsformular (Förderprogramm)'
+    'RKW FeeCalculator: Antragsformular (Förderprogramm)'
 );
 
 //=================================================================
