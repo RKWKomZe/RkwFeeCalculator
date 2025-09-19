@@ -258,6 +258,10 @@
                 <source>Content</source>
                 <target>Inhalt</target>
             </trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.result_hint">
+				<source>Hint</source>
+				<target>Hinweis zum Ergebnis</target>
+			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day">
                 <source>RKW Fee Per Day</source>
                 <target>RKW Honorar pro Tag</target>
@@ -294,6 +298,10 @@
                 <source>Content</source>
                 <target>Beratungsinhalte</target>
             </trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.form.content">
+				<source>Hint</source>
+				<target>Hinweis zum Ergebnis</target>
+			</trans-unit>
             <trans-unit id="tx_rkwfeecalculator_domain_model_consulting">
                 <source>Consulting</source>
                 <target>Art der Beratung</target>

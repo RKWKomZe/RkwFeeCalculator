@@ -151,6 +151,9 @@
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.content">
 				<source>Content</source>
 			</trans-unit>
+			<trans-unit id="tx_rkwfeecalculator_domain_model_program.result_hint">
+				<source>Hint</source>
+			</trans-unit>
 			<trans-unit id="tx_rkwfeecalculator_domain_model_program.rkw_fee_per_day">
 				<source>Rkw Fee Per Day</source>
 			</trans-unit>
