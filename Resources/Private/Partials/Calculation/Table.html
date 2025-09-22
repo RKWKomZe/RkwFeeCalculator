@@ -1,5 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:rkwCalculation="http://typo3.org/ns/RKW/RkwFeecalculator/ViewHelpers"
+    xmlns:coreExtended="http://typo3.org/ns/Madj2k/CoreExtended/ViewHelpers"
     data-namespace-typo3-fluid="true">
 
     <h3 id="tx-rkwcalculator-result"><f:translate key="partials.calculation.table.result" /></h3>
@@ -57,6 +58,16 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <f:if condition="<coreExtended:isEmpty string='{calculation.selectedProgram.resultHint}' /> == 0">
+                <f:then>
+                    <div class="system-message" role="alert">
+                        <div class="system-message__item system-message__item--severity1">
+                            <f:format.html>{calculation.selectedProgram.resultHint}</f:format.html>
+                        </div>
+                    </div>
+                </f:then>
+            </f:if>
 
             <h3><f:translate key="partials.calculation.table.overviewConditions" /></h3>
             <f:format.html>{calculation.selectedProgram.content}</f:format.html>
