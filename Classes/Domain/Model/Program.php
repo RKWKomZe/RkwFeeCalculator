@@ -55,6 +55,12 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
 
     /**
+     * @var string
+     */
+    protected string $resultHint = '';
+
+
+    /**
      * @var float
      * @TYPO3\CMS\Extbase\Annotation\Validate("Float")
      */
@@ -245,6 +251,31 @@ class Program extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         // @extensionScannerIgnoreLine
         $this->content = $content;
+    }
+
+
+    /**
+     * Returns the resultHint
+     *
+     * @return string $resultHint
+     */
+    public function getResultHint(): string
+    {
+        // @extensionScannerIgnoreLine
+        return $this->resultHint;
+    }
+
+
+    /**
+     * Sets the resultHint
+     *
+     * @param string $resultHint
+     * @return void
+     */
+    public function setResultHint(string $resultHint): void
+    {
+        // @extensionScannerIgnoreLine
+        $this->resultHint = $resultHint;
     }
 
 
